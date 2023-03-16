@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PrefabLoad : DDOL_Control<PrefabLoad>
+public class AssetLoad : Singler<AssetLoad>
 {
     public void loadPrefab(string sname,GameObject father)
     {
@@ -21,5 +21,19 @@ public class PrefabLoad : DDOL_Control<PrefabLoad>
         var baseMain = Instantiate(baseain);
         baseMain.transform.SetParent(father.transform, false);
         return baseMain;
+    }
+
+    private IEnumerator LoadPrefab(E_UIPrefab pop)
+    {
+        yield return loadPrefabAsync();
+    }
+
+    private bool loadPrefabAsync()
+    {
+#if AB_LOAD
+#else
+        //return UnityEditor.AssetDatabase.LoadAssetAtPath<TargetJoint2D>(path);
+#endif
+        return true;
     }
 }

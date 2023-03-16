@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class PubTool : DDOL_Control<PubTool>
+public class PubTool : Singler<PubTool>
 {
     private bool ismotion = false;
     /// <summary>

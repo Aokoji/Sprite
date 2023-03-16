@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using customEvent;
 
-public class GameManager : MonoBehaviour
+public class LoadingScene : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()

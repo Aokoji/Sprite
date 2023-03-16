@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class AnimationTool : DDOL_Control<AnimationTool>
+public class AnimationTool :Singler<AnimationTool>
 {
     /// <summary>
     /// 外部调用 播放组件动画
@@ -12,7 +12,7 @@ public class AnimationTool : DDOL_Control<AnimationTool>
     /// <param name="aniName">动画名</param>
     /// <param name="loop">循环</param>
     /// <param name="callBack">回调</param>
-    public void playAnimation(GameObject obj, string aniName, bool loop, Action callBack)
+    public void playAnimatior(GameObject obj, string aniName, bool loop, Action callBack)
     {
         Animator anim = obj.GetComponent<Animator>();
         float time = getAnimTime(anim, aniName);
@@ -46,17 +46,6 @@ public class AnimationTool : DDOL_Control<AnimationTool>
         }
         obj.SetActive(true);
         anim.Play(aniName, 0, 0f);
-        /*
-        void action()
-        {
-            AnimatorStateInfo info = anim.GetCurrentAnimatorStateInfo(0);
-            if (obj.activeSelf && info.IsName(aniName) && info.normalizedTime >= 0.96f)
-            {
-                if (!loop) anim.StopPlayback();
-            }
-        }
-        PubTool.Instance.laterDo(time, action);
-        */
     }
     //++++动画需要单独测试  测试上一个结束重复播放和播下一个是否流畅
 
@@ -82,5 +71,27 @@ public class AnimationTool : DDOL_Control<AnimationTool>
                 return clip.length;
         }
         return 0;
+    }
+
+    public void playAnimation(GameObject obj,string aniname,bool isloop=false,Action callback=null)
+    {
+        Animation anim = obj.GetComponent<Animation>();
+        if (anim = null)
+        {
+            Debug.LogError("animation component is null,will play animName =" + aniname);
+            return;
+        }
+        var script = obj.GetComponent<AnimCallBack>();
+        if (null == script)
+            script = obj.AddComponent<AnimCallBack>();
+        script.Callback = callback;
+        AnimationClip clip = anim.GetClip(aniname);
+        AnimationEvent evt = new AnimationEvent();
+        evt.functionName = "Mycallback";
+        evt.time = clip.length;
+        clip.events = null;
+        clip.AddEvent(evt);
+        anim.clip = clip;
+        anim.Play();
     }
 }

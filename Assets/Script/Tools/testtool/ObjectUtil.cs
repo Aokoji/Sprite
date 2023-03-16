@@ -20,7 +20,7 @@ public class ObjectUtil : MonoBehaviour
             pool = obj.AddComponent<ObjectPool>();
             pool.prefab = recycle;
             pools.Add(recycle, pool);
-            FrameControl.Instance.loadOnActive(obj);
+            //FrameControl.Instance.loadOnActive(obj);
         }
         return pool;
     } 
