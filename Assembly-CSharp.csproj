@@ -64,24 +64,36 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Script\Game\loading\LoadingScene.cs" />
+    <Compile Include="Assets\Script\Common\BaseData.cs" />
+    <Compile Include="Assets\Script\Game\Battle\BattleControl.cs" />
+    <Compile Include="Assets\Script\Game\Battle\BattleData.cs" />
+    <Compile Include="Assets\Script\Game\Battle\BattleDemo.cs" />
+    <Compile Include="Assets\Script\Game\Battle\BattleManager.cs" />
+    <Compile Include="Assets\Script\Game\Battle\Card\CardData.cs" />
+    <Compile Include="Assets\Script\Game\LoadDataAdapter.cs" />
+    <Compile Include="Assets\Script\Game\PlayerManager.cs" />
     <Compile Include="Assets\Script\GameManager.cs" />
     <Compile Include="Assets\Script\Main.cs" />
+    <Compile Include="Assets\Script\Panel\LoadingPanel.cs" />
+    <Compile Include="Assets\Script\Panel\PanelBase.cs" />
     <Compile Include="Assets\Script\Panel\PanelManager.cs" />
     <Compile Include="Assets\Script\Panel\UIPrefabPath.cs" />
     <Compile Include="Assets\Script\Panel\UI_Base.cs" />
-    <Compile Include="Assets\Script\Tools\Singler.cs" />
-    <Compile Include="Assets\Script\Tools\testtool\AnimCallBack.cs" />
-    <Compile Include="Assets\Script\Tools\testtool\AnimationTool.cs" />
-    <Compile Include="Assets\Script\Tools\testtool\AssetLoad.cs" />
-    <Compile Include="Assets\Script\Tools\testtool\AssetManager.cs" />
-    <Compile Include="Assets\Script\Tools\testtool\EventAction.cs" />
-    <Compile Include="Assets\Script\Tools\testtool\Joystick.cs" />
-    <Compile Include="Assets\Script\Tools\testtool\ObjectPool.cs" />
-    <Compile Include="Assets\Script\Tools\testtool\ObjectUtil.cs" />
-    <Compile Include="Assets\Script\Tools\testtool\PubTool.cs" />
-    <Compile Include="Assets\Script\Tools\testtool\RecycleObject.cs" />
-    <Compile Include="Assets\Script\Tools\testtool\UILoad.cs" />
+    <Compile Include="Assets\Script\Tools\CSingel.cs" />
+    <Compile Include="Assets\Script\Tools\PubTool.cs" />
+    <Compile Include="Assets\Script\Tools\RunSingel.cs" />
+    <Compile Include="Assets\Script\Tools\gametool\AnimCallBack.cs" />
+    <Compile Include="Assets\Script\Tools\gametool\AnimationTool.cs" />
+    <Compile Include="Assets\Script\Tools\gametool\EventAction.cs" />
+    <Compile Include="Assets\Script\Tools\gametool\Joystick.cs" />
+    <Compile Include="Assets\Script\Tools\gametool\ObjectPool.cs" />
+    <Compile Include="Assets\Script\Tools\gametool\ObjectUtil.cs" />
+    <Compile Include="Assets\Script\Tools\gametool\RecycleObject.cs" />
+    <Compile Include="Assets\Script\Tools\gametool\UITool_ScrollView.cs" />
+    <Compile Include="Assets\Script\Tools\loadtool\AssetLoad.cs" />
+    <Compile Include="Assets\Script\Tools\loadtool\AssetManager.cs" />
+    <Compile Include="Assets\Script\Tools\loadtool\CSVLoad.cs" />
+    <Compile Include="Assets\Script\Tools\logtool\LogTool.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

@@ -5,4 +5,5 @@ using UnityEngine;
 public enum E_UIPrefab
 {
     none,
+    Loading,
 }
