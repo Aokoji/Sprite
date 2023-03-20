@@ -8,7 +8,7 @@ namespace gamedata
     {
         public void padding()
         {
-
+            
         }
     }
 

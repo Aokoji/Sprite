@@ -8,6 +8,7 @@ public class BattleDemo : MonoBehaviour
     {
         BattleManager.Instance.init();
         loadDataTest();
+        PlayerManager.Instance.injectPlayer();
         BattleManager.Instance.EnterBattle();
     }
 

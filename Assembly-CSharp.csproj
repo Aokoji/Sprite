@@ -69,8 +69,12 @@
     <Compile Include="Assets\Script\Game\Battle\BattleData.cs" />
     <Compile Include="Assets\Script\Game\Battle\BattleDemo.cs" />
     <Compile Include="Assets\Script\Game\Battle\BattleManager.cs" />
+    <Compile Include="Assets\Script\Game\Battle\BattlePanel.cs" />
+    <Compile Include="Assets\Script\Game\Battle\Card\CardCalculate.cs" />
     <Compile Include="Assets\Script\Game\Battle\Card\CardData.cs" />
+    <Compile Include="Assets\Script\Game\Battle\Card\CardEntity.cs" />
     <Compile Include="Assets\Script\Game\LoadDataAdapter.cs" />
+    <Compile Include="Assets\Script\Game\Player\PlayerData.cs" />
     <Compile Include="Assets\Script\Game\PlayerManager.cs" />
     <Compile Include="Assets\Script\GameManager.cs" />
     <Compile Include="Assets\Script\Main.cs" />

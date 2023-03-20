@@ -6,4 +6,8 @@ public enum E_UIPrefab
 {
     none,
     Loading,
+    BattlePanel,
+
+    //ui
+    cardItem,
 }

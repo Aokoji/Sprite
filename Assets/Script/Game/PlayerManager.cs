@@ -5,12 +5,25 @@ using gamedata;
 
 public class PlayerManager : CSingel<PlayerManager>
 {
+    public Dictionary<int, PlayerData> spritesDic = new Dictionary<int, PlayerData>();
+
     public Dictionary<int, CardData> currentCardDic = new Dictionary<int, CardData>();
     public Dictionary<int, CardData> currentMagicDic = new Dictionary<int, CardData>();
-    public int currentSprite;   //+++精灵类
+    public PlayerData currentSprite;
 
+
+    public void injectPlayer()
+    {//暂定为读asset文件
+
+        loadTestCardData();
+    }
+    private void loadDefaultData(int id)
+    {
+
+    }
+    
     //测试
-    private string CARD_TEST_PATH = "Asset/config/testpalyerCard";
+    private string CARD_TEST_PATH = "Assets/config/testplayerCard.csv";
     public void loadTestCardData()
     {
         currentCardDic = LoadDataAdapter.loadDataCard(CARD_TEST_PATH);

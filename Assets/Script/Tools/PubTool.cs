@@ -19,4 +19,5 @@ public class PubTool
     }
     public static void timeScaleSet(float v) { Time.timeScale = v; }
     public static void timeScaleReset() { Time.timeScale = 1; }
+
 }

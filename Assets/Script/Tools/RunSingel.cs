@@ -37,4 +37,10 @@ public class RunSingel : MonoBehaviour
         yield return new WaitForSeconds(time);
         action();
     }
+
+
+    public void moveTo(GameObject obj, GameObject target, float time, int speed = 0)
+    {
+
+    }
 }
