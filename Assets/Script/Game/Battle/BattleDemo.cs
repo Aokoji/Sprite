@@ -6,9 +6,8 @@ public class BattleDemo : MonoBehaviour
 {
     void Start()
     {
-        BattleManager.Instance.init();
+        GameManager.Instance.initManager();
         loadDataTest();
-        PlayerManager.Instance.injectPlayer();
         BattleManager.Instance.EnterBattle();
     }
 
@@ -17,5 +16,8 @@ public class BattleDemo : MonoBehaviour
 
     }
 
-    
+    private void Update()
+    {
+        
+    }
 }

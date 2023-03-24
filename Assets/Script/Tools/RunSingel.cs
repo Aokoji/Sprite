@@ -41,6 +41,15 @@ public class RunSingel : MonoBehaviour
 
     public void moveTo(GameObject obj, GameObject target, float time, int speed = 0)
     {
-
+        runTimer(movetimer(obj, target, time, speed));
+    }
+    IEnumerator movetimer(GameObject obj, GameObject target, float time, int speed = 1)
+    {
+        var script = obj.GetComponent<Anim_Move>();
+        if (script == null)
+            script = obj.AddComponent<Anim_Move>();
+        yield return null;
+        script.setData(target, time, speed);
+        script.starPlay();
     }
 }

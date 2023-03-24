@@ -12,9 +12,13 @@ public class PanelManager : CSingel<PanelManager>
 
     private Stack<PanelBase> panelStack = new Stack<PanelBase>();
     private string PANEL_PATH = "Assets/ui/panel/";
+    Transform basePanel;
+    GameObject maincanvas;
 
     public void init()
     {
+        maincanvas = GameObject.Find("Canvas");
+        basePanel = maincanvas.transform.Find("BasePanel");
         initEvent();
         loadingPanel();
     }
@@ -35,7 +39,8 @@ public class PanelManager : CSingel<PanelManager>
     {
         //shut wait
         var  obj = AssetLoad.Instance.loadUIPrefab<GameObject>(PANEL_PATH , curEnmu.ToString());
-        UnityEngine.Object.Instantiate(obj);
+        var t = UnityEngine.Object.Instantiate(obj);
+        t.transform.SetParent(basePanel, false);
         PanelBase panel = obj.GetComponent<PanelBase>();
         curPanel = panel;
         while(panel==null)

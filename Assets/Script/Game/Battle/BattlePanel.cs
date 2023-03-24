@@ -2,9 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BattlePanel : PanelBase
 {
+    public Image img1;
+    public Image img2;
     //创建ui
     public Transform createCardPos;
     public Transform[] takeCardPos;
@@ -21,11 +24,12 @@ public class BattlePanel : PanelBase
     private List<CardData> handEnemylist = new List<CardData>();
     private List<CardEntity> handCardEntity = new List<CardEntity>();
 
-    public void initData()
+    public override void init()
     {
         getPlayerNewCardQue();
         getEnemyNewCardQue();
         player = PlayerManager.Instance.currentSprite;
+        AnimationTool.moveTo(img1.gameObject, img2.gameObject, 10);
     }
     private void getPlayerNewCardQue()
     {

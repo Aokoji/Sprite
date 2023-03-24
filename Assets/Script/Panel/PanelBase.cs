@@ -6,7 +6,7 @@ public class PanelBase : UIBase
 {
     public string PanelName;
 
-    public void init() { }
+    public virtual void init() { }
     public void initAfterLoading() { }
     public void OnExit() { }
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class BattleControl :Object
 {
     private BattlePanel ui;
+    public bool loadSuccess = false;
 
     #region 获取数据  加载的准备阶段
     public void newbattle()
@@ -23,8 +24,9 @@ public class BattleControl :Object
     }
     private void loadComplete()
     {
+        loadSuccess = true;
         ui = PanelManager.Instance.PanelCur.gameObject.GetComponent<BattlePanel>();
-        ui.initData();
+        //ui.initData();
     }
     #endregion
 

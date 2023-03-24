@@ -3,17 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using customEvent;
 
-public class GameManager : MonoBehaviour
+public class GameManager : CSingel<GameManager>
 {
-    // Start is called before the first frame update
-    void Start()
+    public void initManager()
     {
-        
+        PanelManager.Instance.init();
+        PlayerManager.Instance.init();
+        BattleManager.Instance.init();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }

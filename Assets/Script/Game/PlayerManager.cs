@@ -10,7 +10,10 @@ public class PlayerManager : CSingel<PlayerManager>
     public Dictionary<int, CardData> currentCardDic = new Dictionary<int, CardData>();
     public Dictionary<int, CardData> currentMagicDic = new Dictionary<int, CardData>();
     public PlayerData currentSprite;
-
+    public void init()
+    {
+        injectPlayer();
+    }
 
     public void injectPlayer()
     {//暂定为读asset文件

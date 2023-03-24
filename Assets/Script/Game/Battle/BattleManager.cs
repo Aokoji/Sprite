@@ -44,7 +44,6 @@ public class BattleManager : CSingel<BattleManager>
 
     public void Loadingbattle()
     {
-        ctrl.newbattle();   //加载信息
         loadScene();
     }
     private void Loadcomplete()
@@ -54,6 +53,13 @@ public class BattleManager : CSingel<BattleManager>
     }
     private void loadScene()
     {
+        RunSingel.Instance.runTimer(loadSceneTimer());
+    }
+    IEnumerator loadSceneTimer()
+    {
+        ctrl.newbattle();   //加载信息
+        while(!ctrl.loadSuccess)
+            yield return null;
         Loadcomplete();
     }
 }
