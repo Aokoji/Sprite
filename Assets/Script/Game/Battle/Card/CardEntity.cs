@@ -6,6 +6,12 @@ using UnityEngine.UI;
 
 public class CardEntity : UIBase
 {
+    public Image bg;
+    public Image desbg;
+    public Text sname;
+    public Text descirbe;
+    public GameObject body;
+
     //单张卡
     public CardData _data;
     public Action<CardEntity> onChoose;

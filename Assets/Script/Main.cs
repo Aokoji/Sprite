@@ -11,6 +11,11 @@ public class Main : MonoBehaviour
 
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            GameObject obj = new GameObject();
+            var sp = obj.AddComponent<test>();
+            sp.startplay();
+        }
     }
 }

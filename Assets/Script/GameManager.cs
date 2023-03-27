@@ -12,4 +12,5 @@ public class GameManager : CSingel<GameManager>
         BattleManager.Instance.init();
     }
     
+    
 }
