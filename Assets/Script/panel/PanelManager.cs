@@ -39,9 +39,10 @@ public class PanelManager : CSingel<PanelManager>
     {
         //shut wait
         var  obj = AssetLoad.Instance.loadUIPrefab<GameObject>(PANEL_PATH , curEnmu.ToString());
+        //var obj = Resources.Load<GameObject>(curEnmu.ToString());
         var t = UnityEngine.Object.Instantiate(obj);
         t.transform.SetParent(basePanel, false);
-        PanelBase panel = obj.GetComponent<PanelBase>();
+        PanelBase panel = t.GetComponent<PanelBase>();
         curPanel = panel;
         while(panel==null)
             yield return null;

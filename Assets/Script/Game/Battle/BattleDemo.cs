@@ -18,6 +18,7 @@ public class BattleDemo : MonoBehaviour
 
     private void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+            BattleManager.Instance.testgo();
     }
 }

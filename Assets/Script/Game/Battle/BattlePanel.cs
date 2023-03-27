@@ -29,7 +29,6 @@ public class BattlePanel : PanelBase
         getPlayerNewCardQue();
         getEnemyNewCardQue();
         player = PlayerManager.Instance.currentSprite;
-        AnimationTool.moveTo(img1.gameObject, img2.gameObject, 10);
     }
     private void getPlayerNewCardQue()
     {
@@ -39,7 +38,21 @@ public class BattlePanel : PanelBase
     {
         enemyque = CardCalculate.getRandomList(PlayerManager.Instance.currentCardDic);//敌人管理器 +++还没做
     }
+    public void testgo()
+    {
+        AnimationTool.moveTo(img1.gameObject, img2.gameObject, 2);
 
+        /*
+         var sp = img1.gameObject.GetComponent<Anim_Move>();
+        if (sp == null)
+        {
+            Debug.Log("pppppp");
+            sp = img1.gameObject.AddComponent<Anim_Move>();
+        }
+        sp.setData(img2.gameObject, 5,1);
+        sp.startPlay();
+        */
+    }
     public void dealCard(int num)
     {
         //屏蔽点击

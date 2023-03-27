@@ -49,7 +49,7 @@ public class BattleManager : CSingel<BattleManager>
     private void Loadcomplete()
     {
         //播放开始动画 或者战斗信息
-        ctrl.StartRound();
+        //ctrl.StartRound();
     }
     private void loadScene()
     {
@@ -61,5 +61,10 @@ public class BattleManager : CSingel<BattleManager>
         while(!ctrl.loadSuccess)
             yield return null;
         Loadcomplete();
+    }
+    public void testgo()
+    {
+        //ctrl.StartRound();
+        ctrl.testgo();
     }
 }

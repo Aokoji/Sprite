@@ -11,7 +11,7 @@ public class RunSingel : MonoBehaviour
         get {
             if(null == instance)
             {
-                var gameobj = Instantiate(new GameObject());
+                var gameobj = new GameObject();
                 gameobj.name = "Coroutine";
                 instance = gameobj.AddComponent<RunSingel>();
                 DontDestroyOnLoad(gameobj);
@@ -48,8 +48,9 @@ public class RunSingel : MonoBehaviour
         var script = obj.GetComponent<Anim_Move>();
         if (script == null)
             script = obj.AddComponent<Anim_Move>();
-        yield return null;
         script.setData(target, time, speed);
-        script.starPlay();
+        script.startPlay();
+        yield return null;
+
     }
 }
