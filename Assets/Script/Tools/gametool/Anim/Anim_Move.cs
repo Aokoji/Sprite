@@ -12,28 +12,44 @@ public class Anim_Move : AnimNodeBase
         CallBack = callback;
     }
     Action CallBack;
+    Vector3 startPos;
     Vector3 targetPos;
+    Vector3 referPos;
     float time;
-    float speed;
+    int movetype;
     float runtime;
-    public void setData(GameObject target,float time,float speed)
+    /// <summary>
+    /// 匀速
+    /// </summary>
+    /// <param name="target"></param>
+    public void setData(GameObject target,float time,int type)
     {
-        targetPos = transform.localPosition + transform.InverseTransformPoint(target.transform.position);
+        startPos = transform.localPosition;
+        targetPos = startPos + transform.InverseTransformPoint(target.transform.position);
+        referPos = Vector3.Lerp(startPos, targetPos, type / 10);
+        movetype = type;
         this.time = time;
-        this.speed = speed;
-        runtime = 0;
-        playallow = false;
     }
     // Update is called once per frame
+    float timegap;
     private void Update()
     {
         if (playallow)
         {
             runtime += Time.deltaTime;
-            transform.localPosition += (targetPos-transform.localPosition)*Time.deltaTime/(time - runtime);
+            timegap = runtime / time;
+            if (movetype == 5)
+                transform.localPosition = Vector3.Lerp(startPos, targetPos, timegap);   //推荐插值运动
+            else
+                //新插值运动
+                transform.localPosition = Vector3.Lerp(Vector3.Lerp(startPos, referPos, timegap), targetPos, timegap);
+            //transform.localPosition += (targetPos-transform.localPosition)*Time.deltaTime/(time - runtime);
+
+
             if (runtime >= time)
             {
                 playallow = false;
+                transform.localPosition = targetPos;
                 CallBack?.Invoke();
             }
         }

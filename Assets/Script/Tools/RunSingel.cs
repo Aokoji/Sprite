@@ -38,19 +38,22 @@ public class RunSingel : MonoBehaviour
         action();
     }
 
-
-    public void moveTo(GameObject obj, GameObject target, float time, int speed = 0)
+#region 移动方法
+    /// <summary>
+    ///  type 有一定加减速度运动，5中间值匀速，1作为贝塞尔参考区间倾斜开始慢--快
+    /// </summary>
+    public void moveTo(GameObject obj, GameObject target, float time, int type = 5)
     {
-        runTimer(movetimer(obj, target, time, speed));
+        runTimer(movetimer(obj, target, time, type));
     }
-    IEnumerator movetimer(GameObject obj, GameObject target, float time, int speed = 1)
+    IEnumerator movetimer(GameObject obj, GameObject target, float time, int type)
     {
         var script = obj.GetComponent<Anim_Move>();
         if (script == null)
             script = obj.AddComponent<Anim_Move>();
-        script.setData(target, time, speed);
+        script.setData(target, time, type);
         script.startPlay();
         yield return null;
-
     }
+#endregion
 }

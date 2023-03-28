@@ -9,5 +9,5 @@ public enum E_UIPrefab
     BattlePanel,
 
     //ui
-    cardItem,
+    cardBase,
 }

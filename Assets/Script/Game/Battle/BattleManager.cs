@@ -64,7 +64,6 @@ public class BattleManager : CSingel<BattleManager>
     }
     public void testgo()
     {
-        //ctrl.StartRound();
-        ctrl.testgo();
+        ctrl.StartRound();
     }
 }

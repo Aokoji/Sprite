@@ -29,7 +29,6 @@ public class BattleControl :Object
         //ui.initData();
     }
     #endregion
-    public void testgo() { ui.testgo(); }
 
     #region  游戏流程
     //流程，发牌5：操作 出牌，抽牌
@@ -38,7 +37,7 @@ public class BattleControl :Object
     public void StartRound()
     {
         //回合开始 发牌
-        ui.dealCard(5);
+        ui.dealCard(1);
     }
 
 

@@ -59,13 +59,22 @@ public class PanelManager : CSingel<PanelManager>
 
     public string UI_PATH = "Assets/ui/";
     private string CUSTOM_UI_PATH = "Assets/ui/custom/";
-    public UIBase LoadUI(E_UIPrefab pop,string custompath="")
+    public UIBase LoadUI(E_UIPrefab pop,string custompath="",Transform parent=null)
     {
         var obj = AssetLoad.Instance.loadUIPrefab<GameObject>(string.IsNullOrEmpty(custompath)? CUSTOM_UI_PATH:custompath, pop.ToString());
-        UnityEngine.Object.Instantiate(obj);
-        UIBase ui = obj.GetComponent<UIBase>();
+        var entity = UnityEngine.Object.Instantiate(obj);
+        if (null != parent)
+        {
+            entity.transform.SetParent(parent);
+            entity.transform.localScale = Vector3.one;
+        }
+        UIBase ui = entity.GetComponent<UIBase>();
         return ui;
     }
+
+    //屏蔽点击
+    public void panelLock() { }
+    public void panelUnlock() { }
 
     //  ----------------------- loading ----------------------
     private LoadingPanel loading;
