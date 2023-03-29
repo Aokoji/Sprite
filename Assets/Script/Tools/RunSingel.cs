@@ -40,20 +40,37 @@ public class RunSingel : MonoBehaviour
 
 #region 移动方法
     /// <summary>
-    ///  type 有一定加减速度运动，5中间值匀速，1作为贝塞尔参考区间倾斜开始慢--快
+    ///  
     /// </summary>
-    public void moveTo(GameObject obj, GameObject target, float time, int type = 5)
+    public void moveTo(GameObject obj, GameObject target, float time)
     {
-        runTimer(movetimer(obj, target, time, type));
+        runTimer(movetimer(obj, target, time, MoveType.moveto, Vector3.zero));
     }
-    IEnumerator movetimer(GameObject obj, GameObject target, float time, int type)
+    public void moveToAll(GameObject obj, GameObject target, float time,Vector3 scale, Quaternion rotate,Action callback=null)
+    {
+        runTimer(movetimerAll(obj, target, time, MoveType.moveAll, scale, rotate, callback));
+    }
+    public void moveToBezier(GameObject obj, GameObject target, Vector3 bezier, float time)
+    {
+        runTimer(movetimer(obj, target, time, MoveType.moveAll, bezier));
+    }
+    IEnumerator movetimer(GameObject obj, GameObject target, float time, MoveType type, Vector3 bezier)
     {
         var script = obj.GetComponent<Anim_Move>();
         if (script == null)
             script = obj.AddComponent<Anim_Move>();
-        script.setData(target, time, type);
+        script.setData(target, time, type, bezier);
         script.startPlay();
         yield return null;
     }
-#endregion
+    IEnumerator movetimerAll(GameObject obj, GameObject target, float time, MoveType type, Vector3 scale, Quaternion rotate,Action callback)
+    {
+        var script = obj.GetComponent<Anim_Move>();
+        if (script == null)
+            script = obj.AddComponent<Anim_Move>();
+        script.setDataAll(target, time, type, scale, rotate);
+        script.startPlay(callback);
+        yield return null;
+    }
+    #endregion
 }

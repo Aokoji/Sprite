@@ -15,6 +15,7 @@ public class CardEntity : UIBase
     //单张卡
     public CardData _data;
     public Action<CardEntity> onChoose;
+    public bool isStaying;  //准备出
 
     public void initData(CardData data)
     {

@@ -21,3 +21,9 @@ public class PubTool
     public static void timeScaleReset() { Time.timeScale = 1; }
 
 }
+public enum MoveType
+{
+    moveto,
+    moveAll,    //scale rotate
+    moveBezier, //all
+}

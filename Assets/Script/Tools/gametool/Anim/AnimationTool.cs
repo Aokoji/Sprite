@@ -95,9 +95,4 @@ public class AnimationTool
         anim.Play();
     }
 
-    public static void moveTo(GameObject obj, GameObject target, float time, int speed = 1)
-    {
-        RunSingel.Instance.moveTo(obj, target, time, speed);
-    }
-
 }
