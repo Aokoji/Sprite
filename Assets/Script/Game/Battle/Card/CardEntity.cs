@@ -16,14 +16,17 @@ public class CardEntity : UIBase
     public CardData _data;
     public Action<CardEntity> onChoose;
     public bool isStaying;  //准备出
+    public bool clickAllow;
 
     public void initData(CardData data)
     {
         _data = data;
         GetComponent<Button>().onClick.AddListener(onchoose);
+        clickAllow = true;
     }
     private void onchoose()
     {
+        if (!clickAllow) return;
         onChoose?.Invoke(this);
     }
 }

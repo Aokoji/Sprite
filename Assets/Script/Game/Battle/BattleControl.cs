@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using customEvent;
 
 public class BattleControl :Object
 {
@@ -22,6 +23,16 @@ public class BattleControl :Object
     {
         PanelManager.Instance.OpenPanel(E_UIPrefab.BattlePanel, loadComplete);
     }
+
+    private void registerEvent()
+    {
+        EventAction.Instance.AddEventGather<List<CardEntity>>(eventType.roundEnd_C, endroundAction);
+    }
+    private void endroundAction(List<CardEntity> datas)
+    {
+
+    }
+
     private void loadComplete()
     {
         loadSuccess = true;
@@ -42,7 +53,7 @@ public class BattleControl :Object
 
 
     //出牌结束 开始统计回合
-    private void settleCard()
+    public void settleCard()
     {
 
     }

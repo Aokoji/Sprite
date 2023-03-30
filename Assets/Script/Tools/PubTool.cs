@@ -25,5 +25,7 @@ public enum MoveType
 {
     moveto,
     moveAll,    //scale rotate
+    moveAll_STF,    //slow to fase
+    moveAll_FTS,    //
     moveBezier, //all
 }

@@ -42,28 +42,28 @@ public class RunSingel : MonoBehaviour
     /// <summary>
     ///  
     /// </summary>
-    public void moveTo(GameObject obj, GameObject target, float time)
+    public void moveTo(GameObject obj, Transform target, float time, Action callback = null)
     {
-        runTimer(movetimer(obj, target, time, MoveType.moveto, Vector3.zero));
+        runTimer(movetimer(obj, target, time, MoveType.moveto, Vector3.zero, callback));
     }
-    public void moveToAll(GameObject obj, GameObject target, float time,Vector3 scale, Quaternion rotate,Action callback=null)
+    public void moveToAll(GameObject obj, Transform target, MoveType typ, float time,Vector3 scale, Vector3 rotate,Action callback=null)
     {
-        runTimer(movetimerAll(obj, target, time, MoveType.moveAll, scale, rotate, callback));
+        runTimer(movetimerAll(obj, target, time, typ, scale, rotate, callback));
     }
-    public void moveToBezier(GameObject obj, GameObject target, Vector3 bezier, float time)
+    public void moveToBezier(GameObject obj, Transform target, Vector3 bezier, float time, Action callback = null)
     {
-        runTimer(movetimer(obj, target, time, MoveType.moveAll, bezier));
+        runTimer(movetimer(obj, target, time, MoveType.moveBezier, bezier, callback));
     }
-    IEnumerator movetimer(GameObject obj, GameObject target, float time, MoveType type, Vector3 bezier)
+    IEnumerator movetimer(GameObject obj, Transform target, float time, MoveType type, Vector3 bezier, Action callback = null)
     {
         var script = obj.GetComponent<Anim_Move>();
         if (script == null)
             script = obj.AddComponent<Anim_Move>();
         script.setData(target, time, type, bezier);
-        script.startPlay();
+        script.startPlay(callback);
         yield return null;
     }
-    IEnumerator movetimerAll(GameObject obj, GameObject target, float time, MoveType type, Vector3 scale, Quaternion rotate,Action callback)
+    IEnumerator movetimerAll(GameObject obj, Transform target, float time, MoveType type, Vector3 scale, Vector3 rotate,Action callback)
     {
         var script = obj.GetComponent<Anim_Move>();
         if (script == null)

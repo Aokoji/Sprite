@@ -12,7 +12,9 @@ namespace customEvent
     {
         none,
         changePanel_S,
-        panelChangeLoadingComplete
+        panelChangeLoadingComplete,
+
+        roundEnd_C,
     }
     public class EventAction:CSingel<EventAction>
     {

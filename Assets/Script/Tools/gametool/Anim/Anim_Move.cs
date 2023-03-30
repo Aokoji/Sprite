@@ -17,9 +17,9 @@ public class Anim_Move : AnimNodeBase
     Vector3 referPos;
 
     Vector3 s_scale;
-    Quaternion s_rotate;
+    Vector3 s_rotate;
     Vector3 t_scale;
-    Quaternion t_rotate;
+    Vector3 t_rotate;
     float time;
     MoveType movetype;
     float runtime;
@@ -27,40 +27,42 @@ public class Anim_Move : AnimNodeBase
     /// 匀速
     /// </summary>
     /// <param name="target"></param>
-    public void setData(GameObject target,float time, MoveType type,Vector3 bezier)
+    public void setData(Transform target,float time, MoveType type,Vector3 bezier)
     {
-        startPos = transform.localPosition;
-        targetPos = startPos + transform.InverseTransformPoint(target.transform.position);
+        startPos = transform.position;
+        targetPos = target.position;
+        t_scale = transform.localScale;
+        t_rotate = transform.eulerAngles;
         movetype = type;
         if (movetype == MoveType.moveBezier)
             referPos = bezier;
         this.time = time;
     }
-    public void setDataAll(GameObject target, float time, MoveType type, Vector3 scale,Quaternion rotate)
+    public void setDataAll(Transform target, float time, MoveType type, Vector3 scale,Vector3 rotate)
     {
-        startPos = transform.localPosition;
-        targetPos = startPos + transform.InverseTransformPoint(target.transform.position);
+        startPos = transform.position;
+        targetPos = target.position;
         movetype = type;
         s_scale = transform.localScale;
-        s_rotate = transform.localRotation;
+        s_rotate = transform.eulerAngles;
         t_scale = scale;
         t_rotate = rotate;
-        /*
-        if (Mathf.Abs(rotate.z - transform.localEulerAngles.z) > 180)
+        anglegap = 0;
+        if (Mathf.Abs(rotate.z - s_rotate.z) > 180)
         {
-            if (rotate.z > transform.localEulerAngles.z)
-            {
-                anglegap = transform.localEulerAngles.z + 360 - rotate.z;
-            }
+            if (rotate.z > s_rotate.z)
+                anglegap = rotate.z - s_rotate.z + 360;
             else
-            {
-                anglegap = transform.localEulerAngles.z - rotate.z - 360;
-            }
-        }*/
-        Debug.Log(anglegap);
+                anglegap = rotate.z + 360 - s_rotate.z;
+        }
+        else
+        {
+            anglegap = rotate.z - s_rotate.z;
+        }
         this.time = time;
     }
-    // Update is called once per frame
+
+
     float timegap;
     Vector3 rot;
     float anglegap;
@@ -71,30 +73,31 @@ public class Anim_Move : AnimNodeBase
             runtime += Time.deltaTime;
             timegap = runtime / time;
             if (movetype == MoveType.moveto)
-                transform.localPosition = Vector3.Lerp(startPos, targetPos, timegap);   //推荐插值运动
-            else if (movetype == MoveType.moveAll)
+                transform.position = Vector3.Lerp(startPos, targetPos, timegap);   //推荐插值运动
+            else if (movetype == MoveType.moveAll || movetype == MoveType.moveAll_FTS || movetype == MoveType.moveAll_STF)
             {
-                transform.localPosition = Vector3.Lerp(startPos, targetPos, timegap);
-                //transform.localRotation = Quaternion.Euler(Vector3.Lerp(s_rotate, t_rotate, timegap));
+                if (movetype == MoveType.moveAll_STF)
+                    timegap *= timegap;
+                if (movetype == MoveType.moveAll_FTS)
+                    timegap = Mathf.Sqrt(timegap);
+                transform.position = Vector3.Lerp(startPos, targetPos, timegap);
                 transform.localScale= Vector3.Lerp(s_scale, t_scale, timegap);
-                
-                transform.Rotate(new Vector3(0,0,45), Space.World);
+                float az = s_rotate.z + timegap * anglegap;
+                if (az < 0) az += 360;
+                if (az >= 360) az -= 360;
+                rot.z = az;
+                transform.eulerAngles = rot;
             }
             else if (movetype == MoveType.moveBezier)
             {
-                transform.localPosition = Vector3.Lerp(Vector3.Lerp(startPos, referPos, timegap), Vector3.Lerp(referPos, targetPos, timegap), timegap);
+                transform.position = Vector3.Lerp(Vector3.Lerp(startPos, referPos, timegap), Vector3.Lerp(referPos, targetPos, timegap), timegap);
             }
-                //新插值运动
-                
-            //transform.localPosition += (targetPos-transform.localPosition)*Time.deltaTime/(time - runtime);
-
-
             if (runtime >= time)
             {
                 playallow = false;
-                transform.localPosition = targetPos;
+                transform.position = targetPos;
                 transform.localScale = t_scale;
-                transform.localRotation = t_rotate;
+                transform.eulerAngles = t_rotate;
                 CallBack?.Invoke();
             }
         }
