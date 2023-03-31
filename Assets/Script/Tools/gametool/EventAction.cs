@@ -15,6 +15,7 @@ namespace customEvent
         panelChangeLoadingComplete,
 
         roundEnd_C,
+        playRoundNext,
     }
     public class EventAction:CSingel<EventAction>
     {

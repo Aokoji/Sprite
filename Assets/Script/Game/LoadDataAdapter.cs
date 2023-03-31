@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using gamedata;
 
 public class LoadDataAdapter
 {
@@ -19,6 +18,7 @@ public class LoadDataAdapter
             card.sname = str[index++];
             card.sDescribe = str[index++];
             card.type1 =(CardType1) int.Parse(str[index++]);
+            card.type2 =(CardType2) int.Parse(str[index++]);
             card.limit =(CardLimitType) int.Parse(str[index++]);
             card.damage1 = int.Parse(str[index++]);
             card.damage2 = int.Parse(str[index++]);

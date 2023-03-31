@@ -1,0 +1,214 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UIPACK1
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: aec22332f7f1b4c4d8f4544b70829120, type: 3}
+    totalSpriteSurfaceArea: 190642
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 25b43a20dd7e8734e8c2c2e4fb75ecc5, type: 3}
+  - {fileID: 21300000, guid: a5dcbf501c9374044b7c11fe6f434938, type: 3}
+  - {fileID: 21300000, guid: 8b16f5800c1f1574caa3bd5c089ba9d8, type: 3}
+  - {fileID: 21300000, guid: 170a29903b9ef974786ad27634b58a16, type: 3}
+  - {fileID: 21300000, guid: d0575f90eddc55c4d99c9f5443ca8393, type: 3}
+  - {fileID: 21300000, guid: 85a8aba066352bd4ba76a917e2d6c2f0, type: 3}
+  - {fileID: 21300000, guid: e6fbebb0d31c7274db04cdc3989b0732, type: 3}
+  - {fileID: 21300000, guid: 1a0dfdd085190a34c9243121b86f69c0, type: 3}
+  - {fileID: 21300000, guid: e4d072f0e05759e42a181b79ad4ad06e, type: 3}
+  - {fileID: 21300000, guid: 1143f201bc4b17946930c7787779813b, type: 3}
+  - {fileID: 21300000, guid: f6805401cb1c9f249aba039715705e4e, type: 3}
+  - {fileID: 21300000, guid: 20a6db11f8a71d44c9cbb4e9b6d6ff53, type: 3}
+  - {fileID: 21300000, guid: f2f97b612de07be49a1bccdff6b76ca6, type: 3}
+  - {fileID: 21300000, guid: 128d20e1ba900bd47a820a52eff1a5e0, type: 3}
+  - {fileID: 21300000, guid: 48b55012acf269d47ad1b5bb65c712ba, type: 3}
+  - {fileID: 21300000, guid: 724ea72236f0c3d49b9b0d081fbeeaf3, type: 3}
+  - {fileID: 21300000, guid: 5377f0622c1b2044183df087c5ba6b1c, type: 3}
+  - {fileID: 21300000, guid: 85371fa2347630749a8a58ed83d609cd, type: 3}
+  - {fileID: 21300000, guid: 485fa1e2bbe0d834b937c76f4af8b906, type: 3}
+  - {fileID: 21300000, guid: 3617aef29af2da34e8df9dfff37dd93c, type: 3}
+  - {fileID: 21300000, guid: bea3dd73d4c3f0a498bcda44228fa08b, type: 3}
+  - {fileID: 21300000, guid: 1be18a936822767468e42a25a6dd55ae, type: 3}
+  - {fileID: 21300000, guid: 07ae3bd307082d3409e6d9c54c97fb20, type: 3}
+  - {fileID: 21300000, guid: 1f02a2245fb7b504d83d8fa34a38c33a, type: 3}
+  - {fileID: 21300000, guid: 4869bd443627bda4abd65272730bcfb7, type: 3}
+  - {fileID: 21300000, guid: dc9e3164b9837834f9d205940d1ee483, type: 3}
+  - {fileID: 21300000, guid: b32e0cb4ebf94394dbda171259568da3, type: 3}
+  - {fileID: 21300000, guid: 11b98fc4ce64e204b883dcf8713fe971, type: 3}
+  - {fileID: 21300000, guid: 9486bb05434de7440aa1d8c0808b6558, type: 3}
+  - {fileID: 21300000, guid: e23cfd254873f114b8d7a9e835cf1d7f, type: 3}
+  - {fileID: 21300000, guid: d6314f358d1a36e44862ba812e4576b4, type: 3}
+  - {fileID: 21300000, guid: 7f657b851f376454ba3d55f7e5efbe76, type: 3}
+  - {fileID: 21300000, guid: e6e61a26fae08334cb24cbfca6584ceb, type: 3}
+  - {fileID: 21300000, guid: 2e198e3605a97ec45938890647b4f373, type: 3}
+  - {fileID: 21300000, guid: f6f4b956b70b44f42ada766d5b5fdca3, type: 3}
+  - {fileID: 21300000, guid: 421ff907d8b942d45a058ddb19404ada, type: 3}
+  - {fileID: 21300000, guid: 4fcec617f4fe45e43bc040161a637fab, type: 3}
+  - {fileID: 21300000, guid: 96cb2817ecfcc424098a52467ef4930a, type: 3}
+  - {fileID: 21300000, guid: 8c11a127568460c4d88175fdabbe42c7, type: 3}
+  - {fileID: 21300000, guid: 7d794757206a2ce4c966cfe2c8c91e81, type: 3}
+  - {fileID: 21300000, guid: 13b759a7bc1b882449a687bc2a62b08f, type: 3}
+  - {fileID: 21300000, guid: 6d5047b719ae98a4299caf2d9b98f7dc, type: 3}
+  - {fileID: 21300000, guid: d67eddc7f6d067e41becc7dc8bd20403, type: 3}
+  - {fileID: 21300000, guid: c8236cd7203b15e44a63a5869a781edc, type: 3}
+  - {fileID: 21300000, guid: 3014eaf7e1106c24f98f1fb9af5edb5b, type: 3}
+  - {fileID: 21300000, guid: f62ee3a83a95bc945905dd6945507c90, type: 3}
+  - {fileID: 21300000, guid: ecd053e8717778941829f1f354764fa0, type: 3}
+  - {fileID: 21300000, guid: df3079e8d8d85fb4eabf4ac91d0549d3, type: 3}
+  - {fileID: 21300000, guid: 66b47119a34b83d4c9185f2a26bffbbe, type: 3}
+  - {fileID: 21300000, guid: dcd72d2920a701a41a8da4ca48e1c2ca, type: 3}
+  - {fileID: 21300000, guid: aea40539e65a4184ab3f8233edfd9a1d, type: 3}
+  - {fileID: 21300000, guid: d70dab39e523e834d8abbea05f5bcfab, type: 3}
+  - {fileID: 21300000, guid: 0ae8bd690e7608147a62471199de8b7e, type: 3}
+  - {fileID: 21300000, guid: 9d050fb9b12d6044997b4ab1b883c692, type: 3}
+  - {fileID: 21300000, guid: ab0c7ac90142b904ea738b82ce17736c, type: 3}
+  - {fileID: 21300000, guid: e6d1955a692db6349aa52e774061935a, type: 3}
+  - {fileID: 21300000, guid: 527a368a46cee2f4f905cfc066ba66f7, type: 3}
+  - {fileID: 21300000, guid: 5ad6719aa9c27a54a820db86f04c4ea0, type: 3}
+  - {fileID: 21300000, guid: aece13aa6e673274c93b947277624592, type: 3}
+  - {fileID: 21300000, guid: d68de0da00b47614483227a510e45346, type: 3}
+  - {fileID: 21300000, guid: a95f9beaba2359f42be5a96018fb2db5, type: 3}
+  - {fileID: 21300000, guid: 695d0afa0a5bfe74f8c747166ca9e188, type: 3}
+  - {fileID: 21300000, guid: 5654f87b444a46d469a818de4e49b7e9, type: 3}
+  - {fileID: 21300000, guid: fdffc68b9b6a7a1489431e2bfb8e9273, type: 3}
+  - {fileID: 21300000, guid: 4179789b9f55d924c89493bc49bf47e4, type: 3}
+  - {fileID: 21300000, guid: d4df70fb26a47954a875ceca1174d027, type: 3}
+  - {fileID: 21300000, guid: aad0d96cbec023748a46bcf3592eccf6, type: 3}
+  - {fileID: 21300000, guid: 58a5abdc2d8edbd47813a8d1e34976b3, type: 3}
+  - {fileID: 21300000, guid: 5c46dedc86094504292cb78ac835a679, type: 3}
+  - {fileID: 21300000, guid: 6c7897ec29abce74f8b3d12d03fddec5, type: 3}
+  - {fileID: 21300000, guid: e5c4d75db66d33a498a45827ec9f5e78, type: 3}
+  - {fileID: 21300000, guid: 21f59e7ddca2ae5469411dfa66bfe746, type: 3}
+  - {fileID: 21300000, guid: 3a7f838db7b7a7f43852ac905493607d, type: 3}
+  - {fileID: 21300000, guid: 3bceb2bd0e6452d49919ede311c877d7, type: 3}
+  - {fileID: 21300000, guid: fa8392cd16760c14b80f94b7e702ea70, type: 3}
+  - {fileID: 21300000, guid: 2b1eb2fd47e866f44b819dc3286287f1, type: 3}
+  - {fileID: 21300000, guid: 9e420cfdb3ece6a4b839a09dc40be25b, type: 3}
+  - {fileID: 21300000, guid: ae411c1ebf0ec644086df7c0054bfa22, type: 3}
+  - {fileID: 21300000, guid: 28422e3e3d7cf4541b8bc6d23c376900, type: 3}
+  - {fileID: 21300000, guid: 0377906ed6d7e1a409c561ac621c57e1, type: 3}
+  - {fileID: 21300000, guid: 6b9dc6cece1b17a46b45cc8c906b94f9, type: 3}
+  - {fileID: 21300000, guid: c173b8ce7ca5c37408b1b4f750d92738, type: 3}
+  - {fileID: 21300000, guid: 3b0a335f9b6f5d94c992a74a0da5492d, type: 3}
+  - {fileID: 21300000, guid: a8dbe76f4c1d4304382e2a7bdd904e1f, type: 3}
+  - {fileID: 21300000, guid: 730d027fe53c87540b6f060fcb0a397e, type: 3}
+  - {fileID: 21300000, guid: e921a48feb0a5914aaeeba3a24653683, type: 3}
+  - {fileID: 21300000, guid: 3d5f05bf6fb19d74aa20b2a97c7950ad, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - barBlue_horizontalLeft
+  - arrowBlue_right
+  - iconCircle_grey
+  - barRed_verticalMid
+  - barBlue_verticalBottom
+  - barBlue_verticalTop
+  - cursorSword_bronze
+  - iconCross_grey
+  - barYellow_verticalTop
+  - barGreen_verticalBottom
+  - buttonLong_brown_pressed
+  - iconCircle_blue
+  - buttonSquare_blue
+  - panel_beige
+  - buttonSquare_beige_pressed
+  - buttonRound_beige
+  - buttonLong_blue
+  - cursorHand_blue
+  - barBack_verticalTop
+  - arrowBeige_right
+  - iconCircle_brown
+  - buttonRound_blue
+  - buttonLong_grey_pressed
+  - cursorHand_grey
+  - buttonSquare_grey_pressed
+  - buttonLong_beige
+  - barBack_verticalBottom
+  - iconCircle_beige
+  - panel_beigeLight
+  - barRed_horizontalMid
+  - barYellow_verticalBottom
+  - panel_blue
+  - barYellow_horizontalMid
+  - cursorGauntlet_grey
+  - arrowBeige_left
+  - barGreen_horizontalRight
+  - iconCheck_beige
+  - panel_brown
+  - arrowBrown_right
+  - iconCheck_blue
+  - arrowBrown_left
+  - barYellow_horizontalRight
+  - barGreen_verticalMid
+  - barYellow_verticalMid
+  - barRed_horizontalLeft
+  - panelInset_beigeLight
+  - barBlue_verticalMid
+  - iconCross_beige
+  - cursorSword_silver
+  - buttonRound_brown
+  - buttonSquare_grey
+  - barBack_horizontalRight
+  - buttonLong_blue_pressed
+  - barBlue_horizontalRight
+  - cursorGauntlet_bronze
+  - barYellow_horizontalLeft
+  - barRed_verticalBottom
+  - barGreen_verticalTop
+  - panelInset_blue
+  - barBlue_horizontalBlue
+  - buttonLong_grey
+  - arrowSilver_right
+  - barRed_verticalTop
+  - cursorGauntlet_blue
+  - barBack_horizontalLeft
+  - iconCross_brown
+  - panelInset_beige
+  - buttonSquare_blue_pressed
+  - barBack_verticalMid
+  - iconCross_blue
+  - cursorSword_gold
+  - barGreen_horizontalMid
+  - barRed_horizontalRight
+  - buttonRound_grey
+  - arrowSilver_left
+  - barBack_horizontalMid
+  - iconCheck_bronze
+  - panelInset_brown
+  - buttonSquare_brown
+  - buttonLong_brown
+  - buttonSquare_beige
+  - barGreen_horizontalLeft
+  - arrowBlue_left
+  - iconCheck_grey
+  - buttonLong_beige_pressed
+  - buttonSquare_brown_pressed
+  - cursorHand_beige
+  m_Tag: UIPACK1
+  m_IsVariant: 0

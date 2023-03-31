@@ -21,7 +21,7 @@ public static class AssetManager
 #endif
     }
 
-    public static T loadAsset<T>(string spath,string pop) where T : Object
+    public static T loadAsset<T>(string spath,string pop,string extra="") where T : Object
     {
 #if AB_LOAD
         AssetBundle ab;
@@ -30,7 +30,8 @@ public static class AssetManager
         ab = abSave[spath];
         return ab.LoadAsset<T>(pop);
 #else
-        return AssetDatabase.LoadAssetAtPath<T>(spath + pop + ".prefab");
+        if (string.IsNullOrEmpty(extra)) extra = ".prefab";
+        return AssetDatabase.LoadAssetAtPath<T>(spath + pop + extra);
 #endif
     }
 

@@ -12,7 +12,7 @@ public class BattlePanel : PanelBase
     public Transform createCardPosIn; //创建卡牌点
     public Transform showCardPos;
     public Transform showCardPos2;
-    public GameObject[] takeCardPos;     //四个点  
+    public GameObject[] takeCardPos;     //四个点  或3-5
     public GameObject[] handCardPos;     //六个点
 
     public Transform cardParent;
@@ -22,8 +22,6 @@ public class BattlePanel : PanelBase
     public Button dealCardBtn;      //主动抽牌
     //------------------
 
-    private PlayerData player;
-    private PlayerData enemy;
     private Queue<CardData> playerque;
     private Queue<CardData> enemyque;
 
@@ -34,7 +32,6 @@ public class BattlePanel : PanelBase
     {
         getPlayerNewCardQue();
         getEnemyNewCardQue();
-        player = PlayerManager.Instance.currentSprite;
         initEvent();
     }
     private void getPlayerNewCardQue()
@@ -150,5 +147,10 @@ public class BattlePanel : PanelBase
     private void endroundClick()
     {
         EventAction.Instance.TriggerAction(eventType.roundEnd_C, takeCardlist);
+    }
+
+    public void refreshPlayerData(PlayerData player)
+    {
+
     }
 }
