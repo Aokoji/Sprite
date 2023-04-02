@@ -57,10 +57,10 @@ public class BattlePanel : PanelBase
     }
     private int maxCardHand = 5;    //+++config     手牌最大
     private int maxCardTake = 4;    //+++config     take最大
-    private float cardwait = 1f;//+++config    抽一张牌需要等待
-    float cardtime_dealtoshow = 0.6f; //
-    float cardtime_showstay = 0.75f;
-    float cardtime_showtohand = 0.5f; //
+    private float cardwait = 1.25f;//+++config    抽一张牌需要等待
+    float cardtime_dealtoshow = 0.5f; //
+    float cardtime_showstay = 0.7f;
+    float cardtime_showtohand = 0.4f; //
     float cardtime_takeOnOff = 0.6f; //都是参数
     
     IEnumerator rundeal(int num)
@@ -75,7 +75,7 @@ public class BattlePanel : PanelBase
             else
             {
                 handCardlist.Add(item);
-                dealCard(item);
+                dealCardAnim(item,handCardlist.Count);
             }
             yield return new WaitForSeconds(cardwait);
         }
@@ -112,7 +112,7 @@ public class BattlePanel : PanelBase
     
     private CardEntity newcard(CardData data)
     {
-        var item = PanelManager.Instance.LoadUI(E_UIPrefab.cardBase, CARDPATH, cardParent).GetComponent<CardEntity>();
+        var item = PanelManager.Instance.LoadUI(E_UIPrefab.cardHand, CARDPATH, cardParent).GetComponent<CardEntity>();
         item.initData(data);
         item.onChoose = chooseCard;
         item.transform.position = createCardPos.position;
@@ -120,11 +120,11 @@ public class BattlePanel : PanelBase
         item.transform.localScale = Vector3.one / 2;
         return item;
     }
-    private void dealCard(CardEntity card)
+    private void dealCardAnim(CardEntity card,int topos)
     {
         RunSingel.Instance.moveToAll(card.gameObject,showCardPos,MoveType.moveAll_FTS, cardtime_dealtoshow, Vector3.one, Vector3.zero, ()=> {
             RunSingel.Instance.moveToBezier(card.gameObject, showCardPos2,Vector3.Lerp(showCardPos.position,showCardPos2.position,0.5f)+Vector3.up* (showCardPos2.position.y-showCardPos.position.y)/2, cardtime_showstay,()=> {
-                RunSingel.Instance.moveToAll(card.gameObject, handCardPos[handCardlist.Count - 1].transform, MoveType.moveAll_STF, cardtime_showtohand, Vector3.one, Vector3.zero);
+                RunSingel.Instance.moveToAll(card.gameObject, handCardPos[topos - 1].transform, MoveType.moveAll_STF, cardtime_showtohand, Vector3.one, Vector3.zero);
             });
         });
     }

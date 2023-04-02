@@ -10,4 +10,5 @@ public enum E_UIPrefab
 
     //ui
     cardBase,
+    cardHand,
 }
