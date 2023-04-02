@@ -153,4 +153,9 @@ public class BattlePanel : PanelBase
     {
 
     }
+
+    public void gameSettle(bool iswin)
+    {
+
+    }
 }

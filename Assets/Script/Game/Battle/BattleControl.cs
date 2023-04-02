@@ -37,6 +37,7 @@ public class BattleControl :Object
         ui = PanelManager.Instance.PanelCur.gameObject.GetComponent<BattlePanel>();
         //ui.initData();
         player = PlayerManager.Instance.currentSprite;
+        enemy = EnemyCalculate.GetEnemyData();   //+++模拟一个数据
         ui.refreshPlayerData(player);
     }
     #endregion
@@ -54,6 +55,8 @@ public class BattleControl :Object
     short eContinuous;
     bool iscounterP;        //反制
     bool iscounterE;
+
+    bool iswin;
 
     public void StartRound()
     {
@@ -109,8 +112,14 @@ public class BattleControl :Object
         List<CardEntity> result = new List<CardEntity>();
         return result;
     }
+    //      ----------------------------        *******循环体*******       --------------------------------------------
     private void roundNext()
     {
+        if (!gamecheck())
+        {
+            gamesettle();
+            return;
+        }
         //结束检测
         if (willTake.Count <=0)
         {
@@ -171,7 +180,17 @@ public class BattleControl :Object
 
     private void playCardNext(RoundData data)
     {
+        //结算这回合的数据
+        if (data.isplayer)
+        {
+            if (player.hp_cur <= data.hitnum)
+            {
 
+            }
+
+        }
+
+        //播放这张的效果
     }
 
     private void endRoundSettle()
@@ -188,6 +207,28 @@ public class BattleControl :Object
     {
         if (isplayer) pContinuous=0;
         else eContinuous=0;
+    }
+
+    private bool gamecheck()
+    {//是否继续
+        bool result = true;
+        if (player.hp_cur <= 0)
+        {
+            player.hp_cur = 0;
+            result = false;
+            iswin = false;
+        }
+        if (enemy.hp_cur <= 0)
+        {
+            enemy.hp_cur = 0;
+            result = false;
+            iswin = true;
+        }
+        return result;
+    }
+    private void gamesettle()
+    {//游戏结算
+        ui.gameSettle(iswin);
     }
     #endregion
 
