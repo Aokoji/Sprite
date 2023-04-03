@@ -36,14 +36,14 @@ public class BattleControl :Object
         loadSuccess = true;
         ui = PanelManager.Instance.PanelCur.gameObject.GetComponent<BattlePanel>();
         //ui.initData();
-        player = PlayerManager.Instance.currentSprite;
+        player = PlayerManager.Instance.cursprite;
         enemy = EnemyCalculate.GetEnemyData();   //+++模拟一个数据
         ui.refreshPlayerData(player);
     }
     #endregion
 
-    private PlayerData player;
-    private PlayerData enemy;
+    private SpriteData player;
+    private SpriteData enemy;
     #region  游戏流程
     //流程，发牌5：操作 出牌，抽牌
     private int round;  //回合计数
@@ -70,8 +70,8 @@ public class BattleControl :Object
     {
         var endata = enemyround();
         RoundData rounddata;
-        Queue<CardData> playerque = new Queue<CardData>();
-        Queue<CardData> enemyque = new Queue<CardData>();
+        Queue<t_DataCard.t_data> playerque = new Queue<t_DataCard.t_data>();
+        Queue<t_DataCard.t_data> enemyque = new Queue<t_DataCard.t_data>();
         datas.ForEach(item=>{ playerque.Enqueue(item._data); });
         endata.ForEach(item=>{ enemyque.Enqueue(item._data); });
         int countround = playerque.Count+enemyque.Count;
@@ -180,17 +180,48 @@ public class BattleControl :Object
 
     private void playCardNext(RoundData data)
     {
-        //结算这回合的数据
+        //结算这回合的 ***数据***
+        if (data.isCounter)
+        {
+            ui.playThisCard(data);
+            return;
+        }
         if (data.isplayer)
         {
-            if (player.hp_cur <= data.hitnum)
+            if (enemy.hp_cur <= data.hitnum)
+                enemy.hp_cur = 0;
+            else
+                enemy.hp_cur -= data.hitnum;
+            if (data.recovernum > 0)
             {
-
+                if (player.hp_cur + data.recovernum > player.hp_max)
+                {
+                    data.recovernum = player.hp_max - player.hp_cur;
+                    player.hp_cur = player.hp_max;
+                }
+                else
+                    player.hp_cur += data.recovernum;
             }
-
         }
-
+        else
+        {
+            if (player.hp_cur <= data.hitnum)
+                player.hp_cur = 0;
+            else
+                player.hp_cur -= data.hitnum;
+            if (data.recovernum > 0)
+            {
+                if (enemy.hp_cur + data.recovernum > enemy.hp_max)
+                {
+                    data.recovernum = enemy.hp_max - enemy.hp_cur;
+                    enemy.hp_cur = enemy.hp_max;
+                }
+                else
+                    enemy.hp_cur += data.recovernum;
+            }
+        }
         //播放这张的效果
+        ui.playThisCard(data);
     }
 
     private void endRoundSettle()

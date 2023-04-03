@@ -8,7 +8,6 @@ public class BattleDemo : MonoBehaviour
     {
         GameManager.Instance.initManager();
         loadDataTest();
-        BattleManager.Instance.EnterBattle();
     }
 
     private void loadDataTest()
@@ -19,6 +18,6 @@ public class BattleDemo : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
-            BattleManager.Instance.testgo();
+            BattleManager.Instance.EnterBattle();
     }
 }

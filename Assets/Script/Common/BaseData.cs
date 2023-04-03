@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BaseData
 {
+    protected string TABLE_PATH = "Assets/config/";
     public void padding()
     {
             

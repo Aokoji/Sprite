@@ -13,12 +13,12 @@ public class CardEntity : UIBase
     public GameObject body;
 
     //单张卡
-    public CardData _data;
+    public t_DataCard.t_data _data;
     public Action<CardEntity> onChoose;
     public bool isStaying;  //准备出
     public bool clickAllow;
 
-    public void initData(CardData data)
+    public void initData(t_DataCard.t_data data)
     {
         _data = data;
         GetComponent<Button>().onClick.AddListener(onchoose);

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class EnemyCalculate
 {
-    public static PlayerData GetEnemyData()
+    public static SpriteData GetEnemyData()
     {
-        PlayerData enemy = new PlayerData();
+        SpriteData enemy = new SpriteData();
 
         return enemy;
     }

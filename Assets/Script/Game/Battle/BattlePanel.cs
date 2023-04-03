@@ -22,8 +22,8 @@ public class BattlePanel : PanelBase
     public Button dealCardBtn;      //主动抽牌
     //------------------
 
-    private Queue<CardData> playerque;
-    private Queue<CardData> enemyque;
+    private Queue<int> playerque;
+    private Queue<int> enemyque;
 
     private List<CardEntity> takeCardlist = new List<CardEntity>(); //提交出牌
     private List<CardEntity> handCardlist = new List<CardEntity>();
@@ -36,11 +36,11 @@ public class BattlePanel : PanelBase
     }
     private void getPlayerNewCardQue()
     {
-        playerque = CardCalculate.getRandomList(PlayerManager.Instance.currentCardDic);
+        playerque = CardCalculate.getRandomList(PlayerManager.Instance.getPlayerCards());
     }
     private void getEnemyNewCardQue()
     {
-        enemyque = CardCalculate.getRandomList(PlayerManager.Instance.currentCardDic);//敌人管理器 +++还没做
+        enemyque = CardCalculate.getRandomList(PlayerManager.Instance.getPlayerCards());//敌人管理器 +++还没做
     }
     private void initEvent()
     {
@@ -67,7 +67,7 @@ public class BattlePanel : PanelBase
     {
         for(int i = 0; i < num; i++)
         {
-            var data = playerque.Dequeue();
+            var data = TableManager.Instance.getOneCard(playerque.Dequeue());
             var item = newcard(data);
             item.clickAllow = false;
             if (handCardlist.Count == maxCardHand)
@@ -110,7 +110,7 @@ public class BattlePanel : PanelBase
     }
     string CARDPATH= "Assets/ui/battle/card/";
     
-    private CardEntity newcard(CardData data)
+    private CardEntity newcard(t_DataCard.t_data data)
     {
         var item = PanelManager.Instance.LoadUI(E_UIPrefab.cardHand, CARDPATH, cardParent).GetComponent<CardEntity>();
         item.initData(data);
@@ -149,9 +149,19 @@ public class BattlePanel : PanelBase
         EventAction.Instance.TriggerAction(eventType.roundEnd_C, takeCardlist);
     }
 
-    public void refreshPlayerData(PlayerData player)
+    public void refreshPlayerData(SpriteData player)
     {
 
+    }
+
+    public void playThisCard(RoundData dataround)
+    {
+        //播放卡
+        //卡消失
+        //数据展示
+        //对齐
+
+        EventAction.Instance.TriggerAction(eventType.playRoundNext);
     }
 
     public void gameSettle(bool iswin)

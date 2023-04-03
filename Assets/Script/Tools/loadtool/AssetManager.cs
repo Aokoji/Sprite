@@ -34,6 +34,18 @@ public static class AssetManager
         return AssetDatabase.LoadAssetAtPath<T>(spath + pop + extra);
 #endif
     }
+    public static T loadAssetFile<T>(string spath) where T : Object
+    {
+#if AB_LOAD
+        AssetBundle ab;
+        if (!abSave.ContainsKey(spath))
+            abSave.Add(spath, AssetBundle.LoadFromFile(spath + ".asset"));
+        ab = abSave[spath];
+        return (T)ab.LoadAllAssets()[0];
+#else
+        return AssetDatabase.LoadAssetAtPath<T>(spath + ".asset");
+#endif
+    }
 
     public static bool saveAsset<T>(T data, string path)
     {
