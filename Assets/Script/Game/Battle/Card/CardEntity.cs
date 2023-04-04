@@ -20,6 +20,9 @@ public class CardEntity : UIBase
 
     public void initData(t_DataCard.t_data data)
     {
+        transform.position = Vector3.zero;
+        transform.eulerAngles = Vector3.zero;
+        transform.localScale = Vector3.one;
         _data = data;
         GetComponent<Button>().onClick.AddListener(onchoose);
         clickAllow = true;

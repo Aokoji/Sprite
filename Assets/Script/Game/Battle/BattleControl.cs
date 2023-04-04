@@ -70,30 +70,38 @@ public class BattleControl :Object
     {
         var endata = enemyround();
         RoundData rounddata;
-        Queue<t_DataCard.t_data> playerque = new Queue<t_DataCard.t_data>();
-        Queue<t_DataCard.t_data> enemyque = new Queue<t_DataCard.t_data>();
-        datas.ForEach(item=>{ playerque.Enqueue(item._data); });
-        endata.ForEach(item=>{ enemyque.Enqueue(item._data); });
+        Queue<CardEntity> playerque = new Queue<CardEntity>();
+        Queue<CardEntity> enemyque = new Queue<CardEntity>();
+        datas.ForEach(item=>{ playerque.Enqueue(item); });
+        endata.ForEach(item=>{ enemyque.Enqueue(item); });
         int countround = playerque.Count+enemyque.Count;
         bool isplayerround=true;
         for (int i = 0; i < countround; i++)
         {
-            willTake.Enqueue(isplayerround);
-            rounddata = new RoundData();
             if (isplayerround)
             {
-                rounddata._card = playerque.Dequeue();
+                if (playerque.Count <= 0) continue;
+                willTake.Enqueue(isplayerround);
+                rounddata = new RoundData();
+                rounddata.entity = playerque.Dequeue();
+                rounddata._card = rounddata.entity._data;
                 rounddata.isplayer = true;
                 if (rounddata._card.type2 != CardType2.n_preempt || playerque.Count <= 0)
                     isplayerround = false;
+                if (enemyque.Count <= 0) isplayerround = true;
                 willTakeplayerque.Enqueue(rounddata);
             }
             else
             {
-                rounddata._card = enemyque.Dequeue();
+                if (enemyque.Count <= 0) continue;
+                willTake.Enqueue(isplayerround);
+                rounddata = new RoundData();
+                rounddata.entity = enemyque.Dequeue();
+                rounddata._card = rounddata.entity._data;
                 rounddata.isplayer = false;
                 if (rounddata._card.type2 != CardType2.n_preempt || playerque.Count <= 0)
                     isplayerround = true;
+                if (playerque.Count <= 0) isplayerround = true;
                 willTakeenemyque.Enqueue(rounddata);
             }
         }
@@ -134,7 +142,7 @@ public class BattleControl :Object
         else
             data = willTakeenemyque.Dequeue();
         //计算反制
-        if((data.isplayer && iscounterP)|| (!data.isplayer && iscounterE))
+        if ((data.isplayer && iscounterP)|| (!data.isplayer && iscounterE))
         {
             data.isCounter = true;
             continuousShut(data.isplayer);
@@ -183,7 +191,7 @@ public class BattleControl :Object
         //结算这回合的 ***数据***
         if (data.isCounter)
         {
-            ui.playThisCard(data);
+            ui.playThisCard(data, player, enemy);
             return;
         }
         if (data.isplayer)
@@ -221,12 +229,12 @@ public class BattleControl :Object
             }
         }
         //播放这张的效果
-        ui.playThisCard(data);
+        ui.playThisCard(data, player, enemy);
     }
-
+    //单次回合结束
     private void endRoundSettle()
     {
-        //伤害检测还没算
+        ui.roundEndAndContinue();
     }
 
     private void continuousAdd(bool isplayer)

@@ -5,10 +5,12 @@ using System;
 
 public class Anim_Move : AnimNodeBase
 {
-    public void startPlay(Action callback=null)
+    public bool isruning;
+    public void startPlay(Action callback)
     {
         runtime = 0;
         playallow = true;
+        isruning = true;
         CallBack = callback;
     }
     Action CallBack;
@@ -27,10 +29,10 @@ public class Anim_Move : AnimNodeBase
     /// 匀速
     /// </summary>
     /// <param name="target"></param>
-    public void setData(Transform target,float time, MoveType type,Vector3 bezier)
+    public void setData(Vector3 target,float time, MoveType type,Vector3 bezier)
     {
         startPos = transform.position;
-        targetPos = target.position;
+        targetPos = target;
         t_scale = transform.localScale;
         t_rotate = transform.eulerAngles;
         movetype = type;
@@ -38,10 +40,10 @@ public class Anim_Move : AnimNodeBase
             referPos = bezier;
         this.time = time;
     }
-    public void setDataAll(Transform target, float time, MoveType type, Vector3 scale,Vector3 rotate)
+    public void setDataAll(Vector3 target, float time, MoveType type, Vector3 scale,Vector3 rotate)
     {
         startPos = transform.position;
-        targetPos = target.position;
+        targetPos = target;
         movetype = type;
         s_scale = transform.localScale;
         s_rotate = transform.eulerAngles;
@@ -95,6 +97,7 @@ public class Anim_Move : AnimNodeBase
             if (runtime >= time)
             {
                 playallow = false;
+                isruning = false;
                 transform.position = targetPos;
                 transform.localScale = t_scale;
                 transform.eulerAngles = t_rotate;

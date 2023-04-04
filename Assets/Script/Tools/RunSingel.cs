@@ -42,32 +42,42 @@ public class RunSingel : MonoBehaviour
     /// <summary>
     ///  
     /// </summary>
-    public void moveTo(GameObject obj, Transform target, float time, Action callback = null)
+    public void moveTo(GameObject obj, Vector3 target, float time, Action callback=null)
     {
         runTimer(movetimer(obj, target, time, MoveType.moveto, Vector3.zero, callback));
     }
-    public void moveToAll(GameObject obj, Transform target, MoveType typ, float time,Vector3 scale, Vector3 rotate,Action callback=null)
+    public void moveToAll(GameObject obj, Vector3 target, MoveType typ, float time,Vector3 scale, Vector3 rotate,Action callback=null)
     {
         runTimer(movetimerAll(obj, target, time, typ, scale, rotate, callback));
     }
-    public void moveToBezier(GameObject obj, Transform target, Vector3 bezier, float time, Action callback = null)
+    public void moveToBezier(GameObject obj, Vector3 target, Vector3 bezier, float time, Action callback = null)
     {
         runTimer(movetimer(obj, target, time, MoveType.moveBezier, bezier, callback));
     }
-    IEnumerator movetimer(GameObject obj, Transform target, float time, MoveType type, Vector3 bezier, Action callback = null)
+    //强制
+    public void moveToAll_force(GameObject obj, Vector3 target, MoveType typ, float time, Vector3 scale, Vector3 rotate, Action callback = null)
+    {
+        runTimer(movetimerAll(obj, target, time, typ, scale, rotate, callback, true));
+    }
+
+    IEnumerator movetimer(GameObject obj, Vector3 target, float time, MoveType type, Vector3 bezier, Action callback = null, bool force = false)
     {
         var script = obj.GetComponent<Anim_Move>();
         if (script == null)
             script = obj.AddComponent<Anim_Move>();
+        if (!force && script.isruning)
+            yield break;
         script.setData(target, time, type, bezier);
         script.startPlay(callback);
         yield return null;
     }
-    IEnumerator movetimerAll(GameObject obj, Transform target, float time, MoveType type, Vector3 scale, Vector3 rotate,Action callback)
+    IEnumerator movetimerAll(GameObject obj, Vector3 target, float time, MoveType type, Vector3 scale, Vector3 rotate,Action callback,bool force=false)
     {
         var script = obj.GetComponent<Anim_Move>();
         if (script == null)
             script = obj.AddComponent<Anim_Move>();
+        if (!force && script.isruning)
+            yield break;
         script.setDataAll(target, time, type, scale, rotate);
         script.startPlay(callback);
         yield return null;

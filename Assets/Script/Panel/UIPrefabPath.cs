@@ -7,6 +7,7 @@ public enum E_UIPrefab
     none,
     Loading,
     BattlePanel,
+    StartPanel,
 
     //ui
     cardBase,

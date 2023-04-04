@@ -7,13 +7,14 @@ public class CardCalculate
 
     public static Queue<T> getRandomList<T>(List<T> data)
     {
+        List<T> list = new List<T>(data);
         System.Random r = new System.Random();
         Queue<T> result = new Queue<T>();
-        while (data.Count > 0)
+        while (list.Count > 0)
         {
-            int index = r.Next(data.Count);
-            result.Enqueue(data[index]);
-            data.RemoveAt(index);
+            int index = r.Next(list.Count);
+            result.Enqueue(list[index]);
+            list.RemoveAt(index);
         }
         return result;
     }

@@ -13,12 +13,14 @@ public class PanelManager : CSingel<PanelManager>
     private Stack<PanelBase> panelStack = new Stack<PanelBase>();
     private string PANEL_PATH = "Assets/ui/panel/";
     Transform basePanel;
+    GameObject shadow;
     GameObject maincanvas;
 
     public void init()
     {
         maincanvas = GameObject.Find("Canvas");
         basePanel = maincanvas.transform.Find("BasePanel");
+        shadow = maincanvas.transform.Find("shadow").gameObject;
         initEvent();
         loadingPanel();
     }
@@ -73,8 +75,8 @@ public class PanelManager : CSingel<PanelManager>
     }
 
     //屏蔽点击
-    public void panelLock() { }
-    public void panelUnlock() { }
+    public void panelLock() { shadow.SetActive(true); }
+    public void panelUnlock() { shadow.SetActive(false); }
 
     //  ----------------------- loading ----------------------
     private LoadingPanel loading;
