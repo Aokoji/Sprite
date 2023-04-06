@@ -26,14 +26,14 @@ public enum CardLimitType
 }
 public enum CardType2
 {
-    n_hit,  //直伤
-    n_preempt,  //先制
-    n_continuous,   //连击
-    n_thump,    //重击
-    n_recover,  //恢复
-    n_defence,  //甲
-    n_counter,  //反制
-    n_deal, //抽牌
+    n_hit,  //直伤0
+    n_preempt,  //先制1
+    n_continuous,   //连击2
+    n_thump,    //重击3
+    n_recover,  //恢复4
+    n_defence,  //甲5
+    n_counter,  //反制6
+    n_deal, //抽牌7
 
     e_decounter, //反counter
 }

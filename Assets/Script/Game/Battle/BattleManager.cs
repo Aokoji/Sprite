@@ -5,6 +5,7 @@ using UnityEngine;
 public class BattleManager : CSingel<BattleManager>
 {
     BattleControl ctrl;
+    public int battleEnemyID;
 
     public void init()
     {

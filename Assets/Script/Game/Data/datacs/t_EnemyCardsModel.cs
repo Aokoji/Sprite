@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class t_DataCard : BaseData
+public class t_EnemyCardsModel : BaseData
 {
+    private string path = "t_EnemyCardsModel";
     public class t_data
     {
         public int id;
@@ -17,7 +18,7 @@ public class t_DataCard : BaseData
         public int damage3;
         public int cost;
     }
-    public t_DataCard ()
+    public t_EnemyCardsModel()
     {
         isloaded = false;
         praseData();
@@ -27,7 +28,7 @@ public class t_DataCard : BaseData
     private void praseData()
     {
         _data = new Dictionary<int, t_data>();
-        var list = CSVLoad.loadCSV(TABLE_PATH  + "t_DataCard.csv");
+        var list = CSVLoad.loadCSV(TABLE_PATH + path +".csv");
         int index;
         for (int i = 1; i < list.Count; i++)
         {

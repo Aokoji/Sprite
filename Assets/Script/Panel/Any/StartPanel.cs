@@ -12,6 +12,7 @@ public class StartPanel : PanelBase
     {
         base.registerEvent();
         startbtn.onClick.AddListener(startgame);
+        exitbtn.onClick.AddListener(exitgame);
     }
 
     private void startgame()

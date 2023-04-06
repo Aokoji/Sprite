@@ -38,7 +38,7 @@ public class BattleControl :Object
         //ui.initData();
         player = PlayerManager.Instance.cursprite;
         enemy = EnemyCalculate.GetEnemyData();   //+++模拟一个数据
-        ui.refreshPlayerData(player);
+        //ui.refreshPlayerData(player);
     }
     #endregion
 

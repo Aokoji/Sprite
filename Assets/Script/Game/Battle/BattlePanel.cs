@@ -49,11 +49,19 @@ public class BattlePanel : PanelBase
     }
     private void getPlayerNewCardQue()
     {
-        playerque = CardCalculate.getRandomList(PlayerManager.Instance.getPlayerCards());
+        List<int> list = new List<int>(PlayerManager.Instance.getPlayerCards());
+        if (list.Count < 20)
+            for(int i = list.Count; i < 20; i++)
+                    list.Add(1);
+        playerque = CardCalculate.getRandomList(list);
     }
     private void getEnemyNewCardQue()
     {
-        enemyque = CardCalculate.getRandomList(PlayerManager.Instance.getPlayerCards());//敌人管理器 +++还没做
+        List<int> list = new List<int>(PlayerManager.Instance.getPlayerCards());
+        if (list.Count < 20)
+            for (int i = list.Count; i < 20; i++)
+                list.Add(1);
+        enemyque = CardCalculate.getRandomList(list);//敌人管理器 +++还没做
     }
     public void dealCard(int num)
     {
@@ -214,8 +222,8 @@ public class BattlePanel : PanelBase
                 RunSingel.Instance.laterDo(1.5f, () =>
                 {
                     EventAction.Instance.TriggerAction(eventType.playRoundNext);
-                    refreshPlayerData(p);
-                    refreshEnemyData(e);
+                    //refreshPlayerData(p);
+                    //refreshEnemyData(e);
                 });
                 //消失动画
                 dataround.entity.gameObject.SetActive(false);

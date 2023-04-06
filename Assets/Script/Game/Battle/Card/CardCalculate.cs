@@ -5,9 +5,8 @@ using UnityEngine;
 public class CardCalculate
 {
 
-    public static Queue<T> getRandomList<T>(List<T> data)
+    public static Queue<T> getRandomList<T>(List<T> list)
     {
-        List<T> list = new List<T>(data);
         System.Random r = new System.Random();
         Queue<T> result = new Queue<T>();
         while (list.Count > 0)

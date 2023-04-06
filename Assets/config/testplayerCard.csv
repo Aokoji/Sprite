@@ -1,8 +1,0 @@
-id,name,describe,type1,limit,damage1,damage2,damage3,cost
-1,test1,aaa,0,0,5,0,0,1
-2,test2,bbb,0,0,8,0,0,2
-3,test3,ccc,1,0,3,6,0,1
-4,test4,ddd,0,0,6,0,0,1
-5,test5,eee,0,0,10,0,0,3
-6,test6,fff,0,0,7,6,0,2
-7,test7,ggg,0,0,4,0,0,1
