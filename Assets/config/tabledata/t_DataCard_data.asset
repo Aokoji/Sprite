@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 415b65af50fea824499c6ec46d402acc, type: 3}
+  m_Name: t_DataCard_data
+  m_EditorClassIdentifier: 
+  asset:
+  - id: 1
+    sname: "\u9B54\u6CD5\u5C04\u51FB"
+    sDescribe: aaa
+    type1: 0
+    type2: 0
+    limit: 0
+    damage1: 1
+    damage2: 0
+    damage3: 0
+    cost: 1
+  - id: 2
+    sname: "\u9B54\u6CD5\u7206\u5F39"
+    sDescribe: bbb
+    type1: 0
+    type2: 0
+    limit: 0
+    damage1: 2
+    damage2: 0
+    damage3: 0
+    cost: 2
+  - id: 3
+    sname: "\u75BE\u98CE\u672F"
+    sDescribe: ccc
+    type1: 0
+    type2: 1
+    limit: 0
+    damage1: 3
+    damage2: 0
+    damage3: 0
+    cost: 1
+  - id: 4
+    sname: "\u8702\u523A"
+    sDescribe: ddd
+    type1: 0
+    type2: 1
+    limit: 0
+    damage1: 2
+    damage2: 0
+    damage3: 0
+    cost: 1
+  - id: 5
+    sname: "\u85E4\u8513\u5C4F\u969C"
+    sDescribe: eee
+    type1: 0
+    type2: 5
+    limit: 0
+    damage1: 5
+    damage2: 0
+    damage3: 0
+    cost: 2
+  - id: 6
+    sname: "\u5FEB\u901F\u56DE\u907F"
+    sDescribe: fff
+    type1: 0
+    type2: 7
+    limit: 0
+    damage1: 0
+    damage2: 0
+    damage3: 0
+    cost: 1
+  - id: 7
+    sname: "\u9B54\u6CD5\u53CD\u5236"
+    sDescribe: ggg
+    type1: 0
+    type2: 6
+    limit: 0
+    damage1: 0
+    damage2: 0
+    damage3: 0
+    cost: 1
+  - id: 8
+    sname: "\u9B54\u6CD5\u8FDE\u643A"
+    sDescribe: hhh
+    type1: 0
+    type2: 2
+    limit: 0
+    damage1: 1
+    damage2: 4
+    damage3: 0
+    cost: 2
+  - id: 9
+    sname: "\u5F3A\u529B\u6C34\u70AE"
+    sDescribe: iii
+    type1: 0
+    type2: 3
+    limit: 0
+    damage1: 2
+    damage2: 5
+    damage3: 0
+    cost: 2
+  - id: 10
+    sname: "\u8574\u7075"
+    sDescribe: jjj
+    type1: 0
+    type2: 4
+    limit: 0
+    damage1: 8
+    damage2: 0
+    damage3: 0
+    cost: 3

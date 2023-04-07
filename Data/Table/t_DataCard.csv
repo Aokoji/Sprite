@@ -1,4 +1,4 @@
-id,name,describe,type1,type2,limit,damage1,damage2,damage3,cost
+id,sname,sDescribe,type1,type2,limit,damage1,damage2,damage3,cost
 int,string,string,CardType1,CardType2,CardLimitType,int,int,int,int
 1,魔法射击,aaa,0,0,0,1,0,0,1
 2,魔法爆弹,bbb,0,0,0,2,0,0,2

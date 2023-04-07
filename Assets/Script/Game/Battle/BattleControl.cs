@@ -35,9 +35,9 @@ public class BattleControl :Object
     {
         loadSuccess = true;
         ui = PanelManager.Instance.PanelCur.gameObject.GetComponent<BattlePanel>();
-        //ui.initData();
         player = PlayerManager.Instance.cursprite;
         enemy = EnemyCalculate.GetEnemyData();   //+++模拟一个数据
+        ui.initData(enemy.takeDefaultCardsID);
         //ui.refreshPlayerData(player);
     }
     #endregion

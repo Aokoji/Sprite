@@ -13,12 +13,12 @@ public class CardEntity : UIBase
     public GameObject body;
 
     //单张卡
-    public t_DataCard.t_data _data;
+    public t_DataCard _data;
     public Action<CardEntity> onChoose;
     public bool isStaying;  //准备出
     public bool clickAllow;
 
-    public void initData(t_DataCard.t_data data)
+    public void initData(t_DataCard data)
     {
         transform.position = Vector3.zero;
         transform.eulerAngles = Vector3.zero;

@@ -1,13 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class BaseData
 {
     protected string TABLE_PATH = "Assets/config/";
     public void padding()
     {
             
+    }
+}
+public class AssetData:ScriptableObject
+{
+    public object parse(string context,string typename)
+    {
+        switch (typename)
+        {
+            case "int":return int.Parse(context);
+            case "string":return context;
+            case "float":return float.Parse(context);
+            case "CardType1":return (CardType1)int.Parse(context);
+            case "CardType2": return (CardType2)int.Parse(context);
+            case "CardLimitType": return (CardLimitType)int.Parse(context);
+            default:return null;
+        }
     }
 }
 public enum CardType1

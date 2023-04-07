@@ -14,4 +14,6 @@ public class SpriteData
     public int def_cur;
     public int dodge;
     public int block;   //格挡
+
+    public int takeDefaultCardsID;   //持有默认卡组
 }

@@ -5,15 +5,13 @@ using UnityEditor;
 using System;
 using System.IO;
 using System.Text;
-using System.Timers;
 
 public class LoadDataToCSharpTool :Editor
 {
-
-    //static List<TableData> dataTable=new List<TableData>();
     static string defaultPath = "Data/Table";
-    static string csharpPath = "/Script/Game/Data/testdata/";
-    static string assetPath = "Assets/config/tabledata";
+    static string csharpPath = "/Script/Game/Data/datacs/";
+    static string assetPath = "Assets/config/tabledata/";
+    static string tableconfigPath = "/Script/Game/Data/TableConfig.cs";
     static List<TableData> tables;
 
     //暂且只用来创建CSharp 因为数据需要编译好的cs文件
@@ -30,7 +28,7 @@ public class LoadDataToCSharpTool :Editor
     [MenuItem("dataTool/importDefaultPathData")]
     public static void importDefaultPathData()
     {
-        
+        readToTypeData();
     }
 
     static void readAndCreateFile()
@@ -61,7 +59,7 @@ public class LoadDataToCSharpTool :Editor
                     Debug.LogError("读取静态数据异常!!!!" + localpath);
                     return;
                 }
-                data.fieldName = files[i].Name.Replace(".csv", ".cs");
+                data.fieldName = "Config_" + files[i].Name.Replace(".csv", ".cs");
                 data.scriptName = files[i].Name.Replace(".csv", "");
                 //创建cs文件
                 if (!File.Exists(Application.dataPath + csharpPath + data.fieldName))
@@ -75,9 +73,10 @@ public class LoadDataToCSharpTool :Editor
                 int index = 0;
                 string[] csNames = null;
                 string[] csTypes;
-                scriptStr.Append(CS_str1);
-                scriptStr.Append(string.Format(CS_strClass1, data.scriptName));
-                scriptStr.Append(CS_str2);
+                string context = CS_strclass.Replace("@CLASS", "Config_" + data.scriptName);
+                context = context.Replace("@FILE", data.scriptName);
+                scriptStr.Append(context);
+
                 //读数据
                 while ((str = sr.ReadLine()) != null)
                 {
@@ -92,14 +91,13 @@ public class LoadDataToCSharpTool :Editor
                         csTypes = str.Split(',');
                         for (int k = 0; k < csTypes.Length; k++)
                         {
-                            scriptStr.Append(string.Format(CS_strMember1, csTypes[k], csNames[k]));
+                            string s = CS_strMember1.Replace("@CLASS", csTypes[k]);
+                            scriptStr.Append(s.Replace("@MEMBER", csNames[k]));
                         }
                         break;
                     }
                 }
-                scriptStr.Append(CS_str3);
-                scriptStr.Append(string.Format(CS_strSelf1, data.scriptName));
-                scriptStr.Append(CS_str4);
+                scriptStr.Append("}");
                 data.context = scriptStr.ToString();
                 tables.Add(data);
                 if (sr != null)
@@ -112,11 +110,22 @@ public class LoadDataToCSharpTool :Editor
     }
     static void rewriteFileAndSaveData()
     {
-        for(int i = 0; i < tables.Count; i++)
+        //重写config
+        StringBuilder str = new StringBuilder();
+        str.Append(CS_configStr1);
+
+        for (int i = 0; i < tables.Count; i++)
         {
             File.WriteAllText(Application.dataPath + csharpPath + tables[i].fieldName, tables[i].context);
+            str.Append(CS_configMember.Replace("@FILE",tables[i].scriptName));
             Debug.Log("write success" + tables[i].fieldName);
         }
+        str.Append(CS_configStr2);
+        for (int i = 0; i < tables.Count; i++)
+            str.Append(CS_configMember_des.Replace("@FILE", tables[i].scriptName));
+        str.Append(CS_configStr3);
+        File.WriteAllText(Application.dataPath + tableconfigPath, str.ToString());
+        Debug.Log("write config success");
         Debug.Log("Success !  All files is : " + tables.Count);
     }
     static void readToTypeData()
@@ -126,6 +135,7 @@ public class LoadDataToCSharpTool :Editor
         string localpath;
         StreamReader sr;
         string filename;
+        string filepath;
         Debug.Log("readingfiles: " + files.Length);
         //读文件
         for (int i = 0; i < files.Length; i++)
@@ -142,29 +152,43 @@ public class LoadDataToCSharpTool :Editor
                     return;
                 }
                 filename = files[i].Name.Replace(".csv", "");
+                filepath = assetPath + filename + "_data.asset";
                 string str;
-                string[] types;
+                string[] names=null;
+                string[] types = null;
                 int index = 0;
-                var obj = Activator.CreateInstance(Type.GetType(filename));
-                ScriptableObject asset = CreateInstance(filename);
+                //创建asset
+                ScriptableObject asset = CreateInstance("Config_"+filename);
                 //读数据
                 while ((str = sr.ReadLine()) != null)
                 {
                     //跳过前两行
                     if (index < 2)
                     {
-                        if(index==1)
-                            types= str.Split(',');
+                        if (index == 0)
+                            names = str.Split(',');
+                        if (index == 1)
+                            types = str.Split(',');
                         index++;
                         continue;
                     }
                     string[] context = str.Split(',');
-                    for(int k = 0; k < context.Length; k++)
-                    {
-                        
-                    }
-                }
 
+                    var obj = Activator.CreateInstance(Type.GetType(filename));
+                    Type target = obj.GetType();
+                    for (int k = 0; k < context.Length; k++)
+                    {
+                        //数据赋值
+                        target.GetField(names[k]).SetValue(obj, asset.GetType().GetMethod("parse").Invoke(asset, new object[] { context[k], types[k] }));
+                    }
+                    var func = asset.GetType().GetMethod("addContent");
+                    func.Invoke(asset, new object[]{ obj });
+                }
+                if(File.Exists(filepath))
+                    AssetDatabase.DeleteAsset(filepath);
+                AssetDatabase.CreateAsset(asset, filepath);
+                AssetDatabase.SaveAssets();
+                AssetDatabase.Refresh();
                 if (sr != null)
                 {
                     sr.Close();
@@ -182,11 +206,16 @@ public class LoadDataToCSharpTool :Editor
     /// <summary>
     /// 实体类模板
     /// </summary>
-    static string CS_str1 = "using System.Collections.Generic;\r";
-    static string CS_str2 = ":ScriptableObject\r{\r\tpublic class t_data\r\t{\r";
-    static string CS_str3 = "\t}\r\tpublic Dictionary<int, t_data> _data;\r\tpublic bool isloaded;\r";
-    static string CS_str4 = "\r\t{\r\t\tisloaded = false;\r\t\tpraseData();\r\t}\r}";       //这里有一个结束括号  -- } ---
-    static string CS_strSelf1 = "\tpublic {0}()";
-    static string CS_strClass1 ="public class {0}";
-    static string CS_strMember1 = "\t\tpublic {0} {1};\r";
+    static string CS_strclass = "using System.Collections.Generic;\rusing UnityEditor;\rusing System;\rpublic class @CLASS : AssetData\r{\r\tpublic List<@FILE> asset = new List<@FILE>();\r\tpublic void addContent(@FILE item)\r\t{\r\t\tasset.Add(item);\r\t}\r" +
+        "\tpublic static bool isloaded;\r\tpublic static Dictionary<int, @FILE> _data { get; private set; }\r\tpublic void init()\r\t{\r\t\t_data = new Dictionary<int, @FILE>();\r\t\tfor (int i = 0; i < asset.Count; i++){\r\t\t\t_data.Add(asset[i].id, asset[i]);\r\t\t}\r\t\tasset = null;\r\t\tisloaded = true;\r\t}\r\tpublic static @FILE getOne(int id)\r\t{\r\t\tif (_data.ContainsKey(id))\r\t\t\treturn _data[id];\r\t\telse\r\t\t\tthrow new Exception(\"not find\" + id);\r\t}\r\tpublic static void Dispose()\r\t{\r\t\t_data = null;\r\t}\r}\r" +
+        "[Serializable]\rpublic class @FILE\r{\r";
+    static string CS_strMember1 = "\tpublic @CLASS @MEMBER;\r";
+			
+    //config模板
+    static string CS_configStr1 = "using System.Collections;\rusing UnityEditor;\rpublic class TableConfig\r{\r\tstring ASSETPATH = \"Assets/config/tabledata/\";\r\tpublic bool loadsuccess;\r\tpublic void init()\r\t{\r\t\tloadsuccess = false;\r\t\tRunSingel.Instance.runTimer(loadData());\r\t}\r\tIEnumerator loadData()\r\t{";
+    static string CS_configStr2 = "\r\t\tloadsuccess = true;\r\t}\r\tpublic void Dispose()\r\t{";
+    static string CS_configStr3 = "\r\t}\r}";
+
+    static string CS_configMember = "\r\t\tAssetDatabase.LoadAssetAtPath<Config_@FILE>(ASSETPATH + \"@FILE_data.asset\").init();\r\t\twhile (!Config_@FILE.isloaded)\r\t\t\tyield return null;";
+    static string CS_configMember_des = "\r\t\tConfig_@FILE.Dispose();";
 }

@@ -35,11 +35,10 @@ public class BattlePanel : PanelBase
     private List<CardEntity> handCardlist = new List<CardEntity>();
     private List<CardEntity> handEnemylist = new List<CardEntity>();
     private Queue<CardEntity> discardCard = new Queue<CardEntity>();
-    public override void init()
+    public void initData(int enemyid)
     {
-        base.init();
         getPlayerNewCardQue();
-        getEnemyNewCardQue();
+        getEnemyNewCardQue(enemyid);
     }
     public override void registerEvent()
     {
@@ -55,12 +54,13 @@ public class BattlePanel : PanelBase
                     list.Add(1);
         playerque = CardCalculate.getRandomList(list);
     }
-    private void getEnemyNewCardQue()
+    private void getEnemyNewCardQue(int enemyid)
     {
-        List<int> list = new List<int>(PlayerManager.Instance.getPlayerCards());
-        if (list.Count < 20)
-            for (int i = list.Count; i < 20; i++)
-                list.Add(1);
+        var cards = Config_t_EnemyCardsModel.getOne(enemyid);
+        string[] ids = cards.cardlist.Split('|');
+        List<int> list = new List<int>();
+        for (int i = 0; i < ids.Length; i++)
+            list.Add(int.Parse(ids[i]));
         enemyque = CardCalculate.getRandomList(list);//敌人管理器 +++还没做
     }
     public void dealCard(int num)
@@ -85,7 +85,7 @@ public class BattlePanel : PanelBase
         finishNum = 0;
         for(int i = 0; i < num; i++)
         {
-            var data = TableManager.Instance.getOneCard(playerque.Dequeue());
+            var data = Config_t_DataCard.getOne(playerque.Dequeue());
             var item = newcard(data);
             if (handCardlist.Count == maxCardHand)
                 tearCardAnim(item);
@@ -154,7 +154,7 @@ public class BattlePanel : PanelBase
     }
     string CARDPATH= "Assets/ui/battle/card/";
     
-    private CardEntity newcard(t_DataCard.t_data data)
+    private CardEntity newcard(t_DataCard data)
     {
         CardEntity item;
         if (discardCard.Count > 0)

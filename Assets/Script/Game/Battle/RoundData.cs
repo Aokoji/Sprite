@@ -5,7 +5,7 @@ using UnityEngine;
 public class RoundData : BaseData
 {
     public CardEntity entity;
-    public t_DataCard.t_data _card;
+    public t_DataCard _card;
     public SpriteData sprite;
     public bool isplayer;
     //效果  造成伤害等计算一下
