@@ -11,6 +11,7 @@ public class RoundData : BaseData
     //效果  造成伤害等计算一下
     public int hitnum;
     public int recovernum;
+    public int defnum;
     public int continuousnum;
     public bool isCounter;  //被反制
 }

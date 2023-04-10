@@ -11,11 +11,13 @@ public class CardEntity : UIBase
     public Text sname;
     public Text descirbe;
     public GameObject body;
+    public GameObject backBG;
 
     //单张卡
     public t_DataCard _data;
     public Action<CardEntity> onChoose;
     public bool isStaying;  //准备出
+    public bool isback;//卡背
     public bool clickAllow;
 
     public void initData(t_DataCard data)
@@ -32,11 +34,16 @@ public class CardEntity : UIBase
     {
         sname.text = _data.sname.ToString();
         descirbe.text = _data.sDescribe.ToString();
-
+        backBG.SetActive(isback);
     }
     private void onchoose()
     {
         if (!clickAllow) return;
         onChoose?.Invoke(this);
+    }
+    public void turnCard()
+    {
+        isback = !isback;
+        backBG.SetActive(isback);
     }
 }

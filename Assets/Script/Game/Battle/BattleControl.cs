@@ -62,18 +62,19 @@ public class BattleControl :Object
     {
         //回合开始 发牌
         ui.dealCard(4);
+        ui.initCardEnemy(4);
     }
 
 
     //出牌结束 开始统计回合
     private void settleRoundAction(List<CardEntity> datas)
     {
-        var endata = enemyround();
+        var endata = ui.getEnemyround(enemy);
         RoundData rounddata;
         Queue<CardEntity> playerque = new Queue<CardEntity>();
         Queue<CardEntity> enemyque = new Queue<CardEntity>();
-        datas.ForEach(item=>{ playerque.Enqueue(item); });
-        endata.ForEach(item=>{ enemyque.Enqueue(item); });
+        datas.ForEach(item=>{ playerque.Enqueue(item); item.transform.SetParent(ui.moveBar); });
+        endata.ForEach(item=>{ enemyque.Enqueue(item); item.transform.SetParent(ui.moveBar2); });
         int countround = playerque.Count+enemyque.Count;
         bool isplayerround=true;
         for (int i = 0; i < countround; i++)
@@ -111,14 +112,11 @@ public class BattleControl :Object
         iscounterP = false;
         iscounterE = false;
         if (willTake.Count > 0)
-            roundNext();
+        {
+            ui.playRoundWillShow(roundNext);
+        }
         else
             Debug.LogError("无人出牌 处理一下逻辑问题。");
-    }
-    private List<CardEntity> enemyround()
-    {   //+++ai逻辑需要补全
-        List<CardEntity> result = new List<CardEntity>();
-        return result;
     }
     //      ----------------------------        *******循环体*******       --------------------------------------------
     private void roundNext()
@@ -174,7 +172,7 @@ public class BattleControl :Object
                 continuousShut(data.isplayer);
                 break;
             case CardType2.n_defence:
-                data.recovernum = data._card.damage1;
+                data.defnum = data._card.damage1;
                 continuousShut(data.isplayer);
                 break;
             case CardType2.n_counter:
@@ -196,10 +194,25 @@ public class BattleControl :Object
         }
         if (data.isplayer)
         {
-            if (enemy.hp_cur <= data.hitnum)
+            if (enemy.hp_cur+enemy.def_cur <= data.hitnum)
                 enemy.hp_cur = 0;
             else
-                enemy.hp_cur -= data.hitnum;
+            {
+                int hit = data.hitnum;
+                if (enemy.def_cur > 0)
+                {
+                    if (hit > enemy.def_cur)
+                    {
+                        hit = hit - enemy.def_cur;
+                        enemy.def_cur = 0;
+                        enemy.hp_cur -= hit;
+                    }
+                    else
+                        enemy.def_cur -= hit;
+                }
+                else
+                    enemy.hp_cur -= data.hitnum;
+            }
             if (data.recovernum > 0)
             {
                 if (player.hp_cur + data.recovernum > player.hp_max)
@@ -210,13 +223,30 @@ public class BattleControl :Object
                 else
                     player.hp_cur += data.recovernum;
             }
+            if (data.defnum > 0)
+                player.def_cur += data.defnum;
         }
         else
         {
             if (player.hp_cur <= data.hitnum)
                 player.hp_cur = 0;
             else
-                player.hp_cur -= data.hitnum;
+            {
+                int hit = data.hitnum;
+                if (player.def_cur > 0)
+                {
+                    if (hit > player.def_cur)
+                    {
+                        hit = hit - player.def_cur;
+                        player.def_cur = 0;
+                        player.hp_cur -= hit;
+                    }
+                    else
+                        player.def_cur -= hit;
+                }
+                else
+                    player.hp_cur -= data.hitnum;
+            }
             if (data.recovernum > 0)
             {
                 if (enemy.hp_cur + data.recovernum > enemy.hp_max)
@@ -227,9 +257,15 @@ public class BattleControl :Object
                 else
                     enemy.hp_cur += data.recovernum;
             }
+            if (data.defnum > 0)
+                enemy.def_cur += data.defnum;
         }
         //播放这张的效果
         ui.playThisCard(data, player, enemy);
+    }
+    private void calculateYouTwoWTF()
+    {
+
     }
     //单次回合结束
     private void endRoundSettle()
