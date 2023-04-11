@@ -37,7 +37,9 @@ public class BattleControl :Object
         ui = PanelManager.Instance.PanelCur.gameObject.GetComponent<BattlePanel>();
         player = PlayerManager.Instance.cursprite;
         enemy = EnemyCalculate.GetEnemyData();   //+++模拟一个数据
-        ui.initData(enemy.takeDefaultCardsID);
+        player.refreshData();
+        enemy.refreshData();
+        ui.initData(enemy, player);
         //ui.refreshPlayerData(player);
     }
     #endregion
@@ -102,7 +104,7 @@ public class BattleControl :Object
                 rounddata.isplayer = false;
                 if (rounddata._card.type2 != CardType2.n_preempt || playerque.Count <= 0)
                     isplayerround = true;
-                if (playerque.Count <= 0) isplayerround = true;
+                if (playerque.Count <= 0) isplayerround = false;
                 willTakeenemyque.Enqueue(rounddata);
             }
         }
@@ -148,7 +150,7 @@ public class BattleControl :Object
             return;
         }
         //计算伤害
-        data.hitnum = data._card.damage1;
+        data.hitnum = 0;
         switch (data._card.type2)
         {
             case CardType2.n_continuous:
@@ -189,83 +191,49 @@ public class BattleControl :Object
         //结算这回合的 ***数据***
         if (data.isCounter)
         {
-            ui.playThisCard(data, player, enemy);
+            ui.playThisCard(data);
             return;
         }
         if (data.isplayer)
-        {
-            if (enemy.hp_cur+enemy.def_cur <= data.hitnum)
-                enemy.hp_cur = 0;
-            else
-            {
-                int hit = data.hitnum;
-                if (enemy.def_cur > 0)
-                {
-                    if (hit > enemy.def_cur)
-                    {
-                        hit = hit - enemy.def_cur;
-                        enemy.def_cur = 0;
-                        enemy.hp_cur -= hit;
-                    }
-                    else
-                        enemy.def_cur -= hit;
-                }
-                else
-                    enemy.hp_cur -= data.hitnum;
-            }
-            if (data.recovernum > 0)
-            {
-                if (player.hp_cur + data.recovernum > player.hp_max)
-                {
-                    data.recovernum = player.hp_max - player.hp_cur;
-                    player.hp_cur = player.hp_max;
-                }
-                else
-                    player.hp_cur += data.recovernum;
-            }
-            if (data.defnum > 0)
-                player.def_cur += data.defnum;
-        }
+            calculateYouTwoWTF(player, enemy, data);
         else
-        {
-            if (player.hp_cur <= data.hitnum)
-                player.hp_cur = 0;
-            else
-            {
-                int hit = data.hitnum;
-                if (player.def_cur > 0)
-                {
-                    if (hit > player.def_cur)
-                    {
-                        hit = hit - player.def_cur;
-                        player.def_cur = 0;
-                        player.hp_cur -= hit;
-                    }
-                    else
-                        player.def_cur -= hit;
-                }
-                else
-                    player.hp_cur -= data.hitnum;
-            }
-            if (data.recovernum > 0)
-            {
-                if (enemy.hp_cur + data.recovernum > enemy.hp_max)
-                {
-                    data.recovernum = enemy.hp_max - enemy.hp_cur;
-                    enemy.hp_cur = enemy.hp_max;
-                }
-                else
-                    enemy.hp_cur += data.recovernum;
-            }
-            if (data.defnum > 0)
-                enemy.def_cur += data.defnum;
-        }
+            calculateYouTwoWTF(enemy, player, data);
         //播放这张的效果
-        ui.playThisCard(data, player, enemy);
+        ui.playThisCard(data);
     }
-    private void calculateYouTwoWTF()
+    private void calculateYouTwoWTF(SpriteData take,SpriteData pass,RoundData data)
     {
-
+        if (pass.hp_cur + pass.def_cur <= data.hitnum)
+            pass.hp_cur = 0;
+        else if(data.hitnum>0)
+        {
+            int hit = data.hitnum;
+            if (pass.def_cur > 0)
+            {
+                if (hit > pass.def_cur)
+                {
+                    hit = hit - pass.def_cur;
+                    pass.def_cur = 0;
+                    pass.hp_cur -= hit;
+                }
+                else
+                    pass.def_cur -= hit;
+            }
+            else
+                pass.hp_cur -= data.hitnum;
+        }
+        if (data.recovernum > 0)
+        {
+            if (take.hp_cur + data.recovernum > take.hp_max)
+            {
+                data.recovernum = take.hp_max - take.hp_cur;
+                take.hp_cur = take.hp_max;
+            }
+            else
+                take.hp_cur += data.recovernum;
+        }
+        if (data.defnum > 0)
+            take.def_cur += data.defnum;
     }
     //单次回合结束
     private void endRoundSettle()

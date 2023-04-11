@@ -24,6 +24,7 @@ public class PlayerData
         SpriteData sp = new SpriteData();
         sp.id = 1;
         sp.hp_max = sp.hp_cur = 120;
+        sp.cost_cur = sp.cost_max = 3;
         sprites.Add(sp);
         curSprite = sp.id;
     }
@@ -31,6 +32,10 @@ public class PlayerData
     public void battleTest()
     {
         for (int i = 1; i < 9; i++)
+        {
             playerCards.Add(i);
+            playerCards.Add(i);
+        }
+            
     }
 }
