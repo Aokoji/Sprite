@@ -13,6 +13,7 @@ public class EnemyCalculate
         enemy.takeDefaultCardsID = someid;
         enemy.hp_cur = enemy.hp_max = 100;
         enemy.cost_cur = enemy.cost_max = 3;
+        enemy.refreshData();
         return enemy;
     }
 

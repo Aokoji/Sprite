@@ -63,8 +63,7 @@ public class BattleControl :Object
     public void StartRound()
     {
         //回合开始 发牌
-        ui.dealCard(4);
-        ui.initCardEnemy(4);
+        ui.startGame();
     }
 
 
@@ -102,7 +101,7 @@ public class BattleControl :Object
                 rounddata.entity = enemyque.Dequeue();
                 rounddata._card = rounddata.entity._data;
                 rounddata.isplayer = false;
-                if (rounddata._card.type2 != CardType2.n_preempt || playerque.Count <= 0)
+                if (rounddata._card.type2 != CardType2.n_preempt || enemyque.Count <= 0)
                     isplayerround = true;
                 if (playerque.Count <= 0) isplayerround = false;
                 willTakeenemyque.Enqueue(rounddata);
@@ -115,7 +114,7 @@ public class BattleControl :Object
         iscounterE = false;
         if (willTake.Count > 0)
         {
-            ui.playRoundWillShow(roundNext);
+            ui.playRoundWillShow();
         }
         else
             Debug.LogError("无人出牌 处理一下逻辑问题。");
@@ -153,6 +152,14 @@ public class BattleControl :Object
         data.hitnum = 0;
         switch (data._card.type2)
         {
+            case CardType2.n_hit:
+                data.hitnum = data._card.damage1;
+                continuousAdd(data.isplayer);
+                break;
+            case CardType2.n_preempt:
+                data.hitnum = data._card.damage1;
+                continuousAdd(data.isplayer);
+                break;
             case CardType2.n_continuous:
                 data.continuousnum = data.isplayer ? pContinuous : eContinuous;
                 int extrahit = 0;
@@ -220,7 +227,7 @@ public class BattleControl :Object
                     pass.def_cur -= hit;
             }
             else
-                pass.hp_cur -= data.hitnum;
+                pass.hp_cur -= hit;
         }
         if (data.recovernum > 0)
         {

@@ -12,6 +12,7 @@ public class RoundData : BaseData
     public int hitnum;
     public int recovernum;
     public int defnum;
+    public int dealnum;
     public int continuousnum;
     public bool isCounter;  //被反制
 }

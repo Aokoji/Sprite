@@ -13,3 +13,7 @@ public enum E_UIPrefab
     cardBase,
     cardHand,
 }
+public enum E_Particle
+{
+    particle_boom
+}

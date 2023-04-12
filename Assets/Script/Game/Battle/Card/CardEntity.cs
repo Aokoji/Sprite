@@ -29,6 +29,7 @@ public class CardEntity : UIBase
         refreshCard();
         GetComponent<Button>().onClick.AddListener(onchoose);
         clickAllow = true;
+        isStaying = false;
     }
     private void refreshCard()
     {

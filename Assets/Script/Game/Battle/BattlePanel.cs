@@ -34,6 +34,11 @@ public class BattlePanel : PanelBase
     public GameObject[] manaList;
     public GameObject manaExtra;
 
+    public Text enemyhealth;
+    public RectTransform enemyhealthimg;
+    public Text enemydefence;
+    public GameObject enemyExtra;
+
     private Queue<int> playerque;
     private Queue<int> enemyque;
 
@@ -43,12 +48,22 @@ public class BattlePanel : PanelBase
     private List<CardEntity> handEnemylist = new List<CardEntity>();
     private Queue<CardEntity> discardCard = new Queue<CardEntity>();
 
+    private Queue<Action> rankAction = new Queue<Action>();
     private Vector3 barpos1;
     private Vector3 barpos2;
     SpriteData player;
     SpriteData enemy;
     private const float healthconstWidth = 100;
     string CARDPATH = "Assets/ui/battle/card/";
+    enum rank
+    {
+        none,
+        dealcard,
+        takecard,
+        roundCalcu,
+        showcard,
+    }
+    private rank currank;
 
     public void initData(SpriteData enemy_data,SpriteData player_data)
     {
@@ -85,19 +100,65 @@ public class BattlePanel : PanelBase
             list.Add(int.Parse(ids[i]));
         enemyque = CardCalculate.getRandomList(list);
     }
-    public void dealCard(int num)
+    #region     阶段控制
+    //开始阶段
+    public void startGame()
     {
-        //屏蔽点击
-        PanelManager.Instance.panelLock();
-        StartCoroutine(rundeal(num));
-        //抽牌结束开放
+        currank = rank.none;
+        addAction(() =>
+        {
+            initCardEnemy(4);
+            dealCard(4);
+        });
+        playerNextQue();
     }
+    private void addAction(Action action)
+    {
+        rankAction.Enqueue(action);
+    }
+    private void playerNextQue()
+    {
+        if (rankAction.Count <= 0)
+        {
+            nextRank();
+            return;
+        }
+        rankAction.Dequeue().Invoke();
+    }
+    private void nextRank()
+    {
+        switch (currank)
+        {
+            case rank.none: currank = rank.showcard; break;
+            case rank.dealcard:
+                currank = rank.showcard;
+                dealCard(1);
+                dealEnemyCard(1);
+                break;
+            case rank.showcard:
+                currank = rank.roundCalcu;
+                PanelManager.Instance.panelLock();
+                EventAction.Instance.TriggerAction(eventType.roundEnd_C, takeCardlist);
+                break;
+            case rank.roundCalcu:
+                currank = rank.takecard;
+                EventAction.Instance.TriggerAction(eventType.playRoundNext);
+                break;
+            case rank.takecard:
+                currank = rank.dealcard;
+                refreshMana();
+                resetRoundShow();
+                break;
+        }
+    }
+    #endregion
     public void initCardEnemy(int num)
     {
         for (int i = 0; i < num; i++)
         {
             var data = Config_t_DataCard.getOne(enemyque.Dequeue());
             var item = newcard(data, true);
+            item.clickAllow = false;
             handEnemylist.Add(item);
             item.transform.position = enemyCardPos[handEnemylist.Count - 1].transform.position;
             item.transform.eulerAngles = Vector3.zero;
@@ -115,6 +176,18 @@ public class BattlePanel : PanelBase
     float cardtime_refshMove = 0.25f; //
 
     int finishNum;
+
+    public void dealCard(int num)
+    {
+        //屏蔽点击
+        PanelManager.Instance.panelLock();
+        StartCoroutine(rundeal(num));
+        //抽牌结束开放
+    }
+    public void dealEnemyCard(int num)
+    {
+        StartCoroutine(runEnemydeal(num));
+    }
     IEnumerator rundeal(int num)
     {
         finishNum = 0;
@@ -125,6 +198,7 @@ public class BattlePanel : PanelBase
             item.transform.position = createCardPos.position;
             item.transform.eulerAngles = createCardPosIn.eulerAngles;
             item.transform.localScale = Vector3.one / 2;
+            item.gameObject.SetActive(true);
             if (handCardlist.Count == maxCardHand)
                 tearCardAnim(item);
             else
@@ -136,8 +210,8 @@ public class BattlePanel : PanelBase
         }
         while (finishNum < num)
             yield return null;
-        //refreshCard();      //抽牌防止误触还没做
         PanelManager.Instance.panelUnlock();
+        playerNextQue();
     }
     IEnumerator runEnemydeal(int num)
     {
@@ -157,8 +231,9 @@ public class BattlePanel : PanelBase
             }
             yield return new WaitForSeconds(cardwait);
         }
-        //refreshCard();      //抽牌防止误触还没做
+        playerNextQue();
     }
+
     public List<CardEntity> getEnemyround(SpriteData data)
     {
         takeEnemylist = EnemyCalculate.calculateEnemyAction(handEnemylist, data);
@@ -175,6 +250,18 @@ public class BattlePanel : PanelBase
                 int index = i;
                 handCardlist[i].clickAllow = false;
                 RunSingel.Instance.moveToAll(handCardlist[i].gameObject, handCardPos[i].transform.position, MoveType.moveAll_FTS, cardtime_refshMove, Vector3.one, Vector3.zero,()=> { handCardlist[index].clickAllow = true; });
+            }
+        }
+    }
+    private void refreshEnemyCard()
+    {
+        //整理卡槽
+        for (int i = 0; i < handEnemylist.Count; i++)
+        {
+            if (handEnemylist[i].transform.position != enemyCardPos[i].transform.position)
+            {
+                int index = i;
+                RunSingel.Instance.moveToAll(handEnemylist[i].gameObject, enemyCardPos[i].transform.position, MoveType.moveAll_FTS, cardtime_refshMove, Vector3.one, Vector3.zero);
             }
         }
     }
@@ -236,7 +323,10 @@ public class BattlePanel : PanelBase
     {
         CardEntity item;
         if (discardCard.Count > 0)
+        {
             item = discardCard.Dequeue();
+            item.transform.SetParent(cardParent);
+        }
         else
             item = PanelManager.Instance.LoadUI(E_UIPrefab.cardHand, CARDPATH, cardParent).GetComponent<CardEntity>();
         item.isback = isback;
@@ -274,8 +364,7 @@ public class BattlePanel : PanelBase
     }
     private void endroundClick()
     {
-        PanelManager.Instance.panelLock();
-        EventAction.Instance.TriggerAction(eventType.roundEnd_C, takeCardlist);
+        playerNextQue();
     }
 
     public void refreshPlayerData()
@@ -286,7 +375,10 @@ public class BattlePanel : PanelBase
     }
     public void refreshEnemyData()
     {
-        
+        enemyhealth.text = "health:" + enemy.hp_cur + "/" + enemy.hp_max;
+        enemydefence.text = enemy.def_cur.ToString();
+        enemyhealthimg.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, (float)enemy.hp_cur / enemy.hp_max * healthconstWidth);
+        manaExtra.SetActive(enemy.cost_max == 4);
     }
     public void refreshMana()
     {
@@ -298,51 +390,76 @@ public class BattlePanel : PanelBase
         if (player.cost_max < 4) manaExtra.SetActive(false);
     }
     //腾一下展示桌面  准备回合生效
-    public void playRoundWillShow(Action callback)
+    public void playRoundWillShow()
     {
         RunSingel.Instance.moveToAll(moveBar.gameObject, barpos1 + Vector3.down, MoveType.moveAll_FTS, 1, Vector3.one, Vector3.zero);
         RunSingel.Instance.moveToAll(moveBar2.gameObject, barpos2 + Vector3.down, MoveType.moveAll_FTS, 1, Vector3.one, Vector3.zero,()=> {
             refreshEnemyTakeCard();
-            callback();
+            refreshEnemyCard();
+            playerNextQue();
         });
+    }
+    //重置展示
+    public void resetRoundShow()
+    {
+        RunSingel.Instance.moveToAll(moveBar.gameObject, barpos1, MoveType.moveAll_FTS, 1, Vector3.one, Vector3.zero);
+        RunSingel.Instance.moveToAll(moveBar2.gameObject, barpos2, MoveType.moveAll_FTS, 1, Vector3.one, Vector3.zero);
     }
     public void playThisCard(RoundData dataround)
     {
-        Debug.Log("takeCardName====     " + dataround._card.sname);
-        //播放卡
+        Debug.Log("takeCardName====     " + dataround._card.sname+dataround.hitnum);
         float effectTime = 1.25f;
         bool isplayer = dataround.isplayer;
-        //enemy需要翻卡
-        if (isplayer)
-            dataround.entity.turnCard();
-        RunSingel.Instance.moveToAll(dataround.entity.gameObject, dataround.entity.transform.position + (isplayer ? Vector3.up:Vector3.down), MoveType.moveAll_FTS, effectTime, Vector3.one * 1.5f, Vector3.zero, () => {
-            //数据展示  根据rounddata的type表现
-            RunSingel.Instance.laterDo(1.5f, () =>
-            {
-                EventAction.Instance.TriggerAction(eventType.playRoundNext);
+        //播放卡
+        addAction(() =>
+        {
+            if (!isplayer)
+                dataround.entity.turnCard();
+            RunSingel.Instance.moveToAll(dataround.entity.gameObject, dataround.entity.transform.position + (isplayer ? Vector3.up : Vector3.down), MoveType.moveAll_FTS, effectTime, Vector3.one * 1.5f, Vector3.zero, ()=> {
+                //消失动画
+                dataround.entity.gameObject.SetActive(false);
+                //对齐
+                discardCard.Enqueue(dataround.entity);
+                if (isplayer)
+                {
+                    takeCardlist.Remove(dataround.entity);
+                    refreshTakeCard();
+                }
+                else
+                {
+                    takeEnemylist.Remove(dataround.entity);
+                    refreshEnemyTakeCard();
+                }
+                playerNextQue();
+            });
+        });
+        //先抽牌
+        if (dataround.dealnum>0)
+        {
+            if (isplayer) addAction(() => { dealCard(dataround.dealnum); });
+            else addAction(() => { dealEnemyCard(dataround.dealnum); });
+        }
+        if (dataround._card.type2 == CardType2.n_counter)
+        {
+
+        }
+        //攻击
+        if (dataround.hitnum > 0)
+        {
+            addAction(()=> {
+                ParticleManager.Instance.playEffect(E_Particle.particle_boom, isplayer ? enemyhealth.transform.position : health.transform.position);
                 refreshPlayerData();
                 refreshEnemyData();
+                RunSingel.Instance.laterDo(1, playerNextQue);
             });
-            //消失动画
-            dataround.entity.gameObject.SetActive(false);
-            //对齐
-            discardCard.Enqueue(dataround.entity);
-            if (isplayer)
-            {
-                takeCardlist.Remove(dataround.entity);
-                refreshTakeCard();
-            }
-            else
-            {
-                takeEnemylist.Remove(dataround.entity);
-                refreshEnemyTakeCard();
-            }
-        });
+        }
+        //下一张
+        addAction(() => { EventAction.Instance.TriggerAction(eventType.playRoundNext); });
+        playerNextQue();
     }
     public void roundEndAndContinue()
     {
-        refreshMana();
-        PanelManager.Instance.panelUnlock();
+        playerNextQue();
     }
     public void gameSettle(bool iswin)
     {
