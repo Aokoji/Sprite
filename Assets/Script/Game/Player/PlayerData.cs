@@ -23,7 +23,7 @@ public class PlayerData
         //理论上有默认角色
         SpriteData sp = new SpriteData();
         sp.id = 1;
-        sp.hp_max = sp.hp_cur = 120;
+        sp.hp_max = sp.hp_cur = 25;
         sp.cost_cur = sp.cost_max = 3;
         sprites.Add(sp);
         curSprite = sp.id;

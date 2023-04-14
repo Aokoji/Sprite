@@ -15,101 +15,145 @@ MonoBehaviour:
   asset:
   - id: 1
     sname: "\u9B54\u6CD5\u5C04\u51FB"
-    sDescribe: aaa
+    sDescribe: "\u9020\u62101\u70B9\u4F24\u5BB3"
     type1: 0
     type2: 0
     limit: 0
+    conditionType: 0
     damage1: 1
     damage2: 0
     damage3: 0
     cost: 1
+    limitcount: 99
   - id: 2
-    sname: "\u9B54\u6CD5\u7206\u5F39"
-    sDescribe: bbb
+    sname: "\u9B54\u6CD5\u7CD6\u679C"
+    sDescribe: "\u62BD\u4E00\u5F20\u724C"
     type1: 0
-    type2: 0
+    type2: 1
     limit: 0
-    damage1: 2
+    conditionType: 0
+    damage1: 1
     damage2: 0
     damage3: 0
     cost: 2
+    limitcount: 99
   - id: 3
-    sname: "\u75BE\u98CE\u672F"
-    sDescribe: ccc
+    sname: "\u9B54\u529B\u67AF\u7AED"
+    sDescribe: "\u7ED9\u5BF9\u624B\u548C\u81EA\u5DF1\u5404\u9020\u62102\u70B9\u4F24\u5BB3"
     type1: 0
-    type2: 1
+    type2: 8
     limit: 0
-    damage1: 3
-    damage2: 0
+    conditionType: 0
+    damage1: 2
+    damage2: 2
     damage3: 0
-    cost: 1
+    cost: 2
+    limitcount: 99
   - id: 4
     sname: "\u8702\u523A"
-    sDescribe: ddd
+    sDescribe: "\u5148\u5236\uFF0C\u9020\u62102\u70B9\u4F24\u5BB3"
     type1: 0
     type2: 1
     limit: 0
+    conditionType: 0
     damage1: 2
     damage2: 0
     damage3: 0
     cost: 1
+    limitcount: 2
   - id: 5
     sname: "\u85E4\u8513\u5C4F\u969C"
-    sDescribe: eee
+    sDescribe: "\u83B7\u5F975\u70B9\u9632\u5FA1"
     type1: 0
     type2: 5
     limit: 0
+    conditionType: 0
     damage1: 5
     damage2: 0
     damage3: 0
     cost: 2
+    limitcount: 2
   - id: 6
     sname: "\u5FEB\u901F\u56DE\u907F"
-    sDescribe: fff
+    sDescribe: "\u62BD1\u5F20\u724C\uFF0C\u83B7\u5F972\u70B9\u9632\u5FA1"
     type1: 0
     type2: 7
     limit: 0
-    damage1: 0
+    conditionType: 0
+    damage1: 1
     damage2: 0
     damage3: 0
     cost: 1
+    limitcount: 2
   - id: 7
     sname: "\u9B54\u6CD5\u53CD\u5236"
-    sDescribe: ggg
+    sDescribe: "\u53CD\u5236\u5BF9\u624B\u4E0B1\u5F20\u724C"
     type1: 0
     type2: 6
     limit: 0
+    conditionType: 0
     damage1: 0
     damage2: 0
     damage3: 0
     cost: 1
+    limitcount: 2
   - id: 8
     sname: "\u9B54\u6CD5\u8FDE\u643A"
-    sDescribe: hhh
+    sDescribe: "\u9020\u62101\u70B9\u4F24\u5BB3\uFF0C\u8FDE\u51FB\uFF0C\u989D\u5916\u9020\u62104\u70B9\u4F24\u5BB3"
     type1: 0
     type2: 2
     limit: 0
+    conditionType: 0
     damage1: 1
     damage2: 4
     damage3: 0
     cost: 2
+    limitcount: 2
   - id: 9
     sname: "\u5F3A\u529B\u6C34\u70AE"
-    sDescribe: iii
+    sDescribe: "\u9020\u62102\u70B9\u4F24\u5BB3\uFF0C\u91CD\u51FB\uFF0C\u989D\u5916\u9020\u62105\u70B9\u4F24\u5BB3"
     type1: 0
     type2: 3
     limit: 0
+    conditionType: 0
     damage1: 2
     damage2: 5
     damage3: 0
     cost: 2
+    limitcount: 2
   - id: 10
     sname: "\u8574\u7075"
-    sDescribe: jjj
+    sDescribe: "\u6062\u590D8\u70B9\u751F\u547D"
     type1: 0
     type2: 4
     limit: 0
+    conditionType: 0
     damage1: 8
     damage2: 0
     damage3: 0
     cost: 3
+    limitcount: 2
+  - id: 11
+    sname: "\u9B54\u6CD5\u7206\u5F39"
+    sDescribe: "\u9020\u62102\u70B9\u4F24\u5BB3"
+    type1: 0
+    type2: 0
+    limit: 0
+    conditionType: 0
+    damage1: 2
+    damage2: 0
+    damage3: 0
+    cost: 2
+    limitcount: 2
+  - id: 12
+    sname: "\u75BE\u98CE\u672F"
+    sDescribe: "\u5148\u5236\uFF0C\u9020\u62104\u70B9\u4F24\u5BB3"
+    type1: 0
+    type2: 1
+    limit: 0
+    conditionType: 0
+    damage1: 4
+    damage2: 0
+    damage3: 0
+    cost: 1
+    limitcount: 2

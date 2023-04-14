@@ -11,7 +11,7 @@ public class EnemyCalculate
         SpriteData enemy = new SpriteData();
         enemy.id = 1;
         enemy.takeDefaultCardsID = someid;
-        enemy.hp_cur = enemy.hp_max = 100;
+        enemy.hp_cur = enemy.hp_max = 25;
         enemy.cost_cur = enemy.cost_max = 3;
         enemy.refreshData();
         return enemy;

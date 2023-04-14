@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AnimCallBack:Component
+public class AnimCallBack:MonoBehaviour
 {
     public Action Callback = null;
     public void Mycallback()

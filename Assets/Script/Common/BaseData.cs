@@ -49,8 +49,14 @@ public enum CardType2
     n_defence,  //甲5
     n_counter,  //反制6
     n_deal, //抽牌7
-
-    e_decounter, //反counter
+    e_deplete,  //魔力枯竭  8
+    e_gift, //获得卡 9
+    e_addition, //填卡    10
+    e_decounter, //反counter  11
+    e_decounter_deal, //反counter  12
+    e_decounter_def, //反counter  13
+    e_decounter_recover, //反counter  14
+    e_decounter_hit, //反counter  15
 }
 
 

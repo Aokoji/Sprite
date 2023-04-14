@@ -21,8 +21,8 @@ MonoBehaviour:
     - id: 1
       sname: 
       level: 0
-      hp_max: 120
-      hp_cur: 120
+      hp_max: 25
+      hp_cur: 25
       def_cur: 0
       dodge: 0
       block: 0

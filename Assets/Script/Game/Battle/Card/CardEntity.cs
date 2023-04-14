@@ -13,11 +13,15 @@ public class CardEntity : UIBase
     public GameObject body;
     public GameObject backBG;
 
+    public GameObject particleShow;
+    public GameObject particleCounter;
+
     //单张卡
     public t_DataCard _data;
     public Action<CardEntity> onChoose;
     public bool isStaying;  //准备出
     public bool isback;//卡背
+    public bool isdealcreate;   //抽卡创建出来的
     public bool clickAllow;
 
     public void initData(t_DataCard data)
@@ -30,12 +34,17 @@ public class CardEntity : UIBase
         GetComponent<Button>().onClick.AddListener(onchoose);
         clickAllow = true;
         isStaying = false;
+        isdealcreate = false;
+        particleShow.SetActive(false);
+        particleCounter.SetActive(false);
     }
     private void refreshCard()
     {
         sname.text = _data.sname.ToString();
         descirbe.text = _data.sDescribe.ToString();
         backBG.SetActive(isback);
+        particleShow.SetActive(false);
+        particleCounter.SetActive(false);
     }
     private void onchoose()
     {
@@ -46,5 +55,14 @@ public class CardEntity : UIBase
     {
         isback = !isback;
         backBG.SetActive(isback);
+    }
+
+    public void playJustShowAnim(Action callback)
+    {
+        AnimationTool.playAnimation(gameObject, "cardShow", false, callback);
+    }
+    public void playJustHideAnim(Action callback)
+    {
+        AnimationTool.playAnimation(gameObject, "cardHide", false, callback);
     }
 }

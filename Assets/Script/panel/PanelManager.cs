@@ -22,7 +22,7 @@ public class PanelManager : CSingel<PanelManager>
         basePanel = maincanvas.transform.Find("BasePanel");
         shadow = maincanvas.transform.Find("shadow").gameObject;
         initEvent();
-        loadingPanel();
+        loadSupplyPop();
     }
     private void initEvent()
     {
@@ -78,15 +78,45 @@ public class PanelManager : CSingel<PanelManager>
     public void panelLock() { shadow.SetActive(true); }
     public void panelUnlock() { shadow.SetActive(false); }
 
+    private GameObject commonParent;
+    private void loadSupplyPop()
+    {
+        commonParent = new GameObject("commonPop");
+        commonParent.transform.SetParent(maincanvas.transform);
+        commonParent.transform.localPosition = Vector3.zero;
+        commonParent.transform.localScale = Vector3.one;
+        loadingPanel();
+        loadTips1Panel();
+    }
     //  ----------------------- loading ----------------------
     private LoadingPanel loading;
-    private string LOAD_PATH = "ui/common/";
+    private string COMMON_PATH = "Assets/ui/common/";
     private void loadingPanel()
     {
-        loading = AssetLoad.Instance.loadUIPrefab<LoadingPanel>(LOAD_PATH,E_UIPrefab.Loading.ToString());
+        var entity = AssetLoad.Instance.loadUIPrefab<LoadingPanel>(COMMON_PATH, E_UIPrefab.Loading.ToString());
+        loading = UnityEngine.Object.Instantiate(entity);
+        loading.transform.SetParent(commonParent.transform);
+        loading.transform.localScale = Vector3.one;
+        loading.gameObject.SetActive(false);
     }
     public void LoadingShow(bool show)
     {
         if (null != loading) loading.Loading(show);
+    }
+
+    //------------------------ tips ----------------------------
+    private TipsBase tip1;
+    private void loadTips1Panel()
+    {
+        var entity = AssetLoad.Instance.loadUIPrefab<TipsBase>(COMMON_PATH, E_UIPrefab.Tips1.ToString());
+        tip1 = UnityEngine.Object.Instantiate(entity);
+        tip1.transform.SetParent(commonParent.transform);
+        tip1.transform.localScale = Vector3.one;
+        tip1.gameObject.SetActive(false);
+    }
+    public void showTips1(string str="",Action callback=null)
+    {
+        tip1.setContext(str);
+        AnimationTool.playAnimation(tip1.gameObject, "showtip1", false, ()=> { tip1.gameObject.SetActive(false); callback?.Invoke(); });
     }
 }

@@ -6,11 +6,11 @@ public enum E_UIPrefab
 {
     none,
     Loading,
+    Tips1,
     BattlePanel,
     StartPanel,
 
     //ui
-    cardBase,
     cardHand,
 }
 public enum E_Particle

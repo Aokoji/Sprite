@@ -74,8 +74,8 @@ public class BattleControl :Object
         RoundData rounddata;
         Queue<CardEntity> playerque = new Queue<CardEntity>();
         Queue<CardEntity> enemyque = new Queue<CardEntity>();
-        datas.ForEach(item=>{ playerque.Enqueue(item); item.transform.SetParent(ui.moveBar); });
-        endata.ForEach(item=>{ enemyque.Enqueue(item); item.transform.SetParent(ui.moveBar2); });
+        datas.ForEach(item=>{ playerque.Enqueue(item); });
+        endata.ForEach(item=>{ enemyque.Enqueue(item); });
         int countround = playerque.Count+enemyque.Count;
         bool isplayerround=true;
         for (int i = 0; i < countround; i++)
@@ -143,10 +143,18 @@ public class BattleControl :Object
         //计算反制
         if ((data.isplayer && iscounterP)|| (!data.isplayer && iscounterE))
         {
-            data.isCounter = true;
-            continuousShut(data.isplayer);
-            playCardNext(data);
-            return;
+            if (data._card.type2 == CardType2.e_decounter )
+            {
+                data.isdecounter = true;
+                data.isCounter = false;
+            }
+            else
+            {
+                data.isCounter = true;
+                continuousShut(data.isplayer);
+                playCardNext(data);
+                return;
+            }
         }
         //计算伤害
         data.hitnum = 0;
@@ -189,8 +197,68 @@ public class BattleControl :Object
                 else iscounterP = true;
                 continuousShut(data.isplayer);
                 break;
+            case CardType2.n_deal:
+                data.dealnum = data._card.damage1;
+                break;
+            case CardType2.e_deplete:
+                data.hitnum = data._card.damage1;
+                data.hitselfnum = data._card.damage2;
+                continuousAdd(data.isplayer);
+                break;
+            case CardType2.e_gift:
+                break;
+            case CardType2.e_addition:
+                break;
+            case CardType2.e_decounter:
+                if (data.isdecounter)
+                    conditionTypeCalculate(data);
+                continuousShut(data.isplayer);
+                break;
+            case CardType2.e_decounter_deal:
+                data.dealnum = data._card.damage1;
+                if (data.isdecounter)
+                    conditionTypeCalculate(data);
+                continuousShut(data.isplayer);
+                break;
+            case CardType2.e_decounter_def:
+                data.defnum = data._card.damage1;
+                if (data.isdecounter)
+                    conditionTypeCalculate(data);
+                continuousShut(data.isplayer);
+                break;
+            case CardType2.e_decounter_recover:
+                data.recovernum = data._card.damage1;
+                if (data.isdecounter)
+                    conditionTypeCalculate(data);
+                continuousShut(data.isplayer);
+                break;
+            case CardType2.e_decounter_hit:
+                data.hitnum = data._card.damage1;
+                if (data.isdecounter)
+                    conditionTypeCalculate(data);
+                continuousAdd(data.isplayer);
+                break;
         }
         playCardNext(data);
+    }
+
+    private void conditionTypeCalculate(RoundData data)
+    {
+        switch (data._card.conditionType)
+        {
+            case CardType2.n_hit:
+                data.hitnum += data._card.damage2;
+                break;
+            case CardType2.n_deal:
+                data.dealnum += data._card.damage2;
+                break;
+            case CardType2.n_defence:
+                data.defnum += data._card.damage2; 
+                break;
+            case CardType2.n_recover:
+                data.recovernum += data._card.damage2; 
+                break;
+        }
     }
 
     private void playCardNext(RoundData data)
@@ -245,6 +313,8 @@ public class BattleControl :Object
     //单次回合结束
     private void endRoundSettle()
     {
+        player.cost_cur = player.cost_max;
+        enemy.cost_cur = enemy.cost_max;
         ui.roundEndAndContinue();
     }
 

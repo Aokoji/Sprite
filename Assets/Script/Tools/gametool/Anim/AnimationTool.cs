@@ -76,7 +76,8 @@ public class AnimationTool
     public static void playAnimation(GameObject obj,string aniname,bool isloop=false,Action callback=null)
     {
         Animation anim = obj.GetComponent<Animation>();
-        if (anim = null)
+        obj.SetActive(true);
+        if (anim == null)
         {
             Debug.LogError("animation component is null,will play animName =" + aniname);
             return;
