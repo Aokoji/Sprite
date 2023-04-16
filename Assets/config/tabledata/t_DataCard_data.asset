@@ -29,7 +29,7 @@ MonoBehaviour:
     sname: "\u9B54\u6CD5\u7CD6\u679C"
     sDescribe: "\u62BD\u4E00\u5F20\u724C"
     type1: 0
-    type2: 1
+    type2: 7
     limit: 0
     conditionType: 0
     damage1: 1

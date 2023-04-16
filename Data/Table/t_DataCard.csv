@@ -1,7 +1,7 @@
 id,sname,sDescribe,type1,type2,limit,conditionType,damage1,damage2,damage3,cost,limitcount
 int,string,string,CardType1,CardType2,CardLimitType,CardType2,int,int,int,int,int
 1,魔法射击,造成1点伤害,0,0,0,0,1,0,0,1,99
-2,魔法糖果,抽一张牌,0,1,0,0,1,0,0,2,99
+2,魔法糖果,抽一张牌,0,7,0,0,1,0,0,2,99
 3,魔力枯竭,给对手和自己各造成2点伤害,0,8,0,0,2,2,0,2,99
 4,蜂刺,先制，造成2点伤害,0,1,0,0,2,0,0,1,2
 5,藤蔓屏障,获得5点防御,0,5,0,0,5,0,0,2,2

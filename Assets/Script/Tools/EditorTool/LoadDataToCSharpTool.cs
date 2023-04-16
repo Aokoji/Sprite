@@ -10,29 +10,38 @@ public class LoadDataToCSharpTool :Editor
 {
     static string defaultPath = "Data/Table";
     static string csharpPath = "/Script/Game/Data/datacs/";
+    static string csharpPath0 = "Assets/Script/Game/Data/datacs"; //删文件用的
+    static string assetPath0 = "Assets/config/tabledata";//删文件用的
     static string assetPath = "Assets/config/tabledata/";
     static string tableconfigPath = "/Script/Game/Data/TableConfig.cs";
     static List<TableData> tables;
+    static Dictionary<string, byte> willDeleteNames;
 
     //暂且只用来创建CSharp 因为数据需要编译好的cs文件
     [MenuItem("dataTool/createDefaultPathDataCSharp")]
     public static void createDefaultPathDataCSharp()
     {
         tables = new List<TableData>();
+        willDeleteNames = new Dictionary<string, byte>();
         //读文件
         readAndCreateFile();
         //创建.cs文件
         rewriteFileAndSaveData();
+        tables = null;
+        willDeleteNames = null;
     }
     //导入数据
     [MenuItem("dataTool/importDefaultPathData")]
     public static void importDefaultPathData()
     {
+        willDeleteNames = new Dictionary<string, byte>();
         readToTypeData();
+        willDeleteNames = null;
     }
 
     static void readAndCreateFile()
     {
+        //读所有csv
         DirectoryInfo direct = new DirectoryInfo(defaultPath);
         FileInfo[] files = direct.GetFiles("*", SearchOption.AllDirectories);
         string localpath;
@@ -69,6 +78,9 @@ public class LoadDataToCSharpTool :Editor
                     sw.Close();
                     sw.Dispose();
                 }
+                //记录已有的文件   还有meta
+                willDeleteNames.Add(data.fieldName, 0);
+                willDeleteNames.Add(data.fieldName+".meta", 0);
                 string str;
                 int index = 0;
                 string[] csNames = null;
@@ -126,6 +138,15 @@ public class LoadDataToCSharpTool :Editor
         str.Append(CS_configStr3);
         File.WriteAllText(Application.dataPath + tableconfigPath, str.ToString());
         Debug.Log("write config success");
+        //清理 不用的config文件
+        DirectoryInfo direct = new DirectoryInfo(csharpPath0);
+        FileInfo[] files = direct.GetFiles("*", SearchOption.AllDirectories);
+        for (int i=0; i < files.Length; i++)
+        {
+            if (!willDeleteNames.ContainsKey(files[i].Name))
+                File.Delete(Application.dataPath + csharpPath + files[i].Name);
+        }
+
         Debug.Log("Success !  All files is : " + tables.Count);
     }
     static void readToTypeData()
@@ -153,6 +174,9 @@ public class LoadDataToCSharpTool :Editor
                 }
                 filename = files[i].Name.Replace(".csv", "");
                 filepath = assetPath + filename + "_data.asset";
+                // 记录不删除
+                willDeleteNames.Add(filename + "_data.asset", 0);
+                willDeleteNames.Add(filename + "_data.asset.meta", 0);
                 string str;
                 string[] names=null;
                 string[] types = null;
@@ -196,6 +220,15 @@ public class LoadDataToCSharpTool :Editor
                 }
             }
         }
+        //删无用文件asset
+        direct = new DirectoryInfo(assetPath0);
+        files = direct.GetFiles("*", SearchOption.AllDirectories);
+        for (int i = 0; i < files.Length; i++)
+        {
+            if (!willDeleteNames.ContainsKey(files[i].Name))
+                File.Delete(assetPath + files[i].Name);
+        }
+        Debug.Log("import Success !");
     }
     struct TableData
     {
@@ -211,7 +244,7 @@ public class LoadDataToCSharpTool :Editor
         "[Serializable]\rpublic class @FILE\r{\r";
     static string CS_strMember1 = "\tpublic @CLASS @MEMBER;\r";
 			
-    //config模板
+    //table config模板
     static string CS_configStr1 = "using System.Collections;\rusing UnityEditor;\rpublic class TableConfig\r{\r\tstring ASSETPATH = \"Assets/config/tabledata/\";\r\tpublic bool loadsuccess;\r\tpublic void init()\r\t{\r\t\tloadsuccess = false;\r\t\tRunSingel.Instance.runTimer(loadData());\r\t}\r\tIEnumerator loadData()\r\t{";
     static string CS_configStr2 = "\r\t\tloadsuccess = true;\r\t}\r\tpublic void Dispose()\r\t{";
     static string CS_configStr3 = "\r\t}\r}";

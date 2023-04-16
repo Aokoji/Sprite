@@ -143,7 +143,10 @@ public class BattleControl :Object
         //计算反制
         if ((data.isplayer && iscounterP)|| (!data.isplayer && iscounterE))
         {
-            if (data._card.type2 == CardType2.e_decounter )
+            //还原值
+            if (data.isplayer) iscounterP = false;
+            else iscounterE = false;
+            if (data._card.type2 == CardType2.e_decounter )//+++
             {
                 data.isdecounter = true;
                 data.isCounter = false;

@@ -15,7 +15,7 @@ MonoBehaviour:
   playdata:
     id: 0
     sname: 
-    playerCards: 01000000010000000200000002000000030000000300000004000000040000000500000005000000060000000600000007000000070000000800000008000000
+    playerCards: 
     playerAllCards: 
     sprites:
     - id: 1
@@ -28,5 +28,5 @@ MonoBehaviour:
       block: 0
       cost_max: 3
       cost_cur: 3
-      takeDefaultCardsID: 0
+      takeDefaultCardsID: 1
     curSprite: 1

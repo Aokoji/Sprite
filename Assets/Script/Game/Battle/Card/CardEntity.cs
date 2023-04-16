@@ -65,4 +65,8 @@ public class CardEntity : UIBase
     {
         AnimationTool.playAnimation(gameObject, "cardHide", false, callback);
     }
+    public void playCounterAnim(Action callback)
+    {
+        AnimationTool.playAnimation(gameObject, "cardCounter", false, callback);
+    }
 }

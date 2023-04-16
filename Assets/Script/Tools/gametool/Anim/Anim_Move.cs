@@ -31,6 +31,7 @@ public class Anim_Move : AnimNodeBase
     /// <param name="target"></param>
     public void setData(Vector3 target,float time, MoveType type,Vector3 bezier)
     {
+        if (isruning) transform.position = targetPos;
         startPos = transform.position;
         targetPos = target;
         t_scale = transform.localScale;
@@ -42,6 +43,12 @@ public class Anim_Move : AnimNodeBase
     }
     public void setDataAll(Vector3 target, float time, MoveType type, Vector3 scale,Vector3 rotate)
     {
+        if (isruning)
+        {
+            transform.position = targetPos;
+            transform.localScale = t_scale;
+            transform.eulerAngles = t_rotate;
+        }
         startPos = transform.position;
         targetPos = target;
         movetype = type;

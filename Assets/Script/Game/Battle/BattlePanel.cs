@@ -80,15 +80,29 @@ public class BattlePanel : PanelBase
     }
     private void getPlayerNewCardQue()
     {
-        List<int> list = new List<int>(PlayerManager.Instance.getPlayerCards());
-        if (list.Count < 20)
-            for(int i = list.Count; i < 20; i++)
+        List<int> list;
+        if (PlayerManager.Instance.getPlayerCards().Count > 0)
+        {
+            //自定义牌组
+            list = new List<int>(PlayerManager.Instance.getPlayerCards());
+            if (list.Count < 20)
+                for (int i = list.Count; i < 20; i++)
                     list.Add(1);
+        }
+        else
+        {
+            //默认牌组
+            var cards = Config_t_DefaultCardGroup.getOne(PlayerManager.Instance.cursprite.takeDefaultCardsID);
+            string[] ids = cards.cardlist.Split('|');
+            list = new List<int>();
+            for (int i = 0; i < ids.Length; i++)
+                list.Add(int.Parse(ids[i]));
+        }
         playerque = CardCalculate.getRandomList(list);
     }
     private void getEnemyNewCardQue()
     {
-        var cards = Config_t_EnemyCardsModel.getOne(enemy.id);
+        var cards = Config_t_DefaultCardGroup.getOne(enemy.takeDefaultCardsID);
         string[] ids = cards.cardlist.Split('|');
         List<int> list = new List<int>();
         for (int i = 0; i < ids.Length; i++)
@@ -422,6 +436,7 @@ public class BattlePanel : PanelBase
     }
     public void playThisCard(RoundData dataround)
     {
+        Debug.Log("playcard====" + dataround._card.sname);
         float effectTime = 1.25f;
         bool isplayer = dataround.isplayer;
         //播放卡
@@ -431,16 +446,23 @@ public class BattlePanel : PanelBase
             dataround.entity.transform.SetAsLastSibling();
             if (!isplayer)
                 dataround.entity.turnCard();
-            RunSingel.Instance.moveToAll(dataround.entity.gameObject, dataround.entity.transform.position + (isplayer ? Vector3.up : Vector3.down), MoveType.moveAll_FTS, effectTime, Vector3.one * 1.5f, Vector3.zero, ()=> {
-                //消失动画
-                if (dataround.isCounter)
-                    dataround.entity.playJustShowAnim(() => { cardAlign(dataround);  });
-                else
-                {
+            if (dataround.isCounter)
+            {
+                Debug.Log("counter");
+                dataround.entity.playCounterAnim(() => {
+                    RunSingel.Instance.laterDo(0.5f, () => { cardAlign(dataround); });
+                    
+                });
+            }
+            else
+            {
+                RunSingel.Instance.moveToAll(dataround.entity.gameObject, dataround.entity.transform.position + (isplayer ? Vector3.up : Vector3.down), MoveType.moveAll_FTS, effectTime, Vector3.one * 1.5f, Vector3.zero, () => {
+                    //消失动画
+                    Debug.Log("docallback");
                     dataround.entity.gameObject.SetActive(false);
                     cardAlign(dataround);
-                }
-            });
+                });
+            }
         });
         if (!dataround.isCounter)
         {

@@ -25,17 +25,9 @@ public class PlayerData
         sp.id = 1;
         sp.hp_max = sp.hp_cur = 25;
         sp.cost_cur = sp.cost_max = 3;
+        sp.takeDefaultCardsID = 1;
         sprites.Add(sp);
         curSprite = sp.id;
     }
 
-    public void battleTest()
-    {
-        for (int i = 1; i < 9; i++)
-        {
-            playerCards.Add(i);
-            playerCards.Add(i);
-        }
-            
-    }
 }

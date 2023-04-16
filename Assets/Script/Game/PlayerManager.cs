@@ -42,7 +42,6 @@ public class PlayerManager : CSingel<PlayerManager>
             playerAsset = ScriptableObject.CreateInstance<PlayerAsset>();
             playerdata = new PlayerData();
             playerdata.initdata();
-            playerdata.battleTest();
             playerAsset.playdata = playerdata;
             AssetManager.saveAsset(playerAsset, CARD_TEST_PATH + ".asset");
         }

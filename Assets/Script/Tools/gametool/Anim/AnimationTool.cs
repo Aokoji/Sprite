@@ -85,7 +85,7 @@ public class AnimationTool
         var script = obj.GetComponent<AnimCallBack>();
         if (null == script)
             script = obj.AddComponent<AnimCallBack>();
-        script.Callback = callback;
+        script.Callback = () => { anim.clip = null; callback?.Invoke(); };
         AnimationClip clip = anim.GetClip(aniname);
         AnimationEvent evt = new AnimationEvent();
         evt.functionName = "Mycallback";
