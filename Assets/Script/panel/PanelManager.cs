@@ -14,13 +14,15 @@ public class PanelManager : CSingel<PanelManager>
     private string PANEL_PATH = "Assets/ui/panel/";
     Transform basePanel;
     GameObject shadow;
-    GameObject maincanvas;
+    public GameObject maincanvas;
 
     public void init()
     {
         maincanvas = GameObject.Find("Canvas");
         basePanel = maincanvas.transform.Find("BasePanel");
         shadow = maincanvas.transform.Find("shadow").gameObject;
+        panelUnlock();
+        Debug.Log("unlock");
         initEvent();
         loadSupplyPop();
     }
@@ -45,6 +47,7 @@ public class PanelManager : CSingel<PanelManager>
         var t = UnityEngine.Object.Instantiate(obj);
         t.transform.SetParent(basePanel, false);
         PanelBase panel = t.GetComponent<PanelBase>();
+        if (curPanel != null) curPanel.Dispose();
         curPanel = panel;
         while(panel==null)
             yield return null;

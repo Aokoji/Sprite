@@ -13,4 +13,5 @@ public class PanelBase : UIBase
     public virtual void registerEvent() { }
     public void initAfterLoading() { }
     public void OnExit() { }
+    public virtual void Dispose() { Destroy(gameObject); }
 }

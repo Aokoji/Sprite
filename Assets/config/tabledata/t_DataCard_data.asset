@@ -20,6 +20,7 @@ MonoBehaviour:
     type2: 0
     limit: 0
     conditionType: 0
+    conditionType2: 0
     damage1: 1
     damage2: 0
     damage3: 0
@@ -32,6 +33,7 @@ MonoBehaviour:
     type2: 7
     limit: 0
     conditionType: 0
+    conditionType2: 0
     damage1: 1
     damage2: 0
     damage3: 0
@@ -44,6 +46,7 @@ MonoBehaviour:
     type2: 8
     limit: 0
     conditionType: 0
+    conditionType2: 0
     damage1: 2
     damage2: 2
     damage3: 0
@@ -56,6 +59,7 @@ MonoBehaviour:
     type2: 1
     limit: 0
     conditionType: 0
+    conditionType2: 0
     damage1: 2
     damage2: 0
     damage3: 0
@@ -68,6 +72,7 @@ MonoBehaviour:
     type2: 5
     limit: 0
     conditionType: 0
+    conditionType2: 0
     damage1: 5
     damage2: 0
     damage3: 0
@@ -80,18 +85,20 @@ MonoBehaviour:
     type2: 7
     limit: 0
     conditionType: 0
+    conditionType2: 0
     damage1: 1
     damage2: 0
     damage3: 0
     cost: 1
     limitcount: 2
   - id: 7
-    sname: "\u9B54\u6CD5\u53CD\u5236"
+    sname: "\u9B54\u6CD5\u8BC5\u5492"
     sDescribe: "\u53CD\u5236\u5BF9\u624B\u4E0B1\u5F20\u724C"
     type1: 0
     type2: 6
     limit: 0
     conditionType: 0
+    conditionType2: 0
     damage1: 0
     damage2: 0
     damage3: 0
@@ -104,6 +111,7 @@ MonoBehaviour:
     type2: 2
     limit: 0
     conditionType: 0
+    conditionType2: 0
     damage1: 1
     damage2: 4
     damage3: 0
@@ -116,6 +124,7 @@ MonoBehaviour:
     type2: 3
     limit: 0
     conditionType: 0
+    conditionType2: 0
     damage1: 2
     damage2: 5
     damage3: 0
@@ -128,6 +137,7 @@ MonoBehaviour:
     type2: 4
     limit: 0
     conditionType: 0
+    conditionType2: 0
     damage1: 8
     damage2: 0
     damage3: 0
@@ -140,6 +150,7 @@ MonoBehaviour:
     type2: 0
     limit: 0
     conditionType: 0
+    conditionType2: 0
     damage1: 2
     damage2: 0
     damage3: 0
@@ -152,8 +163,22 @@ MonoBehaviour:
     type2: 1
     limit: 0
     conditionType: 0
+    conditionType2: 0
     damage1: 4
     damage2: 0
     damage3: 0
     cost: 1
     limitcount: 2
+  - id: 13
+    sname: "\u9F99\u708E\u672F"
+    sDescribe: "\u9020\u62102\u70B9\u4F24\u5BB3\uFF0C\u79D8\u672F\uFF0C\u989D\u5916\u9020\u62108\u70B9\u706B\u7130\u4F24\u5BB3"
+    type1: 0
+    type2: 12
+    limit: 0
+    conditionType: 0
+    conditionType2: 0
+    damage1: 2
+    damage2: 8
+    damage3: 0
+    cost: 2
+    limitcount: 1

@@ -21,8 +21,22 @@ public class ParticleManager : CSingel<ParticleManager>
         result.SetActive(false);
         return result;
     }
-
+    //粒子类播放
     public void playEffect(E_Particle particle,Vector3 transfer)
+    {
+        checkParticle(particle);
+        particleResDic[particle].transform.position = transfer;
+        particleResDic[particle].GetComponent<ParticleSystem>().Play();
+    }
+    public GameObject getPlayEffect(E_Particle particle, Vector3 transfer)
+    {
+        checkParticle(particle);
+        particleResDic[particle].transform.position = transfer;
+        particleResDic[particle].SetActive(true);
+        particleResDic[particle].GetComponent<ParticleSystem>().Play();
+        return particleResDic[particle];
+    }
+    void checkParticle(E_Particle particle)
     {
         if (!particleResDic.ContainsKey(particle))
         {
@@ -31,11 +45,19 @@ public class ParticleManager : CSingel<ParticleManager>
             if (parent == null)
             {
                 parent = new GameObject("Particles");
+                parent.transform.SetParent(PanelManager.Instance.maincanvas.transform);
+                parent.transform.localScale = Vector3.one;
             }
             obj.transform.SetParent(parent.transform);
+            obj.transform.localScale = Vector3.one;
             particleResDic.Add(particle, obj);
         }
+    }
+    //带动画类播放
+    public void playEffect_special(E_Particle particle, Vector3 transfer,string text)
+    {
+        checkParticle(particle);
         particleResDic[particle].transform.position = transfer;
-        particleResDic[particle].GetComponent<ParticleSystem>().Play();
+        particleResDic[particle].GetComponent<ParticleBase>().play(text);
     }
 }

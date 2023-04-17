@@ -24,6 +24,7 @@ public class BattlePanel : PanelBase
     public Button endRoundBtn; //回合结束
     public Button dealCardBtn;      //主动抽牌
     //--------------显示面板--------------------
+    public Text residuenum; //剩余卡
     public Image spriteIcon;
     public Text health;
     public RectTransform healthimg;
@@ -99,6 +100,7 @@ public class BattlePanel : PanelBase
                 list.Add(int.Parse(ids[i]));
         }
         playerque = CardCalculate.getRandomList(list);
+        residuenum.text = playerque.Count.ToString();
     }
     private void getEnemyNewCardQue()
     {
@@ -120,7 +122,7 @@ public class BattlePanel : PanelBase
             initCardEnemy(4);
             dealCard(4);
         });
-        playerNextQue();
+        PanelManager.Instance.showTips1("对局开始", playerNextQue);
     }
     private void addAction(Action action)
     {
@@ -177,7 +179,6 @@ public class BattlePanel : PanelBase
     }
 
     int finishNum;
-
     public void dealCard(int num)
     {
         //屏蔽点击
@@ -351,6 +352,7 @@ public class BattlePanel : PanelBase
     }
     private void dealCardAnim(CardEntity card,int topos)
     {
+        residuenum.text = playerque.Count.ToString();
         RunSingel.Instance.moveToAll(card.gameObject,showCardPos.position,MoveType.moveAll_FTS, ConfigConst.cardtime_dealtoshow, Vector3.one, Vector3.zero, ()=> {
             RunSingel.Instance.moveToBezier(card.gameObject, showCardPos2.position,Vector3.Lerp(showCardPos.position,showCardPos2.position,0.5f)+Vector3.up* (showCardPos2.position.y-showCardPos.position.y)/2, ConfigConst.cardtime_showstay,()=> {
                 RunSingel.Instance.moveToAll(card.gameObject, handCardPos[topos - 1].transform.position, MoveType.moveAll_STF, ConfigConst.cardtime_showtohand, Vector3.one, Vector3.zero,()=> { finishNum++; });
@@ -436,8 +438,7 @@ public class BattlePanel : PanelBase
     }
     public void playThisCard(RoundData dataround)
     {
-        Debug.Log("playcard====" + dataround._card.sname);
-        float effectTime = 1.25f;
+        //Debug.Log("playcard====" + dataround._card.sname);
         bool isplayer = dataround.isplayer;
         //播放卡
         addAction(() =>
@@ -446,23 +447,16 @@ public class BattlePanel : PanelBase
             dataround.entity.transform.SetAsLastSibling();
             if (!isplayer)
                 dataround.entity.turnCard();
-            if (dataround.isCounter)
-            {
-                Debug.Log("counter");
-                dataround.entity.playCounterAnim(() => {
-                    RunSingel.Instance.laterDo(0.5f, () => { cardAlign(dataround); });
-                    
-                });
-            }
-            else
-            {
-                RunSingel.Instance.moveToAll(dataround.entity.gameObject, dataround.entity.transform.position + (isplayer ? Vector3.up : Vector3.down), MoveType.moveAll_FTS, effectTime, Vector3.one * 1.5f, Vector3.zero, () => {
-                    //消失动画
-                    Debug.Log("docallback");
+            RunSingel.Instance.moveToAll(dataround.entity.gameObject, dataround.entity.transform.position + (isplayer ? Vector3.up : Vector3.down), MoveType.moveAll_FTS, ConfigConst.cardtime_effectShow, Vector3.one * 1.5f, Vector3.zero, () => {
+                //消失动画
+                if (dataround.isCounter)
+                    dataround.entity.playCounterAnim(() => {cardAlign(dataround); });
+                else
+                {
                     dataround.entity.gameObject.SetActive(false);
                     cardAlign(dataround);
-                });
-            }
+                }
+            });
         });
         if (!dataround.isCounter)
         {
@@ -484,14 +478,45 @@ public class BattlePanel : PanelBase
                     RunSingel.Instance.laterDo(0.5f, playerNextQue);
                 });
             }
+            if (dataround.recovernum > 0)
+            {
+                addAction(() => {
+                    refreshPlayerData();
+                    refreshEnemyData();
+                    RunSingel.Instance.laterDo(0.5f, playerNextQue);
+                });
+            }
             //攻击
             if (dataround.hitnum > 0)
             {
                 addAction(() => {
-                    ParticleManager.Instance.playEffect(E_Particle.particle_boom, isplayer ? enemyhealth.transform.position : health.transform.position);
-                    refreshPlayerData();
-                    refreshEnemyData();
-                    RunSingel.Instance.laterDo(1, playerNextQue);
+                    if (dataround._card.type2 == CardType2.e_power)
+                    {
+                        var par = ParticleManager.Instance.getPlayEffect(E_Particle.particle_movefire, dataround.entity.transform.position);
+                        RunSingel.Instance.laterDo(0.8f, () =>
+                        {
+                            RunSingel.Instance.moveTo(par, isplayer ? enemyhealth.transform.position : health.transform.position, ConfigConst.cardtime_effectMoveSlow, () =>
+                            {
+                                par.SetActive(false);
+                                ParticleManager.Instance.playEffect_special(E_Particle.particle_hit, isplayer ? enemyhealth.transform.position : health.transform.position, "-" + dataround.hitnum);
+                                refreshPlayerData();
+                                refreshEnemyData();
+                                RunSingel.Instance.laterDo(1, playerNextQue);
+                            });
+                        });
+                    }
+                    else
+                    {
+                        var par = ParticleManager.Instance.getPlayEffect(E_Particle.particle_move, dataround.entity.transform.position);
+                        RunSingel.Instance.moveTo(par, isplayer ? enemyhealth.transform.position : health.transform.position, ConfigConst.cardtime_effectMove, () =>
+                        {
+                            par.SetActive(false);
+                            ParticleManager.Instance.playEffect_special(E_Particle.particle_hit, isplayer ? enemyhealth.transform.position : health.transform.position, "-" + dataround.hitnum);
+                            refreshPlayerData();
+                            refreshEnemyData();
+                            RunSingel.Instance.laterDo(1, playerNextQue);
+                        });
+                    }
                 });
             }
             if (dataround.defnum > 0)
@@ -522,7 +547,7 @@ public class BattlePanel : PanelBase
             takeEnemylist.Remove(data.entity);
             refreshEnemyTakeCard();
         }
-        playerNextQue();
+        RunSingel.Instance.laterDo(ConfigConst.cardtime_refshMove, playerNextQue);
     }
     public void roundEndAndContinue()
     {

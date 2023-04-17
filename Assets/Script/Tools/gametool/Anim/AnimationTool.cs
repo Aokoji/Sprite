@@ -35,7 +35,7 @@ public class AnimationTool
         }
         RunSingel.Instance.laterDo(time, action);
     }
-    public static void playAnimation(GameObject obj, string aniName, bool loop)
+    public static void playAnimator(GameObject obj, string aniName, bool loop=false)
     {
         Animator anim = obj.GetComponent<Animator>();
         float time = getAnimTime(anim, aniName);

@@ -57,6 +57,8 @@ public class BattleControl :Object
     short eContinuous;
     bool iscounterP;        //反制
     bool iscounterE;
+    bool ispowerP;
+    bool ispowerE;
 
     bool iswin;
 
@@ -112,6 +114,8 @@ public class BattleControl :Object
         eContinuous = 0;
         iscounterP = false;
         iscounterE = false;
+        ispowerE = willTakeenemyque.Count == 1;
+        ispowerP = willTakeplayerque.Count == 1;
         if (willTake.Count > 0)
         {
             ui.playRoundWillShow();
@@ -212,6 +216,13 @@ public class BattleControl :Object
                 break;
             case CardType2.e_addition:
                 break;
+            case CardType2.e_defend:
+                break;
+            case CardType2.e_power:
+                checkPowerType(data);
+                if ((ispowerP && data.isplayer) || (ispowerE && !data.isplayer))
+                    checkPowerType2(data);
+                break;
             case CardType2.e_decounter:
                 if (data.isdecounter)
                     conditionTypeCalculate(data);
@@ -260,6 +271,43 @@ public class BattleControl :Object
                 break;
             case CardType2.n_recover:
                 data.recovernum += data._card.damage2; 
+                break;
+        }
+    }
+    //秘术 check
+    private void checkPowerType(RoundData data)
+    {
+        switch (data._card.conditionType)
+        {
+            case CardType2.n_hit:
+                data.hitnum = data._card.damage1;
+                break;
+            case CardType2.n_deal:
+                data.dealnum = data._card.damage1;
+                break;
+            case CardType2.n_defence:
+                data.defnum = data._card.damage1;
+                break;
+            case CardType2.n_recover:
+                data.recovernum = data._card.damage1;
+                break;
+        }
+    }
+    private void checkPowerType2(RoundData data)
+    {
+        switch (data._card.conditionType2)
+        {
+            case CardType2.n_hit:
+                data.hitnum += data._card.damage2;
+                break;
+            case CardType2.n_deal:
+                data.dealnum += data._card.damage2;
+                break;
+            case CardType2.n_defence:
+                data.defnum += data._card.damage2;
+                break;
+            case CardType2.n_recover:
+                data.recovernum += data._card.damage2;
                 break;
         }
     }

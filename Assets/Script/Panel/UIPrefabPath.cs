@@ -15,5 +15,8 @@ public enum E_UIPrefab
 }
 public enum E_Particle
 {
-    particle_boom
+    particle_boom,
+    particle_hit,
+    particle_move,
+    particle_movefire,
 }

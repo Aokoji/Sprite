@@ -12,6 +12,7 @@ public class CardEntity : UIBase
     public Text descirbe;
     public GameObject body;
     public GameObject backBG;
+    public Text cost;
 
     public GameObject particleShow;
     public GameObject particleCounter;
@@ -43,6 +44,7 @@ public class CardEntity : UIBase
         sname.text = _data.sname.ToString();
         descirbe.text = _data.sDescribe.ToString();
         backBG.SetActive(isback);
+        cost.text = _data.cost.ToString();
         particleShow.SetActive(false);
         particleCounter.SetActive(false);
     }

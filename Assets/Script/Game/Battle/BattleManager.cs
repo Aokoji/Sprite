@@ -11,11 +11,6 @@ public class BattleManager : CSingel<BattleManager>
     {
         ctrl=new BattleControl();
         refreshBattleData();
-        loadDataOnMain();   //+++test
-    }
-    public void loadDataOnMain()
-    {
-        
     }
 
     public void EnterBattle()

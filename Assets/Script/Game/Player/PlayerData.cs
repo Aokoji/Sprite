@@ -28,6 +28,8 @@ public class PlayerData
         sp.takeDefaultCardsID = 1;
         sprites.Add(sp);
         curSprite = sp.id;
+        for(int i=0;i<20;i++)
+            playerCards.Add(13);
     }
 
 }

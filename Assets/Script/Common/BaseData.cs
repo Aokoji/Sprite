@@ -47,16 +47,18 @@ public enum CardType2
     n_thump,    //重击3
     n_recover,  //恢复4
     n_defence,  //甲5
-    n_counter,  //反制6
+    n_counter,  //诅咒6
     n_deal, //抽牌7
     e_deplete,  //魔力枯竭  8
     e_gift, //获得卡 9
     e_addition, //填卡    10
-    e_decounter, //反counter  11
-    e_decounter_deal, //反counter  12
-    e_decounter_def, //反counter  13
-    e_decounter_recover, //反counter  14
-    e_decounter_hit, //反counter  15
+    e_defend,   //防护    11
+    e_power,    //秘术    12
+    e_decounter, //反counter  13真言
+    e_decounter_deal, //反counter  14
+    e_decounter_def, //反counter  15
+    e_decounter_recover, //反counter  16
+    e_decounter_hit, //反counter  17
 }
 
 

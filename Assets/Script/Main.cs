@@ -6,7 +6,8 @@ public class Main : MonoBehaviour
 {
     void Start()
     {
-        
+        GameManager.Instance.initManager();
+        PanelManager.Instance.OpenPanel(E_UIPrefab.StartPanel);
     }
 
     void Update()
