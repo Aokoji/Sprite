@@ -12,6 +12,7 @@ public enum E_UIPrefab
 
     //ui
     cardHand,
+    cardShow,
 }
 public enum E_Particle
 {

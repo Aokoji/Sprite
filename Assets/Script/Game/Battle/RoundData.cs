@@ -15,6 +15,7 @@ public class RoundData : BaseData
     public int defnum;      //防御
     public int dealnum;     //抽
     public int continuousnum;       //连击数
+    public bool isdefend;       //被防护
     public bool isCounter;  //被反制
     public bool isdecounter;    //反反制成功
 }

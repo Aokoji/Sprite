@@ -472,7 +472,7 @@ public class BattlePanel : PanelBase
                     RunSingel.Instance.laterDo(0.5f, playerNextQue);
                 });
             }
-            if (dataround._card.type2 >= CardType2.e_decounter && dataround._card.type2 <= CardType2.e_decounter_recover)
+            if (dataround._card.type2 == CardType2.e_decounter)
             {
                 addAction(() => {
                     RunSingel.Instance.laterDo(0.5f, playerNextQue);

@@ -57,8 +57,10 @@ public class BattleControl :Object
     short eContinuous;
     bool iscounterP;        //反制
     bool iscounterE;
-    bool ispowerP;
+    bool ispowerP;  //秘术
     bool ispowerE;
+    bool isdefendP;     //防护
+    bool isdefendE;
 
     bool iswin;
 
@@ -114,6 +116,8 @@ public class BattleControl :Object
         eContinuous = 0;
         iscounterP = false;
         iscounterE = false;
+        isdefendE = false;
+        isdefendP = false;
         ispowerE = willTakeenemyque.Count == 1;
         ispowerP = willTakeplayerque.Count == 1;
         if (willTake.Count > 0)
@@ -150,7 +154,7 @@ public class BattleControl :Object
             //还原值
             if (data.isplayer) iscounterP = false;
             else iscounterE = false;
-            if (data._card.type2 == CardType2.e_decounter )//+++
+            if (data._card.type2 == CardType2.e_decounter )
             {
                 data.isdecounter = true;
                 data.isCounter = false;
@@ -217,83 +221,65 @@ public class BattleControl :Object
             case CardType2.e_addition:
                 break;
             case CardType2.e_defend:
+                if (data.isplayer) isdefendP = true;
+                else isdefendE = true;
+                conditionTypeCalculate1(data);
                 break;
             case CardType2.e_power:
-                checkPowerType(data);
+                conditionTypeCalculate1(data);
                 if ((ispowerP && data.isplayer) || (ispowerE && !data.isplayer))
-                    checkPowerType2(data);
+                    conditionTypeCalculate2(data);
                 break;
             case CardType2.e_decounter:
+                conditionTypeCalculate1(data);
                 if (data.isdecounter)
-                    conditionTypeCalculate(data);
-                continuousShut(data.isplayer);
+                    conditionTypeCalculate2(data);
                 break;
-            case CardType2.e_decounter_deal:
-                data.dealnum = data._card.damage1;
-                if (data.isdecounter)
-                    conditionTypeCalculate(data);
-                continuousShut(data.isplayer);
-                break;
-            case CardType2.e_decounter_def:
-                data.defnum = data._card.damage1;
-                if (data.isdecounter)
-                    conditionTypeCalculate(data);
-                continuousShut(data.isplayer);
-                break;
-            case CardType2.e_decounter_recover:
-                data.recovernum = data._card.damage1;
-                if (data.isdecounter)
-                    conditionTypeCalculate(data);
-                continuousShut(data.isplayer);
-                break;
-            case CardType2.e_decounter_hit:
-                data.hitnum = data._card.damage1;
-                if (data.isdecounter)
-                    conditionTypeCalculate(data);
-                continuousAdd(data.isplayer);
-                break;
+        }
+        //屏障 特殊结算
+        if (data.hitnum > 0)
+        {
+            if(data.isplayer == isdefendE)
+            {
+                isdefendE = false;
+                data.hitnum = 0;
+                data.isdefend = true;
+            }
+            if (!data.isplayer == isdefendP)
+            {
+                isdefendP = false;
+                data.hitnum = 0;
+                data.isdefend = true;
+            }
         }
         playCardNext(data);
     }
 
-    private void conditionTypeCalculate(RoundData data)
-    {
-        switch (data._card.conditionType)
-        {
-            case CardType2.n_hit:
-                data.hitnum += data._card.damage2;
-                break;
-            case CardType2.n_deal:
-                data.dealnum += data._card.damage2;
-                break;
-            case CardType2.n_defence:
-                data.defnum += data._card.damage2; 
-                break;
-            case CardType2.n_recover:
-                data.recovernum += data._card.damage2; 
-                break;
-        }
-    }
-    //秘术 check
-    private void checkPowerType(RoundData data)
+    //条件 check
+    private void conditionTypeCalculate1(RoundData data)
     {
         switch (data._card.conditionType)
         {
             case CardType2.n_hit:
                 data.hitnum = data._card.damage1;
+                if (data._card.damage1 > 0)
+                    continuousAdd(data.isplayer);
                 break;
             case CardType2.n_deal:
                 data.dealnum = data._card.damage1;
+                continuousShut(data.isplayer);
                 break;
             case CardType2.n_defence:
                 data.defnum = data._card.damage1;
+                continuousShut(data.isplayer);
                 break;
             case CardType2.n_recover:
                 data.recovernum = data._card.damage1;
+                continuousShut(data.isplayer);
                 break;
         }
     }
-    private void checkPowerType2(RoundData data)
+    private void conditionTypeCalculate2(RoundData data)
     {
         switch (data._card.conditionType2)
         {
