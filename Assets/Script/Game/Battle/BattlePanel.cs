@@ -33,11 +33,13 @@ public class BattlePanel : PanelBase
     public Text manatext;
     public GameObject[] manaList;
     public GameObject manaExtra;
+    public GameObject manaExtra2;
 
     public Text enemyhealth;
     public RectTransform enemyhealthimg;
     public Text enemydefence;
     public GameObject enemyExtra;
+    public GameObject enemyExtra2;
 
     private Queue<int> playerque;
     private Queue<int> enemyque;
@@ -418,7 +420,8 @@ public class BattlePanel : PanelBase
         enemyhealth.text = "health:" + enemy.hp_cur + "/" + enemy.hp_max;
         enemydefence.text = enemy.def_cur.ToString();
         enemyhealthimg.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, (float)enemy.hp_cur / enemy.hp_max * healthconstWidth);
-        manaExtra.SetActive(enemy.cost_max == 4);
+        enemyExtra.SetActive(enemy.extraLimit >= 1);
+        enemyExtra2.SetActive(enemy.extraLimit >= 2);
     }
     public void refreshMana()
     {
@@ -427,7 +430,8 @@ public class BattlePanel : PanelBase
         {
             manaList[i].SetActive(i < player.cost_cur);
         }
-        if (player.cost_max < 4) manaExtra.SetActive(false);
+        manaExtra.SetActive(player.extraLimit >= 1);
+        manaExtra2.SetActive(player.extraLimit >= 2);
     }
     //腾一下展示桌面  准备回合生效
     public void playRoundWillShow()
@@ -439,7 +443,7 @@ public class BattlePanel : PanelBase
     }
     public void playThisCard(RoundData dataround)
     {
-        //Debug.Log("playcard====" + dataround._card.sname);
+        Debug.Log("playcard====" + dataround._card.sname+dataround.hitnum);
         bool isplayer = dataround.isplayer;
         //播放卡
         addAction(() =>
@@ -451,11 +455,11 @@ public class BattlePanel : PanelBase
             RunSingel.Instance.moveToAll(dataround.entity.gameObject, dataround.entity.transform.position + (isplayer ? Vector3.up : Vector3.down), MoveType.moveAll_FTS, ConfigConst.cardtime_effectShow, Vector3.one * 1.5f, Vector3.zero, () => {
                 //消失动画
                 if (dataround.isCounter)
-                    dataround.entity.playCounterAnim(() => {cardAlign(dataround); });
+                    dataround.entity.playCounterAnim(playerNextQue);
                 else
                 {
                     dataround.entity.gameObject.SetActive(false);
-                    cardAlign(dataround);
+                    playerNextQue();
                 }
             });
         });
@@ -509,6 +513,7 @@ public class BattlePanel : PanelBase
                     else
                     {
                         var par = ParticleManager.Instance.getPlayEffect(E_Particle.particle_move, dataround.entity.transform.position);
+                        par.SetActive(true);
                         RunSingel.Instance.moveTo(par, isplayer ? enemyhealth.transform.position : health.transform.position, ConfigConst.cardtime_effectMove, () =>
                         {
                             par.SetActive(false);
@@ -576,6 +581,7 @@ public class BattlePanel : PanelBase
             }
         }
         //下一张
+        addAction(() => { cardAlign(dataround); });     //对齐
         addAction(() => { EventAction.Instance.TriggerAction(eventType.playRoundNext); });
         playerNextQue();
     }

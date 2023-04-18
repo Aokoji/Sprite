@@ -164,7 +164,7 @@ MonoBehaviour:
     limit: 0
     conditionType: 0
     conditionType2: 0
-    damage1: 4
+    damage1: 2
     damage2: 0
     damage3: 0
     cost: 1

@@ -232,13 +232,13 @@ public class BattleControl :Object
         //屏障 特殊结算
         if (data.hitnum > 0)
         {
-            if(data.isplayer == isdefendE)
+            if(data.isplayer && isdefendE)
             {
                 isdefendE = false;
                 data.hitnum = 0;
                 data.isdefend = true;
             }
-            if (!data.isplayer == isdefendP)
+            if (!data.isplayer && isdefendP)
             {
                 isdefendP = false;
                 data.hitnum = 0;
@@ -284,7 +284,7 @@ public class BattleControl :Object
                     data.hitnum += damage;
                 break;
             case CardType2.n_preempt:
-                data.recovernum += damage;
+                data.hitnum += damage;
                 break;
             case CardType2.e_gift:
                 for (int i = 0; i < damage; i++)

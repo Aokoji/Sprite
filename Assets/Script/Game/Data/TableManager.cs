@@ -41,7 +41,6 @@ public class TableManager : CSingel<TableManager>
             if (i.Value.limit == CardSelfType.arcane_special)
                 stall_arcane_special.Add(i.Key);
         }
-        Debug.Log(stall_water.Count);
     }
 
 }
