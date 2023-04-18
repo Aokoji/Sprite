@@ -16,8 +16,9 @@ public class BattlePanel : PanelBase
 
     public GameObject[] takeCardPos;     //四个点  或3-5
     public GameObject[] takeEnemyPos;     //四个点  或3-5
-    public GameObject[] handCardPos;     //六个点
-    public GameObject[] enemyCardPos;     //六个点
+    public GameObject[] handCardPos;     //5个点
+    public GameObject[] enemyCardPos;     //5个点
+    public GameObject[] giftsCardPos;     //5个点
     public Transform cardParent;
 
     //--------------交互按钮--------------------
@@ -377,7 +378,7 @@ public class BattlePanel : PanelBase
         RunSingel.Instance.moveToAll(obj.gameObject, showCardPos.position, MoveType.moveAll_FTS, ConfigConst.cardtime_dealtoshow, Vector3.one, Vector3.zero, () => {
             RunSingel.Instance.moveToBezier(obj.gameObject, showCardPos2.position, Vector3.Lerp(showCardPos.position, showCardPos2.position, 0.5f) + Vector3.up * (showCardPos2.position.y - showCardPos.position.y) / 2, ConfigConst.cardtime_showstay, () => {
                 //撕毁动画
-                obj.gameObject.SetActive(false);
+                obj.playCounterAnim(() => { obj.gameObject.SetActive(false); });
                 discardCard.Enqueue(obj);
                 finishNum++;
             });
@@ -472,7 +473,7 @@ public class BattlePanel : PanelBase
                     RunSingel.Instance.laterDo(0.5f, playerNextQue);
                 });
             }
-            if (dataround._card.type2 == CardType2.e_decounter)
+            if (dataround._card.type2 == CardType2.d_decounter)
             {
                 addAction(() => {
                     RunSingel.Instance.laterDo(0.5f, playerNextQue);
@@ -490,7 +491,7 @@ public class BattlePanel : PanelBase
             if (dataround.hitnum > 0)
             {
                 addAction(() => {
-                    if (dataround._card.type2 == CardType2.e_power)
+                    if (dataround._card.type2 == CardType2.d_power)
                     {
                         var par = ParticleManager.Instance.getPlayEffect(E_Particle.particle_movefire, dataround.entity.transform.position);
                         RunSingel.Instance.laterDo(0.8f, () =>
@@ -527,11 +528,58 @@ public class BattlePanel : PanelBase
                     RunSingel.Instance.laterDo(0.5f, playerNextQue);
                 });
             }
+            if (dataround.gift.Count > 0)
+            {
+                addAction(() => {
+                    int[] str;
+                    List<CardEntity> desList = new List<CardEntity>();
+                    switch (dataround.gift.Count)
+                    {
+                        case 2: str =new int[] { 1, 3 };break;
+                        case 3: str =new int[]{ 1, 2, 3 };break;
+                        case 4: str =new int[]{ 0, 1, 2, 3 };break;
+                        case 5: str =new int[]{ 0, 1, 2, 3, 4 };break;
+                        default:str = new int[] { 2 };break;
+                    }
+                    for (int i = 0; i < dataround.gift.Count; i++)
+                    {
+                        var item = newcard(Config_t_DataCard.getOne(dataround.gift[i]));
+                        item.transform.position = giftsCardPos[str[i]].transform.position;
+                        if (dataround.isplayer)
+                            if (handCardlist.Count >= ConfigConst.maxCardHand)
+                                desList.Add(item);
+                            else
+                                handCardlist.Add(item);
+                        else
+                            if (handEnemylist.Count >= ConfigConst.maxCardHand)
+                                desList.Add(item);
+                            else
+                                handEnemylist.Add(item);
+                        int index = i;
+                        item.playJustShowAnim(() =>
+                        {
+                            if (index == dataround.gift.Count-1)
+                            {
+                                RunSingel.Instance.laterDo(2, () => {
+                                    if (dataround.isplayer)
+                                        refreshCard();
+                                    else
+                                        refreshEnemyCard();
+                                    foreach (var cad in desList)
+                                        cad.playCounterAnim(null);
+                                    RunSingel.Instance.laterDo(1.5f, playerNextQue);
+                                });
+                            }
+                        });
+                    }
+                });
+            }
         }
         //下一张
         addAction(() => { EventAction.Instance.TriggerAction(eventType.playRoundNext); });
         playerNextQue();
     }
+
     //展示卡对齐（回调
     void cardAlign(RoundData data)
     {

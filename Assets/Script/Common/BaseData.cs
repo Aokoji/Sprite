@@ -20,30 +20,34 @@ public class AssetData:ScriptableObject
             case "float":return float.Parse(context);
             case "CardType1":return (CardType1)int.Parse(context);
             case "CardType2": return (CardType2)int.Parse(context);
-            case "CardLimitType": return (CardLimitType)int.Parse(context);
+            case "CardSelfType": return (CardSelfType)int.Parse(context);
             default:return null;
         }
     }
 }
 public enum CardType1
 {
-    take,       //直接生效
-    condition,  //条件
-    condition_two,  //2条件
-    condition_special,  //多条件
+    take,       //非集换
+    condition,  //单次
+    condition_two,  //培养
+    condition_special,  //消耗魔法书
+    condition_special1,  //普通魔法书不消耗
 }
-public enum CardLimitType
+public enum CardSelfType
 {
-    own,    //无限制
-    onceLoop,   //单次无损耗
-    used,   //消耗的
-    fatigue,//耐久的
+    normal,
+    fire,
+    water,
+    thunder,
+    forest,
+    arcane,//奥术
+    arcane_special,//奥术
 }
 public enum CardType2
 {
     n_hit,  //直伤0
-    n_preempt,  //先制1
-    n_continuous,   //连击2
+    n_preempt,  //先制1   空出来damage1
+    n_continuous,   //连击2   空出来damage1
     n_thump,    //重击3
     n_recover,  //恢复4
     n_defence,  //护盾5
@@ -53,9 +57,9 @@ public enum CardType2
     e_gift, //获得卡 9
     e_addition, //填卡    10
     e_defend,   //屏障    11
-    e_power,    //秘术    12
-    e_decounter, //反counter  13真言
-	//火焰 潮汐 雷霆 森林 奥术
+    d_power,    //秘术    12
+    d_decounter, //反counter  13真言
+    //标识最优先     真言  其次--    先制，诅咒，秘术，获得卡
 }
 
 

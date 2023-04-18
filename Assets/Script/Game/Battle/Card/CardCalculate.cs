@@ -26,4 +26,33 @@ public class CardCalculate
         }
         return getRandomList(list);
     }
+    public static int getRandomTypeCardList(CardSelfType type)
+    {
+        int result=0;
+        switch (type)
+        {
+            case CardSelfType.normal:
+                result = TableManager.Instance.stall_normal[Random.Range(0,TableManager.Instance.stall_normal.Count)];
+                break;
+            case CardSelfType.fire:
+                result = TableManager.Instance.stall_fire[Random.Range(0, TableManager.Instance.stall_fire.Count)];
+                break;
+            case CardSelfType.water:
+                result = TableManager.Instance.stall_water[Random.Range(0, TableManager.Instance.stall_water.Count)];
+                break;
+            case CardSelfType.thunder:
+                result = TableManager.Instance.stall_thunder[Random.Range(0, TableManager.Instance.stall_thunder.Count)];
+                break;
+            case CardSelfType.forest:
+                result = TableManager.Instance.stall_forest[Random.Range(0, TableManager.Instance.stall_forest.Count)];
+                break;
+            case CardSelfType.arcane:
+                result = TableManager.Instance.stall_arcane[Random.Range(0, TableManager.Instance.stall_arcane.Count)];
+                break;
+            case CardSelfType.arcane_special:
+                result = TableManager.Instance.stall_arcane_special[Random.Range(0, TableManager.Instance.stall_arcane_special.Count)];
+                break;
+        }
+        return result;
+    }
 }

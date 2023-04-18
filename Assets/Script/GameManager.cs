@@ -15,6 +15,7 @@ public class GameManager : CSingel<GameManager>
         TableManager.Instance.init();
         while (!TableManager.Instance.loadsuccess)
             yield return null;
+        TableManager.Instance.initAllCardStallTypeData();
         PlayerManager.Instance.init();
         while (!PlayerManager.Instance.loadsuccess)
             yield return null;

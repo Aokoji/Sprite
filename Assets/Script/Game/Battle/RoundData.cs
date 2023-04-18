@@ -18,4 +18,5 @@ public class RoundData : BaseData
     public bool isdefend;       //被防护
     public bool isCounter;  //被反制
     public bool isdecounter;    //反反制成功
+    public List<int> gift = new List<int>();
 }

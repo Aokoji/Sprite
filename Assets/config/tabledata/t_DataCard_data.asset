@@ -54,7 +54,7 @@ MonoBehaviour:
     limitcount: 99
   - id: 4
     sname: "\u8702\u523A"
-    sDescribe: "\u5148\u5236\uFF0C\u9020\u62102\u70B9\u4F24\u5BB3"
+    sDescribe: "\u5148\u5236\uFF0C\u9020\u62101\u70B9\u4F24\u5BB3"
     type1: 0
     type2: 1
     limit: 0
@@ -67,7 +67,7 @@ MonoBehaviour:
     limitcount: 2
   - id: 5
     sname: "\u85E4\u8513\u5C4F\u969C"
-    sDescribe: "\u83B7\u5F975\u70B9\u9632\u5FA1"
+    sDescribe: "\u83B7\u5F974\u70B9\u9632\u5FA1"
     type1: 0
     type2: 5
     limit: 0
@@ -106,7 +106,7 @@ MonoBehaviour:
     limitcount: 2
   - id: 8
     sname: "\u9B54\u6CD5\u8FDE\u643A"
-    sDescribe: "\u9020\u62101\u70B9\u4F24\u5BB3\uFF0C\u8FDE\u51FB\uFF0C\u989D\u5916\u9020\u62104\u70B9\u4F24\u5BB3"
+    sDescribe: "\u9020\u62101\u70B9\u4F24\u5BB3\uFF0C\u8FDE\u51FB\uFF0C\u989D\u5916\u9020\u62102\u70B9\u4F24\u5BB3"
     type1: 0
     type2: 2
     limit: 0
@@ -119,7 +119,7 @@ MonoBehaviour:
     limitcount: 2
   - id: 9
     sname: "\u5F3A\u529B\u6C34\u70AE"
-    sDescribe: "\u9020\u62102\u70B9\u4F24\u5BB3\uFF0C\u91CD\u51FB\uFF0C\u989D\u5916\u9020\u62105\u70B9\u4F24\u5BB3"
+    sDescribe: "\u9020\u62101\u70B9\u4F24\u5BB3\uFF0C\u91CD\u51FB\uFF0C\u989D\u5916\u9020\u62102\u70B9\u4F24\u5BB3"
     type1: 0
     type2: 3
     limit: 0
@@ -132,7 +132,7 @@ MonoBehaviour:
     limitcount: 2
   - id: 10
     sname: "\u8574\u7075"
-    sDescribe: "\u6062\u590D8\u70B9\u751F\u547D"
+    sDescribe: "\u6062\u590D6\u70B9\u751F\u547D"
     type1: 0
     type2: 4
     limit: 0
@@ -158,7 +158,7 @@ MonoBehaviour:
     limitcount: 2
   - id: 12
     sname: "\u75BE\u98CE\u672F"
-    sDescribe: "\u5148\u5236\uFF0C\u9020\u62104\u70B9\u4F24\u5BB3"
+    sDescribe: "\u5148\u5236\uFF0C\u9020\u62102\u70B9\u4F24\u5BB3"
     type1: 0
     type2: 1
     limit: 0
@@ -172,7 +172,7 @@ MonoBehaviour:
   - id: 13
     sname: "\u9F99\u708E\u672F"
     sDescribe: "\u9020\u62102\u70B9\u4F24\u5BB3\uFF0C\u79D8\u672F\uFF0C\u989D\u5916\u9020\u62108\u70B9\u706B\u7130\u4F24\u5BB3"
-    type1: 0
+    type1: 1
     type2: 12
     limit: 0
     conditionType: 0
@@ -182,3 +182,107 @@ MonoBehaviour:
     damage3: 0
     cost: 2
     limitcount: 1
+  - id: 14
+    sname: "\u6C89\u6CA1\u7684\u5B9D\u85CF"
+    sDescribe: "\u968F\u673A\u83B7\u5F973\u5F20\u6F6E\u6C50\u6CD5\u672F\u724C"
+    type1: 1
+    type2: 9
+    limit: 2
+    conditionType: 0
+    conditionType2: 0
+    damage1: 3
+    damage2: 0
+    damage3: 0
+    cost: 2
+    limitcount: 2
+  - id: 15
+    sname: "\u5965\u672F\u9B54\u5178"
+    sDescribe: "\u968F\u673A\u83B7\u5F975\u5F20\u5F3A\u5927\u7684\u5965\u672F\u6CD5\u672F\u724C"
+    type1: 1
+    type2: 9
+    limit: 6
+    conditionType: 0
+    conditionType2: 0
+    damage1: 5
+    damage2: 0
+    damage3: 0
+    cost: 4
+    limitcount: 1
+  - id: 16
+    sname: "\u9668\u661F"
+    sDescribe: "\u79D8\u672F\uFF0C\u9020\u62109\u70B9\u5965\u672F\u4F24\u5BB3\uFF0C\u8BC5\u5492"
+    type1: 1
+    type2: 12
+    limit: 5
+    conditionType: 0
+    conditionType2: 0
+    damage1: 5
+    damage2: 0
+    damage3: 0
+    cost: 3
+    limitcount: 1
+  - id: 17
+    sname: "\u9AD8\u901F\u548F\u5531"
+    sDescribe: "\u5148\u5236\uFF0C\u9020\u62104\u70B9\u5965\u672F\u4F24\u5BB3\uFF0C\u771F\u8A00"
+    type1: 1
+    type2: 13
+    limit: 5
+    conditionType: 1
+    conditionType2: 0
+    damage1: 4
+    damage2: 0
+    damage3: 0
+    cost: 1
+    limitcount: 1
+  - id: 18
+    sname: "\u9B54\u529B\u589E\u5E45"
+    sDescribe: "\u8FDE\u51FB\uFF0C\u9020\u62106\u70B9\u5965\u672F\u4F24\u5BB3\uFF0C\u62BD1\u5F20\u724C"
+    type1: 1
+    type2: 2
+    limit: 5
+    conditionType: 7
+    conditionType2: 0
+    damage1: 6
+    damage2: 1
+    damage3: 0
+    cost: 2
+    limitcount: 1
+  - id: 19
+    sname: "\u7B26\u6587\u58C1\u5792"
+    sDescribe: "\u5C4F\u969C\uFF0C\u9020\u62105\u70B9\u5965\u672F\u4F24\u5BB3"
+    type1: 1
+    type2: 11
+    limit: 5
+    conditionType: 0
+    conditionType2: 0
+    damage1: 5
+    damage2: 0
+    damage3: 0
+    cost: 1
+    limitcount: 1
+  - id: 20
+    sname: "\u7981\u5FCC\u7EB9\u7AE0\xB7\u4E00"
+    sDescribe: "\u9B54\u529B\u67AF\u7AED\uFF0C\u5BF9\u81EA\u5DF1\u9020\u62107\u70B9\u5965\u672F\u4F24\u5BB3\uFF0C\u7ED9\u5BF9\u624B\u9020\u621014\u70B9\u4F24\u5BB3"
+    type1: 1
+    type2: 8
+    limit: 5
+    conditionType: 0
+    conditionType2: 0
+    damage1: 14
+    damage2: 7
+    damage3: 0
+    cost: 3
+    limitcount: 1
+  - id: 21
+    sname: "\u5524\u6F6E"
+    sDescribe: "\u6062\u590D4\u70B9\u751F\u547D\uFF0C\u7ED9\u5BF9\u624B\u9020\u62102\u70B9\u4F24\u5BB3"
+    type1: 0
+    type2: 4
+    limit: 2
+    conditionType: 0
+    conditionType2: 0
+    damage1: 4
+    damage2: 2
+    damage3: 0
+    cost: 2
+    limitcount: 2

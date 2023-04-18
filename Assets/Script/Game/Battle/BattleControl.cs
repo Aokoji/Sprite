@@ -78,39 +78,20 @@ public class BattleControl :Object
         RoundData rounddata;
         Queue<CardEntity> playerque = new Queue<CardEntity>();
         Queue<CardEntity> enemyque = new Queue<CardEntity>();
-        datas.ForEach(item=>{ playerque.Enqueue(item); });
-        endata.ForEach(item=>{ enemyque.Enqueue(item); });
-        int countround = playerque.Count+enemyque.Count;
-        bool isplayerround=true;
-        for (int i = 0; i < countround; i++)
-        {
-            if (isplayerround)
-            {
-                if (playerque.Count <= 0) continue;
-                willTake.Enqueue(isplayerround);
-                rounddata = new RoundData();
-                rounddata.entity = playerque.Dequeue();
-                rounddata._card = rounddata.entity._data;
-                rounddata.isplayer = true;
-                if (rounddata._card.type2 != CardType2.n_preempt || playerque.Count <= 0)
-                    isplayerround = false;
-                if (enemyque.Count <= 0) isplayerround = true;
-                willTakeplayerque.Enqueue(rounddata);
-            }
-            else
-            {
-                if (enemyque.Count <= 0) continue;
-                willTake.Enqueue(isplayerround);
-                rounddata = new RoundData();
-                rounddata.entity = enemyque.Dequeue();
-                rounddata._card = rounddata.entity._data;
-                rounddata.isplayer = false;
-                if (rounddata._card.type2 != CardType2.n_preempt || enemyque.Count <= 0)
-                    isplayerround = true;
-                if (playerque.Count <= 0) isplayerround = false;
-                willTakeenemyque.Enqueue(rounddata);
-            }
-        }
+        datas.ForEach(item=>{
+            rounddata = new RoundData();
+            rounddata.entity = item;
+            rounddata._card = rounddata.entity._data;
+            rounddata.isplayer = true;
+            willTakeplayerque.Enqueue(rounddata);
+        });
+        endata.ForEach(item=>{
+            rounddata = new RoundData();
+            rounddata.entity = item;
+            rounddata._card = rounddata.entity._data;
+            rounddata.isplayer = false;
+            willTakeenemyque.Enqueue(rounddata);
+        });
         round = 0;
         pContinuous = 0;
         eContinuous = 0;
@@ -120,14 +101,16 @@ public class BattleControl :Object
         isdefendP = false;
         ispowerE = willTakeenemyque.Count == 1;
         ispowerP = willTakeplayerque.Count == 1;
-        if (willTake.Count > 0)
+        if (willTakeenemyque.Count+ willTakeplayerque.Count > 0)
         {
+            isplayerround = player.speed >= enemy.speed;
             ui.playRoundWillShow();
         }
         else
             Debug.LogError("无人出牌 处理一下逻辑问题。");
     }
     //      ----------------------------        *******循环体*******       --------------------------------------------
+    private bool isplayerround;
     private void roundNext()
     {
         if (!gamecheck())
@@ -136,7 +119,7 @@ public class BattleControl :Object
             return;
         }
         //结束检测
-        if (willTake.Count <=0)
+        if (willTakeenemyque.Count + willTakeplayerque.Count <= 0)
         {
             endRoundSettle();
             return;
@@ -144,17 +127,17 @@ public class BattleControl :Object
         //获取数据
         round++;
         RoundData data;
-        if (willTake.Dequeue())
+        if (isplayerround)
             data = willTakeplayerque.Dequeue();
         else
             data = willTakeenemyque.Dequeue();
         //计算反制
-        if ((data.isplayer && iscounterP)|| (!data.isplayer && iscounterE))
+        if ((isplayerround && iscounterP)|| (!isplayerround && iscounterE))
         {
             //还原值
-            if (data.isplayer) iscounterP = false;
+            if (isplayerround) iscounterP = false;
             else iscounterE = false;
-            if (data._card.type2 == CardType2.e_decounter )
+            if (data._card.type2 == CardType2.d_decounter )
             {
                 data.isdecounter = true;
                 data.isCounter = false;
@@ -162,6 +145,7 @@ public class BattleControl :Object
             else
             {
                 data.isCounter = true;
+                isplayerround = !isplayerround;
                 continuousShut(data.isplayer);
                 playCardNext(data);
                 return;
@@ -173,67 +157,76 @@ public class BattleControl :Object
         {
             case CardType2.n_hit:
                 data.hitnum = data._card.damage1;
-                continuousAdd(data.isplayer);
                 break;
             case CardType2.n_preempt:
                 data.hitnum = data._card.damage1;
-                continuousAdd(data.isplayer);
+                conditionTypeCalculate(data, data._card.conditionType, data._card.damage2);
+                conditionTypeCalculate(data, data._card.conditionType2, data._card.damage3);
                 break;
             case CardType2.n_continuous:
+                data.hitnum = data._card.damage1;
                 data.continuousnum = data.isplayer ? pContinuous : eContinuous;
-                int extrahit = 0;
-                //目前判断超过1就生效+damage2
-                if (data.isplayer && pContinuous >= 1) extrahit = data._card.damage2;
-                if (!data.isplayer && eContinuous >= 1) extrahit = data._card.damage2;
-                data.hitnum = data._card.damage1 + extrahit;
-                continuousAdd(data.isplayer);
+                if ((data.isplayer && pContinuous >= 1)||(!data.isplayer && eContinuous>=1))
+                {
+                    conditionTypeCalculate(data, data._card.conditionType, data._card.damage2);
+                    conditionTypeCalculate(data, data._card.conditionType2, data._card.damage3);
+                }
                 break;
             case CardType2.n_thump:
-                if (data.isplayer && willTakeenemyque.Count<=0)
-                    data.hitnum = data._card.damage1 + data._card.damage2;
-                if (!data.isplayer && willTakeplayerque.Count <= 0)
-                    data.hitnum = data._card.damage1 + data._card.damage2;
-                continuousAdd(data.isplayer);
+                data.hitnum = data._card.damage1;
+                if ((data.isplayer && willTakeenemyque.Count<=0)||(!data.isplayer && willTakeplayerque.Count <= 0))
+                {
+                    conditionTypeCalculate(data, data._card.conditionType, data._card.damage2);
+                    conditionTypeCalculate(data, data._card.conditionType2, data._card.damage3);
+                }
                 break;
             case CardType2.n_recover:
                 data.recovernum = data._card.damage1;
-                continuousShut(data.isplayer);
+                conditionTypeCalculate(data, data._card.conditionType, data._card.damage2);
+                conditionTypeCalculate(data, data._card.conditionType2, data._card.damage3);
                 break;
             case CardType2.n_defence:
                 data.defnum = data._card.damage1;
-                continuousShut(data.isplayer);
+                conditionTypeCalculate(data, data._card.conditionType, data._card.damage2);
+                conditionTypeCalculate(data, data._card.conditionType2, data._card.damage3);
                 break;
             case CardType2.n_counter:
                 if (data.isplayer) iscounterE = true;
                 else iscounterP = true;
-                continuousShut(data.isplayer);
+                conditionTypeCalculate(data, data._card.conditionType, data._card.damage1);
+                conditionTypeCalculate(data, data._card.conditionType2, data._card.damage2);
                 break;
             case CardType2.n_deal:
                 data.dealnum = data._card.damage1;
+                conditionTypeCalculate(data, data._card.conditionType, data._card.damage2);
+                conditionTypeCalculate(data, data._card.conditionType2, data._card.damage3);
                 break;
             case CardType2.e_deplete:
                 data.hitnum = data._card.damage1;
                 data.hitselfnum = data._card.damage2;
-                continuousAdd(data.isplayer);
+                conditionTypeCalculate(data, data._card.conditionType, data._card.damage3);
                 break;
             case CardType2.e_gift:
+                for(int i = 0; i < data._card.damage1; i++)
+                    data.gift.Add(CardCalculate.getRandomTypeCardList(data._card.limit));
                 break;
             case CardType2.e_addition:
                 break;
             case CardType2.e_defend:
                 if (data.isplayer) isdefendP = true;
                 else isdefendE = true;
-                conditionTypeCalculate1(data);
+                conditionTypeCalculate(data, data._card.conditionType, data._card.damage1);
+                conditionTypeCalculate(data, data._card.conditionType2, data._card.damage2);
                 break;
-            case CardType2.e_power:
-                conditionTypeCalculate1(data);
+            case CardType2.d_power:
+                conditionTypeCalculate(data, data._card.conditionType, data._card.damage1);
                 if ((ispowerP && data.isplayer) || (ispowerE && !data.isplayer))
-                    conditionTypeCalculate2(data);
+                    conditionTypeCalculate(data, data._card.conditionType2, data._card.damage2);
                 break;
-            case CardType2.e_decounter:
-                conditionTypeCalculate1(data);
+            case CardType2.d_decounter:
+                conditionTypeCalculate(data, data._card.conditionType, data._card.damage1);
                 if (data.isdecounter)
-                    conditionTypeCalculate2(data);
+                    conditionTypeCalculate(data, data._card.conditionType2, data._card.damage2);
                 break;
         }
         //屏障 特殊结算
@@ -252,48 +245,50 @@ public class BattleControl :Object
                 data.isdefend = true;
             }
         }
+        //连击计算
+        if (data.hitnum == 0)
+            continuousShut(data.isplayer);
+        else
+            continuousAdd(data.isplayer);
+        //回合计算
+        if(data._card.type2!=CardType2.n_preempt&&data._card.conditionType!=CardType2.n_preempt&&data._card.conditionType2!=CardType2.n_preempt)
+            isplayerround = !isplayerround;
+        if (willTakeplayerque.Count <= 0) isplayerround = false;
+        if (willTakeenemyque.Count <= 0) isplayerround = true;
         playCardNext(data);
     }
 
     //条件 check
-    private void conditionTypeCalculate1(RoundData data)
+    private void conditionTypeCalculate(RoundData data,CardType2 type,int damage)
     {
-        switch (data._card.conditionType)
+        switch (type)
         {
             case CardType2.n_hit:
-                data.hitnum = data._card.damage1;
-                if (data._card.damage1 > 0)
-                    continuousAdd(data.isplayer);
+                data.hitnum += damage;
                 break;
             case CardType2.n_deal:
-                data.dealnum = data._card.damage1;
-                continuousShut(data.isplayer);
+                data.dealnum += damage;
                 break;
             case CardType2.n_defence:
-                data.defnum = data._card.damage1;
-                continuousShut(data.isplayer);
+                data.defnum += damage;
                 break;
             case CardType2.n_recover:
-                data.recovernum = data._card.damage1;
-                continuousShut(data.isplayer);
+                data.recovernum += damage;
                 break;
-        }
-    }
-    private void conditionTypeCalculate2(RoundData data)
-    {
-        switch (data._card.conditionType2)
-        {
-            case CardType2.n_hit:
-                data.hitnum += data._card.damage2;
+            case CardType2.n_continuous:
+                if ((!data.isplayer && eContinuous >= 1) || (data.isplayer && pContinuous>=1)) data.hitnum+= damage;
+                data.continuousnum = data.isplayer ? pContinuous : eContinuous;
                 break;
-            case CardType2.n_deal:
-                data.dealnum += data._card.damage2;
+            case CardType2.n_thump:
+                if ((data.isplayer && willTakeenemyque.Count <= 0) || (!data.isplayer && willTakeplayerque.Count <= 0))
+                    data.hitnum += damage;
                 break;
-            case CardType2.n_defence:
-                data.defnum += data._card.damage2;
+            case CardType2.n_preempt:
+                data.recovernum += damage;
                 break;
-            case CardType2.n_recover:
-                data.recovernum += data._card.damage2;
+            case CardType2.e_gift:
+                for (int i = 0; i < damage; i++)
+                    data.gift.Add(CardCalculate.getRandomTypeCardList(data._card.limit));
                 break;
         }
     }

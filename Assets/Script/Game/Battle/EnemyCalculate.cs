@@ -35,4 +35,6 @@ public class EnemyCalculate
         }
         return result;
     }
+    //优先级  血多-伤害    血少-恢复护盾
+    //玩家牌多  屏障，牌少-反制
 }

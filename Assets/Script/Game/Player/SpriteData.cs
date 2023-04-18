@@ -14,6 +14,7 @@ public class SpriteData
     public int def_cur;
     public int dodge;
     public int block;   //格挡
+    public int speed;
 
     public int cost_max;
     public int cost_cur;
