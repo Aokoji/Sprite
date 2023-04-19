@@ -1,39 +1,43 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UITool_ScrollView :MonoBehaviour {
 
-	public GameObject content;
+	public GridLayoutGroup content;
 
-    private List<GameObject> childs;
+    private List<GameObject> childs = new List<GameObject>();
     private string loadPath;
-    public void init(int stype)
+    int rowcount;
+    int itemwidth;
+    int itemheight;
+
+    public void initConfig(int width,int heigh)
     {
-        childs = new List<GameObject>();
+        itemwidth = width;
+        itemheight = heigh;
+        content.cellSize = new Vector2(itemwidth, itemheight);
+        rowcount = (int)(GetComponent<RectTransform>().sizeDelta.x / (width + content.spacing.x));
     }
 
-	public GameObject addNewItem()
+	public GameObject addNewItem(GameObject obj)
     {
-        GameObject obj=null;
-        foreach(var i in childs)
-        {
-            if (!i.activeSelf)
-            {
-                obj = i;
-                break;
-            }
-        }
-        if (null == obj)
-        {
-            //load path
-            obj = new GameObject();
-            obj.transform.SetParent(content.transform, false);
-            childs.Add(obj);
-        }
+        obj.transform.SetParent(content.transform, false);
+        childs.Add(obj);
         obj.transform.SetAsLastSibling();
         return obj;
     }
+    public void reCalculateHeigh()
+    {
+        int high = childs.Count / rowcount;
+        if ((float)childs.Count % rowcount > 0)
+        {
+            high++;
+        }
+        content.GetComponent<RectTransform>().sizeDelta =new Vector2(0, high* (itemheight + content.spacing.x));
+    }
+
     public void removeLastItem()
     {
         if (childs.Count == 0)

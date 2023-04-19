@@ -9,6 +9,7 @@ public enum E_UIPrefab
     Tips1,
     BattlePanel,
     StartPanel,
+    CardsetPanel,
 
     //ui
     cardHand,
