@@ -18,6 +18,7 @@ public class CardsetItem:MonoBehaviour
         else
         {
             context.text = data.sname;
+            cost.text = data.cost.ToString();
         }
     }
 }

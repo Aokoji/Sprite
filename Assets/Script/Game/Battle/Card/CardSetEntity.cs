@@ -13,6 +13,9 @@ public class CardSetEntity : UIBase
     public GameObject body;
     public Text cost;
 
+    public GameObject limit;
+    public Text limitnum;
+
     //单张卡
     public t_DataCard _data;
     public Action<CardSetEntity> onChoose;
@@ -27,6 +30,8 @@ public class CardSetEntity : UIBase
         refreshCard();
         GetComponent<Button>().onClick.AddListener(onchoose);
         clickAllow = true;
+        //先不管携带问题
+        limit.SetActive(false);
     }
     private void refreshCard()
     {
