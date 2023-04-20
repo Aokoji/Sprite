@@ -46,9 +46,18 @@ public class PlayerManager : CSingel<PlayerManager>
             AssetManager.saveAsset(playerAsset, CARD_TEST_PATH + ".asset");
         }
     }
+    public void savePlayerData()
+    {
+        AssetManager.saveAsset(playerAsset, CARD_TEST_PATH + ".asset");
+    }
 
     public List<int> getPlayerCards()
     {
         return playerdata.playerCards;
+    }
+    public void setPlayerCards(List<int> cards)
+    {
+        playerdata.playerCards= cards;
+        savePlayerData();
     }
 }

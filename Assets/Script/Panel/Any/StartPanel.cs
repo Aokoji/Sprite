@@ -22,7 +22,7 @@ public class StartPanel : PanelBase
     }
     private void editgame()
     {
-        
+        PanelManager.Instance.OpenPanel(E_UIPrefab.CardsetPanel);
     }
     private void exitgame()
     {

@@ -15,7 +15,7 @@ MonoBehaviour:
   playdata:
     id: 0
     sname: 
-    playerCards: 1100000011000000110000001100000011000000110000001100000011000000110000001100000011000000110000001100000011000000110000001100000011000000110000001100000011000000
+    playerCards: 
     playerAllCards: 
     sprites:
     - id: 1
@@ -27,6 +27,7 @@ MonoBehaviour:
       dodge: 0
       block: 0
       speed: 0
+      extraLimit: 0
       cost_max: 3
       cost_cur: 3
       takeDefaultCardsID: 1
