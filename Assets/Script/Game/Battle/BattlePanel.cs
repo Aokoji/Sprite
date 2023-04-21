@@ -579,6 +579,16 @@ public class BattlePanel : PanelBase
                     }
                 });
             }
+            if (dataround.addition > 0)
+            {
+                playerque = CardCalculate.addOneCard(playerque, dataround.addition);
+                var item = newcard(Config_t_DataCard.getOne(dataround.addition));
+                item.transform.position = giftsCardPos[2].transform.position;
+                item.playNormalShowAnim(() =>
+                {
+                    RunSingel.Instance.moveToAll(item.gameObject, createCardPos.position, MoveType.moveAll_STF, ConfigConst.cardtime_addition, Vector3.one / 2, createCardPosIn.eulerAngles, playerNextQue);
+                });
+            }
         }
         //下一张
         addAction(() => { cardAlign(dataround); });     //对齐

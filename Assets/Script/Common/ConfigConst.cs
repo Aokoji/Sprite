@@ -16,7 +16,14 @@ public static class ConfigConst
     public static float cardtime_effectShow = 1.25f; //卡生效放大展示时间
     public static float cardtime_effectMove = 0.4f; //攻击粒子飞行时间
     public static float cardtime_effectMoveSlow = 0.6f; //攻击粒子慢飞行时间
+    public static float cardtime_addition = 1f; //填卡
 
     public static int dealcard_constID = 2;    //魔法糖（抽卡）默认id
     public static int dealcard_useUp = 3;    //疲劳抽卡 默认id
+
+    public static Vector3 colorForest = new Vector3(164,210,146);
+    public static Vector3 colorFire = new Vector3(215,129,125);
+    public static Vector3 colorWater = new Vector3(134,183,217);
+    public static Vector3 colorThunder = new Vector3(223, 227, 115);
+
 }

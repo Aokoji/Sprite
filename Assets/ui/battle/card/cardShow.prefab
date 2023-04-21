@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7100483029244108460
 RectTransform:
   m_ObjectHideFlags: 0
@@ -837,13 +837,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.87389016, g: 0.8867924, b: 0.4475792, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 48b55012acf269d47ad1b5bb65c712ba, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4869bd443627bda4abd65272730bcfb7, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1

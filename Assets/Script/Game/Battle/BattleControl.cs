@@ -211,6 +211,9 @@ public class BattleControl :Object
                     data.gift.Add(CardCalculate.getRandomTypeCardList(data._card.limit));
                 break;
             case CardType2.e_addition:
+                data.addition = data._card.damage1;
+                conditionTypeCalculate(data, data._card.conditionType, data._card.damage2);
+                conditionTypeCalculate(data, data._card.conditionType2, data._card.damage3);
                 break;
             case CardType2.e_defend:
                 if (data.isplayer) isdefendP = true;
@@ -227,6 +230,11 @@ public class BattleControl :Object
                 conditionTypeCalculate(data, data._card.conditionType, data._card.damage1);
                 if (data.isdecounter)
                     conditionTypeCalculate(data, data._card.conditionType2, data._card.damage2);
+                break;
+            case CardType2.e_giftone:
+                data.gift.Add(data._card.damage1);
+                conditionTypeCalculate(data, data._card.conditionType, data._card.damage1);
+                conditionTypeCalculate(data, data._card.conditionType2, data._card.damage2);
                 break;
         }
         //屏障 特殊结算
@@ -289,6 +297,12 @@ public class BattleControl :Object
             case CardType2.e_gift:
                 for (int i = 0; i < damage; i++)
                     data.gift.Add(CardCalculate.getRandomTypeCardList(data._card.limit));
+                break;
+            case CardType2.e_giftone:
+                data.gift.Add(damage);
+                break;
+            case CardType2.e_addition:
+                data.addition = damage;
                 break;
         }
     }

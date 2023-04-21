@@ -20,6 +20,10 @@ public class PubTool
     public static void timeScaleSet(float v) { Time.timeScale = v; }
     public static void timeScaleReset() { Time.timeScale = 1; }
 
+    public static Color getColor(Vector3 vec)
+    {
+        return new Color(vec.x / 255, vec.y / 255, vec.z / 255);
+    }
 }
 public enum MoveType
 {

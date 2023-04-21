@@ -60,7 +60,9 @@ public enum CardType2
     d_power,    //秘术    12
     d_decounter, //反counter  13真言
     s_double, //  14翻倍
-    s_weapon    //15 装备+++
+    n_broke, //  15破甲
+    e_giftone, //  16定向获得
+    s_weapon    //17 装备+++
     //标识最优先     真言  其次--    先制，诅咒，秘术，获得卡
 }
 

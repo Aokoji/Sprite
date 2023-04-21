@@ -71,4 +71,8 @@ public class CardEntity : UIBase
     {
         AnimationTool.playAnimation(gameObject, "cardCounter", false, callback);
     }
+    public void playNormalShowAnim(Action callback)
+    {
+        AnimationTool.playAnimation(gameObject, "cardNormalShow", false, callback);
+    }
 }

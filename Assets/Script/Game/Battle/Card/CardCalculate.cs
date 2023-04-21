@@ -55,4 +55,16 @@ public class CardCalculate
         }
         return result;
     }
+    public static Queue<int> addOneCard(Queue<int> table,int id)
+    {
+        int index = Random.Range(0, table.Count);
+        Queue<int> list = new Queue<int>();
+        for(int i = 0; i < table.Count; i++)
+        {
+            if (i == index)
+                list.Enqueue(id);
+            list.Enqueue(table.Dequeue());
+        }
+        return list;
+    }
 }
