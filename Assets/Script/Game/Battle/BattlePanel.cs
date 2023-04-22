@@ -565,7 +565,7 @@ public class BattlePanel : PanelBase
                         {
                             if (index == dataround.gift.Count-1)
                             {
-                                RunSingel.Instance.laterDo(2, () => {
+                                RunSingel.Instance.laterDo(1.5f, () => {
                                     if (dataround.isplayer)
                                         refreshCard();
                                     else
@@ -581,13 +581,15 @@ public class BattlePanel : PanelBase
             }
             if (dataround.addition > 0)
             {
-                playerque = CardCalculate.addOneCard(playerque, dataround.addition);
-                var item = newcard(Config_t_DataCard.getOne(dataround.addition));
-                item.transform.position = giftsCardPos[2].transform.position;
-                item.playNormalShowAnim(() =>
-                {
-                    RunSingel.Instance.moveToAll(item.gameObject, createCardPos.position, MoveType.moveAll_STF, ConfigConst.cardtime_addition, Vector3.one / 2, createCardPosIn.eulerAngles, playerNextQue);
-                });
+				addAction(() => {
+					playerque = CardCalculate.addOneCard(playerque, dataround.addition);
+					var item = newcard(Config_t_DataCard.getOne(dataround.addition));
+					item.transform.position = giftsCardPos[2].transform.position;
+					item.playNormalShowAnim(() =>
+					{
+						RunSingel.Instance.moveToAll(item.gameObject, createCardPos.position, MoveType.moveAll_STF, ConfigConst.cardtime_addition, Vector3.one / 2, createCardPosIn.eulerAngles, playerNextQue);
+					});
+				});
             }
         }
         //下一张
@@ -621,5 +623,6 @@ public class BattlePanel : PanelBase
     {
         PanelManager.Instance.showTips1("游戏结束");
         PanelManager.Instance.panelLock();
+		RunSingel.Instance.laterDo(1.5f, ()=>{ PanelManager.Instance.OpenPanel(E_UIPrefab.StartPanel);});
     }
 }

@@ -30,6 +30,8 @@ public class CardEntity : UIBase
         transform.position = Vector3.zero;
         transform.eulerAngles = Vector3.zero;
         transform.localScale = Vector3.one;
+        body.transform.localScale = Vector3.one;
+        GetComponent<CanvasGroup>().alpha=1;
         _data = data;
         refreshCard();
         GetComponent<Button>().onClick.AddListener(onchoose);

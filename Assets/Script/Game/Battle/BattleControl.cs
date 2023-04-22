@@ -127,6 +127,8 @@ public class BattleControl :Object
         //获取数据
         round++;
         RoundData data;
+        if(willTakeplayerque.Count<=0) isplayerround=false;
+        if(willTakeenemyque.Count<=0) isplayerround=true;
         if (isplayerround)
             data = willTakeplayerque.Dequeue();
         else
@@ -233,8 +235,8 @@ public class BattleControl :Object
                 break;
             case CardType2.e_giftone:
                 data.gift.Add(data._card.damage1);
-                conditionTypeCalculate(data, data._card.conditionType, data._card.damage1);
-                conditionTypeCalculate(data, data._card.conditionType2, data._card.damage2);
+                conditionTypeCalculate(data, data._card.conditionType, data._card.damage2);
+                conditionTypeCalculate(data, data._card.conditionType2, data._card.damage3);
                 break;
         }
         //屏障 特殊结算

@@ -16,3 +16,6 @@ MonoBehaviour:
   - id: 1
     cardsname: "\u57FA\u7840\u5361\u7EC4A\u68EE\u6797"
     cardlist: 1|1|4|4|5|5|6|6|7|7|8|8|9|9|10|10|11|11|12|12
+  - id: 2
+    cardsname: "\u6D4B\u8BD5\u589E\u5F3A\u5361\u7EC4"
+    cardlist: 31|31|32|32|35|35|39|39|41|41|15|15|7|7|38|28|5|25|17|48

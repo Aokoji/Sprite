@@ -51,6 +51,8 @@ public static class AssetManager
     {
         bool result = false;
         var obj = data as UnityEngine.Object;
+        if(File.Exists(path))
+          AssetDatabase.DeleteAsset(path);
         AssetDatabase.CreateAsset(obj, path);
         EditorUtility.SetDirty(obj);
         AssetDatabase.SaveAssets();
