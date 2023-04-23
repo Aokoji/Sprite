@@ -22,7 +22,6 @@ public class PanelManager : CSingel<PanelManager>
         basePanel = maincanvas.transform.Find("BasePanel");
         shadow = maincanvas.transform.Find("shadow").gameObject;
         panelUnlock();
-        Debug.Log("unlock");
         initEvent();
         loadSupplyPop();
     }
@@ -51,7 +50,6 @@ public class PanelManager : CSingel<PanelManager>
         curPanel = panel;
         while(panel==null)
             yield return null;
-        //shut end
         ChangePanelComplete();
     }
     public void ChangePanelComplete()

@@ -62,11 +62,13 @@ public class BattleControl :Object
     bool isdefendP;     //防护
     bool isdefendE;
 
+    bool firstplayer;//先后手
     bool iswin;
 
     public void StartRound()
     {
         //回合开始 发牌
+        firstplayer = true;
         ui.startGame();
     }
 
@@ -103,7 +105,7 @@ public class BattleControl :Object
         ispowerP = willTakeplayerque.Count == 1;
         if (willTakeenemyque.Count+ willTakeplayerque.Count > 0)
         {
-            isplayerround = player.speed >= enemy.speed;
+            isplayerround = firstplayer;
             ui.playRoundWillShow();
         }
         else
@@ -260,6 +262,7 @@ public class BattleControl :Object
             continuousShut(data.isplayer);
         else
             continuousAdd(data.isplayer);
+        firstplayer = !data.isplayer;
         //回合计算
         if(data._card.type2!=CardType2.n_preempt&&data._card.conditionType!=CardType2.n_preempt&&data._card.conditionType2!=CardType2.n_preempt)
             isplayerround = !isplayerround;
