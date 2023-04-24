@@ -10,6 +10,8 @@ public enum E_UIPrefab
     BattlePanel,
     StartPanel,
     CardsetPanel,
+    MainPanel,
+    MillPanel,
 
     //ui
     cardHand,
