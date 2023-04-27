@@ -6,6 +6,6 @@ public class TipPop1 : TipsBase
 {
     public override void play()
     {
-        AnimationTool.playAnimation(gameObject, "showtip1", false, () => { callback?.Invoke(); });
+        AnimationTool.playAnimation(gameObject, "showtip1", false, () => { callback?.Invoke(); gameObject.SetActive(false); });
     }
 }

@@ -16,6 +16,7 @@ public class TipsBase: UIBase
         context.text = str;
         callback = act;
         callback2 = act2;
+        allowClick = false;
         initEvent();
     }
     public virtual void initEvent() { }

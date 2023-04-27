@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class CardEntity : UIBase
 {
     public Image bg;
-    public Image desbg;
     public Text sname;
     public Text descirbe;
     public GameObject body;
@@ -59,6 +58,7 @@ public class CardEntity : UIBase
     {
         isback = !isback;
         backBG.SetActive(isback);
+        bg.gameObject.SetActive(!isback);
     }
 
     public void playJustShowAnim(Action callback)

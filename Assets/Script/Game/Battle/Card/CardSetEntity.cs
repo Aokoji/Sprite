@@ -38,6 +38,7 @@ public class CardSetEntity : UIBase
         sname.text = _data.sname.ToString();
         descirbe.text = _data.sDescribe.ToString();
         cost.text = _data.cost.ToString();
+        /*
         if (_data.type1 == 0)
         {
             if (_data.limit == CardSelfType.normal)
@@ -60,7 +61,7 @@ public class CardSetEntity : UIBase
         {
             bg.sprite = GetSprite("baseAtlas1", "buttonSquare_blue_pressed");
             bg.color = Color.white;
-        }
+        }*/
     }
     private void onchoose()
     {

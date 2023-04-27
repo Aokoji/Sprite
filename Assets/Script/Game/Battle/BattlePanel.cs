@@ -266,7 +266,7 @@ public class BattlePanel : PanelBase
             {
                 int index = i;
                 handCardlist[i].clickAllow = false;
-                RunSingel.Instance.moveToAll(handCardlist[i].gameObject, handCardPos[i].transform.position, MoveType.moveAll_FTS, ConfigConst.cardtime_refshMove, Vector3.one, Vector3.zero,()=> { handCardlist[index].clickAllow = true; });
+                RunSingel.Instance.moveToAll(handCardlist[index].gameObject, handCardPos[index].transform.position, MoveType.moveAll_FTS, ConfigConst.cardtime_refshMove, Vector3.one, Vector3.zero,()=> { handCardlist[index].clickAllow = true; });
             }
         }
     }
@@ -333,7 +333,7 @@ public class BattlePanel : PanelBase
             takeCardlist.Remove(card);
             handCardlist.Add(card);
             dealCardToHand(card);
-            refreshTakeCard();
+            refreshTakeCard();      //+++有问题
         }
         else
         {
@@ -345,7 +345,7 @@ public class BattlePanel : PanelBase
             takeCardlist.Add(card);
             dealCardToTake(card);
         }
-        refreshCard();
+        refreshCard();//+++有问题
     }
     
     private CardEntity newcard(t_DataCard data,bool isback=false)

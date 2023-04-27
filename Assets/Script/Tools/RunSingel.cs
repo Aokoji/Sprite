@@ -65,8 +65,6 @@ public class RunSingel : MonoBehaviour
         var script = obj.GetComponent<Anim_Move>();
         if (script == null)
             script = obj.AddComponent<Anim_Move>();
-        if (!force && script.isruning)
-            yield break;
         script.setData(target, time, type, bezier);
         script.startPlay(callback);
         yield return null;
@@ -76,8 +74,6 @@ public class RunSingel : MonoBehaviour
         var script = obj.GetComponent<Anim_Move>();
         if (script == null)
             script = obj.AddComponent<Anim_Move>();
-        if (!force && script.isruning)
-            yield break;
         script.setDataAll(target, time, type, scale, rotate);
         script.startPlay(callback);
         yield return null;

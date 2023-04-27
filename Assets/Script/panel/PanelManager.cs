@@ -111,16 +111,16 @@ public class PanelManager : CSingel<PanelManager>
     private TipsBase tip2;
     private void loadTips1Panel()
     {
-        var entity = AssetLoad.Instance.loadUIPrefab<TipsBase>(COMMON_PATH, E_UIPrefab.Tips1.ToString());
-        tip1 = UnityEngine.Object.Instantiate(entity);
+        var entity = AssetLoad.Instance.loadUIPrefab<GameObject>(COMMON_PATH, E_UIPrefab.Tips1.ToString());
+        tip1 = UnityEngine.Object.Instantiate(entity).GetComponent<TipsBase>();
         tip1.transform.SetParent(commonParent.transform);
         tip1.transform.localScale = Vector3.one;
         tip1.gameObject.SetActive(false);
     }
     private void loadTips2Panel()
     {
-        var entity = AssetLoad.Instance.loadUIPrefab<TipsBase>(COMMON_PATH, E_UIPrefab.Tips2.ToString());
-        tip2 = UnityEngine.Object.Instantiate(entity);
+        var entity = AssetLoad.Instance.loadUIPrefab<GameObject>(COMMON_PATH, E_UIPrefab.Tips2.ToString());
+        tip2 = UnityEngine.Object.Instantiate(entity).GetComponent<TipsBase>();
         tip2.transform.SetParent(commonParent.transform);
         tip2.transform.localScale = Vector3.one;
         tip2.gameObject.SetActive(false);
