@@ -243,8 +243,18 @@ public class BattlePanel : PanelBase
 
     public List<CardEntity> getEnemyround(SpriteData data)
     {
-        takeEnemylist = EnemyCalculate.calculateEnemyAction(handEnemylist, data);
+        takeEnemylist = EnemyCalculate.Instance.calculateEnemyAction(handEnemylist, data, player.hp_cur + player.def_cur, handCardlist.Count, dealEnemyCard);
         return takeEnemylist;
+    }
+    private CardEntity dealEnemyCard()
+    {
+        var data = Config_t_DataCard.getOne(ConfigConst.dealcard_constID);
+        var item = newcard(data, true);
+        item.transform.position = enemyCardPos[2].transform.position;
+        item.transform.eulerAngles = Vector3.zero;
+        item.transform.localScale = Vector3.one;
+        item.gameObject.SetActive(true);
+        return item;
     }
     //整理卡槽
     private void refreshCard()
@@ -443,7 +453,7 @@ public class BattlePanel : PanelBase
     }
     public void playThisCard(RoundData dataround)
     {
-        Debug.Log("playcard====" + dataround._card.sname+dataround.hitnum);
+        //Debug.Log("playcard====" + dataround._card.sname+dataround.hitnum);
         bool isplayer = dataround.isplayer;
         //播放卡
         addAction(() =>

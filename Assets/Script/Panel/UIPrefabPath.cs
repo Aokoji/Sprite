@@ -7,6 +7,7 @@ public enum E_UIPrefab
     none,
     Loading,
     Tips1,
+    Tips2,
     BattlePanel,
     StartPanel,
     CardsetPanel,

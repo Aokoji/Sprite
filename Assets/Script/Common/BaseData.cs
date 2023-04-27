@@ -45,25 +45,31 @@ public enum CardSelfType
 }
 public enum CardType2
 {
-    n_hit,  //直伤0
-    n_preempt,  //先制1   空出来damage1
-    n_continuous,   //连击2   空出来damage1
-    n_thump,    //重击3
-    n_recover,  //恢复4
-    n_defence,  //护盾5
-    n_counter,  //诅咒6
-    n_deal, //抽牌7
-    e_deplete,  //魔力枯竭  8
-    e_gift, //获得卡 9
-    e_addition, //填卡    10+++
-    e_defend,   //屏障    11
-    d_power,    //秘术    12
-    d_decounter, //反counter  13真言
-    s_double, //  14翻倍
-    n_broke, //  15破甲
-    e_giftone, //  16定向获得
-    s_weapon    //17 装备+++
+    none,
+    n_hit,  //直伤1
+    n_preempt,  //先制2   空出来damage1
+    n_continuous,   //连击3   空出来damage1
+    n_thump,    //重击4
+    n_recover,  //恢复5
+    n_defence,  //护盾6
+    n_counter,  //诅咒7
+    n_deal, //抽牌8
+    e_deplete,  //魔力枯竭  9
+    e_gift, //获得卡 10
+    e_addition, //填卡    11+++
+    e_defend,   //屏障    12
+    d_power,    //秘术    13
+    d_decounter, //反counter  14真言
+    s_double, //  15翻倍
+    n_broke, //  16破甲
+    e_giftone, //  17定向获得
+    s_weapon,    //18 装备+++
+
+
+    n_enemydeal,
     //标识最优先     真言  其次--    先制，诅咒，秘术，获得卡
+
+    //直伤，先制，恢复，护盾，抽牌，填卡，反制，屏障，定向获得    二类可以直接配0
 }
 
 

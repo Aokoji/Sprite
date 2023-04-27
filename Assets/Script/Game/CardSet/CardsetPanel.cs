@@ -10,8 +10,12 @@ public class CardsetPanel : PanelBase
     public Button savebtn;
     public Button clearbtn;
     public Button backbtn;
+    public Text spriteManaText;
 
     private List<int> cardcopy; //玩家list 的复制
+    int mana;
+    int maxmana;
+    bool ischanged;
     public override void init()
     {
         base.init();
@@ -35,7 +39,9 @@ public class CardsetPanel : PanelBase
     private void initData()
     {
         //初始化scroll 和limit  限制数据
+        ischanged = false;
         cardcopy = new List<int>(PlayerManager.Instance.getPlayerCards());
+        maxmana = PlayerManager.Instance.cursprite.spritePower;
         initScrollData();
         refreshWillList();
     }
@@ -53,6 +59,8 @@ public class CardsetPanel : PanelBase
         for(int i = 0; i < cardcopy.Count; i++)
         {
             var data = Config_t_DataCard.getOne(cardcopy[i]);
+            if (data.type1 == CardType1.condition)
+                mana += data.cost;
             if (data.limitcount == 1)
             {
                 limitedCard.Add(data.id, 1);
@@ -87,6 +95,14 @@ public class CardsetPanel : PanelBase
                 cards[i].setData(Config_t_DataCard.getOne(cardcopy[i]));
         }
     }
+    private void refreshMana()
+    {
+        if (mana > maxmana)
+            spriteManaText.color = Color.red;
+        else
+            spriteManaText.color = Color.white;
+        spriteManaText.text = mana + "/" + maxmana;
+    }
 
     private CardSetEntity newcard(t_DataCard data, bool isback = false)
     {
@@ -109,6 +125,7 @@ public class CardsetPanel : PanelBase
         if (limitedCard.ContainsKey(id)) return;
         //能进这里代表能choose
         if (cardcopy.Count >= 20) return;
+        ischanged = true;
         //限制卡计算
         if (card._data.limitcount == 1)
             limitedCard.Add(id, 1);
@@ -138,13 +155,25 @@ public class CardsetPanel : PanelBase
             justAdd = cardcopy.Count;
             cardcopy.Add(id);
         }
+        if (card._data.type1 == CardType1.condition)
+        {
+            mana += card._data.cost;
+            refreshMana();
+        }
         refreshOneCard(id);
         refreshWillList();
     }
     //点击弹出卡组
     private void releaseCard(int card)
     {
+        ischanged = true;
         cardcopy.Remove(card);
+        var data = Config_t_DataCard.getOne(card);
+        if (data.type1 == CardType1.condition)
+        {
+            mana -= data.cost;
+            refreshMana();
+        }
         if (limitedCard.ContainsKey(card))
         {
             setOneCardOpen(card, true);
@@ -164,6 +193,12 @@ public class CardsetPanel : PanelBase
 
     private void saveCards()
     {
+        if (mana > maxmana)
+        {
+            PanelManager.Instance.showTips1("卡牌能量超过上限");
+            return;
+        }
+        ischanged = false;
         PlayerManager.Instance.setPlayerCards(cardcopy);
         PanelManager.Instance.showTips1("保存成功");
     }
@@ -177,6 +212,10 @@ public class CardsetPanel : PanelBase
     }
     private void backmain()
     {
-        PanelManager.Instance.OpenPanel(E_UIPrefab.StartPanel);
+        if (ischanged) PanelManager.Instance.showTips2("卡组有改动还未保存，是否退出？",
+            () => { PanelManager.Instance.OpenPanel(E_UIPrefab.StartPanel); }
+             );
+        else
+            PanelManager.Instance.OpenPanel(E_UIPrefab.StartPanel);
     }
 }

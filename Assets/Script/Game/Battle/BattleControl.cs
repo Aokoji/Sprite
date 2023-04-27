@@ -159,86 +159,57 @@ public class BattleControl :Object
         data.hitnum = 0;
         switch (data._card.type2)
         {
-            case CardType2.n_hit:
-                data.hitnum = data._card.damage1;
-                break;
-            case CardType2.n_preempt:
-                data.hitnum = data._card.damage1;
-                conditionTypeCalculate(data, data._card.conditionType, data._card.damage2);
-                conditionTypeCalculate(data, data._card.conditionType2, data._card.damage3);
+            case CardType2.none:
+                conditionTypeCalculate(data, data._card.conditionType1, data._card.damage1);
+                conditionTypeCalculate(data, data._card.conditionType2, data._card.damage2);
+                conditionTypeCalculate(data, data._card.conditionType3, data._card.damage3);
                 break;
             case CardType2.n_continuous:
-                data.hitnum = data._card.damage1;
+                conditionTypeCalculate(data, data._card.conditionType1, data._card.damage1);
                 data.continuousnum = data.isplayer ? pContinuous : eContinuous;
                 if ((data.isplayer && pContinuous >= 1)||(!data.isplayer && eContinuous>=1))
                 {
-                    conditionTypeCalculate(data, data._card.conditionType, data._card.damage2);
-                    conditionTypeCalculate(data, data._card.conditionType2, data._card.damage3);
+                    conditionTypeCalculate(data, data._card.conditionType2, data._card.damage2);
+                    conditionTypeCalculate(data, data._card.conditionType3, data._card.damage3);
                 }
                 break;
             case CardType2.n_thump:
-                data.hitnum = data._card.damage1;
+                conditionTypeCalculate(data, data._card.conditionType1, data._card.damage1);
                 if ((data.isplayer && willTakeenemyque.Count<=0)||(!data.isplayer && willTakeplayerque.Count <= 0))
                 {
-                    conditionTypeCalculate(data, data._card.conditionType, data._card.damage2);
-                    conditionTypeCalculate(data, data._card.conditionType2, data._card.damage3);
+                    conditionTypeCalculate(data, data._card.conditionType2, data._card.damage2);
+                    conditionTypeCalculate(data, data._card.conditionType3, data._card.damage3);
                 }
-                break;
-            case CardType2.n_recover:
-                data.recovernum = data._card.damage1;
-                conditionTypeCalculate(data, data._card.conditionType, data._card.damage2);
-                conditionTypeCalculate(data, data._card.conditionType2, data._card.damage3);
-                break;
-            case CardType2.n_defence:
-                data.defnum = data._card.damage1;
-                conditionTypeCalculate(data, data._card.conditionType, data._card.damage2);
-                conditionTypeCalculate(data, data._card.conditionType2, data._card.damage3);
-                break;
-            case CardType2.n_counter:
-                if (data.isplayer) iscounterE = true;
-                else iscounterP = true;
-                conditionTypeCalculate(data, data._card.conditionType, data._card.damage1);
-                conditionTypeCalculate(data, data._card.conditionType2, data._card.damage2);
-                break;
-            case CardType2.n_deal:
-                data.dealnum = data._card.damage1;
-                conditionTypeCalculate(data, data._card.conditionType, data._card.damage2);
-                conditionTypeCalculate(data, data._card.conditionType2, data._card.damage3);
                 break;
             case CardType2.e_deplete:
                 data.hitnum = data._card.damage1;
                 data.hitselfnum = data._card.damage2;
-                conditionTypeCalculate(data, data._card.conditionType, data._card.damage3);
+                conditionTypeCalculate(data, data._card.conditionType1, data._card.damage3);
                 break;
             case CardType2.e_gift:
                 for(int i = 0; i < data._card.damage1; i++)
-                    data.gift.Add(CardCalculate.getRandomTypeCardList(data._card.limit));
-                break;
-            case CardType2.e_addition:
-                data.addition = data._card.damage1;
-                conditionTypeCalculate(data, data._card.conditionType, data._card.damage2);
-                conditionTypeCalculate(data, data._card.conditionType2, data._card.damage3);
-                break;
-            case CardType2.e_defend:
-                if (data.isplayer) isdefendP = true;
-                else isdefendE = true;
-                conditionTypeCalculate(data, data._card.conditionType, data._card.damage1);
-                conditionTypeCalculate(data, data._card.conditionType2, data._card.damage2);
+                    data.gift.Add(CardCalculate.getRandomTypeCardList((CardSelfType)data._card.damage2));
                 break;
             case CardType2.d_power:
-                conditionTypeCalculate(data, data._card.conditionType, data._card.damage1);
+                conditionTypeCalculate(data, data._card.conditionType1, data._card.damage1);
                 if ((ispowerP && data.isplayer) || (ispowerE && !data.isplayer))
+                {
                     conditionTypeCalculate(data, data._card.conditionType2, data._card.damage2);
+                    conditionTypeCalculate(data, data._card.conditionType3, data._card.damage3);
+                }
                 break;
             case CardType2.d_decounter:
-                conditionTypeCalculate(data, data._card.conditionType, data._card.damage1);
+                conditionTypeCalculate(data, data._card.conditionType1, data._card.damage1);
                 if (data.isdecounter)
+                {
                     conditionTypeCalculate(data, data._card.conditionType2, data._card.damage2);
+                    conditionTypeCalculate(data, data._card.conditionType3, data._card.damage3);
+                }
                 break;
-            case CardType2.e_giftone:
-                data.gift.Add(data._card.damage1);
-                conditionTypeCalculate(data, data._card.conditionType, data._card.damage2);
-                conditionTypeCalculate(data, data._card.conditionType2, data._card.damage3);
+            default:
+                conditionTypeCalculate(data, data._card.conditionType1, data._card.damage1);
+                conditionTypeCalculate(data, data._card.conditionType2, data._card.damage2);
+                conditionTypeCalculate(data, data._card.conditionType3, data._card.damage3);
                 break;
         }
         //屏障 特殊结算
@@ -264,7 +235,7 @@ public class BattleControl :Object
             continuousAdd(data.isplayer);
         firstplayer = !data.isplayer;
         //回合计算
-        if(data._card.type2!=CardType2.n_preempt&&data._card.conditionType!=CardType2.n_preempt&&data._card.conditionType2!=CardType2.n_preempt)
+        if(data._card.type2!=CardType2.n_preempt&&data._card.conditionType1!=CardType2.n_preempt&&data._card.conditionType2!=CardType2.n_preempt)
             isplayerround = !isplayerround;
         if (willTakeplayerque.Count <= 0) isplayerround = false;
         if (willTakeenemyque.Count <= 0) isplayerround = true;
@@ -274,6 +245,7 @@ public class BattleControl :Object
     //条件 check
     private void conditionTypeCalculate(RoundData data,CardType2 type,int damage)
     {
+        if (type == CardType2.none) return;
         switch (type)
         {
             case CardType2.n_hit:
@@ -308,6 +280,14 @@ public class BattleControl :Object
                 break;
             case CardType2.e_addition:
                 data.addition = damage;
+                break;
+            case CardType2.e_defend:
+                if (data.isplayer) isdefendP = true;
+                else isdefendE = true;
+                break;
+            case CardType2.n_counter:
+                if (data.isplayer) iscounterE = true;
+                else iscounterP = true;
                 break;
         }
     }

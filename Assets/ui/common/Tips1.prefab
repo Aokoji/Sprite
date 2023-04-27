@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 470757482385083844}
   - component: {fileID: 6720554993479468172}
   - component: {fileID: 3845231751442108305}
-  - component: {fileID: 5854234615194437720}
   - component: {fileID: 6980679236046280130}
   - component: {fileID: 74394582513476641}
+  - component: {fileID: 2243335733806939863}
   m_Layer: 5
   m_Name: Tips1
   m_TagString: Untagged
@@ -70,19 +70,6 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &5854234615194437720
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4806165224276192052}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9645b2fe7e49da46b60208f8d18f36f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  context: {fileID: 8395880402975308190}
 --- !u!222 &6980679236046280130
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -120,6 +107,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2243335733806939863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4806165224276192052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75c7b96d2488a324aa6d82501ff99b30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  context: {fileID: 8395880402975308190}
+  allowClick: 0
 --- !u!1 &8395880402975308188
 GameObject:
   m_ObjectHideFlags: 0

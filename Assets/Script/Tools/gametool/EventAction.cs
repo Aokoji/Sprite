@@ -59,25 +59,25 @@ namespace customEvent
         }
         public void TriggerAction(eventType arg)
         {
-            Debug.Log("triggerevent   " + arg.ToString());
+            //Debug.Log("triggerevent   " + arg.ToString());
             if (eventGather.ContainsKey(arg))
                 ((act)eventGather[arg]).Invoke();
         }
         public void TriggerAction<T>(eventType arg,T t)
         {
-            Debug.Log("triggerevent   " + arg.ToString());
+            //Debug.Log("triggerevent   " + arg.ToString());
             if (eventGather.ContainsKey(arg))
                 ((act<T>)eventGather[arg])(t);
         }
         public void TriggerAction<T, U>(eventType arg,T t,U u)
         {
-            Debug.Log("triggerevent   " + arg.ToString());
+            //Debug.Log("triggerevent   " + arg.ToString());
             if (eventGather.ContainsKey(arg))
                 ((act<T, U>)eventGather[arg])(t, u);
         }
         public void TriggerAction<T, U, V>(eventType arg,T t,U u,V v)
         {
-            Debug.Log("triggerevent   " + arg.ToString());
+            //Debug.Log("triggerevent   " + arg.ToString());
             if (eventGather.ContainsKey(arg))
                 ((act<T, U, V>)eventGather[arg])(t, u, v);
         }

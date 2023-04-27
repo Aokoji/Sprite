@@ -1,40 +1,253 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using System.Text;
 
-public class EnemyCalculate
+public class EnemyCalculate:CSingel<EnemyCalculate>
 {
     public static SpriteData GetEnemyData()
     {
         int someid = 1;
 
         SpriteData enemy = new SpriteData();
-        enemy.id = 1;
+        enemy.id = someid;
         enemy.takeDefaultCardsID = 2;
         enemy.hp_cur = enemy.hp_max = 25;
-        enemy.cost_cur = enemy.cost_max = 3;
+        enemy.cost_cur = enemy.cost_max = 5;
         enemy.refreshData();
         return enemy;
     }
-
+    internal class calcuData
+    {
+        public int id;
+        public bool ishit;
+        public bool isrecover;
+        public bool isdefence;
+        public bool isdefend;
+        public bool iscounter;
+        public bool isdecounter;
+        public bool ispreem;
+        public bool isthump;
+        public bool isdeal;
+        public bool isgift;
+        public bool ispower;
+        public int cost;
+        public bool ischoose;
+    }
     /// <summary>
     /// 旧的引用被删除，传出的参数为待处理的cardEntity
     /// </summary>
-    public static List<CardEntity> calculateEnemyAction(List<CardEntity> list,SpriteData data)
+    public List<CardEntity> calculateEnemyAction(List<CardEntity> list,SpriteData data,int pHealth,int pCount,Func<CardEntity> dealaction)
     {
         List<CardEntity> result = new List<CardEntity>();
-        for(int i = 0; i < list.Count; i++)
+        finalList.Clear();
+        cards.Clear();
+        edata = data.Copy();
+        pcount = pCount;
+        phealth = pHealth;
+
+        calcuData calcu;
+        StringBuilder str=new StringBuilder();
+        for (int i = 0; i < list.Count; i++)
         {
-            if (list[i]._data.cost <= data.cost_cur)
+            calcu = new calcuData();
+            calcu.id = list[i]._data.id;
+            calcu.cost = list[i]._data.cost;
+            str.Append(list[i]._data.sname + "     ");
+            if (list[i]._data.type2 == CardType2.n_counter|| list[i]._data.conditionType1 == CardType2.n_counter|| list[i]._data.conditionType2 == CardType2.n_counter || list[i]._data.conditionType3 == CardType2.n_counter)
+                calcu.iscounter = true;
+            if (list[i]._data.type2 == CardType2.e_defend || list[i]._data.conditionType1 == CardType2.e_defend || list[i]._data.conditionType2 == CardType2.e_defend || list[i]._data.conditionType3 == CardType2.e_defend)
+                calcu.isdefend = true;
+            if (list[i]._data.type2 == CardType2.e_gift || list[i]._data.type2 == CardType2.e_giftone || list[i]._data.type2 == CardType2.e_addition || list[i]._data.conditionType1 == CardType2.e_giftone || list[i]._data.conditionType2 == CardType2.e_giftone || list[i]._data.conditionType3 == CardType2.e_giftone)
+                calcu.isgift = true;
+            if (list[i]._data.type2 == CardType2.n_deal || list[i]._data.conditionType1 == CardType2.n_deal || list[i]._data.conditionType2 == CardType2.n_deal || list[i]._data.conditionType3 == CardType2.n_deal)
+                calcu.isdeal = true;
+            if (list[i]._data.conditionType1 == CardType2.n_recover || list[i]._data.conditionType2 == CardType2.n_recover || list[i]._data.conditionType3 == CardType2.n_recover)
+                calcu.isrecover = true;
+            if(list[i]._data.conditionType1 == CardType2.n_defence || list[i]._data.conditionType2 == CardType2.n_defence || list[i]._data.conditionType3 == CardType2.n_defence)
+                calcu.isdefence = true;
+            if (list[i]._data.type2 == CardType2.d_decounter)
+                calcu.isdecounter = true;
+            if (list[i]._data.type2 == CardType2.d_power)
+                calcu.ispower = true;
+            if (list[i]._data.type2 == CardType2.e_deplete)
+                calcu.ishit = true;
+            if (list[i]._data.conditionType1 == CardType2.n_hit || list[i]._data.conditionType2 == CardType2.n_hit || list[i]._data.conditionType3 == CardType2.n_hit)
+                calcu.ishit = true;
+            if (list[i]._data.conditionType1 == CardType2.n_preempt || list[i]._data.conditionType2 == CardType2.n_preempt || list[i]._data.conditionType3 == CardType2.n_preempt)
+                calcu.ispreem = true;
+            if (list[i]._data.type2 == CardType2.n_thump || list[i]._data.conditionType1 == CardType2.n_thump || list[i]._data.conditionType2 == CardType2.n_thump || list[i]._data.conditionType3 == CardType2.n_thump)
+                calcu.isthump = true;
+            cards.Add(calcu);
+        }
+        Debug.Log("===" + str.ToString());
+        while (true)
+        {
+            if (!onechoose()) break;
+        }
+        for(int i = 0; i < finalList.Count; i++)
+        {
+            if (finalList[i] == ConfigConst.dealcard_constID)
             {
-                result.Add(list[i]);
-                data.cost_cur -= list[i]._data.cost;
-                list.Remove(list[i]);
-                i--;
+                result.Add(dealaction());
+                continue;
+            }
+            for(int k = 0; k < list.Count; k++)
+            {
+                if (list[k]._data.id == finalList[i])
+                {
+                    result.Add(list[k]);
+                    data.cost_cur -= list[k]._data.cost;
+                    list.Remove(list[k]);
+                    break;
+                }
             }
         }
+        weight.Clear();
+        finalList.Clear();
+        cards.Clear();
+        edata = null;
         return result;
     }
-    //优先级  血多-伤害    血少-恢复护盾
-    //玩家牌多  屏障，牌少-反制
+    List<int> finalList = new List<int>();
+    Dictionary<CardType2, int> weight = new Dictionary<CardType2, int>();
+    List<calcuData> cards = new List<calcuData>();
+    SpriteData edata;
+    int pcount;
+    int phealth;
+    bool onechoose()
+    {
+        weight.Clear();
+        var typ = checkChoose();
+        if (typ == CardType2.n_enemydeal)
+        {
+            if(edata.cost_cur >= 2)
+            {
+                finalList.Add(ConfigConst.dealcard_constID);
+                edata.cost_cur -= 2;
+                if (edata.cost_cur == 0) return false;
+                else return true;
+            }
+            else
+                typ = CardType2.n_hit;
+        }
+        for(int i = 0; i < cards.Count; i++)
+        {
+            var cad = cards[i];
+            if (cad.ischoose) continue;
+            if ((typ == CardType2.n_hit && cad.ishit) ||
+                (typ == CardType2.n_deal && cad.isdeal) ||
+                (typ == CardType2.e_defend && cad.isdefend) ||
+                (typ == CardType2.n_recover && cad.isrecover) ||
+                (typ == CardType2.n_defence && cad.isdefence) ||
+                (typ == CardType2.n_counter && cad.iscounter) ||
+                (typ == CardType2.e_gift && cad.isgift))
+            {
+                if (cad.ispower)
+                {
+                    finalList.Clear();
+                    finalList.Add(cad.id);
+                    return false;
+                }
+                if (edata.cost_cur >= cad.cost)
+                {
+                    cad.ischoose = true;
+                    edata.cost_cur -= cad.cost;
+                    if(cad.ispreem|| cad.iscounter || cad.isdefend) finalList.Insert(0,cad.id);
+                    else finalList.Add(cad.id);
+                    if (edata.cost_cur == 0) return false;
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    CardType2 checkChoose()
+    {
+        int recovercount=0;
+        int countercount=0;
+        int defencecount = 0;
+        int defcount=0;
+        int dealcount=0;
+        int giftcount=0;
+        int hitcount=0;
+        cards.ForEach(card =>
+        {
+            if (card.isrecover) recovercount++;
+            if (card.isdefence) defencecount++;
+            if (card.iscounter) countercount++;
+            if (card.isdefend) defcount++;
+            if (card.isdeal) dealcount++;
+            if (card.isgift) giftcount++;
+            if (card.ishit) hitcount++;
+        });
+        //计算权重
+        if (hitcount > 0)
+        {
+            if (phealth < 10)
+                weight.Add(CardType2.n_hit, 6);
+            else
+                weight.Add(CardType2.n_hit, 2);
+        }
+        if (cards.Count <= 3)
+        {
+            if (cards.Count <= 1)
+                weight.Add(CardType2.n_deal, 20);
+            else
+                weight.Add(CardType2.n_deal, 8);
+        }
+        if (countercount > 0)
+        {
+            if (pcount < 3)
+                if (pcount <= 1)
+                    weight.Add(CardType2.n_counter, 50);
+                else
+                    weight.Add(CardType2.n_counter, 20);
+            else
+                weight.Add(CardType2.n_counter, 5);
+        }
+        if (recovercount > 0)
+        {
+            if (edata.hp_cur / edata.hp_max <= 0.8f)
+                if (edata.hp_cur / edata.hp_max <= 0.25f)
+                    weight.Add(CardType2.n_recover, 120);
+                else
+                    weight.Add(CardType2.n_recover, 3);
+            else
+                weight.Add(CardType2.n_recover, 1);
+        }
+        if (defencecount > 0)
+        {
+            weight.Add(CardType2.n_defence, 3);
+        }
+        if (giftcount > 0)
+        {
+            if (pcount >= 3)
+                weight.Add(CardType2.e_gift, 1);
+            else
+                weight.Add(CardType2.e_gift, 6);
+        }
+        if (defcount > 0)
+            weight.Add(CardType2.e_defend, 5);
+
+        CardType2 finaltype = CardType2.n_hit;
+        int max = 0;
+        foreach (var item in weight)
+            max += item.Value;
+        max = UnityEngine.Random.Range(0, max);
+        int curcount = 0;
+        foreach (var item in weight)
+        {
+            curcount += item.Value;
+            if (curcount > max)
+            {
+                finaltype = item.Key;
+                break;
+            }
+        }
+        if (dealcount == 0 && finaltype == CardType2.n_deal) finaltype = CardType2.n_enemydeal;
+        return finaltype;
+    }
+
 }

@@ -88,6 +88,7 @@ public class PanelManager : CSingel<PanelManager>
         commonParent.transform.localScale = Vector3.one;
         loadingPanel();
         loadTips1Panel();
+        loadTips2Panel();
     }
     //  ----------------------- loading ----------------------
     private LoadingPanel loading;
@@ -107,6 +108,7 @@ public class PanelManager : CSingel<PanelManager>
 
     //------------------------ tips ----------------------------
     private TipsBase tip1;
+    private TipsBase tip2;
     private void loadTips1Panel()
     {
         var entity = AssetLoad.Instance.loadUIPrefab<TipsBase>(COMMON_PATH, E_UIPrefab.Tips1.ToString());
@@ -115,9 +117,22 @@ public class PanelManager : CSingel<PanelManager>
         tip1.transform.localScale = Vector3.one;
         tip1.gameObject.SetActive(false);
     }
+    private void loadTips2Panel()
+    {
+        var entity = AssetLoad.Instance.loadUIPrefab<TipsBase>(COMMON_PATH, E_UIPrefab.Tips2.ToString());
+        tip2 = UnityEngine.Object.Instantiate(entity);
+        tip2.transform.SetParent(commonParent.transform);
+        tip2.transform.localScale = Vector3.one;
+        tip2.gameObject.SetActive(false);
+    }
     public void showTips1(string str="",Action callback=null)
     {
-        tip1.setContext(str);
-        AnimationTool.playAnimation(tip1.gameObject, "showtip1", false, ()=> { tip1.gameObject.SetActive(false); callback?.Invoke(); });
+        tip1.init(str, callback);
+        tip1.play();
+    }
+    public void showTips2(string str,Action callback, Action callback2=null)
+    {
+        tip2.init(str, callback, callback2);
+        tip2.play();
     }
 }

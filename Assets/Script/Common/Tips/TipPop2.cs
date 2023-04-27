@@ -1,0 +1,40 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class TipPop2 : TipsBase
+{
+    public Button confirm;
+    public Button cancel;
+
+    public override void play()
+    {
+        AnimationTool.playAnimation(gameObject, "showtip2",false,()=> { allowClick = true; });
+    }
+    public override void initEvent()
+    {
+        confirm.onClick.AddListener(confirmEvent);
+        cancel.onClick.AddListener(cancelEvent);
+    }
+    void confirmEvent()
+    {
+        if (!allowClick) return;
+        allowClick = false;
+        callback?.Invoke();
+        close();
+    }
+    void cancelEvent()
+    {
+        if (!allowClick) return;
+        allowClick = false;
+        callback2?.Invoke();
+        close();
+    }
+    void close()
+    {
+        callback = null;
+        callback2 = null;
+        gameObject.SetActive(false);
+    }
+}

@@ -26,6 +26,7 @@ public class PlayerData
         sp.hp_max = sp.hp_cur = 25;
         sp.cost_cur = sp.cost_max = 3;
         sp.takeDefaultCardsID = 1;
+        sp.spritePower = 8;
         sprites.Add(sp);
         curSprite = sp.id;
         //for(int i=0;i<20;i++)
