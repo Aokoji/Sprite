@@ -82,10 +82,10 @@ public class EnemyCalculate:CSingel<EnemyCalculate>
             cards.Add(calcu);
         }
         Debug.Log("===" + str.ToString());
-        while (true)
-        {
-            if (!onechoose()) break;
-        }
+        //第一套逻辑
+        //while (true){ if (!onechoose()) break;}
+        //第二套逻辑
+
         for(int i = 0; i < finalList.Count; i++)
         {
             if (finalList[i] == ConfigConst.dealcard_constID)
@@ -107,6 +107,7 @@ public class EnemyCalculate:CSingel<EnemyCalculate>
         weight.Clear();
         finalList.Clear();
         cards.Clear();
+        precedence.Clear();
         edata = null;
         return result;
     }
@@ -116,6 +117,7 @@ public class EnemyCalculate:CSingel<EnemyCalculate>
     SpriteData edata;
     int pcount;
     int phealth;
+    #region 第一套逻辑
     bool onechoose()
     {
         weight.Clear();
@@ -249,5 +251,94 @@ public class EnemyCalculate:CSingel<EnemyCalculate>
         if (dealcount == 0 && finaltype == CardType2.n_deal) finaltype = CardType2.n_enemydeal;
         return finaltype;
     }
+    #endregion
 
+    Dictionary<CardType2, int> precedence = new Dictionary<CardType2, int>();
+    void checkPrecedence()
+    {
+        precedence.Clear();
+
+        //计算优先遍历
+        //hit
+        precedence.Add(CardType2.n_hit, 0);
+        if (phealth < 10)
+            precedence[CardType2.n_hit] += 9;
+        else if (phealth <= 20)
+            precedence[CardType2.n_hit] += 5;
+        else
+            precedence[CardType2.n_hit] += 3;
+        //recover && defence
+        precedence.Add(CardType2.n_recover, 0);
+        precedence.Add(CardType2.n_defence, 0);
+        if (edata.hp_cur / edata.hp_max <= 0.6f)
+            if (edata.hp_cur <=10f)
+            {
+                precedence[CardType2.n_recover] += 8;
+                precedence[CardType2.n_hit] -= 1;
+                precedence[CardType2.n_defence] += 2;
+            }
+            else
+                precedence[CardType2.n_recover] += 3;
+        else
+            if (cards.Count > 3)
+                precedence[CardType2.n_recover] += 2;
+            else
+                precedence[CardType2.n_recover] += 1;
+        precedence[CardType2.n_defence] += 3;
+        //gift
+        if (cards.Count <=2)
+            precedence.Add(CardType2.e_giftone,6);
+        else if (cards.Count <= 4)
+            precedence.Add(CardType2.e_giftone, 2);
+        else
+            precedence.Add(CardType2.e_giftone, 1);
+        //counter
+        if (pcount < 3)
+            if (pcount <= 1)
+                precedence.Add(CardType2.n_counter, 8);
+            else
+                precedence.Add(CardType2.n_counter, 6);
+        else
+            precedence.Add(CardType2.n_counter, 3);
+        //deal
+        if (cards.Count <= 4)
+        {
+            if (cards.Count <= 2)
+                precedence.Add(CardType2.n_deal, 5);
+            else
+                precedence.Add(CardType2.n_deal, 2);
+        }
+        precedence.Add(CardType2.e_defend, 3);
+        //最终效果  攻击，防御，恢复，抽牌，反制，补牌，屏障
+    }
+    bool calcuCards()
+    {
+        Stack<calcuData> stack = new Stack<calcuData>();
+        for(int i = 10; i >0; i--)
+        {
+            if (precedence.ContainsKey(0))
+            {
+                for(int k = 0; k < cards.Count; k++)
+                {
+                    var cad = cards[i];
+                    if (cad.ispower)
+                    {
+                        finalList.Clear();
+                        finalList.Add(cad.id);
+                        return false;
+                    }
+                    if (edata.cost_cur >= cad.cost)
+                    {
+                        cad.ischoose = true;
+                        edata.cost_cur -= cad.cost;
+                        if (cad.ispreem || cad.iscounter || cad.isdefend) finalList.Insert(0, cad.id);
+                        else finalList.Add(cad.id);
+                        if (edata.cost_cur == 0) return false;
+                        return true;
+                    }
+                }
+            }
+        }
+        return true;
+    }
 }
