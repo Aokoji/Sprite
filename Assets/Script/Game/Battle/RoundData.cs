@@ -20,4 +20,5 @@ public class RoundData : BaseData
     public bool isdecounter;    //反反制成功
     public List<int> gift = new List<int>();
     public int addition;    //洗入卡
+    public int extraLimit;  //能量上限
 }

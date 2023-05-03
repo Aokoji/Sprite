@@ -38,30 +38,32 @@ public class CardSetEntity : UIBase
         sname.text = _data.sname.ToString();
         descirbe.text = _data.sDescribe.ToString();
         cost.text = _data.cost.ToString();
-        /*
+        
         if (_data.type1 == 0)
         {
             if (_data.limit == CardSelfType.normal)
             {
-                bg.sprite = GetSprite("baseAtlas1", "buttonSquare_beige_pressed");
+                //bg.sprite = GetSprite("baseAtlas1", "buttonSquare_beige_pressed");
                 bg.color = Color.white;
             }
             else
             {
-                bg.sprite = GetSprite("baseAtlas1", "buttonSquare_grey_pressed");
+                /*bg.sprite = GetSprite("baseAtlas1", "buttonSquare_grey_pressed");
                 if (_data.limit == CardSelfType.fire)
                     bg.color = PubTool.getColor(ConfigConst.colorFire);
                 if (_data.limit == CardSelfType.water)
                     bg.color = PubTool.getColor(ConfigConst.colorWater);
                 if (_data.limit == CardSelfType.thunder)
                     bg.color = PubTool.getColor(ConfigConst.colorThunder);
+                */
+                bg.color = Color.white;
             }
         }
         else
         {
-            bg.sprite = GetSprite("baseAtlas1", "buttonSquare_blue_pressed");
-            bg.color = Color.white;
-        }*/
+            //bg.sprite = GetSprite("baseAtlas1", "buttonSquare_blue_pressed");
+            bg.color = PubTool.getColor(ConfigConst.colorSpecial);
+        }
     }
     private void onchoose()
     {

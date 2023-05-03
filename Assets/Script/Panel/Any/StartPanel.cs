@@ -13,6 +13,7 @@ public class StartPanel : PanelBase
         base.registerEvent();
         startbtn.onClick.AddListener(startgame);
         editbtn.onClick.AddListener(editgame);
+        PanelManager.Instance.panelUnlock();
     }
 
     private void startgame()

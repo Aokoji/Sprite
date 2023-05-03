@@ -5,7 +5,28 @@ using UnityEngine;
 public class CardCalculate
 {
 
-    public static Queue<T> getRandomList<T>(List<T> list)
+    public static Queue<int> getRandomList(List<int> list)
+    {
+        System.Random r = new System.Random();
+        Queue<int> result = new Queue<int>();
+        for (int i = 0; i < list.Count; i++)
+        {
+            if (list[i] == ConfigConst.dealcard_blessed || list[i] == ConfigConst.dealcard_blessGodFront)
+            {
+                result.Enqueue(list[i]);
+                list.RemoveAt(i);
+                i--;
+            }
+        }
+        while (list.Count > 0)
+        {
+            int index = r.Next(list.Count);
+            result.Enqueue(list[index]);
+            list.RemoveAt(index);
+        }
+        return result;
+    }
+    public static Queue<T> getRandomList1<T>(List<T> list)
     {
         System.Random r = new System.Random();
         Queue<T> result = new Queue<T>();
@@ -24,7 +45,7 @@ public class CardCalculate
         {
             list.Add(item.Value);
         }
-        return getRandomList(list);
+        return getRandomList1(list);
     }
     public static int getRandomTypeCardList(CardSelfType type)
     {

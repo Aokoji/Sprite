@@ -35,7 +35,7 @@ public class BattleControl :Object
     {
         loadSuccess = true;
         ui = PanelManager.Instance.PanelCur.gameObject.GetComponent<BattlePanel>();
-        player = PlayerManager.Instance.cursprite;
+        player = PlayerManager.Instance.cursprite.Copy();
         enemy = EnemyCalculate.GetEnemyData();   //+++模拟一个数据
         player.refreshData();
         enemy.refreshData();
@@ -200,11 +200,19 @@ public class BattleControl :Object
                 break;
             case CardType2.d_decounter:
                 conditionTypeCalculate(data, data._card.conditionType1, data._card.damage1);
+                conditionTypeCalculate(data, data._card.conditionType2, data._card.damage2);
                 if (data.isdecounter)
                 {
-                    conditionTypeCalculate(data, data._card.conditionType2, data._card.damage2);
                     conditionTypeCalculate(data, data._card.conditionType3, data._card.damage3);
                 }
+                break;
+            case CardType2.s_blessup:
+                if(data.isplayer && player.extraLimit>= data._card.damage1)
+                    conditionTypeCalculate(data, data._card.conditionType2, data._card.damage2);
+                else if (!data.isplayer && enemy.extraLimit >= data._card.damage1)
+                    conditionTypeCalculate(data, data._card.conditionType2, data._card.damage2);
+                else
+                    data.extraLimit = data._card.damage1;
                 break;
             default:
                 conditionTypeCalculate(data, data._card.conditionType1, data._card.damage1);
@@ -328,6 +336,22 @@ public class BattleControl :Object
             else
                 pass.hp_cur -= hit;
         }
+        if (data.hitselfnum > 0)
+        {
+            if (take.def_cur > 0)
+            {
+                if (take.def_cur > data.hitselfnum)
+                    take.def_cur -= data.hitselfnum;
+                else
+                {
+                    int num = data.hitselfnum - take.def_cur;
+                    take.def_cur = 0;
+                    take.hp_cur -= num;
+                }
+            }
+            else
+                take.hp_cur -= data.hitselfnum;
+        }
         if (data.recovernum > 0)
         {
             if (take.hp_cur + data.recovernum > take.hp_max)
@@ -340,6 +364,14 @@ public class BattleControl :Object
         }
         if (data.defnum > 0)
             take.def_cur += data.defnum;
+        if (data.extraLimit > 0)
+        {
+            take.extraLimit = data.extraLimit;
+            if (take.extraLimit == 1)
+                take.cost_max = 4;
+            if (take.extraLimit == 2)
+                take.cost_max = 5;
+        }
     }
     //单次回合结束
     private void endRoundSettle()

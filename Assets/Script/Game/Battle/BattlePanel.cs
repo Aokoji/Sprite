@@ -589,6 +589,17 @@ public class BattlePanel : PanelBase
                     }
                 });
             }
+            if (dataround.extraLimit > 0)
+            {
+                //播动画
+                addAction(() => {
+                    if(dataround.isplayer)
+                        refreshMana();
+                    else
+                        refreshEnemyData();
+                    RunSingel.Instance.laterDo(0.5f, playerNextQue);
+                });
+            }
             if (dataround.addition > 0)
             {
 				addAction(() => {

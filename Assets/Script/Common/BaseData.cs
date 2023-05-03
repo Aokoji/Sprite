@@ -27,8 +27,9 @@ public class AssetData:ScriptableObject
 }
 public enum CardType1
 {
-    take,       //非集换
-    condition,  //单次
+    take,       //非集换   //默认卡
+    condition,  //单次    //制作卡
+    hidden,     //特殊卡 不显示
     condition_two,  //培养
     condition_special,  //消耗魔法书
     condition_special1,  //普通魔法书不消耗
@@ -64,6 +65,7 @@ public enum CardType2
     n_broke, //  16破甲
     e_giftone, //  17定向获得
     s_weapon,    //18 装备+++
+    s_blessup,        //19祝福+++
 
 
     n_enemydeal,

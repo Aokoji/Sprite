@@ -14,7 +14,8 @@ public class EnemyCalculate:CSingel<EnemyCalculate>
         enemy.id = someid;
         enemy.takeDefaultCardsID = 2;
         enemy.hp_cur = enemy.hp_max = 25;
-        enemy.cost_cur = enemy.cost_max = 5;
+        enemy.cost_cur = enemy.cost_max = 4;
+        enemy.extraLimit = 1;
         enemy.refreshData();
         return enemy;
     }
@@ -85,8 +86,9 @@ public class EnemyCalculate:CSingel<EnemyCalculate>
         //第一套逻辑
         //while (true){ if (!onechoose()) break;}
         //第二套逻辑
+        while (true) { if (!calcuCards()) break; }
 
-        for(int i = 0; i < finalList.Count; i++)
+        for (int i = 0; i < finalList.Count; i++)
         {
             if (finalList[i] == ConfigConst.dealcard_constID)
             {
@@ -253,6 +255,7 @@ public class EnemyCalculate:CSingel<EnemyCalculate>
     }
     #endregion
 
+    #region 第二套逻辑
     Dictionary<CardType2, int> precedence = new Dictionary<CardType2, int>();
     void checkPrecedence()
     {
@@ -313,32 +316,77 @@ public class EnemyCalculate:CSingel<EnemyCalculate>
     }
     bool calcuCards()
     {
-        Stack<calcuData> stack = new Stack<calcuData>();
-        for(int i = 10; i >0; i--)
+        List<CardType2> manys = new List<CardType2>();
+        Queue<CardType2> que = new Queue<CardType2>();
+        checkPrecedence();
+        //得到顺序优先级
+        for (int i = 10; i >0; i--)
         {
-            if (precedence.ContainsKey(0))
+            manys.Clear();
+            foreach(var k in precedence)
             {
-                for(int k = 0; k < cards.Count; k++)
+                if (k.Value == i)
+                    manys.Add(k.Key);
+            }
+            if (manys.Count > 0)
+            {
+                if (manys.Count == 1)
+                    que.Enqueue(manys[0]);
+                else
                 {
-                    var cad = cards[i];
-                    if (cad.ispower)
+                    while (manys.Count > 0)
                     {
-                        finalList.Clear();
-                        finalList.Add(cad.id);
-                        return false;
-                    }
-                    if (edata.cost_cur >= cad.cost)
-                    {
-                        cad.ischoose = true;
-                        edata.cost_cur -= cad.cost;
-                        if (cad.ispreem || cad.iscounter || cad.isdefend) finalList.Insert(0, cad.id);
-                        else finalList.Add(cad.id);
-                        if (edata.cost_cur == 0) return false;
-                        return true;
+                        int id = UnityEngine.Random.Range(0, manys.Count);
+                        que.Enqueue(manys[id]);
+                        manys.RemoveAt(id);
                     }
                 }
             }
         }
-        return true;
+        while (que.Count > 0)
+        {
+            CardType2 typ = que.Dequeue();
+            for (int i = 0; i < cards.Count; i++)
+            {
+                var cad = cards[i];
+                if (cad.ischoose) continue;
+                if ((typ == CardType2.n_hit && !cad.ishit) ||
+                    (typ == CardType2.n_recover && !cad.isrecover) ||
+                    (typ == CardType2.n_defence && !cad.isdefence) ||
+                    (typ == CardType2.n_deal && !cad.isdeal) ||
+                    (typ == CardType2.e_defend && !cad.isdefend) ||
+                    (typ == CardType2.n_counter && !cad.iscounter) ||
+                    (typ == CardType2.e_giftone && !cad.isgift)
+                    )
+                    continue;
+                if (cad.ispower)
+                {
+                    finalList.Clear();
+                    finalList.Add(cad.id);
+                    return false;
+                }
+                if (edata.cost_cur >= cad.cost)
+                {
+                    cad.ischoose = true;
+                    edata.cost_cur -= cad.cost;
+                    if (cad.ispreem || cad.iscounter || cad.isdefend) finalList.Insert(0, cad.id);
+                    else finalList.Add(cad.id);
+                    if (edata.cost_cur == 0) return false;
+                    return true;
+                }
+            }
+            //走到这说明没找到
+            if(typ==CardType2.n_deal)
+                if (edata.cost_cur >= 2)
+                {
+                    finalList.Add(ConfigConst.dealcard_constID);
+                    edata.cost_cur -= 2;
+                    if (edata.cost_cur == 0) return false;
+                    else return true;
+                }
+        }
+        Debug.LogWarning("有未用完能量点:  "+edata.cost_cur);
+        return false;
     }
+    #endregion
 }

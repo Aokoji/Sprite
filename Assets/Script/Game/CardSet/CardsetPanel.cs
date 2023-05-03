@@ -44,6 +44,7 @@ public class CardsetPanel : PanelBase
         maxmana = PlayerManager.Instance.cursprite.spritePower;
         initScrollData();
         refreshWillList();
+        refreshMana();
     }
     private void initScrollData()
     {
