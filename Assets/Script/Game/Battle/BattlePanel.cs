@@ -332,8 +332,6 @@ public class BattlePanel : PanelBase
             card.isStaying = false;
             takeCardlist.Remove(card);
             handCardlist.Add(card);
-            dealCardToHand(card);
-            refreshTakeCard();      //+++有问题
         }
         else
         {
@@ -343,9 +341,9 @@ public class BattlePanel : PanelBase
             card.isStaying = true;
             handCardlist.Remove(card);
             takeCardlist.Add(card);
-            dealCardToTake(card);
         }
-        refreshCard();//+++有问题
+        refreshTakeCard();
+        refreshCard();
     }
     
     private CardEntity newcard(t_DataCard data,bool isback=false)
@@ -375,14 +373,6 @@ public class BattlePanel : PanelBase
     private void dealCardEnemyAnim(CardEntity card, int topos)
     {
         RunSingel.Instance.moveToAll(card.gameObject, enemyCardPos[topos - 1].transform.position, MoveType.moveAll_FTS, ConfigConst.cardtime_showtohand, Vector3.one, Vector3.zero);
-    }
-    private void dealCardToHand(CardEntity obj)
-    {
-        RunSingel.Instance.moveTo(obj.gameObject, handCardPos[handCardlist.Count - 1].transform.position, ConfigConst.cardtime_takeOnOff, () => {obj.clickAllow = true; });
-    }
-    private void dealCardToTake(CardEntity obj)
-    {
-        RunSingel.Instance.moveTo(obj.gameObject, takeCardPos[takeCardlist.Count - 1].transform.position, ConfigConst.cardtime_takeOnOff, () => {obj.clickAllow = true; });
     }
     private void tearCardAnim(CardEntity obj)
     {

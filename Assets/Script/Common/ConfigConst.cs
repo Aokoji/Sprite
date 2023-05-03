@@ -11,7 +11,6 @@ public static class ConfigConst
     public static float cardtime_dealtoshow = 0.5f; //  抽卡到展示
     public static float cardtime_showstay = 0.7f;   //展示时常
     public static float cardtime_showtohand = 0.4f; //展示完毕到手上
-    public static float cardtime_takeOnOff = 0.4f; //选中到台面或台面回手
     public static float cardtime_refshMove = 0.25f; //刷新卡速度
     public static float cardtime_effectShow = 1.25f; //卡生效放大展示时间
     public static float cardtime_effectMove = 0.4f; //攻击粒子飞行时间
