@@ -22,7 +22,7 @@ public class BattleControl :Object
     }
     private void createPanel()
     {
-        PanelManager.Instance.OpenPanel(E_UIPrefab.BattlePanel, loadComplete);
+        PanelManager.Instance.ChangePanel(E_UIPrefab.BattlePanel, loadComplete);
     }
 
     private void registerEvent()

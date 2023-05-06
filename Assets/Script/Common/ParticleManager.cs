@@ -7,14 +7,14 @@ public class ParticleManager : CSingel<ParticleManager>
     GameObject parent;
     private Dictionary<E_Particle, GameObject> particleResDic = new Dictionary<E_Particle, GameObject>();
     private Dictionary<E_Particle, GameObject> particleDic = new Dictionary<E_Particle, GameObject>();
-    string PARTICLE_PATH = "Assets/ui/particle/";
+    string PARTICLE_PATH = "ui/particle/";
 
     public GameObject getEffect(E_Particle particle)
     {
         GameObject result;
         if (!particleResDic.ContainsKey(particle))
         {
-            GameObject obj = AssetLoad.Instance.loadUIPrefab<GameObject>(PARTICLE_PATH, particle.ToString());
+            GameObject obj = AssetManager.loadAsset<GameObject>(PARTICLE_PATH + particle.ToString());
             particleResDic.Add(particle, obj);
         }
         result = UnityEngine.Object.Instantiate(particleResDic[particle]);
@@ -40,7 +40,7 @@ public class ParticleManager : CSingel<ParticleManager>
     {
         if (!particleResDic.ContainsKey(particle))
         {
-            GameObject res = AssetLoad.Instance.loadUIPrefab<GameObject>(PARTICLE_PATH, particle.ToString());
+            GameObject res = AssetManager.loadAsset<GameObject>(PARTICLE_PATH + particle.ToString());
             var obj = UnityEngine.Object.Instantiate(res);
             if (parent == null)
             {

@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Networking;
 
 public class RunSingel : MonoBehaviour
 {
@@ -77,6 +79,81 @@ public class RunSingel : MonoBehaviour
         script.setDataAll(target, time, type, scale, rotate);
         script.startPlay(callback);
         yield return null;
+    }
+    #endregion
+    #region 时间
+    const float conectTime = 5;
+    Action<DateTime> Callback;
+    float curtime;
+    public void getBeiJingTime(Action<DateTime> callback)
+    {
+        PanelManager.Instance.panelLock();
+        PanelManager.Instance.LoadingShow(true, true);
+        Callback = callback;
+        curtime = 0;
+        runTimer(gettime());
+    }
+    IEnumerator gettime()
+    {
+        string url = "https://www.baidu.com";
+        UnityWebRequest web = new UnityWebRequest(url);
+        DateTime starttime = DateTime.Now;
+        yield return web.SendWebRequest();
+        if (web.isDone && string.IsNullOrEmpty(web.error))
+        {
+            var res = web.GetResponseHeaders();
+            string key = "DATE";
+            string value = null;
+            if (res != null && res.ContainsKey(key))
+            {
+                res.TryGetValue(key, out value);
+            }
+            Debug.Log(value);       //GMT时间格式
+            PanelManager.Instance.panelUnlock();
+            PanelManager.Instance.LoadingShow(false);
+            Callback(convertTime(value));
+        }
+        else
+        {
+            curtime++;
+            if (curtime > conectTime)
+            {
+                PanelManager.Instance.showTips2("网络不佳，是否重新连接", () => { curtime = 0; runTimer(gettime()); }, Application.Quit);
+            }
+            else
+            {
+                Debug.LogError("网络错误，获取时间失败     重试");
+                runTimer(gettime());
+            }
+        }
+    }
+    DateTime convertTime(string gmt)
+    {
+        DateTime dat = DateTime.MinValue;
+        try
+        {
+            string pat = "";
+            if (gmt.IndexOf("+0") != -1)
+            {
+                gmt = gmt.Replace("GMT", "");
+                pat = "ddd, dd MMM yyyy HH':'mm':'ss zzz";
+            }
+            if (gmt.ToUpper().IndexOf("GMT") != -1)
+                pat = "ddd, dd MMM yyyy HH':'mm':'ss 'GMT'";
+            if (pat != "")
+            {
+                dat = DateTime.ParseExact(gmt, pat, System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.AdjustToUniversal);
+                dat = dat.ToLocalTime();
+            }
+            else
+            {
+                dat = Convert.ToDateTime(gmt);
+            }
+        }catch(Exception e)
+        {
+            Debug.Log(e);
+        }
+        return dat;
     }
     #endregion
 }

@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 public class BaseData
 {
-    protected string TABLE_PATH = "Assets/config/";
+    protected string TABLE_PATH = "config/";
     public void padding()
     {
             
     }
+    public virtual void initdata() { }
 }
 public class AssetData:ScriptableObject
 {

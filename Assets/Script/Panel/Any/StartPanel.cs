@@ -18,8 +18,8 @@ public class StartPanel : PanelBase
 
     private void startgame()
     {
-        BattleManager.Instance.EnterBattle();
-        //PanelManager.Instance.OpenPanel(E_UIPrefab.BattlePanel);
+        //BattleManager.Instance.EnterBattle();
+        PanelManager.Instance.ChangePanel(E_UIPrefab.MainPanel);
     }
     private void editgame()
     {

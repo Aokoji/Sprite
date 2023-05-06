@@ -7,13 +7,13 @@ using UnityEngine.U2D;
 public class UIResourceManager : CSingel<UIResourceManager>
 {
     private Dictionary<string, SpriteAtlas> uiAtlasDic = new Dictionary<string, SpriteAtlas>();
-    string ATLAS_PATH = "Assets/ui/atlas/";
+    string ATLAS_PATH = "ui/atlas/";
 
     public Sprite GetSpriteAtlas(string atlasname,string spritename)
     {
         if (!uiAtlasDic.ContainsKey(atlasname))
         {
-            var altas = AssetManager.loadAsset<SpriteAtlas>(ATLAS_PATH, atlasname, ".spriteatlas");
+            var altas = AssetManager.loadAsset<SpriteAtlas>(ATLAS_PATH+ atlasname);
             if (altas == null) Debug.LogError("altas name 输入错误!");
             uiAtlasDic.Add(atlasname, altas);
         }

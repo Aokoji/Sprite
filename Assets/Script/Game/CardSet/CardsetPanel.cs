@@ -33,7 +33,7 @@ public class CardsetPanel : PanelBase
     private Queue<CardSetEntity> discardCard = new Queue<CardSetEntity>();
     private Dictionary<int, CardSetEntity> allcards = new Dictionary<int, CardSetEntity>();
     private Dictionary<int, int> limitedCard = new Dictionary<int, int>();
-    string CARDPATH = "Assets/ui/battle/card/";
+    string CARDPATH = "ui/battle/card/";
     int justAdd;
 
     private void initData()
@@ -104,7 +104,6 @@ public class CardsetPanel : PanelBase
             spriteManaText.color = Color.white;
         spriteManaText.text = mana + "/" + maxmana;
     }
-
     private CardSetEntity newcard(t_DataCard data, bool isback = false)
     {
         CardSetEntity item;
@@ -114,7 +113,9 @@ public class CardsetPanel : PanelBase
             item.transform.SetAsLastSibling();
         }
         else
+        {
             item = PanelManager.Instance.LoadUI(E_UIPrefab.cardShow, CARDPATH).GetComponent<CardSetEntity>();
+        }
         item.initData(data);
         item.onChoose = chooseCard;
         return item;
@@ -214,9 +215,9 @@ public class CardsetPanel : PanelBase
     private void backmain()
     {
         if (ischanged) PanelManager.Instance.showTips2("卡组有改动还未保存，是否退出？",
-            () => { PanelManager.Instance.OpenPanel(E_UIPrefab.StartPanel); }
+            () => { PanelManager.Instance.DisposePanel(); }
              );
         else
-            PanelManager.Instance.OpenPanel(E_UIPrefab.StartPanel);
+            PanelManager.Instance.DisposePanel();
     }
 }

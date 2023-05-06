@@ -13,6 +13,11 @@ public enum E_UIPrefab
     CardsetPanel,
     MainPanel,
     MillPanel,
+    WorkshopPanel,
+    ExplorPanel,    //探索选框
+    EntrustPanel,   //委托
+    FarmPanel,
+    SpringPanel,
 
     //ui
     cardHand,
@@ -24,4 +29,22 @@ public enum E_Particle
     particle_hit,
     particle_move,
     particle_movefire,
+}
+
+public enum A_AtlasNames
+{
+    atlasImg1,
+}
+
+public enum B_BundleNames
+{
+    nprefab,
+    natlas,
+    ndataasset,
+}
+
+public enum S_SaverNames
+{
+    pdata,  //player save
+    entrust,
 }

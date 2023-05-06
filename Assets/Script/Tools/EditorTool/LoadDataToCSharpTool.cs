@@ -5,20 +5,20 @@ using UnityEditor;
 using System;
 using System.IO;
 using System.Text;
-
+#if UNITY_EDITOR
 public class LoadDataToCSharpTool :Editor
 {
     static string defaultPath = "Data/Table";
     static string csharpPath = "/Script/Game/Data/datacs/";
     static string csharpPath0 = "Assets/Script/Game/Data/datacs"; //删文件用的
-    static string assetPath0 = "Assets/config/tabledata";//删文件用的
-    static string assetPath = "Assets/config/tabledata/";
+    static string assetPath0 = "Assets/Resources/config/tabledata";//删文件用的
+    static string assetPath = "Assets/Resources/config/tabledata/";
     static string tableconfigPath = "/Script/Game/Data/TableConfig.cs";
     static List<TableData> tables;
     static Dictionary<string, byte> willDeleteNames;
 
     //暂且只用来创建CSharp 因为数据需要编译好的cs文件
-    [MenuItem("dataTool/createDefaultPathDataCSharp")]
+    [MenuItem("datatool/createDefaultPathDataCSharp")]
     public static void createDefaultPathDataCSharp()
     {
         tables = new List<TableData>();
@@ -31,7 +31,7 @@ public class LoadDataToCSharpTool :Editor
         willDeleteNames = null;
     }
     //导入数据
-    [MenuItem("dataTool/importDefaultPathData")]
+    [MenuItem("datatool/importDefaultPathData")]
     public static void importDefaultPathData()
     {
         willDeleteNames = new Dictionary<string, byte>();
@@ -245,10 +245,12 @@ public class LoadDataToCSharpTool :Editor
     static string CS_strMember1 = "\tpublic @CLASS @MEMBER;\r";
 			
     //table config模板
-    static string CS_configStr1 = "using System.Collections;\rusing UnityEditor;\rpublic class TableConfig\r{\r\tstring ASSETPATH = \"Assets/config/tabledata/\";\r\tpublic bool loadsuccess;\r\tpublic void init()\r\t{\r\t\tloadsuccess = false;\r\t\tRunSingel.Instance.runTimer(loadData());\r\t}\r\tIEnumerator loadData()\r\t{";
+    static string CS_configStr1 = "using System.Collections;\rusing UnityEditor;\rpublic class TableConfig\r{\r\tstring ASSETPATH = \"config/tabledata/\";\r\tpublic bool loadsuccess;\r\tpublic void init()\r\t{\r\t\tloadsuccess = false;\r\t\tRunSingel.Instance.runTimer(loadData());\r\t}\r\tIEnumerator loadData()\r\t{";
     static string CS_configStr2 = "\r\t\tloadsuccess = true;\r\t}\r\tpublic void Dispose()\r\t{";
     static string CS_configStr3 = "\r\t}\r}";
 
-    static string CS_configMember = "\r\t\tAssetDatabase.LoadAssetAtPath<Config_@FILE>(ASSETPATH + \"@FILE_data.asset\").init();\r\t\twhile (!Config_@FILE.isloaded)\r\t\t\tyield return null;";
+    static string CS_configMember = "\r\t\tAssetManager.loadAsset<Config_@FILE>(ASSETPATH +\"@FILE_data\").init();\r\t\twhile (!Config_@FILE.isloaded)\r\t\t\tyield return null;";
+    //static string CS_configMember1 = "\r\t\tAssetDatabase.LoadAssetAtPath<Config_@FILE>(ASSETPATH + \"@FILE_data.asset\").init();\r\t\twhile (!Config_@FILE.isloaded)\r\t\t\tyield return null;";
     static string CS_configMember_des = "\r\t\tConfig_@FILE.Dispose();";
 }
+#endif

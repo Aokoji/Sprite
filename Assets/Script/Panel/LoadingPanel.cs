@@ -1,18 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LoadingPanel:UIBase
 {
-    public void Loading(bool show)
+    public Text showtext;
+    public void Loading(bool show,bool isconect)
     {
-        if (show)
-        {
-
-        }
-        else
-        {
-
-        }
+        gameObject.SetActive(show);
+        if(show)
+            showtext.text = isconect ? "连接中..." : "加载中...";
     }
 }

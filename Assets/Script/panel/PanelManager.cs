@@ -6,12 +6,12 @@ using customEvent;
 
 public class PanelManager : CSingel<PanelManager>
 {
-    private E_UIPrefab curEnmu;
+    private string curEnmu;
     private PanelBase curPanel;
     public PanelBase PanelCur { get { return curPanel; } }
 
     private Stack<PanelBase> panelStack = new Stack<PanelBase>();
-    private string PANEL_PATH = "Assets/ui/panel/";
+    private string PANEL_PATH = "ui/panel/";
     Transform basePanel;
     GameObject shadow;
     public GameObject maincanvas;
@@ -33,21 +33,27 @@ public class PanelManager : CSingel<PanelManager>
     public Action loadingComplete;
     public void OpenPanel(E_UIPrefab pop,Action callback=null)
     {
-        if (curEnmu == pop) return;
-        curEnmu = pop;
+        if (curEnmu == pop.ToString()) return;
+        curEnmu = pop.ToString();
         loadingComplete = callback;
         RunSingel.Instance.runTimer(enterPanel());
+    }
+    public void ChangePanel(E_UIPrefab pop, Action callback = null)
+    {
+        DisposePanel();
+        OpenPanel(pop, callback);
     }
     IEnumerator enterPanel()
     {
         //shut wait
-        var  obj = AssetLoad.Instance.loadUIPrefab<GameObject>(PANEL_PATH , curEnmu.ToString());
+        var  obj = AssetManager.loadAsset<GameObject>(PANEL_PATH + curEnmu.ToString());
         //var obj = Resources.Load<GameObject>(curEnmu.ToString());
         var t = UnityEngine.Object.Instantiate(obj);
         t.transform.SetParent(basePanel, false);
         PanelBase panel = t.GetComponent<PanelBase>();
-        if (curPanel != null) curPanel.Dispose();
+        //if (curPanel != null) curPanel.gameObject.SetActive(false);
         curPanel = panel;
+        curPanel.PanelName = curEnmu;
         while(panel==null)
             yield return null;
         ChangePanelComplete();
@@ -55,16 +61,36 @@ public class PanelManager : CSingel<PanelManager>
     public void ChangePanelComplete()
     {
         panelStack.Push(curPanel);
-        curPanel.init();
-        loadingComplete?.Invoke();
+        curPanel.init(loadingComplete);
         EventAction.Instance.TriggerAction(eventType.panelChangeLoadingComplete, curEnmu);
     }
-
-    public string UI_PATH = "Assets/ui/";
-    private string CUSTOM_UI_PATH = "Assets/ui/custom/";
-    public UIBase LoadUI(E_UIPrefab pop,string custompath="",Transform parent=null)
+    public void DisposePanel()
     {
-        var obj = AssetLoad.Instance.loadUIPrefab<GameObject>(string.IsNullOrEmpty(custompath)? CUSTOM_UI_PATH:custompath, pop.ToString());
+        if (panelStack.Count <= 0)
+        {
+            Debug.LogError("退出界面错误，退栈为空");
+            return;
+        }
+        panelStack.Pop();
+        curPanel.Dispose();
+        if (panelStack.Count > 0)
+        {
+            curPanel = panelStack.Peek();
+            curEnmu = curPanel.PanelName;
+            curPanel.gameObject.SetActive(true);
+            curPanel.reshow();
+        }
+        else
+        {
+            curEnmu = "";
+            curPanel = null;
+        }
+
+    }
+
+    public UIBase LoadUI(E_UIPrefab pop,string custompath,Transform parent=null)
+    {
+        var obj = AssetManager.loadAsset<GameObject>(custompath+ pop.ToString());
         var entity = UnityEngine.Object.Instantiate(obj);
         if (null != parent)
         {
@@ -92,18 +118,18 @@ public class PanelManager : CSingel<PanelManager>
     }
     //  ----------------------- loading ----------------------
     private LoadingPanel loading;
-    private string COMMON_PATH = "Assets/ui/common/";
+    private string COMMON_PATH = "ui/common/";
     private void loadingPanel()
     {
-        var entity = AssetLoad.Instance.loadUIPrefab<LoadingPanel>(COMMON_PATH, E_UIPrefab.Loading.ToString());
+        var entity = AssetManager.loadAsset< LoadingPanel>(COMMON_PATH+E_UIPrefab.Loading.ToString());
         loading = UnityEngine.Object.Instantiate(entity);
         loading.transform.SetParent(commonParent.transform);
         loading.transform.localScale = Vector3.one;
         loading.gameObject.SetActive(false);
     }
-    public void LoadingShow(bool show)
+    public void LoadingShow(bool show,bool isconect=false)
     {
-        if (null != loading) loading.Loading(show);
+        if (null != loading) loading.Loading(show, isconect);
     }
 
     //------------------------ tips ----------------------------
@@ -111,7 +137,7 @@ public class PanelManager : CSingel<PanelManager>
     private TipsBase tip2;
     private void loadTips1Panel()
     {
-        var entity = AssetLoad.Instance.loadUIPrefab<GameObject>(COMMON_PATH, E_UIPrefab.Tips1.ToString());
+        var entity = AssetManager.loadAsset<GameObject>(COMMON_PATH+ E_UIPrefab.Tips1.ToString());
         tip1 = UnityEngine.Object.Instantiate(entity).GetComponent<TipsBase>();
         tip1.transform.SetParent(commonParent.transform);
         tip1.transform.localScale = Vector3.one;
@@ -119,7 +145,7 @@ public class PanelManager : CSingel<PanelManager>
     }
     private void loadTips2Panel()
     {
-        var entity = AssetLoad.Instance.loadUIPrefab<GameObject>(COMMON_PATH, E_UIPrefab.Tips2.ToString());
+        var entity = AssetManager.loadAsset<GameObject>(COMMON_PATH+ E_UIPrefab.Tips2.ToString());
         tip2 = UnityEngine.Object.Instantiate(entity).GetComponent<TipsBase>();
         tip2.transform.SetParent(commonParent.transform);
         tip2.transform.localScale = Vector3.one;

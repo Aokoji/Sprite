@@ -5,7 +5,7 @@ using System.IO;
 
 public class PlayerManager : CSingel<PlayerManager>
 {
-    PlayerAsset playerAsset;
+    //PlayerAsset playerAsset;
     PlayerData playerdata;  //元数据
     //  ------------    解析数据
     public SpriteData cursprite;
@@ -29,26 +29,28 @@ public class PlayerManager : CSingel<PlayerManager>
 
     }
     
-    private string CARD_TEST_PATH = "Assets/config/assetdata/playersave";
+    //private string CARD_TEST_PATH = "config/assetdata/playersave";
     public void loadTestCardData()
     {
-        if (File.Exists(CARD_TEST_PATH + ".asset"))
+        var data= AssetManager.loadJson<PlayerData>(S_SaverNames.pdata.ToString());
+        if (data!=null)
         {
-            playerAsset = AssetManager.loadAssetFile<PlayerAsset>(CARD_TEST_PATH);
-            playerdata = playerAsset.playdata;
+            //playerAsset = AssetManager.loadAsset<PlayerAsset>(CARD_TEST_PATH);
+            playerdata = data;
         }
         else
         {
-            playerAsset = ScriptableObject.CreateInstance<PlayerAsset>();
+            //playerAsset = ScriptableObject.CreateInstance<PlayerAsset>();
             playerdata = new PlayerData();
             playerdata.initdata();
-            playerAsset.playdata = playerdata;
-            AssetManager.saveAsset(playerAsset, CARD_TEST_PATH + ".asset");
+            //playerAsset.playdata = playerdata;
+            //AssetManager.saveAsset(playerAsset, CARD_TEST_PATH + ".asset");
+            savePlayerData();
         }
     }
     public void savePlayerData()
     {
-        AssetManager.saveAsset(playerAsset, CARD_TEST_PATH + ".asset");
+        AssetManager.saveJson(S_SaverNames.pdata.ToString(), playerdata); 
     }
 
     public List<int> getPlayerCards()

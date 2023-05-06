@@ -55,7 +55,7 @@ public class BattlePanel : PanelBase
     SpriteData enemy;
     bool dealbtnAllow;
     private const float healthconstWidth = 100;
-    string CARDPATH = "Assets/ui/battle/card/";
+    string CARDPATH = "ui/battle/card/";
     enum rank
     {
         none,

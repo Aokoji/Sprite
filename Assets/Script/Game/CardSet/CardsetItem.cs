@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CardsetItem:MonoBehaviour
+public class CardsetItem:UIBase
 {
     public Image icon;
     public Text context;
