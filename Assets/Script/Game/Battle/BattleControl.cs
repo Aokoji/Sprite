@@ -184,11 +184,12 @@ public class BattleControl :Object
             case CardType2.e_deplete:
                 data.hitnum = data._card.damage1;
                 data.hitselfnum = data._card.damage2;
-                conditionTypeCalculate(data, data._card.conditionType1, data._card.damage3);
+                conditionTypeCalculate(data, data._card.conditionType3, data._card.damage3);
                 break;
             case CardType2.e_gift:
                 for(int i = 0; i < data._card.damage1; i++)
                     data.gift.Add(CardCalculate.getRandomTypeCardList((CardSelfType)data._card.damage2));
+                conditionTypeCalculate(data, data._card.conditionType3, data._card.damage3);
                 break;
             case CardType2.d_power:
                 conditionTypeCalculate(data, data._card.conditionType1, data._card.damage1);
@@ -207,9 +208,7 @@ public class BattleControl :Object
                 }
                 break;
             case CardType2.s_blessup:
-                if(data.isplayer && player.extraLimit>= data._card.damage1)
-                    conditionTypeCalculate(data, data._card.conditionType2, data._card.damage2);
-                else if (!data.isplayer && enemy.extraLimit >= data._card.damage1)
+                if((data.isplayer && player.extraLimit>= data._card.damage1)||(!data.isplayer && enemy.extraLimit >= data._card.damage1))
                     conditionTypeCalculate(data, data._card.conditionType2, data._card.damage2);
                 else
                     data.extraLimit = data._card.damage1;
@@ -280,8 +279,7 @@ public class BattleControl :Object
                 data.hitnum += damage;
                 break;
             case CardType2.e_gift:
-                for (int i = 0; i < damage; i++)
-                    data.gift.Add(CardCalculate.getRandomTypeCardList(data._card.limit));
+                data.gift.Add(CardCalculate.getRandomTypeCardList((CardSelfType)damage));
                 break;
             case CardType2.e_giftone:
                 data.gift.Add(damage);

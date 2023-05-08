@@ -5,7 +5,7 @@ using UnityEngine;
 public static class ConfigConst
 {
     //战斗与抽卡
-    public static int maxCardHand = 5;    //     手牌最大
+    public static int maxCardHand = 6;    //     手牌最大
     public static int maxCardTake = 4;    //     take最大
     public static float cardwait = 1.25f;//    抽一张牌需要等待
     public static float cardtime_dealtoshow = 0.5f; //  抽卡到展示
@@ -15,13 +15,12 @@ public static class ConfigConst
     public static float cardtime_effectShow = 1.25f; //卡生效放大展示时间
     public static float cardtime_effectMove = 0.4f; //攻击粒子飞行时间
     public static float cardtime_effectMoveSlow = 0.6f; //攻击粒子慢飞行时间
-    public static float cardtime_addition = 1f; //填卡
+    public static float cardtime_addition = 0.8f; //填卡
 
     public static int dealcard_constID = 2;    //魔法糖（抽卡）默认id
     public static int dealcard_useUp = 3;    //疲劳抽卡 默认id
-    public static int dealcard_blessed = 59;    //仙灵祝福 默认id
-    public static int dealcard_blessGod = 60;    //神灵祝福 默认id
-    public static int dealcard_blessGodFront = 61;    //神灵祝福前置卡 默认id
+    public static int dealcard_blessed = 91;    //仙灵祝福 默认id
+    public static int dealcard_blessGod = 92;    //神灵祝福 默认id
 
     public static int QUEST_MAX= 6;    //任务上限
 

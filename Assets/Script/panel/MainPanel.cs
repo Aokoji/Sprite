@@ -32,7 +32,9 @@ public class MainPanel : PanelBase
     #region  onclick
     void jumpmill(){ PanelManager.Instance.OpenPanel(E_UIPrefab.MillPanel);}
     void jumpworkshop(){ PanelManager.Instance.OpenPanel(E_UIPrefab.MillPanel);}
-    void jumpexplor(){ PanelManager.Instance.OpenPanel(E_UIPrefab.MillPanel);}
+    void jumpexplor(){
+        BattleManager.Instance.EnterBattle();//PanelManager.Instance.OpenPanel(E_UIPrefab.MillPanel);
+    }
     void jumpentrust(){ PanelManager.Instance.OpenPanel(E_UIPrefab.MillPanel);}
     void jumpfarm(){ PanelManager.Instance.ChangePanel(E_UIPrefab.MillPanel);}
     void jumpspring(){ PanelManager.Instance.ChangePanel(E_UIPrefab.MillPanel);}

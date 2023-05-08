@@ -63,7 +63,7 @@ public class Anim_Move : AnimNodeBase
         if (Mathf.Abs(rotate.z - s_rotate.z) > 180)
         {
             if (rotate.z > s_rotate.z)
-                anglegap = rotate.z - s_rotate.z + 360;
+                anglegap = rotate.z - s_rotate.z - 360;
             else
                 anglegap = rotate.z + 360 - s_rotate.z;
         }

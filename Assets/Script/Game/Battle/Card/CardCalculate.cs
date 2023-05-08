@@ -11,7 +11,7 @@ public class CardCalculate
         Queue<int> result = new Queue<int>();
         for (int i = 0; i < list.Count; i++)
         {
-            if (list[i] == ConfigConst.dealcard_blessed || list[i] == ConfigConst.dealcard_blessGodFront)
+            if (list[i] == ConfigConst.dealcard_blessed || list[i] == ConfigConst.dealcard_blessGod)
             {
                 result.Enqueue(list[i]);
                 list.RemoveAt(i);
@@ -79,8 +79,10 @@ public class CardCalculate
     public static Queue<int> addOneCard(Queue<int> table,int id)
     {
         int index = Random.Range(0, table.Count);
+        int count = table.Count;
+        index = 1;
         Queue<int> list = new Queue<int>();
-        for(int i = 0; i < table.Count; i++)
+        for(int i = 0; i < count; i++)
         {
             if (i == index)
                 list.Enqueue(id);

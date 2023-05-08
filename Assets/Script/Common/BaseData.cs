@@ -28,7 +28,7 @@ public class AssetData:ScriptableObject
 }
 public enum CardType1
 {
-    take,       //非集换   //默认卡
+    take,       //非集换   //默认卡      显示属性
     condition,  //单次    //制作卡
     hidden,     //特殊卡 不显示
     condition_two,  //培养
@@ -44,6 +44,7 @@ public enum CardSelfType
     forest,
     arcane,//奥术
     arcane_special,//奥术
+    goden,
 }
 public enum CardType2
 {

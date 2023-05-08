@@ -103,7 +103,7 @@ public class BattlePanel : PanelBase
                 list.Add(int.Parse(ids[i]));
         }
         playerque = CardCalculate.getRandomList(list);
-        residuenum.text = playerque.Count.ToString();
+        refreshCardGroups();
     }
     private void getEnemyNewCardQue()
     {
@@ -306,6 +306,10 @@ public class BattlePanel : PanelBase
             }
         }
     }
+    private void refreshCardGroups()
+    {
+        residuenum.text = playerque.Count.ToString();
+    }
 
     private void chooseCard(CardEntity card)
     {
@@ -363,7 +367,7 @@ public class BattlePanel : PanelBase
     }
     private void dealCardAnim(CardEntity card,int topos)
     {
-        residuenum.text = playerque.Count.ToString();
+        refreshCardGroups();
         RunSingel.Instance.moveToAll(card.gameObject,showCardPos.position,MoveType.moveAll_FTS, ConfigConst.cardtime_dealtoshow, Vector3.one, Vector3.zero, ()=> {
             RunSingel.Instance.moveToBezier(card.gameObject, showCardPos2.position,Vector3.Lerp(showCardPos.position,showCardPos2.position,0.5f)+Vector3.up* (showCardPos2.position.y-showCardPos.position.y)/2, ConfigConst.cardtime_showstay,()=> {
                 RunSingel.Instance.moveToAll(card.gameObject, handCardPos[topos - 1].transform.position, MoveType.moveAll_STF, ConfigConst.cardtime_showtohand, Vector3.one, Vector3.zero,()=> { finishNum++; });
@@ -593,13 +597,23 @@ public class BattlePanel : PanelBase
             if (dataround.addition > 0)
             {
 				addAction(() => {
-					playerque = CardCalculate.addOneCard(playerque, dataround.addition);
-					var item = newcard(Config_t_DataCard.getOne(dataround.addition));
-					item.transform.position = giftsCardPos[2].transform.position;
-					item.playNormalShowAnim(() =>
-					{
-						RunSingel.Instance.moveToAll(item.gameObject, createCardPos.position, MoveType.moveAll_STF, ConfigConst.cardtime_addition, Vector3.one / 2, createCardPosIn.eulerAngles, playerNextQue);
-					});
+                    if (dataround.isplayer)
+                    {
+                        playerque = CardCalculate.addOneCard(playerque, dataround.addition);
+                        var item = newcard(Config_t_DataCard.getOne(dataround.addition));
+                        item.transform.position = giftsCardPos[2].transform.position;
+                        item.playNormalShowAnim(() =>
+                        {
+                            item.playTurnBackAnim(() =>
+                            {
+                                RunSingel.Instance.moveToAll(item.gameObject, createCardPos.position, MoveType.moveAll_STF, ConfigConst.cardtime_addition, Vector3.one / 2, createCardPosIn.eulerAngles, () => { refreshCardGroups(); playerNextQue(); });
+                            });
+                        });
+                    }
+                    else
+                    {
+                        playerNextQue();
+                    }
 				});
             }
         }
@@ -634,6 +648,6 @@ public class BattlePanel : PanelBase
     {
         PanelManager.Instance.showTips1("游戏结束");
         PanelManager.Instance.panelLock();
-		RunSingel.Instance.laterDo(1.5f, ()=>{ PanelManager.Instance.OpenPanel(E_UIPrefab.StartPanel);});
+		RunSingel.Instance.laterDo(1.5f, ()=>{ PanelManager.Instance.OpenPanel(E_UIPrefab.MainPanel);});
     }
 }

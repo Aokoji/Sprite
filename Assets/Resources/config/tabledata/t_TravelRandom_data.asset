@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dc83a1ea7ff5bb4d83941a3f3026539, type: 3}
+  m_Name: t_TravelRandom_data
+  m_EditorClassIdentifier: 
+  asset:
+  - id: 1
+    sname: "1\u5730\u533A"
+    describe: 111
+    spendTime: 1200
+    special: 0|1
+    rareSpecial: 1|2
+    questNormal: 0
+    questSpecial: 1
+    mainQuest: 2
+  - id: 2
+    sname: "2\u5730\u533A"
+    describe: 112
+    spendTime: 1201
+    special: 0|2
+    rareSpecial: 1|3
+    questNormal: 1
+    questSpecial: 2
+    mainQuest: 3
+  - id: 3
+    sname: "3\u5730\u533A"
+    describe: 113
+    spendTime: 1202
+    special: 0|3
+    rareSpecial: 1|4
+    questNormal: 2
+    questSpecial: 3
+    mainQuest: 4
+  - id: 4
+    sname: "4\u5730\u533A"
+    describe: 114
+    spendTime: 1203
+    special: 0|4
+    rareSpecial: 1|5
+    questNormal: 3
+    questSpecial: 4
+    mainQuest: 5

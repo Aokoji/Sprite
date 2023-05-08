@@ -203,7 +203,14 @@ public class LoadDataToCSharpTool :Editor
                     for (int k = 0; k < context.Length; k++)
                     {
                         //数据赋值
-                        target.GetField(names[k]).SetValue(obj, asset.GetType().GetMethod("parse").Invoke(asset, new object[] { context[k], types[k] }));
+                        try
+                        {
+                            target.GetField(names[k]).SetValue(obj, asset.GetType().GetMethod("parse").Invoke(asset, new object[] { context[k], types[k] }));
+                        }
+                        catch
+                        {
+                            Debug.LogError(filename + "-------------------" + context[k] + "      " + types[k]);
+                        }
                     }
                     var func = asset.GetType().GetMethod("addContent");
                     func.Invoke(asset, new object[]{ obj });

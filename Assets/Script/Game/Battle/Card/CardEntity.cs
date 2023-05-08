@@ -84,4 +84,12 @@ public class CardEntity : UIBase
     {
         AnimationTool.playAnimation(gameObject, "cardNormalShow", false, callback);
     }
+    public void playTurnFrontAnim(Action callback)
+    {
+        AnimationTool.playAnimation(gameObject, "cardTurnFront", false, callback);
+    }
+    public void playTurnBackAnim(Action callback)
+    {
+        AnimationTool.playAnimation(gameObject, "cardTurnBack", false, callback);
+    }
 }
