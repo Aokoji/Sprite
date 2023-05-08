@@ -151,6 +151,14 @@ public class PanelManager : CSingel<PanelManager>
         tip2.transform.localScale = Vector3.one;
         tip2.gameObject.SetActive(false);
     }
+    private void loadTips3Panel()
+    {
+        var entity = AssetManager.loadAsset<GameObject>(COMMON_PATH + E_UIPrefab.Tips2.ToString());
+        tip2 = UnityEngine.Object.Instantiate(entity).GetComponent<TipsBase>();
+        tip2.transform.SetParent(commonParent.transform);
+        tip2.transform.localScale = Vector3.one;
+        tip2.gameObject.SetActive(false);
+    }
     public void showTips1(string str="",Action callback=null)
     {
         tip1.init(str, callback);
@@ -160,5 +168,9 @@ public class PanelManager : CSingel<PanelManager>
     {
         tip2.init(str, callback, callback2);
         tip2.play();
+    }
+    public void showTips3(string str)
+    {
+
     }
 }

@@ -23,6 +23,8 @@ public static class ConfigConst
     public static int dealcard_blessGod = 60;    //神灵祝福 默认id
     public static int dealcard_blessGodFront = 61;    //神灵祝福前置卡 默认id
 
+    public static int QUEST_MAX= 6;    //任务上限
+
     public static Vector3 colorForest = new Vector3(164,210,146);
     public static Vector3 colorFire = new Vector3(215,129,125);
     public static Vector3 colorWater = new Vector3(134,183,217);

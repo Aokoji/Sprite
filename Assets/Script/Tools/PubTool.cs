@@ -24,6 +24,11 @@ public class PubTool
     {
         return new Color(vec.x / 255, vec.y / 255, vec.z / 255);
     }
+    public static DateTime timeconvert(DateTime start, int timelength)
+    {
+        start.AddSeconds(timelength);
+        return start;
+    }
 }
 public enum MoveType
 {

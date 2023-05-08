@@ -6,8 +6,9 @@ public enum E_UIPrefab
 {
     none,
     Loading,
-    Tips1,
-    Tips2,
+    Tips1,  //全屏 自动消失 文字提示
+    Tips2,  //全屏 提示弹板
+    Tips3,  //非全屏，简单提示文本，自动消失无回调
     BattlePanel,
     StartPanel,
     CardsetPanel,
