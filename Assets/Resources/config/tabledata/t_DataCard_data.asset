@@ -732,7 +732,7 @@ MonoBehaviour:
     sDescribe: "\u968F\u673A\u83B7\u5F975\u5F20\u5F3A\u5927\u7684\u5965\u672F\u6CD5\u672F\u724C"
     type1: 1
     type2: 10
-    limit: 6
+    limit: 5
     conditionType1: 0
     conditionType2: 0
     conditionType3: 0

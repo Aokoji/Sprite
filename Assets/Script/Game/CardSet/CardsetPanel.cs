@@ -6,16 +6,21 @@ using UnityEngine.UI;
 public class CardsetPanel : PanelBase
 {
     public UITool_ScrollView scroll;    //暂定 之后改为翻页
+    public UITool_ScrollView scrollsp;    
     public CardsetItem[] cards;
     public Button savebtn;
     public Button clearbtn;
     public Button backbtn;
     public Text spriteManaText;
 
+    public Button normalToggle;
+    public Button specialToggle;
+
     private List<int> cardcopy; //玩家list 的复制
     int mana;
     int maxmana;
     bool ischanged;
+    bool istoggleNormal;    //切换页
     public override void init()
     {
         base.init();
@@ -29,12 +34,13 @@ public class CardsetPanel : PanelBase
         savebtn.onClick.AddListener(saveCards);
         clearbtn.onClick.AddListener(clearCards);
         backbtn.onClick.AddListener(backmain);
+        normalToggle.onClick.AddListener(toggleClick);
+        specialToggle.onClick.AddListener(toggleClick);
     }
     private Queue<CardSetEntity> discardCard = new Queue<CardSetEntity>();
     private Dictionary<int, CardSetEntity> allcards = new Dictionary<int, CardSetEntity>();
     private Dictionary<int, int> limitedCard = new Dictionary<int, int>();
     string CARDPATH = "ui/battle/card/";
-    int justAdd;
 
     private void initData()
     {
@@ -42,9 +48,13 @@ public class CardsetPanel : PanelBase
         ischanged = false;
         cardcopy = new List<int>(PlayerManager.Instance.getPlayerCards());
         maxmana = PlayerManager.Instance.cursprite.spritePower;
+        istoggleNormal = true;
+        refreshToggleBtn();
+        loadSpecialScroll();
         initScrollData();
         refreshWillList();
         refreshMana();
+        //StartCoroutine(loadSpecialScroll());
     }
     private void initScrollData()
     {
@@ -52,6 +62,7 @@ public class CardsetPanel : PanelBase
         foreach (var item in Config_t_DataCard._data)
         {
             if (item.Value.limitcount == 99) continue;
+            if (item.Value.type1 != CardType1.take && item.Value.type1 != CardType1.untaken) continue;
             //添卡
             var card = newcard(item.Value);
             allcards.Add(card._data.id, card);
@@ -83,6 +94,20 @@ public class CardsetPanel : PanelBase
             cards[i].init();
             cards[i].onchoose = releaseCard;
         }
+    }
+    void loadSpecialScroll()
+    {
+        List<int> list = new List<int>();   //短暂记录
+        foreach (var item in Config_t_DataCard._data)
+        {
+            if (item.Value.limitcount == 99) continue;
+            if (item.Value.type1 == CardType1.take || item.Value.type1 == CardType1.untaken) continue;
+            //添卡
+            var card = newcard(item.Value);
+            allcards.Add(card._data.id, card);
+            scrollsp.addNewItem(card.gameObject);
+        }
+        //yield return null;
     }
 
     //刷新卡组
@@ -140,21 +165,21 @@ public class CardsetPanel : PanelBase
             if (cardcopy[i] == id)
             {
                 cardcopy.Insert(i, id);
-                justAdd = i;
+                //justAdd = i;
                 addsuccess = true;
                 break;
             }
             if (Config_t_DataCard.getOne(cardcopy[i]).cost > card._data.cost)
             {
                 cardcopy.Insert(i, id);
-                justAdd = i;
+                //justAdd = i;
                 addsuccess = true;
                 break;
             }
         }
         if (!addsuccess)
         {
-            justAdd = cardcopy.Count;
+            //justAdd = cardcopy.Count;
             cardcopy.Add(id);
         }
         if (card._data.type1 == CardType1.condition)
@@ -191,6 +216,43 @@ public class CardsetPanel : PanelBase
     private void setOneCardOpen(int id, bool isopen)
     {
         allcards[id].setOpen(isopen);
+    }
+
+    void refreshToggleBtn()
+    {
+        if (istoggleNormal)
+        {
+            normalToggle.GetComponent<CanvasGroup>().alpha = 1;
+            specialToggle.GetComponent<CanvasGroup>().alpha = 0.4f;
+            normalToggle.enabled = false;
+            specialToggle.enabled = true;
+            scroll.gameObject.SetActive(true);
+            scrollsp.gameObject.SetActive(false);
+        }
+        else
+        {
+            normalToggle.GetComponent<CanvasGroup>().alpha = 0.4f;
+            specialToggle.GetComponent<CanvasGroup>().alpha = 1;
+            normalToggle.enabled = true;
+            specialToggle.enabled = false;
+            scrollsp.gameObject.SetActive(true);
+            scroll.gameObject.SetActive(false);
+        }
+    }
+
+    void toggleClick()
+    {
+        istoggleNormal = !istoggleNormal;
+        refreshToggleBtn();
+        if (istoggleNormal)
+        {
+            //刷普通界面
+
+        }
+        else
+        {
+            //刷制作卡
+        }
     }
 
     private void saveCards()

@@ -41,10 +41,13 @@ public class CardEntity : UIBase
         particleCounter.SetActive(false);
 
         bg.color = Color.white;
+        bg.sprite = GetSprite(A_AtlasNames.atlasImg1.ToString(), "card" + (int)_data.limit);
+        /*
         if (_data.type1 == 0)
             bg.sprite = GetSprite(A_AtlasNames.atlasImg1.ToString(), "card" + (int)_data.limit);
         else
             bg.sprite = GetSprite(A_AtlasNames.atlasImg1.ToString(), "card_" + (int)_data.type1);
+        */
         backBG.GetComponent<Image>().sprite = GetSprite(A_AtlasNames.atlasImg1.ToString(), "back");
     }
     private void refreshCard()

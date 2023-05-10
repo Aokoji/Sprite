@@ -30,7 +30,7 @@ public class CardSetEntity : UIBase
         refreshCard();
         GetComponent<Button>().onClick.AddListener(onchoose);
         clickAllow = true;
-        limit.GetComponent<Image>().sprite= GetSprite(A_AtlasNames.atlasImg1.ToString(), "card" + (int)_data.type1);
+        limit.GetComponent<Image>().sprite= GetSprite(A_AtlasNames.atlasImg1.ToString(), "card" + (int)_data.limit);
         //携带问题
         limit.SetActive(false);
     }
@@ -41,6 +41,8 @@ public class CardSetEntity : UIBase
         cost.text = _data.cost.ToString();
 
         bg.color = Color.white;
+        bg.sprite = GetSprite(A_AtlasNames.atlasImg1.ToString(), "card" + (int)_data.limit);
+        /*
         if (_data.type1 == 0)
         {
             bg.sprite = GetSprite(A_AtlasNames.atlasImg1.ToString(), "card" + (int)_data.limit);
@@ -48,7 +50,7 @@ public class CardSetEntity : UIBase
         else
         {
             bg.sprite = GetSprite(A_AtlasNames.atlasImg1.ToString(), "card_" + (int)_data.type1);
-        }
+        }*/
     }
     private void onchoose()
     {
