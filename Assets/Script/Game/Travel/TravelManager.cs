@@ -35,6 +35,8 @@ public class TravelManager : CSingel<TravelManager>
             dat.spID = spid;
             calculateTravelSpend(square, dat);
             dat.finish = result.AddSeconds(Config_t_TravelRandom.getOne(square).spendTime);
+
+            _data.traveling.Add(dat);
         });
         return true;
     }
@@ -51,5 +53,19 @@ public class TravelManager : CSingel<TravelManager>
     void calculateTravelSpend(int square, TravelitemData dat)
     {
         //普通任务 主线需要单算
+        var sq = Config_t_TravelRandom.getOne(square);
+        //计算幸运值 触发稀有素材 数量再说
+        int luck = PlayerManager.Instance.spriteList[dat.spID].lucky;
+        luck = luck * luck;
+        int aa = 1000;  //假设地区标准    800-1500浮动 标准1000
+        if(luck>=UnityEngine.Random.Range(0, aa))
+        {
+            //lucky！
+        }
+        else
+        {
+
+        }
+
     }
 }

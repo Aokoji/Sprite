@@ -17,11 +17,12 @@ public class SpriteData
     public int speed;
 
     public int extraLimit;
-
     public int cost_max;
     public int cost_cur;
     public int takeDefaultCardsID;   //持有默认卡组
-    public int spritePower;
+    public int spritePower;     //卡组能量点
+    //假设区间   10*10=100      25*25=625   1000max;    1-10普通，10-15良，15-21优秀，21-25顶级
+    public int lucky;   //幸运值，影响旅行
 
     public void refreshData()
     {
@@ -47,6 +48,7 @@ public class SpriteData
         copy.cost_cur = cost_cur;
         copy.takeDefaultCardsID = takeDefaultCardsID;
         copy.spritePower = spritePower;
+        copy.lucky = lucky;
         return copy;
     }
 }
