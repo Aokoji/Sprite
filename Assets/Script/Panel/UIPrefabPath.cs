@@ -16,7 +16,7 @@ public enum E_UIPrefab
     MillPanel,
     WorkshopPanel,
     ExplorPanel,    //探索选框
-    EntrustPanel,   //委托
+    TravelPanel,   //委托
     FarmPanel,
     SpringPanel,
 

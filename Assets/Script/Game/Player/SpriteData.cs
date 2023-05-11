@@ -8,7 +8,7 @@ public class SpriteData
     public int id;
     public string sname;
 
-    public int level;
+    public int level;   //精灵等级 上限50
     public int hp_max;
     public int hp_cur;
     public int def_cur;

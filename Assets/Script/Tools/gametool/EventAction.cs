@@ -13,6 +13,7 @@ namespace customEvent
         none,
         changePanel_S,
         panelChangeLoadingComplete,
+        spriteTravelComplete,
 
         roundEnd_C,
         playRoundNext,

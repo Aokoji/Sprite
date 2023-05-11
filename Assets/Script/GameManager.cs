@@ -15,11 +15,14 @@ public class GameManager : CSingel<GameManager>
         TableManager.Instance.init();
         while (!TableManager.Instance.loadsuccess)
             yield return null;
-        TableManager.Instance.initAllCardStallTypeData();
+        TableManager.Instance.LoadMessageData();
         PlayerManager.Instance.init();
         while (!PlayerManager.Instance.loadsuccess)
             yield return null;
+        TravelManager.Instance.init();
         BattleManager.Instance.init();
+
+        ParticleManager.Instance.init();
     }
     
 }

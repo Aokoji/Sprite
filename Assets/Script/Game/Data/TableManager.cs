@@ -22,10 +22,19 @@ public class TableManager : CSingel<TableManager>
     public List<int> stall_forest = new List<int>();
     public List<int> stall_arcane = new List<int>();
     public List<int> stall_arcane_special = new List<int>();
-    public void initAllCardStallTypeData()
+
+    public Dictionary<int, List<int>> questRankDic { get; private set; }
+    public void LoadMessageData()
+    {
+        initAllCardStallTypeData();
+        initQuestRankCheck();
+    }
+    //初始化卡牌分类
+    private void initAllCardStallTypeData()
     {
         foreach(var i in Config_t_DataCard._data)
         {
+            if (i.Value.type1 != CardType1.take && i.Value.type1 != CardType1.untaken) continue;
             if (i.Value.limit == CardSelfType.normal)
                 stall_normal.Add(i.Key);
             if (i.Value.limit == CardSelfType.fire)
@@ -40,6 +49,19 @@ public class TableManager : CSingel<TableManager>
                 stall_arcane.Add(i.Key);
             if (i.Value.limit == CardSelfType.arcane_special)
                 stall_arcane_special.Add(i.Key);
+        }
+    }
+    //初始化任务分类
+    private void initQuestRankCheck()
+    {
+        questRankDic = new Dictionary<int, List<int>>();
+        foreach(var i in Config_t_quest._data)
+        {
+            if (!questRankDic.ContainsKey(i.Value.type))
+            {
+                questRankDic.Add(i.Value.type, new List<int>());
+            }
+            questRankDic[i.Value.type].Add(i.Value.id);
         }
     }
 

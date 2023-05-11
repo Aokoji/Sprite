@@ -5,10 +5,14 @@ using UnityEngine;
 public class ParticleManager : CSingel<ParticleManager>
 {
     GameObject parent;
-    private Dictionary<E_Particle, GameObject> particleResDic = new Dictionary<E_Particle, GameObject>();
-    private Dictionary<E_Particle, GameObject> particleDic = new Dictionary<E_Particle, GameObject>();
+    private Dictionary<E_Particle, GameObject> particleResDic;
+    private Dictionary<E_Particle, GameObject> particleDic;
     string PARTICLE_PATH = "ui/particle/";
-
+    public void init()
+    {
+        particleResDic = new Dictionary<E_Particle, GameObject>();
+        particleDic = new Dictionary<E_Particle, GameObject>();
+    }
     public GameObject getEffect(E_Particle particle)
     {
         GameObject result;

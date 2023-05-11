@@ -88,7 +88,7 @@ public class RunSingel : MonoBehaviour
     public void getBeiJingTime(Action<DateTime> callback)
     {
         PanelManager.Instance.panelLock();
-        PanelManager.Instance.LoadingShow(true, true);
+        PanelManager.Instance.LoadingShow(true, true);      //+++这个理论上不在这里，重连逻辑应该在调用处
         Callback = callback;
         curtime = 0;
         runTimer(gettime());

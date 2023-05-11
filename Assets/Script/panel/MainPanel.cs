@@ -26,7 +26,7 @@ public class MainPanel : PanelBase
     public override void init()
     {
         base.init();
-        RunSingel.Instance.getBeiJingTime((tim) => { Debug.Log(tim.ToString()); });
+        //RunSingel.Instance.getBeiJingTime((tim) => { Debug.Log(tim.ToString()); });
     }
 
     #region  onclick
@@ -35,7 +35,7 @@ public class MainPanel : PanelBase
     void jumpexplor(){
         BattleManager.Instance.EnterBattle();//PanelManager.Instance.OpenPanel(E_UIPrefab.MillPanel);
     }
-    void jumpentrust(){ PanelManager.Instance.OpenPanel(E_UIPrefab.MillPanel);}
+    void jumpentrust(){ PanelManager.Instance.OpenPanel(E_UIPrefab.TravelPanel);}
     void jumpfarm(){ PanelManager.Instance.ChangePanel(E_UIPrefab.MillPanel);}
     void jumpspring(){ PanelManager.Instance.ChangePanel(E_UIPrefab.MillPanel);}
     #endregion

@@ -17,6 +17,7 @@ public class CardsetPanel : PanelBase
     public Button specialToggle;
 
     private List<int> cardcopy; //玩家list 的复制
+    List<CardsetItem> cardItems;
     int mana;
     int maxmana;
     bool ischanged;
@@ -25,6 +26,7 @@ public class CardsetPanel : PanelBase
     {
         base.init();
         scroll.initConfig(150, 200);
+        cardItems = new List<CardsetItem>(); 
         initData();
         scroll.reCalculateHeigh();
     }
@@ -45,20 +47,16 @@ public class CardsetPanel : PanelBase
     private void initData()
     {
         //初始化scroll 和limit  限制数据
+        PanelManager.Instance.LoadingShow(true);
         ischanged = false;
         cardcopy = new List<int>(PlayerManager.Instance.getPlayerCards());
         maxmana = PlayerManager.Instance.cursprite.spritePower;
         istoggleNormal = true;
         refreshToggleBtn();
-        loadSpecialScroll();
-        initScrollData();
-        refreshWillList();
-        refreshMana();
-        //StartCoroutine(loadSpecialScroll());
+        StartCoroutine(initScrollData());
     }
-    private void initScrollData()
+    IEnumerator initScrollData()
     {
-        List<int> list = new List<int>();   //短暂记录
         foreach (var item in Config_t_DataCard._data)
         {
             if (item.Value.limitcount == 99) continue;
@@ -68,7 +66,18 @@ public class CardsetPanel : PanelBase
             allcards.Add(card._data.id, card);
             scroll.addNewItem(card.gameObject);
         }
-        for(int i = 0; i < cardcopy.Count; i++)
+        foreach (var item in Config_t_DataCard._data)
+        {
+            if (item.Value.limitcount == 99) continue;
+            if (item.Value.type1 == CardType1.take || item.Value.type1 == CardType1.untaken) continue;
+            //添卡
+            var card = newcard(item.Value);
+            allcards.Add(card._data.id, card);
+            scrollsp.addNewItem(card.gameObject);
+        }
+        List<int> list = new List<int>();   //短暂记录
+        //数量限制计算
+        for (int i = 0; i < cardcopy.Count; i++)
         {
             var data = Config_t_DataCard.getOne(cardcopy[i]);
             if (data.type1 == CardType1.condition)
@@ -76,7 +85,7 @@ public class CardsetPanel : PanelBase
             if (data.limitcount == 1)
             {
                 limitedCard.Add(data.id, 1);
-                setOneCardOpen(data.id,false);
+                setOneCardOpen(data.id, false);
             }
             if (data.limitcount == 2)
             {
@@ -89,25 +98,15 @@ public class CardsetPanel : PanelBase
                     list.Add(data.id);
             }
         }
-        for(int i = 0; i < cards.Length; i++)
+        for (int i = 0; i < cards.Length; i++)
         {
             cards[i].init();
             cards[i].onchoose = releaseCard;
         }
-    }
-    void loadSpecialScroll()
-    {
-        List<int> list = new List<int>();   //短暂记录
-        foreach (var item in Config_t_DataCard._data)
-        {
-            if (item.Value.limitcount == 99) continue;
-            if (item.Value.type1 == CardType1.take || item.Value.type1 == CardType1.untaken) continue;
-            //添卡
-            var card = newcard(item.Value);
-            allcards.Add(card._data.id, card);
-            scrollsp.addNewItem(card.gameObject);
-        }
-        //yield return null;
+        yield return null;
+        refreshWillList();
+        refreshMana();
+        PanelManager.Instance.LoadingShow(false);
     }
 
     //刷新卡组

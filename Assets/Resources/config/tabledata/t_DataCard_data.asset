@@ -960,7 +960,7 @@ MonoBehaviour:
     conditionType1: 6
     conditionType2: 0
     conditionType3: 0
-    damage1: 2
+    damage1: 1
     damage2: 0
     damage3: 0
     cost: 0

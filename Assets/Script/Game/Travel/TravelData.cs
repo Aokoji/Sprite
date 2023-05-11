@@ -18,5 +18,6 @@ public class TravelitemData:BaseData
     public int spID;
     public DateTime finish;
     public int questID;
+    public int extraID;
     public List<int> takeItem = new List<int>();
 }

@@ -16,16 +16,32 @@ MonoBehaviour:
   - id: 1
     sname: "\u6D4B\u8BD5\u4EFB\u52A11"
     describe: 111
-    questtype: 0
+    type: 0
   - id: 2
     sname: "\u6D4B\u8BD5\u4EFB\u52A12"
     describe: 222
-    questtype: 0
+    type: 1
   - id: 3
     sname: "\u6D4B\u8BD5\u4EFB\u52A13"
     describe: 333
-    questtype: 0
+    type: 2
   - id: 4
     sname: "\u6D4B\u8BD5\u4EFB\u52A14"
     describe: 444
-    questtype: 0
+    type: 3
+  - id: 5
+    sname: "\u6D4B\u8BD5\u4EFB\u52A15"
+    describe: 444
+    type: 4
+  - id: 6
+    sname: "\u6D4B\u8BD5\u4EFB\u52A16"
+    describe: 444
+    type: 5
+  - id: 7
+    sname: "\u6D4B\u8BD5\u4EFB\u52A17"
+    describe: 444
+    type: 6
+  - id: 8
+    sname: "\u6D4B\u8BD5\u4EFB\u52A18"
+    describe: 444
+    type: 7
