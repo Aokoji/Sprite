@@ -5,6 +5,8 @@ using customEvent;
 
 public class GameManager : CSingel<GameManager>
 {
+    public static bool isAllCardOpen = true;    //开放所有卡
+
     public void initManager()
     {
         RunSingel.Instance.runTimer(managerInit());

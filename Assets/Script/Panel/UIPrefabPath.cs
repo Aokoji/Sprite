@@ -30,6 +30,8 @@ public enum E_Particle
     particle_hit,
     particle_move,
     particle_movefire,
+
+    particle_chooseCardSet,
 }
 
 public enum A_AtlasNames

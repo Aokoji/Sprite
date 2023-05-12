@@ -10,7 +10,7 @@ public class PlayerData
     public string sname;
 
     public List<int> playerCards;
-    public List<int> playerAllCards;
+    public List<int> playerAllCards;        //拥有的制作卡
 
     public List<SpriteData> sprites;
     public int curSprite;

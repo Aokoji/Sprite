@@ -17,7 +17,8 @@ public class CardsetPanel : PanelBase
     public Button specialToggle;
 
     private List<int> cardcopy; //玩家list 的复制
-    List<CardsetItem> cardItems;
+    List<CardsetItem> cardItems;    //已选卡组件
+    Dictionary<int, int> cardnums;
     int mana;
     int maxmana;
     bool ischanged;
@@ -26,7 +27,8 @@ public class CardsetPanel : PanelBase
     {
         base.init();
         scroll.initConfig(150, 200);
-        cardItems = new List<CardsetItem>(); 
+        cardItems = new List<CardsetItem>();
+        cardnums = new Dictionary<int, int>(PlayerManager.Instance.playerMakenDic);
         initData();
         scroll.reCalculateHeigh();
     }
@@ -151,6 +153,7 @@ public class CardsetPanel : PanelBase
         if (limitedCard.ContainsKey(id)) return;
         //能进这里代表能choose
         if (cardcopy.Count >= 20) return;
+
         ischanged = true;
         //限制卡计算
         if (card._data.limitcount == 1)
@@ -188,6 +191,7 @@ public class CardsetPanel : PanelBase
         }
         refreshOneCard(id);
         refreshWillList();
+        ParticleManager.Instance.playEffect(E_Particle.particle_chooseCardSet, card.transform.position);
     }
     //点击弹出卡组
     private void releaseCard(int card)

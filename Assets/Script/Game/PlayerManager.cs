@@ -10,6 +10,7 @@ public class PlayerManager : CSingel<PlayerManager>
     //  ------------    解析数据
     public SpriteData cursprite;
     public Dictionary<int, SpriteData> spriteList{ get; private set; }
+    public Dictionary<int,int> playerMakenDic { get; private set; }
 
     public bool loadsuccess;
     public void init()
@@ -21,14 +22,18 @@ public class PlayerManager : CSingel<PlayerManager>
     public void injectPlayer()
     {//暂定为读asset文件  改了 读json
         spriteList = new Dictionary<int, SpriteData>();
+        playerMakenDic = new Dictionary<int, int>();
         loadTestCardData();
         //初始化sprite
         playerdata.sprites.ForEach(item => { if (item.id == playerdata.curSprite) cursprite = item; });
+        playerdata.playerAllCards.ForEach((item) =>
+        {
+            if (!playerMakenDic.ContainsKey(item))
+                playerMakenDic[item] = 1;
+            else
+                playerMakenDic[item]++;
+        });
         loadsuccess = true;
-    }
-    private void loadDefaultData(int id)
-    {
-
     }
     
     //private string CARD_TEST_PATH = "config/assetdata/playersave";
