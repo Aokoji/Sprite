@@ -12,14 +12,18 @@ public class PlayerData
     public List<int> playerCards;
     public List<int> playerAllCards;        //拥有的制作卡
 
+    public List<ItemData> items;    //物品
     public List<SpriteData> sprites;
     public int curSprite;
+
+    public TravelData travel;
 
     public void initdata()
     {
         playerAllCards = new List<int>();
         playerCards = new List<int>();
         sprites = new List<SpriteData>();
+        items = new List<ItemData>();
         //理论上有默认角色
         SpriteData sp = new SpriteData();
         sp.id = 1;

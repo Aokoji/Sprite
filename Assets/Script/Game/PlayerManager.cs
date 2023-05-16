@@ -11,6 +11,7 @@ public class PlayerManager : CSingel<PlayerManager>
     public SpriteData cursprite;
     public Dictionary<int, SpriteData> spriteList{ get; private set; }
     public Dictionary<int,int> playerMakenDic { get; private set; }
+    public Dictionary<int,int> playerItemDic { get; private set; }
 
     public bool loadsuccess;
     public void init()
@@ -24,7 +25,7 @@ public class PlayerManager : CSingel<PlayerManager>
         spriteList = new Dictionary<int, SpriteData>();
         playerMakenDic = new Dictionary<int, int>();
         loadTestCardData();
-        //初始化sprite
+        //初始化sprite         *******************************************     初始化字典数据     ***************************
         playerdata.sprites.ForEach(item => { if (item.id == playerdata.curSprite) cursprite = item; });
         playerdata.playerAllCards.ForEach((item) =>
         {
@@ -33,6 +34,7 @@ public class PlayerManager : CSingel<PlayerManager>
             else
                 playerMakenDic[item]++;
         });
+        playerdata.items.ForEach(item => { playerItemDic.Add(item.id, item.num); });
         loadsuccess = true;
     }
     
@@ -70,5 +72,10 @@ public class PlayerManager : CSingel<PlayerManager>
     {
         playerdata.playerCards= cards;
         savePlayerData();
+    }
+    //慎用
+    public TravelData getplayerTravel()
+    {
+        return playerdata.travel;
     }
 }

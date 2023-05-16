@@ -115,6 +115,7 @@ public class PanelManager : CSingel<PanelManager>
         loadingPanel();
         loadTips1Panel();
         loadTips2Panel();
+        loadTips3Panel();
     }
     //  ----------------------- loading ----------------------
     private LoadingPanel loading;
@@ -135,6 +136,7 @@ public class PanelManager : CSingel<PanelManager>
     //------------------------ tips ----------------------------
     private TipsBase tip1;
     private TipsBase tip2;
+    private TipsBase tip3;
     private void loadTips1Panel()
     {
         var entity = AssetManager.loadAsset<GameObject>(COMMON_PATH+ E_UIPrefab.Tips1.ToString());
@@ -153,13 +155,13 @@ public class PanelManager : CSingel<PanelManager>
     }
     private void loadTips3Panel()
     {
-        var entity = AssetManager.loadAsset<GameObject>(COMMON_PATH + E_UIPrefab.Tips2.ToString());
-        tip2 = UnityEngine.Object.Instantiate(entity).GetComponent<TipsBase>();
-        tip2.transform.SetParent(commonParent.transform);
-        tip2.transform.localScale = Vector3.one;
-        tip2.gameObject.SetActive(false);
+        var entity = AssetManager.loadAsset<GameObject>(COMMON_PATH + E_UIPrefab.Tips3.ToString());
+        tip3 = UnityEngine.Object.Instantiate(entity).GetComponent<TipsBase>();
+        tip3.transform.SetParent(commonParent.transform);
+        tip3.transform.localScale = Vector3.one;
+        tip3.gameObject.SetActive(false);
     }
-    public void showTips1(string str="",Action callback=null)
+    public void showTips1(string str,Action callback=null)
     {
         tip1.init(str, callback);
         tip1.play();
@@ -171,6 +173,7 @@ public class PanelManager : CSingel<PanelManager>
     }
     public void showTips3(string str)
     {
-
+        tip3.init(str);
+        tip3.play();
     }
 }

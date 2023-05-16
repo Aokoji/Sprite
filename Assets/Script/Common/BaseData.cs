@@ -78,4 +78,13 @@ public enum CardType2
     //连击，重击，枯竭，获得卡，秘术，反，翻倍，破甲，装备，祝福     需要配
 }
 
+public enum ItemsType
+{
+    none,
+    material,   //材料    1
+    consum,     //消耗品   2
+    card,   //卡片    3
+}
+//任务类型  0
+
 

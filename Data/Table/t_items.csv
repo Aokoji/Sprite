@@ -1,0 +1,3 @@
+id,sname,describe,type,iconName
+int,string,string,int,string
+1,测试物品,111,1,test1

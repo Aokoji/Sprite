@@ -17,8 +17,8 @@ public class CardsetPanel : PanelBase
     public Button specialToggle;
 
     private List<int> cardcopy; //玩家list 的复制
-    List<CardsetItem> cardItems;    //已选卡组件
-    Dictionary<int, int> cardnums;
+    //Dictionary<int, int> cardnums;
+    int justBarIndex;   //显示bar特效用
     int mana;
     int maxmana;
     bool ischanged;
@@ -27,8 +27,7 @@ public class CardsetPanel : PanelBase
     {
         base.init();
         scroll.initConfig(150, 200);
-        cardItems = new List<CardsetItem>();
-        cardnums = new Dictionary<int, int>(PlayerManager.Instance.playerMakenDic);
+        //cardnums = new Dictionary<int, int>(PlayerManager.Instance.playerMakenDic);
         initData();
         scroll.reCalculateHeigh();
     }
@@ -43,7 +42,6 @@ public class CardsetPanel : PanelBase
     }
     private Queue<CardSetEntity> discardCard = new Queue<CardSetEntity>();
     private Dictionary<int, CardSetEntity> allcards = new Dictionary<int, CardSetEntity>();
-    private Dictionary<int, int> limitedCard = new Dictionary<int, int>();
     string CARDPATH = "ui/battle/card/";
 
     private void initData()
@@ -54,6 +52,7 @@ public class CardsetPanel : PanelBase
         cardcopy = new List<int>(PlayerManager.Instance.getPlayerCards());
         maxmana = PlayerManager.Instance.cursprite.spritePower;
         istoggleNormal = true;
+        justBarIndex = -1;
         refreshToggleBtn();
         StartCoroutine(initScrollData());
     }
@@ -84,21 +83,7 @@ public class CardsetPanel : PanelBase
             var data = Config_t_DataCard.getOne(cardcopy[i]);
             if (data.type1 == CardType1.condition)
                 mana += data.cost;
-            if (data.limitcount == 1)
-            {
-                limitedCard.Add(data.id, 1);
-                setOneCardOpen(data.id, false);
-            }
-            if (data.limitcount == 2)
-            {
-                if (list.Contains(data.id))
-                {
-                    limitedCard.Add(data.id, 1);
-                    setOneCardOpen(data.id, false);
-                }
-                else
-                    list.Add(data.id);
-            }
+            allcards[data.id].chooseThisCard();
         }
         for (int i = 0; i < cards.Length; i++)
         {
@@ -121,6 +106,11 @@ public class CardsetPanel : PanelBase
             else
                 cards[i].setData(Config_t_DataCard.getOne(cardcopy[i]));
         }
+        if (justBarIndex >= 0)
+        {
+            ParticleManager.Instance.playEffect(E_Particle.particle_chooseCardBar, cards[justBarIndex].transform.position);
+            justBarIndex = -1;
+        }
     }
     private void refreshMana()
     {
@@ -142,56 +132,45 @@ public class CardsetPanel : PanelBase
         {
             item = PanelManager.Instance.LoadUI(E_UIPrefab.cardShow, CARDPATH).GetComponent<CardSetEntity>();
         }
-        item.initData(data);
-        item.onChoose = chooseCard;
+        item.initData(data, GameManager.isAllCardOpen ? 2 : PlayerManager.Instance.playerMakenDic[data.id], this);
         return item;
     }
 
-    private void chooseCard(CardSetEntity card)
+    public void chooseCard(int cardid)
     {
-        int id = card._data.id;
-        if (limitedCard.ContainsKey(id)) return;
         //能进这里代表能choose
         if (cardcopy.Count >= 20) return;
 
         ischanged = true;
-        //限制卡计算
-        if (card._data.limitcount == 1)
-            limitedCard.Add(id, 1);
-        if(card._data.limitcount == 2)
-            if (cardcopy.Contains(id))
-                limitedCard.Add(id, 1);
         bool addsuccess=false;
         for(int i = 0; i < cardcopy.Count; i++)
         {
-            if (cardcopy[i] == id)
+            if (cardcopy[i] == cardid)
             {
-                cardcopy.Insert(i, id);
-                //justAdd = i;
+                cardcopy.Insert(i, cardid);
+                justBarIndex = i;
                 addsuccess = true;
                 break;
             }
-            if (Config_t_DataCard.getOne(cardcopy[i]).cost > card._data.cost)
+            if (Config_t_DataCard.getOne(cardcopy[i]).cost > allcards[cardid]._data.cost)
             {
-                cardcopy.Insert(i, id);
-                //justAdd = i;
+                cardcopy.Insert(i, cardid);
+                justBarIndex = i;
                 addsuccess = true;
                 break;
             }
         }
         if (!addsuccess)
         {
-            //justAdd = cardcopy.Count;
-            cardcopy.Add(id);
+            justBarIndex = cardcopy.Count;
+            cardcopy.Add(cardid);
         }
-        if (card._data.type1 == CardType1.condition)
+        if (allcards[cardid]._data.type1 == CardType1.condition)
         {
-            mana += card._data.cost;
+            mana += allcards[cardid]._data.cost;
             refreshMana();
         }
-        refreshOneCard(id);
         refreshWillList();
-        ParticleManager.Instance.playEffect(E_Particle.particle_chooseCardSet, card.transform.position);
     }
     //点击弹出卡组
     private void releaseCard(int card)
@@ -204,21 +183,13 @@ public class CardsetPanel : PanelBase
             mana -= data.cost;
             refreshMana();
         }
-        if (limitedCard.ContainsKey(card))
-        {
-            setOneCardOpen(card, true);
-            limitedCard.Remove(card);
-        }
+        allcards[card].comeBackCard();
         refreshWillList();
     }
     //设置可点击
-    private void refreshOneCard(int id)
+    public bool checkCardsFull()
     {
-        allcards[id].setOpen(!limitedCard.ContainsKey(id));
-    }
-    private void setOneCardOpen(int id, bool isopen)
-    {
-        allcards[id].setOpen(isopen);
+        return cardcopy.Count >= 20;
     }
 
     void refreshToggleBtn()
@@ -262,7 +233,7 @@ public class CardsetPanel : PanelBase
     {
         if (mana > maxmana)
         {
-            PanelManager.Instance.showTips1("卡牌能量超过上限");
+            PanelManager.Instance.showTips3("卡牌能量超过上限");
             return;
         }
         ischanged = false;
@@ -271,10 +242,9 @@ public class CardsetPanel : PanelBase
     }
     private void clearCards()
     {
+        foreach (var i in cardcopy)
+            allcards[i].comeBackCard();
         cardcopy.Clear();
-        foreach(var i in limitedCard)
-            setOneCardOpen(i.Key, true);
-        limitedCard.Clear();
         refreshWillList();
     }
     private void backmain()

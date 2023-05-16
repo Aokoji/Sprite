@@ -15,6 +15,9 @@ public class Main : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             //PanelManager.Instance.OpenPanel(E_UIPrefab.CardsetPanel);
+            var d = new QuestData();
+            d.questID = 1;
+            PlayerManager.Instance.getplayerTravel().quest.Add(d);
         }
     }
 }

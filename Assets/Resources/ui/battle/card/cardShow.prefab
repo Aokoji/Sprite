@@ -226,7 +226,7 @@ MonoBehaviour:
   body: {fileID: 1154229829404141246}
   cost: {fileID: 7429850915097401743}
   limit: {fileID: 801963471117841059}
-  limitnum: {fileID: 2540982080179842709}
+  havenum: {fileID: 2540982080179842709}
   _data:
     id: 0
     sname: 

@@ -7,7 +7,7 @@ public class PanelBase : UIBase
 {
     public string PanelName;
 
-    public void init(Action complete) 
+    public virtual void init(Action complete) 
     {
         var anim = GetComponent<Animation>();
         if (anim== null)

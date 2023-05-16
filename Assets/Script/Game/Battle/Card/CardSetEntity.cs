@@ -18,14 +18,15 @@ public class CardSetEntity : UIBase
 
     //单张
     public t_DataCard _data;
-    public Action<CardSetEntity> onChoose;
     public bool clickAllow;
 
     private int count;  //拥有数量
     private int chooseNum;  //选择数量
+    private CardsetPanel ctrl;
 
-    public void initData(t_DataCard data, int num = 0)
+    public void initData(t_DataCard data, int num,CardsetPanel ctl)
     {
+        ctrl = ctl;
         transform.position = Vector3.zero;
         transform.eulerAngles = Vector3.zero;
         transform.localScale = Vector3.one;
@@ -36,8 +37,9 @@ public class CardSetEntity : UIBase
         limit.GetComponent<Image>().sprite= GetSprite(A_AtlasNames.atlasImg1.ToString(), "card" + (int)_data.limit);
         //携带问题
         limit.SetActive(false);
+        count = num;
     }
-    private void refreshCard(int num=-1)
+    private void refreshCard()
     {
         sname.text = _data.sname.ToString();
         descirbe.text = _data.sDescribe.ToString();
@@ -55,10 +57,10 @@ public class CardSetEntity : UIBase
             bg.sprite = GetSprite(A_AtlasNames.atlasImg1.ToString(), "card_" + (int)_data.type1);
         }*/
 
-        if (num >= 0)
+        if (_data.type1!=CardType1.take)
         {
             havenum.gameObject.SetActive(true);
-            havenum.text = "x" + num;
+            havenum.text = "x" + count;
         }
         else
             havenum.gameObject.SetActive(false);
@@ -66,8 +68,15 @@ public class CardSetEntity : UIBase
     private void onchoose()
     {
         if (!clickAllow) return;
-
-        onChoose?.Invoke(this);
+        if (ctrl.checkCardsFull())
+        {
+            PanelManager.Instance.showTips3("卡组已满");
+            return;
+        }
+        //可以点说明在open
+        chooseThisCard();
+        ctrl.chooseCard(_data.id);
+        ParticleManager.Instance.playEffect(E_Particle.particle_chooseCardSet, transform.position);
     }
     public void setOpen(bool isopen)
     {
@@ -78,18 +87,26 @@ public class CardSetEntity : UIBase
 
     public void chooseThisCard()
     {
-        //可以点说明在open
         chooseNum++;
+        //判断count
         if (_data.type1 != CardType1.take)
         {
             count--;
             if (count <= 0) setOpen(false);
         }
-
-        
+        //判断choose
+        if (_data.limitcount <= chooseNum)
+            setOpen(false);
+        refreshCard();
     }
     public void comeBackCard()
     {
-
+        chooseNum--;
+        if (_data.type1 != CardType1.take)
+        {
+            count++;
+        }
+        setOpen(true);
+        refreshCard();
     }
 }

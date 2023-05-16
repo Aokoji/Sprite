@@ -20,6 +20,8 @@ public enum E_UIPrefab
     FarmPanel,
     SpringPanel,
 
+    TravelSpriteMessagePanel,
+
     //ui
     cardHand,
     cardShow,
@@ -32,11 +34,14 @@ public enum E_Particle
     particle_movefire,
 
     particle_chooseCardSet,
+    particle_chooseCardBar,
+
 }
 
 public enum A_AtlasNames
 {
-    atlasImg1,
+    atlasImg1, 
+    itemsIcon,
 }
 
 public enum B_BundleNames

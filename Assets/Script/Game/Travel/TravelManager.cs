@@ -10,12 +10,14 @@ public class TravelManager : CSingel<TravelManager>
 
     public void init()
     {
-        _data = AssetManager.loadJson<TravelData>(S_SaverNames.entrust.ToString());
+        //展开数据
+        //_data = AssetManager.loadJson<TravelData>(S_SaverNames.entrust.ToString());
+        _data = PlayerManager.Instance.getplayerTravel();
         if (_data == null)
         {
             _data = new TravelData();
             _data.initdata();
-            saveTravel();
+            //saveTravel();
         }
         refreshTravel();
     }
@@ -32,13 +34,29 @@ public class TravelManager : CSingel<TravelManager>
         RunSingel.Instance.getBeiJingTime((result) =>
         {
             //回调
-            TravelitemData dat = new TravelitemData();
+            QuestData dat = new QuestData();
             dat.spID = spid;
+            //任务奖励和品级
             calculateTravelSpend(square, dat);
+            //时间
             int spend = Config_t_TravelRandom.getOne(square).spendTime;
             if (dat.extraID > 0) spend = (int)(spend * 1.1f);
-            dat.finish = result.AddSeconds(Config_t_TravelRandom.getOne(square).spendTime);
-            _data.traveling.Add(dat);
+            dat.spFinish = result.AddMinutes(Config_t_TravelRandom.getOne(square).spendTime);
+            spend = Config_t_quest.getOne(dat.questID).aliveTime;
+            dat.endTime = dat.spFinish.AddMinutes(spend);
+            //计算摆放位置
+            List<int> pos = new List<int>();
+            foreach(var i in _data.quest)
+                pos.Add(i.pagePos);
+            for(int i = 0; i < ConfigConst.QUEST_MAX; i++)
+            {
+                if (!pos.Contains(i))
+                {
+                    dat.pagePos = i;
+                    break;
+                }
+            }
+            _data.quest.Add(dat);
             EventAction.Instance.TriggerAction(eventType.spriteTravelComplete);
         });
         return true;
@@ -53,7 +71,7 @@ public class TravelManager : CSingel<TravelManager>
         });
     }
 
-    void calculateTravelSpend(int square, TravelitemData dat)
+    void calculateTravelSpend(int square, QuestData dat)
     {
         //普通任务 主线需要单算
         var sq = Config_t_TravelRandom.getOne(square);
