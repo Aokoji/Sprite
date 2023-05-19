@@ -1,8 +1,9 @@
-id,sname,defaultCard
-int,string,int
-1,花妖精,1
-2,鸟妖精,1
-3,叶妖精,1
-4,月妖精,1
-5,光妖精,1
-6,黄蜂,1
+id,sname,defaultCard,titleIcon,wholeIcon
+int,string,int,string,string
+注释行,名字,默认卡组,头像图标,立绘
+1,花妖精,1,elf_flower,0
+2,鸟妖精,1,elf_bird,0
+3,叶妖精,1,elf_leaf,0
+4,月妖精,1,elf_moon,0
+5,光妖精,1,elf_light,0
+6,黄蜂,1,en_wasp,0

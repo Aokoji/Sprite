@@ -4,46 +4,23 @@ using UnityEngine;
 
 public class BattleManager : CSingel<BattleManager>
 {
-    BattleControl ctrl;
+    BattleControl ctrl;         //目前未做销毁    +++
     public int battleEnemyID;
 
     public void init()
     {
-        ctrl=new BattleControl();
         refreshBattleData();
     }
 
     public void EnterBattle()
     {
+        ctrl = new BattleControl();
         refreshBattleData();
-        Loadingbattle();
+        ctrl.newbattle();
     }
 
     private void refreshBattleData()
     {
 
-    }
-
-
-
-    public void Loadingbattle()
-    {
-        loadScene();
-    }
-    private void Loadcomplete()
-    {
-        //播放开始动画 或者战斗信息
-        ctrl.StartRound();
-    }
-    private void loadScene()
-    {
-        RunSingel.Instance.runTimer(loadSceneTimer());
-    }
-    IEnumerator loadSceneTimer()
-    {
-        ctrl.newbattle();   //加载信息
-        while(!ctrl.loadSuccess)
-            yield return null;
-        Loadcomplete();
     }
 }

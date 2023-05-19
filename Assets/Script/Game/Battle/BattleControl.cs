@@ -11,10 +11,32 @@ public class BattleControl :Object
     #region 获取数据  加载的准备阶段
     public void newbattle()
     {
-        getPlayerCardData();
-
-        createPanel();
+        loadSuccess = false;
         registerEvent();
+        getPlayerCardData();
+        initData();
+        RunSingel.Instance.runTimer(loadtimer());
+    }
+    IEnumerator loadtimer()
+    {
+        createPanel();
+        while (!loadSuccess)
+            yield return null;
+        //播放开始动画 或者战斗信息
+        StartRound();
+    }
+    private void registerEvent()
+    {
+        EventAction.Instance.AddEventGather<List<CardEntity>>(eventType.roundEnd_C, settleRoundAction);
+        EventAction.Instance.AddEventGather(eventType.playRoundNext, roundNext);
+        EventAction.Instance.AddEventGather(eventType.panelChangeLoadingComplete, loadPanelComplete);
+    }
+    private void initData()
+    {
+        player = PlayerManager.Instance.cursprite.Copy();
+        enemy = EnemyCalculate.GetEnemyData();   //+++模拟一个数据
+        player.refreshData();
+        enemy.refreshData();
     }
     private void getPlayerCardData()
     {
@@ -22,25 +44,14 @@ public class BattleControl :Object
     }
     private void createPanel()
     {
-        PanelManager.Instance.ChangePanel(E_UIPrefab.BattlePanel, loadComplete);
+        PanelManager.Instance.ChangePanel(E_UIPrefab.BattlePanel);
     }
-
-    private void registerEvent()
+    void loadPanelComplete()
     {
-        EventAction.Instance.AddEventGather<List<CardEntity>>(eventType.roundEnd_C, settleRoundAction);
-        EventAction.Instance.AddEventGather(eventType.playRoundNext, roundNext);
-    }
-
-    private void loadComplete()
-    {
-        loadSuccess = true;
+        if (PanelManager.Instance.curEnmu != E_UIPrefab.BattlePanel.ToString()) return;
         ui = PanelManager.Instance.PanelCur.gameObject.GetComponent<BattlePanel>();
-        player = PlayerManager.Instance.cursprite.Copy();
-        enemy = EnemyCalculate.GetEnemyData();   //+++模拟一个数据
-        player.refreshData();
-        enemy.refreshData();
         ui.initData(enemy, player);
-        //ui.refreshPlayerData(player);
+        loadSuccess = true;
     }
     #endregion
 

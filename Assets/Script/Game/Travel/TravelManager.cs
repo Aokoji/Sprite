@@ -19,9 +19,8 @@ public class TravelManager : CSingel<TravelManager>
             _data.initdata();
             //saveTravel();
         }
-        refreshTravel();
     }
-    public void saveTravel() { AssetManager.saveJson(S_SaverNames.entrust.ToString(), _data); }
+    //public void saveTravel() { AssetManager.saveJson(S_SaverNames.entrust.ToString(), _data); }
     public bool goTravel(int spid,int square)
     {
         //检测可出发
@@ -60,15 +59,6 @@ public class TravelManager : CSingel<TravelManager>
             EventAction.Instance.TriggerAction(eventType.spriteTravelComplete);
         });
         return true;
-    }
-
-    void refreshTravel()
-    {
-        RunSingel.Instance.getBeiJingTime((result) =>
-        {
-            //回调
-
-        });
     }
 
     void calculateTravelSpend(int square, QuestData dat)

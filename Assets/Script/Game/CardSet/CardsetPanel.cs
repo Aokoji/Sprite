@@ -25,7 +25,6 @@ public class CardsetPanel : PanelBase
     bool istoggleNormal;    //切换页
     public override void init()
     {
-        base.init();
         scroll.initConfig(150, 200);
         //cardnums = new Dictionary<int, int>(PlayerManager.Instance.playerMakenDic);
         initData();

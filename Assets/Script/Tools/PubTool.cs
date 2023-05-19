@@ -24,10 +24,16 @@ public class PubTool
     {
         return new Color(vec.x / 255, vec.y / 255, vec.z / 255);
     }
-    public static DateTime timeconvert(DateTime start, int timelength)
+    public static string timeTranslate(int minutes)
     {
-        start.AddSeconds(timelength);
-        return start;
+        string str = "";
+        int h = minutes / 60;
+        if (h > 0)
+        {
+            str = h + " 小时 ";
+        }
+        str=str+ minutes % 60 + " 分钟";
+        return str;
     }
 }
 public enum MoveType

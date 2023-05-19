@@ -186,8 +186,8 @@ public class LoadDataToCSharpTool :Editor
                 //读数据
                 while ((str = sr.ReadLine()) != null)
                 {
-                    //跳过前两行
-                    if (index < 2)
+                    //跳过前三行
+                    if (index < 3)
                     {
                         if (index == 0)
                             names = str.Split(',');

@@ -25,7 +25,6 @@ public class MainPanel : PanelBase
     }
     public override void init()
     {
-        base.init();
         //RunSingel.Instance.getBeiJingTime((tim) => { Debug.Log(tim.ToString()); });
     }
 

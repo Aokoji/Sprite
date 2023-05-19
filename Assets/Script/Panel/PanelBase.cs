@@ -6,11 +6,20 @@ using UnityEngine;
 public class PanelBase : UIBase
 {
     public string PanelName;
+    protected object[] message;
 
-    public virtual void init(Action complete) 
+    public void init(object[] obj)
+    {
+        message = obj;
+        registerEvent();
+        init();
+        initAnimType();
+    }
+    //默认打开关闭动画
+    public virtual void initAnimType()
     {
         var anim = GetComponent<Animation>();
-        if (anim== null)
+        if (anim == null)
         {
             anim = gameObject.AddComponent<Animation>();
             AnimationClip clip = AssetManager.loadAsset<AnimationClip>("Art/anim/tips/Hide_Panel2");
@@ -18,19 +27,17 @@ public class PanelBase : UIBase
             clip = AssetManager.loadAsset<AnimationClip>("Art/anim/tips/Show_Panel2");
             anim.AddClip(clip, "Show_Panel2");
         }
-        AnimationTool.playAnimation(gameObject, "Show_Panel2", false, complete);
+        AnimationTool.playAnimation(gameObject, "Show_Panel2", false, afterAnimComplete);
         anim.clip = anim.GetClip("Show_Panel2");
         anim.Play();
-        registerEvent();
-        init();
     }
     public virtual void init() { }
     public virtual void registerEvent() { }
     public virtual void reshow() { }
     public void initAfterLoading() { }
+    public virtual void afterAnimComplete() { }
     public void OnExit() { }
     public virtual void Dispose() {
         AnimationTool.playAnimation(gameObject, "Hide_Panel2", false, () => { Destroy(gameObject); });
-
     }
 }

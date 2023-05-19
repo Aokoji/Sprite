@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PanelTopBase : PanelBase
 {
-    public override void init(Action complete)
+    public override void initAnimType()
     {
         var anim = GetComponent<Animation>();
         if (anim == null)
@@ -16,11 +16,9 @@ public class PanelTopBase : PanelBase
             clip = AssetManager.loadAsset<AnimationClip>("Art/anim/tips/Show_Panel");
             anim.AddClip(clip, "Show_Panel");
         }
-        AnimationTool.playAnimation(gameObject, "Show_Panel", false, complete);
+        AnimationTool.playAnimation(gameObject, "Show_Panel", false, afterAnimComplete);
         anim.clip = anim.GetClip("Show_Panel");
         anim.Play();
-        registerEvent();
-        init();
     }
     public override void Dispose()
     {

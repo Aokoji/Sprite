@@ -6,7 +6,7 @@ using customEvent;
 
 public class PanelManager : CSingel<PanelManager>
 {
-    private string curEnmu;
+    public string curEnmu { get; private set; }
     private PanelBase curPanel;
     public PanelBase PanelCur { get { return curPanel; } }
 
@@ -30,18 +30,18 @@ public class PanelManager : CSingel<PanelManager>
         //EventAction.Instance.AddEventGather<string>(eventType.changePanel_S, changePanel);
         //EventAction.Instance.AddEventGather(eventType.panelChangeLoadingComplete, changPanelWithLoadingComplete);
     }
-    public Action loadingComplete;
-    public void OpenPanel(E_UIPrefab pop,Action callback=null)
+    object[] objdata;
+    public void OpenPanel(E_UIPrefab pop, object[] obj = null)
     {
         if (curEnmu == pop.ToString()) return;
         curEnmu = pop.ToString();
-        loadingComplete = callback;
+        objdata = obj;
         RunSingel.Instance.runTimer(enterPanel());
     }
-    public void ChangePanel(E_UIPrefab pop, Action callback = null)
+    public void ChangePanel(E_UIPrefab pop, object[] obj = null)
     {
         DisposePanel();
-        OpenPanel(pop, callback);
+        OpenPanel(pop, obj);
     }
     IEnumerator enterPanel()
     {
@@ -61,8 +61,8 @@ public class PanelManager : CSingel<PanelManager>
     public void ChangePanelComplete()
     {
         panelStack.Push(curPanel);
-        curPanel.init(loadingComplete);
-        EventAction.Instance.TriggerAction(eventType.panelChangeLoadingComplete, curEnmu);
+        curPanel.init(objdata);
+        EventAction.Instance.TriggerAction(eventType.panelChangeLoadingComplete);
     }
     public void DisposePanel()
     {
@@ -175,5 +175,9 @@ public class PanelManager : CSingel<PanelManager>
     {
         tip3.init(str);
         tip3.play();
+    }
+    public void showTips4(List<int> items)
+    {
+        
     }
 }

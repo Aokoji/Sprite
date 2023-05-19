@@ -1,5 +1,6 @@
 id,sname,describe,spendTime,items,itemsRare,questNormal,questSpecial,questMain,randomGap
 int,string,string,int,string,string,string,string,string,int
+注释行,旅行地区,描述,消耗时间分钟,产出普通,产出稀有,地区普通任务,地区特殊任务id,地区主线,稀有材料随机参数
 1,1地区,111,20,0|1,1|2,0,1,2,1000
 2,2地区,112,180,0|2,1|3,1,2,3,1000
 3,3地区,113,480,0|3,1|4,2,3,4,1200

@@ -14,6 +14,7 @@ public class QuestData : BaseData   //委托单数据
 
     public List<int> takeItem = new List<int>();    //额外物品
     public int extraID;
+    public bool isGet;  //已领取？
 
     public int curFinishNum;    //特殊字段
 

@@ -10,7 +10,7 @@ public class PlayerData
     public string sname;
 
     public List<int> playerCards;
-    public List<int> playerAllCards;        //拥有的制作卡
+    public List<ItemData> playerAllCards;        //拥有的制作卡
 
     public List<ItemData> items;    //物品
     public List<SpriteData> sprites;
@@ -20,7 +20,7 @@ public class PlayerData
 
     public void initdata()
     {
-        playerAllCards = new List<int>();
+        playerAllCards = new List<ItemData>();
         playerCards = new List<int>();
         sprites = new List<SpriteData>();
         items = new List<ItemData>();

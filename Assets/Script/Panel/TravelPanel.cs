@@ -14,8 +14,6 @@ public class TravelPanel : PanelTopBase
 
     public override void init()
     {
-        base.init();
-        travelAllow = true;
         initData();
     }
     public override void registerEvent()
@@ -28,23 +26,36 @@ public class TravelPanel : PanelTopBase
     }
     public void initData()
     {
-
+        travelAllow = true;
+        refreshTravels();
+    }
+    public override void reshow()
+    {
+        base.reshow();
         refreshTravels();
     }
     void refreshTravels()
     {
+        for (int i = 0; i < ConfigConst.QUEST_MAX; i++)
+            quests[i].gameObject.SetActive(false);
         RunSingel.Instance.getBeiJingTime((result) =>
         {
             var selfquset = TravelManager.Instance._data.quest;
-            for(int i = 0; i < ConfigConst.QUEST_MAX; i++)
-                quests[i].gameObject.SetActive(false);
             foreach(var item in selfquset)
             {
-                quests[item.pagePos].reset(selfquset[i], result);
+                quests[item.pagePos].reset(item, result);
                 quests[item.pagePos].gameObject.SetActive(true);
             }
             travelCheck(selfquset.Count>=ConfigConst.QUEST_MAX);
         });
+    }
+    void travelCheck(bool allow)
+    {
+        travelAllow = allow;
+        if(allow)
+            gotravel.GetComponent<Image>().color = Color.white;
+        else
+            gotravel.GetComponent<Image>().color = Color.gray;
     }
     void gotravelClick()
     {
@@ -55,15 +66,6 @@ public class TravelPanel : PanelTopBase
         }
         PanelManager.Instance.OpenPanel(E_UIPrefab.TravelSpriteMessagePanel);
     }
-    void travelCheck(bool allow)
-    {
-        travelAllow = allow;
-        if(allow)
-            gotravel.GetComponent<Image>().color = Color.white;
-        else
-            gotravel.GetComponent<Image>().color = Color.gray;
-    }
-
     //派遣成功回调
     void travelComplete()
     {

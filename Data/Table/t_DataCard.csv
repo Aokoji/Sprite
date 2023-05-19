@@ -1,5 +1,6 @@
 id,sname,sDescribe,type1,type2,limit,conditionType1,conditionType2,conditionType3,damage1,damage2,damage3,cost,limitcount
 int,string,string,CardType1,CardType2,CardSelfType,CardType2,CardType2,CardType2,int,int,int,int,int
+注释行,名,描述,制作类型,主要词条,伤害属性,效果1,效果2,效果3,参数1,参数2,参数3,消耗,限制数量
 1,魔法射击,造成1点伤害,0,0,0,1,0,0,1,0,0,1,2
 2,魔法糖果,抽一张牌,0,0,0,8,0,0,1,0,0,2,99
 3,魔力枯竭,给对手和自己各造成2点伤害,0,9,0,0,0,0,2,2,0,2,99
