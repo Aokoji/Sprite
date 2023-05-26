@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6720554993479468172}
   - component: {fileID: 3845231751442108305}
   - component: {fileID: 6980679236046280130}
-  - component: {fileID: 2243335733806939863}
+  - component: {fileID: 5334530170625022256}
   m_Layer: 5
   m_Name: Tips3
   m_TagString: Untagged
@@ -76,7 +76,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4806165224276192052}
   m_CullTransparentMesh: 0
---- !u!114 &2243335733806939863
+--- !u!114 &5334530170625022256
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -85,7 +85,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4806165224276192052}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75c7b96d2488a324aa6d82501ff99b30, type: 3}
+  m_Script: {fileID: 11500000, guid: e1dbca37292d25c4192780aa3e6277fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   context: {fileID: 8395880402975308190}

@@ -12,6 +12,7 @@ public class TravelMoreMessagePanel : PanelTopBase
     public Image[] icons;
     public Text[] contexts;
     public Button completeBtn;
+    public Button closeBtn;
 
     bool iscomplete;
     bool clickallow;
@@ -31,6 +32,8 @@ public class TravelMoreMessagePanel : PanelTopBase
         }
         questtitle.text = _data.sname;
         questdes.text = _data.describe;
+        questFrom.text = Config_t_TravelRandom.getOne(_data.fromSquare).sname;
+        questActor.text = _data.fromActor;
         string[] str = _data.need.Split('|');
         string[] strneed = _data.needCount.Split('|');
         for (int i = 0; i < icons.Length; i++)
@@ -65,6 +68,7 @@ public class TravelMoreMessagePanel : PanelTopBase
     {
         base.registerEvent();
         completeBtn.onClick.AddListener(clickComplete);
+        closeBtn.onClick.AddListener(PanelManager.Instance.DisposePanel);
     }
 
     void clickComplete()
@@ -77,5 +81,22 @@ public class TravelMoreMessagePanel : PanelTopBase
         }
         clickallow = false;
         //奖励
+        List<ItemData> rewards = new List<ItemData>();
+        string[] str;
+        string[] stnum;
+        if (!_data.rewards.Equals("0"))
+        {
+            str = _data.rewards.Split('|');
+            stnum = _data.rewardnum.Split('|');
+            for(int i=0;i< str.Length; i++)
+            {
+                var item = new ItemData(int.Parse(str[i]), int.Parse(stnum[i]));
+                rewards.Add(item);
+            }
+        }
+        PlayerManager.Instance.addItems(rewards);
+        PanelManager.Instance.showTips4(rewards);
+        TravelManager.Instance.completeRemoveQuest(_data.id);
+        PanelManager.Instance.DisposePanel();
     }
 }

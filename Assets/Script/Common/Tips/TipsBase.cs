@@ -11,7 +11,7 @@ public class TipsBase: UIBase
     public Action callback2;
     public bool allowClick;
 
-    public void init(string str, Action act = null, Action act2 = null)
+    public virtual void init(string str, Action act = null, Action act2 = null)
     {
         context.text = str;
         callback = act;
@@ -19,6 +19,7 @@ public class TipsBase: UIBase
         allowClick = false;
         initEvent();
     }
+    public virtual void init(object whatthing) { }
     public virtual void initEvent() { }
     public virtual void play() { }
 }

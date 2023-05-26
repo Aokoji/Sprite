@@ -17,23 +17,29 @@ MonoBehaviour:
     sname: "\u82B1\u5996\u7CBE"
     defaultCard: 1
     titleIcon: elf_flower
+    wholeIcon: 0
   - id: 2
     sname: "\u9E1F\u5996\u7CBE"
     defaultCard: 1
     titleIcon: elf_bird
+    wholeIcon: 0
   - id: 3
     sname: "\u53F6\u5996\u7CBE"
     defaultCard: 1
     titleIcon: elf_leaf
+    wholeIcon: 0
   - id: 4
     sname: "\u6708\u5996\u7CBE"
     defaultCard: 1
     titleIcon: elf_moon
+    wholeIcon: 0
   - id: 5
     sname: "\u5149\u5996\u7CBE"
     defaultCard: 1
     titleIcon: elf_light
+    wholeIcon: 0
   - id: 6
     sname: "\u9EC4\u8702"
     defaultCard: 1
     titleIcon: en_wasp
+    wholeIcon: 0

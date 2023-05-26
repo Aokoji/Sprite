@@ -15,6 +15,8 @@ public class SpriteData
     public int dodge;
     public int block;   //格挡
     public int speed;
+    public int phy_max; //体力（探索用
+    public int phy_cur;
 
     public int extraLimit;
     public int cost_max;
@@ -23,6 +25,7 @@ public class SpriteData
     public int spritePower;     //卡组能量点
     //假设区间   10*10=100      25*25=625   1000max;    1-10普通，10-15良，15-21优秀，21-25顶级
     public int lucky;   //幸运值，影响旅行
+    public bool istraveling;
 
     public void refreshData()
     {
@@ -43,12 +46,15 @@ public class SpriteData
         copy.dodge = dodge;
         copy.block = block;
         copy.speed = speed;
+        copy.phy_max = phy_max;
+        copy.phy_cur = phy_cur;
         copy.extraLimit = extraLimit;
         copy.cost_max = cost_max;
         copy.cost_cur = cost_cur;
         copy.takeDefaultCardsID = takeDefaultCardsID;
         copy.spritePower = spritePower;
         copy.lucky = lucky;
+        copy.istraveling = istraveling;
         return copy;
     }
 }

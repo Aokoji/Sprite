@@ -23,7 +23,8 @@ public class Main : MonoBehaviour
             d.endTime = DateTime.Now.AddMinutes(25);
             d.takeItem.Add(1);
             d.takeItem.Add(1);
-            d.isGet = false;
+            d.isGet = true;
+            PlayerManager.Instance.getplayerTravel().quest.Clear();
             PlayerManager.Instance.getplayerTravel().quest.Add(d);
         }
     }

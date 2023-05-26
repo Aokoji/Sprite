@@ -21,6 +21,18 @@ public class TravelManager : CSingel<TravelManager>
         }
     }
     //public void saveTravel() { AssetManager.saveJson(S_SaverNames.entrust.ToString(), _data); }
+    public void completeRemoveQuest(int id)
+    {
+        for(int i = 0; i < _data.quest.Count; i++)
+        {
+            if (id == _data.quest[i].questID)
+            {
+                _data.quest.Remove(_data.quest[i]);
+                Debug.Log("removed");
+                break;
+            }
+        }
+    }
     public bool goTravel(int spid,int square)
     {
         //检测可出发

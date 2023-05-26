@@ -116,6 +116,7 @@ public class PanelManager : CSingel<PanelManager>
         loadTips1Panel();
         loadTips2Panel();
         loadTips3Panel();
+        loadTips4Panel();
     }
     //  ----------------------- loading ----------------------
     private LoadingPanel loading;
@@ -137,6 +138,7 @@ public class PanelManager : CSingel<PanelManager>
     private TipsBase tip1;
     private TipsBase tip2;
     private TipsBase tip3;
+    private TipsBase tip4;
     private void loadTips1Panel()
     {
         var entity = AssetManager.loadAsset<GameObject>(COMMON_PATH+ E_UIPrefab.Tips1.ToString());
@@ -161,6 +163,14 @@ public class PanelManager : CSingel<PanelManager>
         tip3.transform.localScale = Vector3.one;
         tip3.gameObject.SetActive(false);
     }
+    private void loadTips4Panel()
+    {
+        var entity = AssetManager.loadAsset<GameObject>(COMMON_PATH + E_UIPrefab.Tips4.ToString());
+        tip4 = UnityEngine.Object.Instantiate(entity).GetComponent<TipsBase>();
+        tip4.transform.SetParent(commonParent.transform);
+        tip4.transform.localScale = Vector3.one;
+        tip4.gameObject.SetActive(false);
+    }
     public void showTips1(string str,Action callback=null)
     {
         tip1.init(str, callback);
@@ -176,8 +186,9 @@ public class PanelManager : CSingel<PanelManager>
         tip3.init(str);
         tip3.play();
     }
-    public void showTips4(List<int> items)
+    public void showTips4(List<ItemData> items)
     {
-        
+        tip4.init(items);
+        tip4.play();
     }
 }

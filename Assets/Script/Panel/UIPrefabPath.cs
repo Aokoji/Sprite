@@ -20,10 +20,10 @@ public enum E_UIPrefab
     TravelPanel,   //委托
     TravelBackQuestPanel,       //旅行回来领委托       QuestData 单参数
     TravelMoreMessagePanel, //委托详细信息        QuestData，bool  双参
+    TravelSpriteMessagePanel,   //派遣精灵详情
     FarmPanel,
     SpringPanel,
 
-    TravelSpriteMessagePanel,
 
     //ui
     cardHand,

@@ -20,52 +20,84 @@ MonoBehaviour:
     need: 1
     needCount: 2
     aliveTime: 1440
+    fromSquare: 1
+    fromActor: aa
+    rewards: 1
+    rewardnum: 1
   - id: 2
     sname: "\u6D4B\u8BD5\u4EFB\u52A12"
     describe: 222
-    type: 1
+    type: 0
     need: 1
     needCount: 3
     aliveTime: 1440
+    fromSquare: 1
+    fromActor: aa
+    rewards: 1
+    rewardnum: 1
   - id: 3
     sname: "\u6D4B\u8BD5\u4EFB\u52A13"
     describe: 333
-    type: 2
+    type: 0
     need: 1
     needCount: 4
     aliveTime: 1440
+    fromSquare: 1
+    fromActor: aa
+    rewards: 1
+    rewardnum: 1
   - id: 4
     sname: "\u6D4B\u8BD5\u4EFB\u52A14"
     describe: 444
-    type: 3
+    type: 0
     need: 1
     needCount: 5
     aliveTime: 1440
+    fromSquare: 1
+    fromActor: aa
+    rewards: 1
+    rewardnum: 1
   - id: 5
     sname: "\u6D4B\u8BD5\u4EFB\u52A15"
     describe: 444
-    type: 4
+    type: 0
     need: 1
     needCount: 6
     aliveTime: 1440
+    fromSquare: 1
+    fromActor: aa
+    rewards: 1
+    rewardnum: 1
   - id: 6
     sname: "\u6D4B\u8BD5\u4EFB\u52A16"
     describe: 444
-    type: 5
+    type: 0
     need: 1
     needCount: 7
     aliveTime: 1440
+    fromSquare: 1
+    fromActor: aa
+    rewards: 1
+    rewardnum: 1
   - id: 7
     sname: "\u6D4B\u8BD5\u4EFB\u52A17"
     describe: 444
-    type: 6
+    type: 0
     need: 1
     needCount: 8
     aliveTime: 1440
+    fromSquare: 1
+    fromActor: aa
+    rewards: 1
+    rewardnum: 1
   - id: 8
     sname: "\u6D4B\u8BD5\u4EFB\u52A18"
     describe: 444
-    type: 7
+    type: 0
     need: 1
     needCount: 9
     aliveTime: 1440
+    fromSquare: 1
+    fromActor: aa
+    rewards: 1
+    rewardnum: 1

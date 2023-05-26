@@ -93,6 +93,7 @@ public class AnimationTool
         clip.events = null;
         clip.AddEvent(evt);
         anim.clip = clip;
+        anim.clip.SampleAnimation(obj, 0f);
         anim.Play();
     }
 

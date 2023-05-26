@@ -51,7 +51,6 @@ public class TravelBackQuestPanel : PanelTopBase
     }
     public override void afterAnimComplete()
     {
-        Debug.Log("dothis???" + _data.takeItem.Count);
         base.afterAnimComplete();
         if (_data.takeItem.Count > 0 || _data.extraID > 0)
             AnimationTool.playAnimation(backQuestRank, "stampShowRankReward");
@@ -60,13 +59,16 @@ public class TravelBackQuestPanel : PanelTopBase
     }
     void clickClose()
     {
-        PanelManager.Instance.DisposePanel();
         //显示奖励
         if (_data.takeItem.Count > 0 || _data.extraID > 0)
         {
             if (_data.extraID > 0)
                 _data.takeItem.Add(_data.extraID);
-            PanelManager.Instance.showTips4(_data.takeItem);
+            List<ItemData> list = new List<ItemData>();
+            foreach(var i in _data.takeItem)
+                list.Add(new ItemData(i, 1));
+            PanelManager.Instance.showTips4(list);
         }
+        PanelManager.Instance.DisposePanel();
     }
 }
