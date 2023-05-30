@@ -22,8 +22,8 @@ MonoBehaviour:
     aliveTime: 1440
     fromSquare: 1
     fromActor: aa
-    rewards: 1
-    rewardnum: 1
+    rewards: 1|2|3
+    rewardnum: 1|1|2
   - id: 2
     sname: "\u6D4B\u8BD5\u4EFB\u52A12"
     describe: 222

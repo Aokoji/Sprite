@@ -26,6 +26,7 @@ public class SpriteData
     //假设区间   10*10=100      25*25=625   1000max;    1-10普通，10-15良，15-21优秀，21-25顶级
     public int lucky;   //幸运值，影响旅行
     public bool istraveling;
+    public bool isworking;
 
     public void refreshData()
     {
@@ -55,6 +56,7 @@ public class SpriteData
         copy.spritePower = spritePower;
         copy.lucky = lucky;
         copy.istraveling = istraveling;
+        copy.isworking = isworking;
         return copy;
     }
 }

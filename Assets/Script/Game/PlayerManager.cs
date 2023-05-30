@@ -99,4 +99,9 @@ public class PlayerManager : CSingel<PlayerManager>
     {
         return playerdata.travel;
     }
+    //仅mill界面用
+    public MillData getplayerMill()
+    {
+        return playerdata.mill;
+    }
 }

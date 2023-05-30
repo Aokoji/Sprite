@@ -24,7 +24,7 @@ public class Main : MonoBehaviour
             d.takeItem.Add(1);
             d.takeItem.Add(1);
             d.isGet = true;
-            PlayerManager.Instance.getplayerTravel().quest.Clear();
+            //PlayerManager.Instance.getplayerTravel().quest.Clear();
             PlayerManager.Instance.getplayerTravel().quest.Add(d);
         }
     }

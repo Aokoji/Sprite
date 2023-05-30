@@ -53,12 +53,14 @@ public class TravelBackQuestPanel : PanelTopBase
     {
         base.afterAnimComplete();
         if (_data.takeItem.Count > 0 || _data.extraID > 0)
-            AnimationTool.playAnimation(backQuestRank, "stampShowRankReward");
+            AnimationTool.playAnimation(backQuestRank, "stampShowRankReward",false,()=> { allow = true; });
         else
-            AnimationTool.playAnimation(backQuestRank, "stampShowRank");
+            AnimationTool.playAnimation(backQuestRank, "stampShowRank", false, () => { allow = true; });
     }
     void clickClose()
     {
+        if (!allow) return;
+        allow = false;
         //显示奖励
         if (_data.takeItem.Count > 0 || _data.extraID > 0)
         {

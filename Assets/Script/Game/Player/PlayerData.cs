@@ -17,6 +17,7 @@ public class PlayerData
     public int curSprite;
 
     public TravelData travel;
+    public MillData mill;
 
     public void initdata()
     {
