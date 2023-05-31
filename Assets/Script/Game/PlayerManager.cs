@@ -6,7 +6,7 @@ using System.IO;
 public class PlayerManager : CSingel<PlayerManager>
 {
     //PlayerAsset playerAsset;
-    PlayerData playerdata;  //元数据
+    public PlayerData playerdata { get; private set; }  //元数据
     //  ------------    解析数据
     public SpriteData cursprite;
     public Dictionary<int, SpriteData> spriteList{ get; private set; }
@@ -60,6 +60,7 @@ public class PlayerManager : CSingel<PlayerManager>
         playerdata.items.Clear();
         foreach(var i in playerItemDic)
             playerdata.items.Add(new ItemData(i.Key, i.Value));
+
         playerdata.playerAllCards.Clear();
         foreach (var i in playerMakenDic)
             playerdata.playerAllCards.Add(new ItemData(i.Key, i.Value));
@@ -100,8 +101,5 @@ public class PlayerManager : CSingel<PlayerManager>
         return playerdata.travel;
     }
     //仅mill界面用
-    public MillData getplayerMill()
-    {
-        return playerdata.mill;
-    }
+    public MillData Milldata { get { return playerdata.mill; } }
 }

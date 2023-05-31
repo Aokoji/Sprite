@@ -17,6 +17,7 @@ public class MillPanel : PanelBase
     public Button upgrade;  //升级
 
     float timernum;
+    MillData _data;
 
     public override void registerEvent()
     {
@@ -43,7 +44,8 @@ public class MillPanel : PanelBase
     void initData()
     {
         timernum = 0;
-
+        _data = PlayerManager.Instance.playerdata.mill;
+        _data.extendLv = 2;
     }
     #region 操作
     //引导
