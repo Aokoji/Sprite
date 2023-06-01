@@ -13,10 +13,22 @@ public class MillPanel : PanelBase
     public Button collect2;
     public Button workstool1;   //岗位
     public Button workstool2;
+    public Text materTime1;
+    public Text materCount1;
+    public Text collectCount1;
+    public Text workCount1; //工作详情
+    public RectTransform phyimg1;
+    public Text materTime2;
+    public Text materCount2;
+    public Text collectCount2;
+    public Text workCount2;
+    public RectTransform phyimg2;
+    public GameObject mill2;
 
     public Button upgrade;  //升级
 
     float timernum;
+    bool timerLock;
     MillData _data;
 
     public override void registerEvent()
@@ -33,7 +45,8 @@ public class MillPanel : PanelBase
     public override void init()
     {
         base.init();
-        initData();
+        _data = PlayerManager.Instance.Milldata;
+        refreshBuilders();
     }
     public override void afterAnimComplete()
     {
@@ -41,11 +54,69 @@ public class MillPanel : PanelBase
         if (PlayerPrefs.GetInt(guide, 0) == 0)
             startGuide();
     }
-    void initData()
+    void refreshBuilders()
+    {
+        initNormalData();
+        if (PlayerPrefs.GetInt(guide, 0) == 0 || _data.pdid1 == 0 || _data.pdid2 == 0)
+            return;
+        RunSingel.Instance.getBeiJingTime(result =>
+        {
+            initDynamicData();
+        });
+    }
+    void initNormalData()
+    {
+        timerLock = true;
+        timernum = 0;
+        materTime1.gameObject.SetActive(false);
+        materTime2.gameObject.SetActive(false);
+        materCount1.text = "<空>";
+        collectCount1.text = "<空>";
+        if (_data.isupgrade)
+        {
+            collectCount2.text = "<空>";
+            materCount2.text = "<空>";
+        }
+        refreshSpriteData();
+        mill2.SetActive(_data.isupgrade);
+    }
+    void initDynamicData()
     {
         timernum = 0;
-        _data = PlayerManager.Instance.playerdata.mill;
-        _data.extendLv = 2;
+        //启动计时器
+    }
+    void refreshSpriteData()
+    {
+        if (_data.workingID1 > 0)
+        {
+            var dt = PlayerManager.Instance.getSpriteData(_data.workingID1);
+            workCount1.text = dt.phy_max + "/" + dt.phy_cur;
+            //设置image  +++ phyimg1
+            workCount1.gameObject.SetActive(true);
+            phyimg1.gameObject.SetActive(true);
+        }
+        else
+        {
+            workCount1.gameObject.SetActive(false);
+            phyimg1.gameObject.SetActive(false);
+        }
+        if (_data.workingID2 > 0)
+        {
+            var dt = PlayerManager.Instance.getSpriteData(_data.workingID2);
+            workCount2.text = dt.phy_max + "/" + dt.phy_cur;
+            //设置image  +++ phyimg2
+            workCount2.gameObject.SetActive(true);
+            phyimg2.gameObject.SetActive(true);
+        }
+        else
+        {
+            workCount2.gameObject.SetActive(false);
+            phyimg2.gameObject.SetActive(false);
+        }
+    }
+    void setpackageNow()
+    {
+
     }
     #region 操作
     //引导
@@ -56,7 +127,7 @@ public class MillPanel : PanelBase
     //填料
     void clickmater1()
     {
-
+        //弹界面
     }
     void clickmater2()
     {
@@ -65,7 +136,7 @@ public class MillPanel : PanelBase
     //派遣工作
     void clickWork1()
     {
-
+        //工作界面
     }
     void clickWork2()
     {

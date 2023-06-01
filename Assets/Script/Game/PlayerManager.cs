@@ -6,7 +6,7 @@ using System.IO;
 public class PlayerManager : CSingel<PlayerManager>
 {
     //PlayerAsset playerAsset;
-    public PlayerData playerdata { get; private set; }  //元数据
+    PlayerData playerdata //元数据
     //  ------------    解析数据
     public SpriteData cursprite;
     public Dictionary<int, SpriteData> spriteList{ get; private set; }
@@ -70,6 +70,16 @@ public class PlayerManager : CSingel<PlayerManager>
     public List<int> getPlayerCards()
     {
         return playerdata.playerCards;
+    }
+    public SpriteData getSpriteData(int id)
+    {
+        if (spriteList.ContainsKey(id))
+            return spriteList[id];
+        else
+        {
+            PubTool.Log("==获取精灵id错误==");
+            return null;
+        }
     }
     public void setPlayerCards(List<int> cards)
     {

@@ -35,6 +35,10 @@ public class PubTool
         str=str+ minutes % 60 + " 分钟";
         return str;
     }
+    public static void Log(string log)
+    {
+        Debug.Log(log);
+    }
 }
 public enum MoveType
 {
