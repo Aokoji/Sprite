@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 using System.IO;
 
 public class PlayerManager : CSingel<PlayerManager>
 {
     //PlayerAsset playerAsset;
-    PlayerData playerdata //元数据
+    PlayerData playerdata; //元数据
     //  ------------    解析数据
     public SpriteData cursprite;
     public Dictionary<int, SpriteData> spriteList{ get; private set; }
@@ -91,11 +92,13 @@ public class PlayerManager : CSingel<PlayerManager>
     {
         data.ForEach(item =>
         {
-            if (playerItemDic.ContainsKey(item.id))
-                playerItemDic[item.id] += item.num;
-            else
-                playerItemDic.Add(item.id, item.num);
+            addItemsNosave(item.id, item.num);
         });
+        savePlayerData();
+    }
+    public void addItems(int id, int count)
+    {
+        addItemsNosave(id, count);
         savePlayerData();
     }
     public void addItemsNosave(int id,int count)
@@ -110,6 +113,56 @@ public class PlayerManager : CSingel<PlayerManager>
     {
         return playerdata.travel;
     }
+    #region mill
     //仅mill界面用
     public MillData Milldata { get { return playerdata.mill; } }
+    public void addMillMater1(int addnum)
+    {
+        if(playerdata.mill.pdid1>0)
+        {
+            playerdata.mill.endtime1.AddSeconds(Config_t_crop.getOne(playerdata.mill.pdid1).produceCoef * addnum);
+            playerdata.mill.pdnum1 += addnum;
+        }
+    }
+    public void createMillMater1(int id,int addnum,DateTime nowatime)
+    {
+        playerdata.mill.pdid1 = id;
+        playerdata.mill.endtime1= nowatime.AddSeconds(Config_t_crop.getOne(id).produceCoef * addnum);
+        playerdata.mill.pdnum1 += addnum;
+    }
+    public void addMillMater2(int addnum)
+    {
+        if (playerdata.mill.pdid2 > 0)
+        {
+            playerdata.mill.endtime2.AddSeconds(Config_t_crop.getOne(playerdata.mill.pdid2).produceCoef * addnum);
+            playerdata.mill.pdnum2 += addnum;
+        }
+    }
+    public void createMillMater2(int id, int addnum, DateTime nowatime)
+    {
+        playerdata.mill.pdid2 = id;
+        playerdata.mill.endtime2 = nowatime.AddSeconds(Config_t_crop.getOne(id).produceCoef * addnum);
+        playerdata.mill.pdnum2 += addnum;
+    }
+    public void collectMill1(int num)
+    {
+        addItemsNosave(Config_t_crop.getOne(playerdata.mill.pdid1).finishID, num);
+        playerdata.mill.pdnum1 -= num;
+        if (playerdata.mill.pdnum1 == 0)
+        {
+            playerdata.mill.pdid1 = 0;
+        }
+        savePlayerData();
+    }
+    public void collectMill2(int num)
+    {
+        addItemsNosave(Config_t_crop.getOne(playerdata.mill.pdid2).finishID, num);
+        playerdata.mill.pdnum2 -= num;
+        if (playerdata.mill.pdnum2 == 0)
+        {
+            playerdata.mill.pdid2 = 0;
+        }
+        savePlayerData();
+    }
+    #endregion
 }

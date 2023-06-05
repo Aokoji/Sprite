@@ -3,14 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
 public class MillData : BaseData
 {
     public int workingID1;
     public int workingID2;
     public bool isupgrade;
     //精灵工作时间为固定消耗，在磨坊工作消耗固定5小时，x魔力  能够加速当前生产的速度并且产生若干精制材料。
-    public DateTime starttime;
-    public DateTime endtime;
+    public DateTime endtime1;
+    public DateTime endtime2;
     public int pdid1;    //生产id
     public int pdnum1;   //生产总数
     public int pdid2;    //生产id

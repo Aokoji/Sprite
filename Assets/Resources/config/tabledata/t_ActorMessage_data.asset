@@ -39,7 +39,32 @@ MonoBehaviour:
     titleIcon: elf_light
     wholeIcon: 0
   - id: 6
-    sname: "\u9EC4\u8702"
+    sname: "\u80E1\u8702"
     defaultCard: 1
     titleIcon: en_wasp
+    wholeIcon: 0
+  - id: 7
+    sname: "\u8611\u83C7\u602A"
+    defaultCard: 1
+    titleIcon: en_mush
+    wholeIcon: 0
+  - id: 8
+    sname: "\u68D5\u718A"
+    defaultCard: 1
+    titleIcon: en_bear
+    wholeIcon: 0
+  - id: 9
+    sname: "\u51F6\u6076\u7684\u8C7A\u72FC"
+    defaultCard: 1
+    titleIcon: en_wolves
+    wholeIcon: 0
+  - id: 10
+    sname: "\u987D\u76AE\u7684\u6A58\u679C"
+    defaultCard: 1
+    titleIcon: en_citrus
+    wholeIcon: 0
+  - id: 11
+    sname: "\u56FA\u6267\u7684\u6A61\u679C"
+    defaultCard: 1
+    titleIcon: en_acorn
     wholeIcon: 0

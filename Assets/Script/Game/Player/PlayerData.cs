@@ -34,8 +34,10 @@ public class PlayerData
         sp.spritePower = 8;
         sprites.Add(sp);
         curSprite = sp.id;
+        travel = new TravelData();
+        mill = new MillData();
         //for(int i=0;i<20;i++)
-         //   playerCards.Add(14);
+        //   playerCards.Add(14);
     }
 
 }

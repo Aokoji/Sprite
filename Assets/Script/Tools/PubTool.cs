@@ -35,9 +35,19 @@ public class PubTool
         str=str+ minutes % 60 + " 分钟";
         return str;
     }
+    public static string timeTranslateSeconds(int second)
+    {
+        if (second < 60)
+            return second+"秒";
+        return timeTranslate(second / 60);
+    }
     public static void Log(string log)
     {
         Debug.Log(log);
+    }
+    public static void LogError(string log)
+    {
+        Debug.LogError(log);
     }
 }
 public enum MoveType
