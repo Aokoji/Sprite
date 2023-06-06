@@ -21,12 +21,12 @@ public class UITool_ScrollView :MonoBehaviour {
         rowcount = (int)(GetComponent<RectTransform>().sizeDelta.x / (width + content.spacing.x));
     }
 
-	public GameObject addNewItem(GameObject obj)
+	public void addNewItem(GameObject obj)
     {
         obj.transform.SetParent(content.transform, false);
         childs.Add(obj);
         obj.transform.SetAsLastSibling();
-        return obj;
+        //return obj;
     }
     public void reCalculateHeigh()
     {

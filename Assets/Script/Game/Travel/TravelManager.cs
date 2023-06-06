@@ -72,7 +72,7 @@ public class TravelManager : CSingel<TravelManager>
         });
         return true;
     }
-
+    //gotravel 计算奖励
     void calculateTravelSpend(int square, QuestData dat)
     {
         //普通任务 主线需要单算
@@ -140,5 +140,14 @@ public class TravelManager : CSingel<TravelManager>
         }
         dat.questID = TableManager.Instance.questRankDic[finalLevel][random.Next(TableManager.Instance.questRankDic[finalLevel].Count)];
         #endregion
+    }
+    /// <summary>
+    /// 检查是否在派，true为不可用
+    /// </summary>
+    public bool checkSquareTraveling(int square)
+    {
+        bool result = false;
+        _data.quest.ForEach(item => { if (item.squareID == square) result = true; });
+        return result;
     }
 }

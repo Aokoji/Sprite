@@ -171,21 +171,33 @@ public class PanelManager : CSingel<PanelManager>
         tip4.transform.localScale = Vector3.one;
         tip4.gameObject.SetActive(false);
     }
+    /// <summary>
+    /// 占屏提示
+    /// </summary>
     public void showTips1(string str,Action callback=null)
     {
         tip1.init(str, callback);
         tip1.play();
     }
+    /// <summary>
+    /// 是否提示板
+    /// </summary>
     public void showTips2(string str,Action callback, Action callback2=null)
     {
         tip2.init(str, callback, callback2);
         tip2.play();
     }
+    /// <summary>
+    /// 浅提示
+    /// </summary>
     public void showTips3(string str)
     {
         tip3.init(str);
         tip3.play();
     }
+    /// <summary>
+    /// 获得物品提示
+    /// </summary>
     public void showTips4(List<ItemData> items)
     {
         tip4.init(items);

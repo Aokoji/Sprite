@@ -15,17 +15,7 @@ public class Main : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            //PanelManager.Instance.OpenPanel(E_UIPrefab.CardsetPanel);
-            var d = new QuestData();
-            d.questID = 1;
-            d.spID = 1;
-            d.spFinish = DateTime.Now.AddMinutes(-10);
-            d.endTime = DateTime.Now.AddMinutes(25);
-            d.takeItem.Add(1);
-            d.takeItem.Add(1);
-            d.isGet = true;
-            //PlayerManager.Instance.getplayerTravel().quest.Clear();
-            PlayerManager.Instance.getplayerTravel().quest.Add(d);
+
         }
     }
 }

@@ -163,7 +163,7 @@ public class TravelBarMessage : UIBase
     #region clicks
     void click_backtravel()
     {
-
+        //shut
     }
     void click_timeoutClear()
     {
