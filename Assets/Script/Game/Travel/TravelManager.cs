@@ -47,14 +47,16 @@ public class TravelManager : CSingel<TravelManager>
             //回调
             QuestData dat = new QuestData();
             dat.spID = spid;
+            dat.squareID = square;
             //任务奖励和品级
             calculateTravelSpend(square, dat);
             //时间
             int spend = Config_t_TravelRandom.getOne(square).spendTime;
             if (dat.extraID > 0) spend = (int)(spend * 1.1f);
-            dat.spFinish = result.AddMinutes(Config_t_TravelRandom.getOne(square).spendTime);
+            var time1 = result.AddMinutes(spend);
+            dat.spFinish = time1.ToString();
             spend = Config_t_quest.getOne(dat.questID).aliveTime;
-            dat.endTime = dat.spFinish.AddMinutes(spend);
+            dat.endTime = time1.AddMinutes(spend).ToString();
             //计算摆放位置
             List<int> pos = new List<int>();
             foreach(var i in _data.quest)
@@ -68,7 +70,8 @@ public class TravelManager : CSingel<TravelManager>
                 }
             }
             _data.quest.Add(dat);
-            EventAction.Instance.TriggerAction(eventType.spriteTravelComplete);
+            Debug.Log(dat.spFinish + "=========" + dat.endTime + dat.questID);
+            EventAction.Instance.TriggerAction(eventType.spriteTravelComplete_I, spid);
         });
         return true;
     }
@@ -140,6 +143,17 @@ public class TravelManager : CSingel<TravelManager>
         }
         dat.questID = TableManager.Instance.questRankDic[finalLevel][random.Next(TableManager.Instance.questRankDic[finalLevel].Count)];
         #endregion
+    }
+    public void shutTravel(QuestData quest)
+    {
+        if (_data.quest.Contains(quest))
+        {
+            int spend = (int)(Config_t_TravelRandom.getOne(quest.squareID).spendPhy * 0.75f);
+            _data.quest.Remove(quest);
+            PlayerManager.Instance.travel_shut(quest.spID, spend);
+            PanelManager.Instance.showTips3("召回成功，返还体力 " + spend + " 点");
+            EventAction.Instance.TriggerAction(eventType.spriteTravelBackRefresh);
+        }
     }
     /// <summary>
     /// 检查是否在派，true为不可用

@@ -29,7 +29,7 @@ public class PlayerManager : CSingel<PlayerManager>
         playerItemDic = new Dictionary<int, int>();
         loadTestCardData();
         //初始化sprite         *******************************************     初始化字典数据     ***************************
-        playerdata.sprites.ForEach(item => { if (item.id == playerdata.curSprite) cursprite = item; });
+        playerdata.sprites.ForEach(item => { if (item.id == playerdata.curSprite) cursprite = item; spriteList.Add(item.id, item); });
         playerdata.playerAllCards.ForEach((item) => { playerMakenDic.Add(item.id, item.num); });
         playerdata.items.ForEach(item => { playerItemDic.Add(item.id, item.num); });
         loadsuccess = true;
@@ -43,8 +43,8 @@ public class PlayerManager : CSingel<PlayerManager>
         {
             //playerAsset = AssetManager.loadAsset<PlayerAsset>(CARD_TEST_PATH);
             playerdata = data;
-            foreach (var i in data.sprites)
-                spriteList.Add(i.id, i);
+            if (playerdata.travel.quest.Count > 0)
+                Debug.Log(playerdata.travel.quest[0].endTime);
         }
         else
         {
@@ -65,6 +65,8 @@ public class PlayerManager : CSingel<PlayerManager>
         playerdata.playerAllCards.Clear();
         foreach (var i in playerMakenDic)
             playerdata.playerAllCards.Add(new ItemData(i.Key, i.Value));
+        if (playerdata.travel.quest.Count > 0)
+            Debug.Log(playerdata.travel.quest[0].endTime);
         AssetManager.saveJson(S_SaverNames.pdata.ToString(), playerdata); 
     }
 
@@ -78,7 +80,7 @@ public class PlayerManager : CSingel<PlayerManager>
             return spriteList[id];
         else
         {
-            PubTool.Log("==获取精灵id错误==");
+            PubTool.LogError("==获取精灵id错误==");
             return null;
         }
     }
@@ -87,6 +89,25 @@ public class PlayerManager : CSingel<PlayerManager>
         playerdata.playerCards= cards;
         savePlayerData();
     }
+    #region 旅行
+    public void travel_sprite(int id,int spend)
+    {
+        spriteList[id].istraveling = true;
+        spriteList[id].phy_cur -= spend;
+        savePlayerData();
+    }
+    public void travel_shut(int id, int spend)
+    {
+        spriteList[id].istraveling = false;
+        spriteList[id].phy_cur += spend;
+        savePlayerData();
+    }
+    public void travel_back(int id)
+    {
+        spriteList[id].istraveling = false;
+        savePlayerData();
+    }
+    #endregion
     //更改物品
     public void addItems(List<ItemData> data)
     {
@@ -120,28 +141,29 @@ public class PlayerManager : CSingel<PlayerManager>
     {
         if(playerdata.mill.pdid1>0)
         {
-            playerdata.mill.endtime1.AddSeconds(Config_t_crop.getOne(playerdata.mill.pdid1).produceCoef * addnum);
+            playerdata.mill.endtime1 = (DateTime.Parse(playerdata.mill.endtime1).AddSeconds(Config_t_crop.getOne(playerdata.mill.pdid1).produceCoef * addnum)).ToString();
             playerdata.mill.pdnum1 += addnum;
         }
     }
     public void createMillMater1(int id,int addnum,DateTime nowatime)
     {
         playerdata.mill.pdid1 = id;
-        playerdata.mill.endtime1= nowatime.AddSeconds(Config_t_crop.getOne(id).produceCoef * addnum);
+
+        playerdata.mill.endtime1= nowatime.AddSeconds(Config_t_crop.getOne(id).produceCoef * addnum).ToString();
         playerdata.mill.pdnum1 += addnum;
     }
     public void addMillMater2(int addnum)
     {
         if (playerdata.mill.pdid2 > 0)
         {
-            playerdata.mill.endtime2.AddSeconds(Config_t_crop.getOne(playerdata.mill.pdid2).produceCoef * addnum);
+            playerdata.mill.endtime2 = (DateTime.Parse(playerdata.mill.endtime2).AddSeconds(Config_t_crop.getOne(playerdata.mill.pdid2).produceCoef * addnum)).ToString();
             playerdata.mill.pdnum2 += addnum;
         }
     }
     public void createMillMater2(int id, int addnum, DateTime nowatime)
     {
         playerdata.mill.pdid2 = id;
-        playerdata.mill.endtime2 = nowatime.AddSeconds(Config_t_crop.getOne(id).produceCoef * addnum);
+        playerdata.mill.endtime2 = nowatime.AddSeconds(Config_t_crop.getOne(id).produceCoef * addnum).ToString();
         playerdata.mill.pdnum2 += addnum;
     }
     public void collectMill1(int num)

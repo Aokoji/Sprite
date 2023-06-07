@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using customEvent;
 
 public class TravelSpriteMessagePanel : PanelTopBase
 {
@@ -24,6 +25,8 @@ public class TravelSpriteMessagePanel : PanelTopBase
         squareLock = new Dictionary<int, int>();
         initSpriteBarAnim();
         spriteNode.SetActive(false);
+        for (int i = 0; i < squareBtn.Length; i++)
+            squareBtn[i].GetComponentInChildren<Text>().text = Config_t_TravelRandom.getOne(i+1).sname;
         selectSquare = 0;
         StartCoroutine(initScrollData());
     }
@@ -50,9 +53,11 @@ public class TravelSpriteMessagePanel : PanelTopBase
             int index = i + 1;
             squareBtn[i].onClick.AddListener(() => { clickSquare(index); });
         }
+        EventAction.Instance.AddEventGather<int>(eventType.spriteTravelComplete_I, travelComplete);
     }
     IEnumerator initScrollData()
     {
+        scroll.initConfig(455, 100);
         foreach (var item in PlayerManager.Instance.spriteList)
         {
             var obj = Instantiate(clone);
@@ -76,23 +81,37 @@ public class TravelSpriteMessagePanel : PanelTopBase
         for(int i = 0; i < squareBtn.Length; i++)
         {
             squareLock[i] = 0;
+            squareBtn[i].GetComponent<Image>().color = Color.white;
+            squareBtn[i].GetComponentInChildren<Image>().gameObject.SetActive(false);
         }
         //不可选置灰，不可点，人物头像
         TravelManager.Instance._data.quest.ForEach(item =>
         {
             squareLock[item.squareID] = item.spID;
+            squareBtn[item.squareID-1].GetComponent<Image>().color = Color.gray;
+            squareBtn[item.squareID-1].GetComponentInChildren<Image>().gameObject.SetActive(true);
+            squareBtn[item.squareID-1].GetComponentInChildren<Image>().sprite = GetSprite(A_AtlasNames.itemsIcon.ToString(), PlayerManager.Instance.getSpriteData(item.spID).icon);
         });
-        //刷新状态
     }
     void goTravelAction(int id)
     {
         //不足判定
-        if (Config_t_TravelRandom.getOne(selectSquare).spendPhy>PlayerManager.Instance.getSpriteData(id).phy_cur)
+        var spdata = PlayerManager.Instance.getSpriteData(id);
+        if (Config_t_TravelRandom.getOne(selectSquare).spendPhy> spdata.phy_cur)
         {
             PanelManager.Instance.showTips3("妖精体力不足");
             return;
         }
+        if (spdata.istraveling)
+        {
+            PanelManager.Instance.showTips3("妖精正在旅行中");
+            return;
+        }
         TravelManager.Instance.goTravel(id, selectSquare);
+    }
+    void travelComplete(int id)
+    {
+        PlayerManager.Instance.travel_sprite(id, Config_t_TravelRandom.getOne(selectSquare).spendPhy);
         refreshBtnState();
         clickCloseBar();
     }
@@ -109,7 +128,7 @@ public class TravelSpriteMessagePanel : PanelTopBase
     }
     void clickCloseBar()
     {
-        AnimationTool.playAnimation(gameObject, "Hide_Panel", false, ()=> { spriteNode.SetActive(true); });
+        AnimationTool.playAnimation(spriteNode, "Hide_Panel", false, ()=> { spriteNode.SetActive(false); });
     }
     void clickClose()
     {

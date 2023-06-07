@@ -10,6 +10,7 @@ public class TravelSpriteMessageBar : UIBase
     public Text spname;
     public Text phycontext;
     public Button gotravelBtn;
+    public Text travelBtnContext;
     SpriteData _data;
     public void initAction(Action<int> gotravel)
     {
@@ -20,5 +21,16 @@ public class TravelSpriteMessageBar : UIBase
         _data = data;
         spname.text = data.sname;
         phycontext.text = data.phy_cur + "/" + data.phy_max;
+        icon.sprite = GetSprite(A_AtlasNames.itemsIcon.ToString(), data.icon);
+        if (data.istraveling)
+        {
+            gotravelBtn.GetComponent<Image>().color = Color.gray;
+            travelBtnContext.text = "旅行中..";
+        }
+        else
+        {
+            gotravelBtn.GetComponent<Image>().color = Color.white;
+            travelBtnContext.text = "旅行";
+        }
     }
 }

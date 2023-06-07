@@ -7,15 +7,9 @@ using System.Text;
 public class EnemyCalculate:CSingel<EnemyCalculate>
 {
     public static SpriteData GetEnemyData()
-    {
-        int someid = 1;
-
+    {//+++
         SpriteData enemy = new SpriteData();
-        enemy.id = someid;
-        enemy.takeDefaultCardsID = 2;
-        enemy.hp_cur = enemy.hp_max = 25;
-        enemy.cost_cur = enemy.cost_max = 4;
-        enemy.extraLimit = 1;
+        enemy.Convert_Data(Config_t_ActorMessage.getOne(6));
         enemy.refreshData();
         return enemy;
     }

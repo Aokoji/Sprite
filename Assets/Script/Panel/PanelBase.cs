@@ -34,6 +34,7 @@ public class PanelBase : UIBase
     }
     public virtual void init() { }
     public virtual void registerEvent() { }
+    public virtual void unregisterEvent() { }
     public virtual void reshow() { }
     public void initAfterLoading() { }
     public virtual void afterAnimComplete() { }
@@ -41,6 +42,7 @@ public class PanelBase : UIBase
     public virtual void OnUpdate() { }
     public void OnExit() { }
     public virtual void Dispose() {
+        unregisterEvent();
         AnimationTool.playAnimation(gameObject, "Hide_Panel2", false, () => { Destroy(gameObject); });
     }
 }

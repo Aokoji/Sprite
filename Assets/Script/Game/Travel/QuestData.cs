@@ -9,8 +9,8 @@ public class QuestData : BaseData   //委托单数据
     public int questID;         //任务id
     public int spID;    //精灵id
     public int squareID;    //地区
-    public DateTime spFinish;   //精灵完成时间
-    public DateTime endTime;    //任务结束时间
+    public string spFinish;   //精灵完成时间
+    public string endTime;    //任务结束时间
     public int pagePos; //委托单位置
 
     public List<int> takeItem = new List<int>();    //额外物品

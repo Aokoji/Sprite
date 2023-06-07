@@ -18,53 +18,97 @@ MonoBehaviour:
     defaultCard: 1
     titleIcon: elf_flower
     wholeIcon: 0
+    phybase: 50
+    hpbase: 20
+    costmax: 3
+    spritePower: 7
   - id: 2
     sname: "\u9E1F\u5996\u7CBE"
     defaultCard: 1
     titleIcon: elf_bird
     wholeIcon: 0
+    phybase: 65
+    hpbase: 16
+    costmax: 3
+    spritePower: 10
   - id: 3
     sname: "\u53F6\u5996\u7CBE"
     defaultCard: 1
     titleIcon: elf_leaf
     wholeIcon: 0
+    phybase: 80
+    hpbase: 25
+    costmax: 3
+    spritePower: 8
   - id: 4
     sname: "\u6708\u5996\u7CBE"
     defaultCard: 1
     titleIcon: elf_moon
     wholeIcon: 0
+    phybase: 70
+    hpbase: 22
+    costmax: 3
+    spritePower: 14
   - id: 5
     sname: "\u5149\u5996\u7CBE"
     defaultCard: 1
     titleIcon: elf_light
     wholeIcon: 0
+    phybase: 90
+    hpbase: 30
+    costmax: 3
+    spritePower: 5
   - id: 6
     sname: "\u80E1\u8702"
-    defaultCard: 1
+    defaultCard: 2
     titleIcon: en_wasp
     wholeIcon: 0
+    phybase: 0
+    hpbase: 0
+    costmax: 3
+    spritePower: 0
   - id: 7
     sname: "\u8611\u83C7\u602A"
-    defaultCard: 1
+    defaultCard: 2
     titleIcon: en_mush
     wholeIcon: 0
+    phybase: 0
+    hpbase: 0
+    costmax: 3
+    spritePower: 0
   - id: 8
     sname: "\u68D5\u718A"
-    defaultCard: 1
+    defaultCard: 2
     titleIcon: en_bear
     wholeIcon: 0
+    phybase: 0
+    hpbase: 0
+    costmax: 3
+    spritePower: 0
   - id: 9
     sname: "\u51F6\u6076\u7684\u8C7A\u72FC"
-    defaultCard: 1
+    defaultCard: 2
     titleIcon: en_wolves
     wholeIcon: 0
+    phybase: 0
+    hpbase: 0
+    costmax: 3
+    spritePower: 0
   - id: 10
     sname: "\u987D\u76AE\u7684\u6A58\u679C"
-    defaultCard: 1
+    defaultCard: 2
     titleIcon: en_citrus
     wholeIcon: 0
+    phybase: 0
+    hpbase: 0
+    costmax: 3
+    spritePower: 0
   - id: 11
     sname: "\u56FA\u6267\u7684\u6A61\u679C"
-    defaultCard: 1
+    defaultCard: 2
     titleIcon: en_acorn
     wholeIcon: 0
+    phybase: 0
+    hpbase: 0
+    costmax: 3
+    spritePower: 0

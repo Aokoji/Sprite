@@ -49,9 +49,9 @@ public class TravelBarMessage : UIBase
         travelingBar.SetActive(false);
         questBar.SetActive(false);
         alivetime.gameObject.SetActive(true);
-        if (curtimeJust > _data.spFinish)
+        if (curtimeJust > _data.getDate(_data.spFinish))
         {
-            if (curtimeJust > _data.endTime)
+            if (curtimeJust > _data.getDate(_data.endTime))
             {
                 //超时
                 travelingBar.SetActive(true);
@@ -89,7 +89,7 @@ public class TravelBarMessage : UIBase
         travelShut.gameObject.SetActive(true);
         travelconfirm.gameObject.SetActive(false);
         travelingContext.text = "旅行中，预计返回时间：";
-        alivetime.text = PubTool.timeTranslate((int)(_data.spFinish - curtimeJust).TotalMinutes);
+        alivetime.text = PubTool.timeTranslate((int)(_data.getDate(_data.spFinish) - curtimeJust).TotalMinutes);
 
         travelShut.onClick.RemoveAllListeners();
         travelShut.onClick.AddListener(click_backtravel);
@@ -164,6 +164,7 @@ public class TravelBarMessage : UIBase
     void click_backtravel()
     {
         //shut
+        PanelManager.Instance.showTips2("确定召回旅行中的妖精吗（损失旅行25%的体力）", () => { TravelManager.Instance.shutTravel(_data); });
     }
     void click_timeoutClear()
     {

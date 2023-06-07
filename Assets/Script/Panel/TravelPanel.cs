@@ -19,10 +19,11 @@ public class TravelPanel : PanelTopBase
     public override void registerEvent()
     {
         base.registerEvent();
-        EventAction.Instance.AddEventGather(eventType.spriteTravelComplete, travelComplete);
+        //EventAction.Instance.AddEventGather(eventType.spriteTravelComplete_I, travelComplete);
         //gotravel.onClick.AddListener(() => { TravelManager.Instance.goTravel(PlayerManager.Instance.cursprite.id, 2); });
         gotravel.onClick.AddListener(gotravelClick);
         backBtn.onClick.AddListener(PanelManager.Instance.DisposePanel);
+        EventAction.Instance.AddEventGather(eventType.spriteTravelBackRefresh, refreshTravels);
     }
     public void initData()
     {
@@ -46,7 +47,7 @@ public class TravelPanel : PanelTopBase
                 quests[item.pagePos].reset(item, result);
                 quests[item.pagePos].gameObject.SetActive(true);
             }
-            travelCheck(selfquset.Count>=ConfigConst.QUEST_MAX);
+            travelCheck(selfquset.Count<=ConfigConst.QUEST_MAX);
         });
     }
     void travelCheck(bool allow)
@@ -67,7 +68,7 @@ public class TravelPanel : PanelTopBase
         PanelManager.Instance.OpenPanel(E_UIPrefab.TravelSpriteMessagePanel);
     }
     //派遣成功回调
-    void travelComplete()
+    void travelComplete(int id)
     {
         var aa = TravelManager.Instance._data;
         /*Debug.Log(aa.traveling.Count);

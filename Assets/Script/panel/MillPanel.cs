@@ -88,7 +88,7 @@ public class MillPanel : PanelBase
         //判断时间
         if (_data.pdid1 > 0)
         {
-            if (nowatime >= _data.endtime1)
+            if (nowatime >= _data.getDate(_data.endtime1))
             {
                 //收集
                 col1 = _data.pdnum1;
@@ -98,7 +98,7 @@ public class MillPanel : PanelBase
                 //填料收集
                 //启动计时器
                 timerLock = false;
-                surplus1 = (int)(_data.endtime1 - nowatime).TotalSeconds;
+                surplus1 = (int)(_data.getDate(_data.endtime1) - nowatime).TotalSeconds;
                 coef1 = Config_t_crop.getOne(_data.pdid1).produceCoef;
                 pd1 = surplus1 / coef1 + 1;
                 col1 = _data.pdnum1 - pd1;
@@ -107,7 +107,7 @@ public class MillPanel : PanelBase
         }
         if (_data.pdid2 > 0)
         {
-            if (nowatime >= _data.endtime2)
+            if (nowatime >= _data.getDate(_data.endtime2))
             {
                 col2 = _data.pdnum2;
             }
@@ -115,7 +115,7 @@ public class MillPanel : PanelBase
             {
                 //填料收集
                 timerLock = false;
-                surplus2 = (int)(_data.endtime2 - nowatime).TotalSeconds;
+                surplus2 = (int)(_data.getDate(_data.endtime2) - nowatime).TotalSeconds;
                 coef2 = Config_t_crop.getOne(_data.pdid2).produceCoef;
                 pd2 = surplus2 / coef2 + 1;
                 col2 = _data.pdnum2  - pd2;

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 public class BaseData
@@ -9,6 +10,11 @@ public class BaseData
             
     }
     public virtual void initdata() { }
+
+    public DateTime getDate(string dat)
+    {
+        return DateTime.Parse(dat);
+    }
 }
 public class AssetData:ScriptableObject
 {

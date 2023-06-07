@@ -7,6 +7,7 @@ public class SpriteData
 {
     public int id;
     public string sname;
+    public string icon;
 
     public int level;   //精灵等级 上限50
     public int hp_max;
@@ -40,6 +41,7 @@ public class SpriteData
         var copy = new SpriteData();
         copy.id = id;
         copy.sname = sname;
+        copy.icon = icon;
         copy.level = level;
         copy.hp_max = hp_max;
         copy.hp_cur = hp_cur;
@@ -58,5 +60,18 @@ public class SpriteData
         copy.istraveling = istraveling;
         copy.isworking = isworking;
         return copy;
+    }
+
+    public void Convert_Data(t_ActorMessage data)
+    {
+        id = data.id;
+        sname = data.sname;
+        level = 1;
+        hp_cur = hp_max = data.hpbase;
+        phy_cur = phy_max = data.phybase;
+        spritePower = data.spritePower;
+        cost_cur = cost_max = data.costmax;
+        takeDefaultCardsID = data.defaultCard;
+        icon = data.titleIcon;
     }
 }
