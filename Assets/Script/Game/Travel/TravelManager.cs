@@ -21,18 +21,6 @@ public class TravelManager : CSingel<TravelManager>
         }
     }
     //public void saveTravel() { AssetManager.saveJson(S_SaverNames.entrust.ToString(), _data); }
-    public void completeRemoveQuest(int id)
-    {
-        for(int i = 0; i < _data.quest.Count; i++)
-        {
-            if (id == _data.quest[i].questID)
-            {
-                _data.quest.Remove(_data.quest[i]);
-                Debug.Log("removed");
-                break;
-            }
-        }
-    }
     public bool goTravel(int spid,int square)
     {
         //检测可出发
@@ -150,9 +138,25 @@ public class TravelManager : CSingel<TravelManager>
         {
             int spend = (int)(Config_t_TravelRandom.getOne(quest.squareID).spendPhy * 0.75f);
             _data.quest.Remove(quest);
-            PlayerManager.Instance.travel_shut(quest.spID, spend);
+            PlayerManager.Instance.travel_shut(quest.spID, spend);      //存了
             PanelManager.Instance.showTips3("召回成功，返还体力 " + spend + " 点");
             EventAction.Instance.TriggerAction(eventType.spriteTravelBackRefresh);
+        }
+    }
+    public void clearTravel(QuestData quest)
+    {
+        _data.quest.Remove(quest);
+        PlayerManager.Instance.savePlayerData();
+    }
+    public void completeRemoveQuest(int id)
+    {
+        for (int i = 0; i < _data.quest.Count; i++)
+        {
+            if (id == _data.quest[i].questID)
+            {
+                _data.quest.Remove(_data.quest[i]);
+                break;
+            }
         }
     }
     /// <summary>

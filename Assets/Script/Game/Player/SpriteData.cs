@@ -19,6 +19,9 @@ public class SpriteData
     public int phy_max; //体力（探索用
     public int phy_cur;
 
+    public int exp_cur;
+    public int exp_max;
+
     public int extraLimit;
     public int cost_max;
     public int cost_cur;

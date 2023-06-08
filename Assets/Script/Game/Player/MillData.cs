@@ -19,10 +19,8 @@ public class MillData : BaseData
 
     public int extendLv;    //扩建等级
 
-    public int willMillCount1;   //基础20
-    public int finishMillCount1;//20
-    public int willMillCount2;   //基础20
-    public int finishMillCount2;//20
+    public int capMillCount1;   //基础20      容量
+    public int capMillCount2;   //基础20
     public int savemana;    //减少消耗
     //1 增加填料储料槽大小   +10
     //2 增加填料储料槽大小   +20
@@ -37,12 +35,12 @@ public class MillData : BaseData
         //计算实际值
         switch (extendLv)
         {
-            case 0:willMillCount1 = finishMillCount1 = 20;break;
-            case 1:willMillCount1 = finishMillCount1 = 30;break;
-            case 2:willMillCount1 = finishMillCount1 = 50;break;
-            case 3:isupgrade = true; willMillCount1 = finishMillCount1 = 50; willMillCount2 = finishMillCount2 = 25; break;
-            case 4:isupgrade = true; willMillCount1 = finishMillCount1 = 60; willMillCount2 = finishMillCount2 = 35; break;
-            case 5:isupgrade = true; willMillCount1 = finishMillCount1 = 80; willMillCount2 = finishMillCount2 = 45;savemana = 15; break;
+            case 0: capMillCount1 = 20;break;
+            case 1: capMillCount1 = 30;break;
+            case 2: capMillCount1 = 50;break;
+            case 3:isupgrade = true; capMillCount1 = 50; capMillCount2 = 20; break;
+            case 4:isupgrade = true; capMillCount1 = 60; capMillCount2 = 30; break;
+            case 5:isupgrade = true; capMillCount1 = 80; capMillCount2 = 45;savemana = 15; break;
         }
     }
 }

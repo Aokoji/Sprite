@@ -24,6 +24,7 @@ MonoBehaviour:
     fromActor: aa
     rewards: 1|2|3
     rewardnum: 1|1|2
+    ranklevel: 0
   - id: 2
     sname: "\u6D4B\u8BD5\u4EFB\u52A12"
     describe: 222
@@ -35,6 +36,7 @@ MonoBehaviour:
     fromActor: aa
     rewards: 1
     rewardnum: 1
+    ranklevel: 0
   - id: 3
     sname: "\u6D4B\u8BD5\u4EFB\u52A13"
     describe: 333
@@ -46,6 +48,7 @@ MonoBehaviour:
     fromActor: aa
     rewards: 1
     rewardnum: 1
+    ranklevel: 0
   - id: 4
     sname: "\u6D4B\u8BD5\u4EFB\u52A14"
     describe: 444
@@ -57,6 +60,7 @@ MonoBehaviour:
     fromActor: aa
     rewards: 1
     rewardnum: 1
+    ranklevel: 0
   - id: 5
     sname: "\u6D4B\u8BD5\u4EFB\u52A15"
     describe: 444
@@ -68,6 +72,7 @@ MonoBehaviour:
     fromActor: aa
     rewards: 1
     rewardnum: 1
+    ranklevel: 0
   - id: 6
     sname: "\u6D4B\u8BD5\u4EFB\u52A16"
     describe: 444
@@ -79,6 +84,7 @@ MonoBehaviour:
     fromActor: aa
     rewards: 1
     rewardnum: 1
+    ranklevel: 0
   - id: 7
     sname: "\u6D4B\u8BD5\u4EFB\u52A17"
     describe: 444
@@ -90,6 +96,7 @@ MonoBehaviour:
     fromActor: aa
     rewards: 1
     rewardnum: 1
+    ranklevel: 0
   - id: 8
     sname: "\u6D4B\u8BD5\u4EFB\u52A18"
     describe: 444
@@ -101,3 +108,4 @@ MonoBehaviour:
     fromActor: aa
     rewards: 1
     rewardnum: 1
+    ranklevel: 1

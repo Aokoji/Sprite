@@ -7,7 +7,13 @@ public class TipPop2 : TipsBase
 {
     public Button confirm;
     public Button cancel;
+    public Text str2;
 
+    public override void setString2(string str)
+    {
+        base.setString2(str);
+        str2.text = str;
+    }
     public override void play()
     {
         AnimationTool.playAnimation(gameObject, "showtip2",false,()=> { allowClick = true; });

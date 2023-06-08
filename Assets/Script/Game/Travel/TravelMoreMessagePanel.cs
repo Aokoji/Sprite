@@ -94,9 +94,9 @@ public class TravelMoreMessagePanel : PanelTopBase
                 rewards.Add(item);
             }
         }
+        TravelManager.Instance.completeRemoveQuest(_data.id);
         PlayerManager.Instance.addItems(rewards);
         PanelManager.Instance.showTips4(rewards);
-        TravelManager.Instance.completeRemoveQuest(_data.id);
         PanelManager.Instance.DisposePanel();
     }
 }

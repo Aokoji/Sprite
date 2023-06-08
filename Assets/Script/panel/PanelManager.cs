@@ -185,6 +185,13 @@ public class PanelManager : CSingel<PanelManager>
     public void showTips2(string str,Action callback, Action callback2=null)
     {
         tip2.init(str, callback, callback2);
+        tip2.setString2("");
+        tip2.play();
+    }
+    public void showTips2(string str,string str2, Action callback, Action callback2 = null)
+    {
+        tip2.init(str, callback, callback2);
+        tip2.setString2(str2);
         tip2.play();
     }
     /// <summary>

@@ -143,6 +143,7 @@ public class PlayerManager : CSingel<PlayerManager>
         {
             playerdata.mill.endtime1 = (DateTime.Parse(playerdata.mill.endtime1).AddSeconds(Config_t_crop.getOne(playerdata.mill.pdid1).produceCoef * addnum)).ToString();
             playerdata.mill.pdnum1 += addnum;
+            savePlayerData();
         }
     }
     public void createMillMater1(int id,int addnum,DateTime nowatime)
@@ -151,6 +152,7 @@ public class PlayerManager : CSingel<PlayerManager>
 
         playerdata.mill.endtime1= nowatime.AddSeconds(Config_t_crop.getOne(id).produceCoef * addnum).ToString();
         playerdata.mill.pdnum1 += addnum;
+        savePlayerData();
     }
     public void addMillMater2(int addnum)
     {
@@ -158,6 +160,7 @@ public class PlayerManager : CSingel<PlayerManager>
         {
             playerdata.mill.endtime2 = (DateTime.Parse(playerdata.mill.endtime2).AddSeconds(Config_t_crop.getOne(playerdata.mill.pdid2).produceCoef * addnum)).ToString();
             playerdata.mill.pdnum2 += addnum;
+            savePlayerData();
         }
     }
     public void createMillMater2(int id, int addnum, DateTime nowatime)
@@ -165,6 +168,7 @@ public class PlayerManager : CSingel<PlayerManager>
         playerdata.mill.pdid2 = id;
         playerdata.mill.endtime2 = nowatime.AddSeconds(Config_t_crop.getOne(id).produceCoef * addnum).ToString();
         playerdata.mill.pdnum2 += addnum;
+        savePlayerData();
     }
     public void collectMill1(int num)
     {

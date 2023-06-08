@@ -15,6 +15,7 @@ public enum E_UIPrefab
     CardsetPanel,
     MainPanel,
     MillPanel,
+    MillAdditionPanel,
     WorkshopPanel,
     ExplorPanel,    //探索选框
     TravelPanel,   //委托

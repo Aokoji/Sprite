@@ -57,11 +57,11 @@ public class TableManager : CSingel<TableManager>
         questRankDic = new Dictionary<int, List<int>>();
         foreach(var i in Config_t_quest._data)
         {
-            if (!questRankDic.ContainsKey(i.Value.type))
+            if (!questRankDic.ContainsKey(i.Value.ranklevel))
             {
-                questRankDic.Add(i.Value.type, new List<int>());
+                questRankDic.Add(i.Value.ranklevel, new List<int>());
             }
-            questRankDic[i.Value.type].Add(i.Value.id);
+            questRankDic[i.Value.ranklevel].Add(i.Value.id);
         }
     }
 

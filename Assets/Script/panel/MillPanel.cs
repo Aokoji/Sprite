@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using customEvent;
 
 public class MillPanel : PanelBase
 {
@@ -42,6 +43,8 @@ public class MillPanel : PanelBase
         workstool1.onClick.AddListener(clickWork1);
         workstool2.onClick.AddListener(clickWork2);
         upgrade.onClick.AddListener(clickUpgrade);
+        EventAction.Instance.AddEventGather<int, int>(eventType.millAddMater1_II, addMaterCount1);
+        EventAction.Instance.AddEventGather<int, int>(eventType.millAddMater2_II, addMaterCount2);
     }
     public override void init()
     {
@@ -162,7 +165,7 @@ public class MillPanel : PanelBase
     void clickmater1()
     {
         //弹界面
-
+        PanelManager.Instance.OpenPanel(E_UIPrefab.MillAdditionPanel, new object[] { _data.pdid1,_data.capMillCount1-_data.pdnum1});
         //测试
         addMaterCount1(8, 2);
     }
@@ -270,8 +273,8 @@ public class MillPanel : PanelBase
     }
     #endregion
     #region timer
-    int pd1;    //生产
-    int col1;   //收集
+    int pd1;    //生产数量
+    int col1;   //收集数量
     int coef1;  //系数
     int surplus1; //剩余时间
     int pd2;

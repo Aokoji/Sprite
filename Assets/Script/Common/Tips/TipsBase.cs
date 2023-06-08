@@ -19,6 +19,7 @@ public class TipsBase: UIBase
         allowClick = false;
         initEvent();
     }
+    public virtual void setString2(string str) { }
     public virtual void init(object whatthing) { }
     public virtual void initEvent() { }
     public virtual void play() { }

@@ -15,6 +15,9 @@ namespace customEvent
         panelChangeLoadingComplete,
         spriteTravelComplete_I,
         spriteTravelBackRefresh,
+        millAddMater1_II,
+        millAddMater2_II,
+        millTimerMater_I,
 
         roundEnd_C,
         playRoundNext,

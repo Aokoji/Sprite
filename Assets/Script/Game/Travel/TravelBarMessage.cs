@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using customEvent;
 
 public class TravelBarMessage : UIBase
 {
@@ -164,11 +165,12 @@ public class TravelBarMessage : UIBase
     void click_backtravel()
     {
         //shut
-        PanelManager.Instance.showTips2("确定召回旅行中的妖精吗（损失旅行25%的体力）", () => { TravelManager.Instance.shutTravel(_data); });
+        PanelManager.Instance.showTips2("确定召回旅行中的妖精吗？", "（损失旅行25%的体力）", () => { TravelManager.Instance.shutTravel(_data); });
     }
     void click_timeoutClear()
     {
-
+        TravelManager.Instance.clearTravel(_data);
+        EventAction.Instance.TriggerAction(eventType.spriteTravelBackRefresh);
     }
     void click_backWithAward()
     {
@@ -182,6 +184,7 @@ public class TravelBarMessage : UIBase
             PlayerManager.Instance.addItemsNosave(_data.extraID, 1);
         _data.isGet = true;
         PlayerManager.Instance.savePlayerData();
+        TravelManager.Instance.clearTravel(_data);
         PanelManager.Instance.OpenPanel(E_UIPrefab.TravelBackQuestPanel, new object[] { _data });
     }
     void click_lookMoreMessage()
