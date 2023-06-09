@@ -15,7 +15,7 @@ public enum E_UIPrefab
     CardsetPanel,
     MainPanel,
     MillPanel,
-    MillAdditionPanel,
+    MillAdditionPanel,  //添加生产物 bool ,int ,int   三参  ismater2,生产id,数量
     WorkshopPanel,
     ExplorPanel,    //探索选框
     TravelPanel,   //委托

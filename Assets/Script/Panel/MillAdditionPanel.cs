@@ -10,27 +10,28 @@ public class MillAdditionPanel : PanelTopBase
     public Button addmater10;
     public Button reducemater1;
     public Button reducemater10;
-    public Image icon;
+    public Button itemImg;
     public Text contextcount;
     public UITool_ScrollView scroll;
     public GameObject clone;
-    public Button confirm;
     public Button back;
+    public Text gringding;  //研磨中字样
+    public Button cancelGring;  //取消研磨
+
     int curid;
     int curcount;
-    int materid;
+    bool ismater2;
+    int exid;
+    int excount;
 
     public override void init()
     {
         base.init();
-        curid = (int)message[0];
-        materid = (int)message[1];
-        curcount = 0;
-        if (curid == 0)
-            //icon置空图
-            icon.sprite = GetSprite(A_AtlasNames.itemsIcon.ToString(), ConfigConst.NOIMG_ICON);
-        else
-            icon.sprite = GetSprite(A_AtlasNames.itemsIcon.ToString(), Config_t_items.getOne(curid).iconName);
+        ismater2 = (bool)message[0];
+        curid = exid = (int)message[1];
+        curcount = excount = (int)message[2];
+        refreshMainmessage();
+
     }
     public override void registerEvent()
     {
@@ -40,7 +41,7 @@ public class MillAdditionPanel : PanelTopBase
         reducemater1.onClick.AddListener(() => { addCount(-1); });
         reducemater10.onClick.AddListener(() => { addCount(-10); });
         back.onClick.AddListener(PanelManager.Instance.DisposePanel);
-        confirm.onClick.AddListener(clickConfirm);
+        itemImg.onClick.AddListener(clickChooseItem);
         EventAction.Instance.AddEventGather<int>(eventType.millTimerMater_I, refreshCount);
     }
     public override void unregisterEvent()
@@ -48,14 +49,33 @@ public class MillAdditionPanel : PanelTopBase
         base.unregisterEvent();
         EventAction.Instance.RemoveAction<int>(eventType.millTimerMater_I, refreshCount);
     }
+    void refreshMainmessage()
+    {
+        if (curid == 0)
+        {
+            itemImg.GetComponent<Image>().sprite = GetSprite(A_AtlasNames.itemsIcon.ToString(), ConfigConst.NOIMG_ICON);
+            cancelGring.gameObject.SetActive(true);
+            gringding.text = "研磨中...";
+        }
+        else
+        {
+            itemImg.GetComponent<Image>().sprite = GetSprite(A_AtlasNames.itemsIcon.ToString(), Config_t_items.getOne(curid).iconName);
+            cancelGring.gameObject.SetActive(false);
+            gringding.text = "待选择要研磨的材料";
+        }
+    }
 
     void refreshCount(int id)
     {
-        if (id == curid)
+        if (id == exid)
         {
-            curcount--;
-            if (curcount <= 0)
-                curcount = 0;
+            excount--;
+            if (excount <= 0)
+                excount = 0;
+            if (exid == curid)
+            {
+
+            }
         }
     }
     #region click
@@ -76,11 +96,15 @@ public class MillAdditionPanel : PanelTopBase
             PanelManager.Instance.showTips3("没有添加材料");
             return;
         }
-        if (materid == 1)
-            EventAction.Instance.TriggerAction(eventType.millAddMater1_II, curid, curcount);
+        if (ismater2)
+            EventAction.Instance.TriggerAction(eventType.millAddMater2_II, curid, curcount);
         else
             EventAction.Instance.TriggerAction(eventType.millAddMater1_II, curid, curcount);
         PanelManager.Instance.DisposePanel();
+    }
+    void clickChooseItem()
+    {
+
     }
     #endregion
 }

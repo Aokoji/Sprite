@@ -32,6 +32,8 @@ public class MillPanel : PanelBase
     bool timerLock;
     MillData _data;
     DateTime starttime; //同步时间
+    bool eventlock1;
+    bool eventlock2;
 
     public override void registerEvent()
     {
@@ -50,6 +52,8 @@ public class MillPanel : PanelBase
     {
         base.init();
         _data = PlayerManager.Instance.Milldata;
+        eventlock1 = true;
+        eventlock2 = true;
         refreshBuilders();
     }
     public override void afterAnimComplete()
@@ -57,6 +61,12 @@ public class MillPanel : PanelBase
         base.afterAnimComplete();
         if (PlayerPrefs.GetInt(guide, 0) == 0)
             startGuide();
+    }
+    public override void reshow()
+    {
+        base.reshow();
+        eventlock1 = true;
+        eventlock2 = true;
     }
     void refreshBuilders()
     {
@@ -165,13 +175,13 @@ public class MillPanel : PanelBase
     void clickmater1()
     {
         //弹界面
-        PanelManager.Instance.OpenPanel(E_UIPrefab.MillAdditionPanel, new object[] { _data.pdid1,_data.capMillCount1-_data.pdnum1});
-        //测试
-        addMaterCount1(8, 2);
+        PanelManager.Instance.OpenPanel(E_UIPrefab.MillAdditionPanel, new object[] { false, _data.pdid1, _data.capMillCount1 - _data.pdnum1 });
+        eventlock1 = false;
     }
     void clickmater2()
     {
-        addMaterCount2(8, 2);
+        PanelManager.Instance.OpenPanel(E_UIPrefab.MillAdditionPanel, new object[] { false, _data.pdid1, _data.capMillCount1 - _data.pdnum1 });
+        eventlock2 = false;
     }
     //派遣工作
     void clickWork1()
@@ -307,6 +317,8 @@ public class MillPanel : PanelBase
                         pd1 = surplus1 / coef1 + 1;
                         col1= _data.pdnum1 - pd1;
                     }
+                    if (!eventlock1)
+                        EventAction.Instance.TriggerAction(eventType.millTimerMater_I, pd1);
                     resetMater1Panel();
                 }
                 if (pd2 > 0)
@@ -324,6 +336,8 @@ public class MillPanel : PanelBase
                         pd2 = surplus2 / coef2 + 1;
                         col2 = _data.pdnum2 - pd2;
                     }
+                    if (!eventlock2)
+                        EventAction.Instance.TriggerAction(eventType.millTimerMater_I, pd2);
                     resetMater2Panel();
                 }
                 timeflow -= 1;
