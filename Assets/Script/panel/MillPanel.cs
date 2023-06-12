@@ -318,7 +318,7 @@ public class MillPanel : PanelBase
                         col1= _data.pdnum1 - pd1;
                     }
                     if (!eventlock1)
-                        EventAction.Instance.TriggerAction(eventType.millTimerMater_I, pd1);
+                        EventAction.Instance.TriggerAction(eventType.millTimerMater_BI,false, pd1);
                     resetMater1Panel();
                 }
                 if (pd2 > 0)
@@ -337,7 +337,7 @@ public class MillPanel : PanelBase
                         col2 = _data.pdnum2 - pd2;
                     }
                     if (!eventlock2)
-                        EventAction.Instance.TriggerAction(eventType.millTimerMater_I, pd2);
+                        EventAction.Instance.TriggerAction(eventType.millTimerMater_BI, true, pd2);
                     resetMater2Panel();
                 }
                 timeflow -= 1;
