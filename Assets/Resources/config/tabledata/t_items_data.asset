@@ -51,7 +51,7 @@ MonoBehaviour:
   - id: 8
     sname: "\u73CD\u73E0\u5C0F\u9EA6"
     describe: "\u5409\u62C9\u5C14\u5730\u533A\u7279\u4EA7\u5C0F\u9EA6\uFF0C\u7C92\u5982\u73CD\u73E0\uFF0C\u80FD\u591F\u901A\u8FC7\u52A0\u5DE5\u5F97\u5230\u9762\u7C89"
-    type: 1
+    type: 2
     iconName: test1
   - id: 9
     sname: "\u73CD\u73E0\u5C0F\u9EA6\u9762\u7C89"

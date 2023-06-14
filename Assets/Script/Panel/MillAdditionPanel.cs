@@ -40,8 +40,8 @@ public class MillAdditionPanel : PanelTopBase
         isproduce = curid != 0;
         addBar.SetActive(false);
         clone.SetActive(false);
-        RunSingel.Instance.runTimer(initScroll());
         scroll.initConfig(80, 80, clone);
+        RunSingel.Instance.runTimer(initScroll());
         refreshMainmessage();
 
     }
@@ -84,6 +84,7 @@ public class MillAdditionPanel : PanelTopBase
     //刷新添加板
     void refreshMainmessage()
     {
+        Debug.Log("isinthere" + curid + isproduce);
         if (curid == 0)
         {
             itemImg.GetComponent<Image>().sprite = GetSprite(A_AtlasNames.itemsIcon.ToString(), ConfigConst.NOIMG_ICON);
@@ -101,7 +102,7 @@ public class MillAdditionPanel : PanelTopBase
             }
             else
             {
-                cancelGring.gameObject.SetActive(true);
+                cancelGring.gameObject.SetActive(false);
                 gringding.text = "";
                 addBar.SetActive(true);
             }
@@ -176,8 +177,10 @@ public class MillAdditionPanel : PanelTopBase
         EventAction.Instance.TriggerAction(eventType.millShutMater);
         RunSingel.Instance.runTimer(initScroll());
         //弹窗
-        List<ItemData> list = new List<ItemData>();
-        list.Add(new ItemData(curid, curcount));
+        List<ItemData> list = new List<ItemData>
+        {
+            new ItemData(curid, curcount)
+        };
         PanelManager.Instance.showTips4(list);
 
         curid = 0;
@@ -187,7 +190,7 @@ public class MillAdditionPanel : PanelTopBase
     }
     void onChooseOne(int id)
     {
-        if(curid!=0)
+        //if(curid!=0)
         curid = id;
         curcount = 0;
         addingContext.text = curcount.ToString();
