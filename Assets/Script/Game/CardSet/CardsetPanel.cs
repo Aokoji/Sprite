@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class CardsetPanel : PanelBase
 {
-    public UITool_ScrollView scroll;    //暂定 之后改为翻页
+    public UITool_ScrollView scroll;    //暂定 之后改为翻页     该scroll为不变动列表
     public UITool_ScrollView scrollsp;    
     public CardsetItem[] cards;
     public Button savebtn;
@@ -25,10 +25,8 @@ public class CardsetPanel : PanelBase
     bool istoggleNormal;    //切换页
     public override void init()
     {
-        scroll.initConfig(150, 200);
         //cardnums = new Dictionary<int, int>(PlayerManager.Instance.playerMakenDic);
         initData();
-        scroll.reCalculateHeigh();
     }
     public override void registerEvent()
     {
@@ -57,23 +55,25 @@ public class CardsetPanel : PanelBase
     }
     IEnumerator initScrollData()
     {
+        var prefab = PanelManager.Instance.LoadUI(E_UIPrefab.cardShow, CARDPATH);
+        scroll.initConfig(150, 200, prefab.gameObject);
         foreach (var item in Config_t_DataCard._data)
         {
             if (item.Value.limitcount == 99) continue;
             if (item.Value.type1 != CardType1.take && item.Value.type1 != CardType1.untaken) continue;
             //添卡
-            var card = newcard(item.Value);
+            var card = scroll.addItemDefault().GetComponent<CardSetEntity>();
+            card.initData(item.Value, GameManager.isAllCardOpen ? 2 : PlayerManager.Instance.playerMakenDic[item.Key], this);
             allcards.Add(card._data.id, card);
-            scroll.addNewItem(card.gameObject);
         }
         foreach (var item in Config_t_DataCard._data)
         {
             if (item.Value.limitcount == 99) continue;
             if (item.Value.type1 == CardType1.take || item.Value.type1 == CardType1.untaken) continue;
             //添卡
-            var card = newcard(item.Value);
+            var card = scrollsp.addItemDefault().GetComponent<CardSetEntity>();
+            card.initData(item.Value, GameManager.isAllCardOpen ? 2 : PlayerManager.Instance.playerMakenDic[item.Key], this);
             allcards.Add(card._data.id, card);
-            scrollsp.addNewItem(card.gameObject);
         }
         List<int> list = new List<int>();   //短暂记录
         //数量限制计算
@@ -89,6 +89,8 @@ public class CardsetPanel : PanelBase
             cards[i].init();
             cards[i].onchoose = releaseCard;
         }
+        scroll.reCalculateHeigh();
+        scrollsp.reCalculateHeigh();
         yield return null;
         refreshWillList();
         refreshMana();

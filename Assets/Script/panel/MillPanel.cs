@@ -45,8 +45,7 @@ public class MillPanel : PanelBase
         workstool1.onClick.AddListener(clickWork1);
         workstool2.onClick.AddListener(clickWork2);
         upgrade.onClick.AddListener(clickUpgrade);
-        EventAction.Instance.AddEventGather<int, int>(eventType.millAddMater1_II, addMaterCount1);
-        EventAction.Instance.AddEventGather<int, int>(eventType.millAddMater2_II, addMaterCount2);
+        EventAction.Instance.AddEventGather(eventType.millShutMater, refreshMaterMill);
     }
     public override void init()
     {
@@ -67,6 +66,7 @@ public class MillPanel : PanelBase
         base.reshow();
         eventlock1 = true;
         eventlock2 = true;
+        refreshBuilders();
     }
     void refreshBuilders()
     {
@@ -217,68 +217,22 @@ public class MillPanel : PanelBase
         //升级界面
     }
 
-    void addMaterCount1(int spid, int count)
+    void refreshMaterMill()
     {
-        if(_data.pdid1>0)
+        //断计时的
+        pd1 = _data.pdnum1 - col1;
+        if (pd1 <= 0)
         {
-            if(_data.pdid1 == spid)
-            {
-                //正常加
-                PlayerManager.Instance.addMillMater1(count);
-                pd1 += count;
-                surplus1 += count * coef1;
-                timerLock = false;
-            }
-            else
-            {
-                //不正常现象
-                PubTool.LogError("添加id不正确");
-                return;
-            }
+            //理论上=0
+            surplus1 = 0;
+            resetMater1Panel();
         }
-        else
+        pd2 = _data.pdnum1 - col1;
+        if (pd2 <= 0)
         {
-            //新增
-            RunSingel.Instance.getBeiJingTime(result =>
-            {
-                PlayerManager.Instance.createMillMater1(spid, count, result);
-                coef1 = Config_t_crop.getOne(spid).produceCoef;
-                pd1 += count;
-                surplus1 += count * coef1;
-                timerLock = false;
-            });
-        }
-    }
-    void addMaterCount2(int spid, int count)
-    {
-        if (_data.pdid2 > 0)
-        {
-            if (_data.pdid2 == spid)
-            {
-                //正常加
-                PlayerManager.Instance.addMillMater2(count);
-                pd2 += count;
-                surplus2 += count * coef2;
-                timerLock = false;
-            }
-            else
-            {
-                //不正常现象
-                PubTool.LogError("添加id不正确2");
-                return;
-            }
-        }
-        else
-        {
-            //新增
-            RunSingel.Instance.getBeiJingTime(result =>
-            {
-                PlayerManager.Instance.createMillMater2(spid, count, result);
-                coef2 = Config_t_crop.getOne(spid).produceCoef;
-                pd2 += count;
-                surplus2 += count * coef2;
-                timerLock = false;
-            });
+            //理论上=0
+            surplus2 = 0;
+            resetMater2Panel();
         }
     }
     #endregion

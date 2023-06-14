@@ -125,9 +125,28 @@ public class PlayerManager : CSingel<PlayerManager>
     public void addItemsNosave(int id,int count)
     {
         if (playerItemDic.ContainsKey(id))
+        {
             playerItemDic[id] += count;
+            if (playerItemDic[id] <= 0)
+            {
+                playerItemDic.Remove(id);
+            }
+        }
         else
-            playerItemDic.Add(id, count);
+        {
+            if (count > 0)
+                playerItemDic.Add(id, count);
+            else
+                PubTool.LogError("添加物品有误");
+        }
+    }
+    public int getItem(int id)
+    {
+        if (playerItemDic.ContainsKey(id))
+        {
+            return playerItemDic[id];
+        }
+        return 0;
     }
     //慎用
     public TravelData getplayerTravel()
@@ -149,9 +168,8 @@ public class PlayerManager : CSingel<PlayerManager>
     public void createMillMater1(int id,int addnum,DateTime nowatime)
     {
         playerdata.mill.pdid1 = id;
-
         playerdata.mill.endtime1= nowatime.AddSeconds(Config_t_crop.getOne(id).produceCoef * addnum).ToString();
-        playerdata.mill.pdnum1 += addnum;
+        playerdata.mill.pdnum1 = addnum;
         savePlayerData();
     }
     public void addMillMater2(int addnum)
@@ -167,7 +185,7 @@ public class PlayerManager : CSingel<PlayerManager>
     {
         playerdata.mill.pdid2 = id;
         playerdata.mill.endtime2 = nowatime.AddSeconds(Config_t_crop.getOne(id).produceCoef * addnum).ToString();
-        playerdata.mill.pdnum2 += addnum;
+        playerdata.mill.pdnum2 = addnum;
         savePlayerData();
     }
     public void collectMill1(int num)

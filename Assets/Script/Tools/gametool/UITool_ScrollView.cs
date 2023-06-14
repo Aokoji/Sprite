@@ -8,26 +8,39 @@ public class UITool_ScrollView :MonoBehaviour {
 	public GridLayoutGroup content;
 
     private List<GameObject> childs = new List<GameObject>();
+    Queue<GameObject> childsQue = new Queue<GameObject>();
+    GameObject prefab;  //原型
     private string loadPath;
     int rowcount;
     int itemwidth;
     int itemheight;
 
-    public void initConfig(int width,int heigh)
+    //手动调用 自动计算行数量
+    public void initConfig(int width,int heigh,GameObject instance)
     {
         itemwidth = width;
         itemheight = heigh;
+        prefab = instance;
         content.cellSize = new Vector2(itemwidth, itemheight);
         rowcount = (int)(GetComponent<RectTransform>().sizeDelta.x / (width + content.spacing.x));
     }
-
-	public void addNewItem(GameObject obj)
+    //外部调用
+    public GameObject addItemDefault()
     {
-        obj.transform.SetParent(content.transform, false);
-        childs.Add(obj);
+        GameObject obj;
+        if (childsQue.Count > 0)
+            obj = childsQue.Dequeue();
+        else
+        {
+            obj = Instantiate(prefab);
+            obj.transform.SetParent(content.transform, false);
+        }
+        obj.SetActive(true);
         obj.transform.SetAsLastSibling();
-        //return obj;
+        childs.Add(obj);
+        return obj;
     }
+    //重新计算高度（变动后要调用
     public void reCalculateHeigh()
     {
         int high = childs.Count / rowcount;
@@ -45,36 +58,19 @@ public class UITool_ScrollView :MonoBehaviour {
             Debug.LogError("列表已空");
             return;
         }
-        GameObject obj = null;
-        for(int i=childs.Count-1;i>0;i--)
-        {
-            if (childs[i].activeSelf)
-            {
-                obj = childs[i];
-                break;
-            }
-        }
-        if (null == obj)
-        {
-            Debug.LogError("列表已空");
-            return;
-        }
+        var obj = childs[childs.Count - 1];
+        childs.RemoveAt(childs.Count - 1);
         obj.SetActive(false);
+        childsQue.Enqueue(obj);
     }
     public void recycleAll()
     {
         foreach (var i in childs)
         {
             i.SetActive(false);
+            childsQue.Enqueue(i);
         }
-    }
-    public void removeAll()
-    {
-        foreach(var i in childs)
-        {
-            GameObject.Destroy(i);
-        }
-        childs = new List<GameObject>();
+        childs.Clear();
     }
     public void removeOne(GameObject obj,bool real=false)
     {

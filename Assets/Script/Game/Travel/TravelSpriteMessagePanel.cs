@@ -12,7 +12,7 @@ public class TravelSpriteMessagePanel : PanelTopBase
     public Button[] squareBtn;
 
     public Button backBar;
-    public UITool_ScrollView scroll;
+    public UITool_ScrollView scroll;        //不变scroll
     public TravelSpriteMessageBar clone;
 
     Dictionary<int,TravelSpriteMessageBar> spriteBarList;
@@ -57,15 +57,14 @@ public class TravelSpriteMessagePanel : PanelTopBase
     }
     IEnumerator initScrollData()
     {
-        scroll.initConfig(455, 100);
+        scroll.initConfig(455, 100, clone.gameObject);
         foreach (var item in PlayerManager.Instance.spriteList)
         {
-            var obj = Instantiate(clone);
+            var obj = scroll.addItemDefault().GetComponent<TravelSpriteMessageBar>();
             obj.setData(item.Value);
             obj.initAction(goTravelAction);
             obj.gameObject.SetActive(true);
             spriteBarList.Add(item.Key,obj);
-            scroll.addNewItem(obj.gameObject);
         }
         yield return null;
     }

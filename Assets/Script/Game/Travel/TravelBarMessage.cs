@@ -139,11 +139,10 @@ public class TravelBarMessage : UIBase
                 icons[i].sprite = GetSprite(A_AtlasNames.itemsIcon.ToString(), item.iconName);
                 contexts[i].gameObject.SetActive(true);
                 int num = int.Parse(strneed[i]);
-                int have = 0;
+                int have = PlayerManager.Instance.getItem(item.id);
                 contexts[i].color = Color.black;
-                if (PlayerManager.Instance.playerItemDic.ContainsKey(item.id))
+                if (have!=0)
                 {
-                    have = PlayerManager.Instance.playerItemDic[item.id];
                     if (have >= num)
                     {
                         contexts[i].color = Color.green;
