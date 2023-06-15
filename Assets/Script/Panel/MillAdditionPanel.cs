@@ -26,6 +26,7 @@ public class MillAdditionPanel : PanelTopBase
     int curcount;
     bool ismater2;
     bool isproduce;
+    int capmax;
 
     public override void init()
     {
@@ -35,15 +36,13 @@ public class MillAdditionPanel : PanelTopBase
         curcount = (int)message[2];
         if (curcount == 0)
             curid = 0;
-        else
-            contextcount.text = curcount.ToString();
         isproduce = curid != 0;
         addBar.SetActive(false);
         clone.SetActive(false);
+        capmax = ismater2 ? PlayerManager.Instance.Milldata.capMillCount2 : PlayerManager.Instance.Milldata.capMillCount1;
         scroll.initConfig(80, 80, clone);
         RunSingel.Instance.runTimer(initScroll());
         refreshMainmessage();
-
     }
     public override void registerEvent()
     {
@@ -66,6 +65,7 @@ public class MillAdditionPanel : PanelTopBase
     }
     IEnumerator initScroll()
     {
+        scroll.recycleAll();
         var dat = PlayerManager.Instance.playerItemDic;
         GameObject obj;
         foreach(var item in dat)
@@ -84,7 +84,6 @@ public class MillAdditionPanel : PanelTopBase
     //刷新添加板
     void refreshMainmessage()
     {
-        Debug.Log("isinthere" + curid + isproduce);
         if (curid == 0)
         {
             itemImg.GetComponent<Image>().sprite = GetSprite(A_AtlasNames.itemsIcon.ToString(), ConfigConst.NOIMG_ICON);
@@ -108,6 +107,7 @@ public class MillAdditionPanel : PanelTopBase
             }
             itemImg.GetComponent<Image>().sprite = GetSprite(A_AtlasNames.itemsIcon.ToString(), Config_t_items.getOne(curid).iconName);
         }
+        contextcount.text = curcount.ToString();
     }
     //计时器刷新现有研磨
     void refreshCount(bool mater2,int count)
@@ -133,6 +133,8 @@ public class MillAdditionPanel : PanelTopBase
         int nowhave = PlayerManager.Instance.getItem(curid);
         if (nowhave < curcount)
             curcount = nowhave;
+        if (curcount > capmax)
+            curcount = capmax;
         addingContext.text = curcount.ToString();
     }
     void clickConfirm()
@@ -142,21 +144,9 @@ public class MillAdditionPanel : PanelTopBase
             PanelManager.Instance.showTips3("没有添加材料");
             return;
         }
-        RunSingel.Instance.getBeiJingTime(result =>
-        {
-            //扣材料
-            PlayerManager.Instance.addItems(curid, -curcount);
-            //刷新mater
-            if (ismater2)
-            {
-                PlayerManager.Instance.createMillMater2(curid, curcount, result);
-            }
-            else
-            {
-                PlayerManager.Instance.createMillMater1(curid, curcount, result);
-            }
-            PanelManager.Instance.DisposePanel();
-        });
+        EventAction.Instance.TriggerAction(eventType.millChange_BII, ismater2, curid, curcount);
+
+        PanelManager.Instance.DisposePanel();
     }
     void clickChooseIcon()
     {

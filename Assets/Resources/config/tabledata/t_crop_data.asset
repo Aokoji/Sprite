@@ -15,5 +15,5 @@ MonoBehaviour:
   asset:
   - id: 8
     sname: "\u73CD\u73E0\u5C0F\u9EA6"
-    produceCoef: 10
+    produceCoef: 30
     finishID: 9

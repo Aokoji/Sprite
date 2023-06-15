@@ -126,7 +126,7 @@ public class PlayerManager : CSingel<PlayerManager>
     {
         if (playerItemDic.ContainsKey(id))
         {
-            playerItemDic[id] += count;
+            playerItemDic[id] = playerItemDic[id] + count;
             if (playerItemDic[id] <= 0)
             {
                 playerItemDic.Remove(id);

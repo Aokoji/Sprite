@@ -1,4 +1,4 @@
 id,sname,produceCoef,finishID
 int,string,int,int
 itemid,自己看的名字,系数-一个生产秒钟,成品id
-8,珍珠小麦,10,9
+8,珍珠小麦,30,9

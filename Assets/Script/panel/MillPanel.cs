@@ -46,6 +46,7 @@ public class MillPanel : PanelBase
         workstool2.onClick.AddListener(clickWork2);
         upgrade.onClick.AddListener(clickUpgrade);
         EventAction.Instance.AddEventGather(eventType.millShutMater, refreshMaterMill);
+        EventAction.Instance.AddEventGather<bool,int,int>(eventType.millChange_BII, millchangeAction);
     }
     public override void init()
     {
@@ -58,21 +59,21 @@ public class MillPanel : PanelBase
     public override void afterAnimComplete()
     {
         base.afterAnimComplete();
-        if (PlayerPrefs.GetInt(guide, 0) == 0)
-            startGuide();
+        if (GameManager.isOpenGuide)
+            if (PlayerPrefs.GetInt(guide, 0) == 0)
+                startGuide();
     }
     public override void reshow()
     {
         base.reshow();
         eventlock1 = true;
         eventlock2 = true;
-        refreshBuilders();
     }
     void refreshBuilders()
     {
         initNormalData();
         //刨除    引导，材料1，2为空
-        if (PlayerPrefs.GetInt(guide, 0) == 0 || (_data.pdid1 == 0 && _data.pdid2 == 0))
+        if ((GameManager.isOpenGuide && PlayerPrefs.GetInt(guide, 0) == 0) || (_data.pdid1 == 0 && _data.pdid2 == 0))
             return;
         //判断时间
         RunSingel.Instance.getBeiJingTime(result =>
@@ -175,12 +176,12 @@ public class MillPanel : PanelBase
     void clickmater1()
     {
         //弹界面
-        PanelManager.Instance.OpenPanel(E_UIPrefab.MillAdditionPanel, new object[] { false, _data.pdid1, _data.capMillCount1 - _data.pdnum1 });
+        PanelManager.Instance.OpenPanel(E_UIPrefab.MillAdditionPanel, new object[] { false, _data.pdid1, pd1 });
         eventlock1 = false;
     }
     void clickmater2()
     {
-        PanelManager.Instance.OpenPanel(E_UIPrefab.MillAdditionPanel, new object[] { false, _data.pdid1, _data.capMillCount1 - _data.pdnum1 });
+        PanelManager.Instance.OpenPanel(E_UIPrefab.MillAdditionPanel, new object[] { false, _data.pdid2, pd2 });
         eventlock2 = false;
     }
     //派遣工作
@@ -195,6 +196,7 @@ public class MillPanel : PanelBase
     //收获
     void clickCollect1()
     {
+        if (_data.pdid1 == 0 || col1 == 0) return;
         List<ItemData> list = new List<ItemData>();
         list.Add(new ItemData(Config_t_crop.getOne(_data.pdid1).finishID, col1));
         PlayerManager.Instance.collectMill1(col1);
@@ -204,6 +206,7 @@ public class MillPanel : PanelBase
     }
     void clickCollect2()
     {
+        if (_data.pdid2 == 0 || col2 == 0) return;
         List<ItemData> list = new List<ItemData>();
         list.Add(new ItemData(Config_t_crop.getOne(_data.pdid1).finishID, col2));
         PlayerManager.Instance.collectMill2(col2);
@@ -215,6 +218,7 @@ public class MillPanel : PanelBase
     void clickUpgrade()
     {
         //升级界面
+        PanelManager.Instance.OpenPanel(E_UIPrefab.MillAdditionPanel, new object[] { false, _data.pdid2, pd2 });
     }
 
     void refreshMaterMill()
@@ -234,6 +238,27 @@ public class MillPanel : PanelBase
             surplus2 = 0;
             resetMater2Panel();
         }
+    }
+    void millchangeAction(bool ismater2,int id,int count)
+    {
+        //扣材料
+        PlayerManager.Instance.addItemsNosave(id, -count);
+        RunSingel.Instance.getBeiJingTime(result =>
+        {
+            //刷新mater
+            if (ismater2)
+            {
+                clickCollect2();
+                PlayerManager.Instance.createMillMater2(id, count, result);
+            }
+            else
+            {
+                clickCollect1();
+                PlayerManager.Instance.createMillMater1(id, count, result);
+            }
+            refreshBuilders();
+        });
+
     }
     #endregion
     #region timer

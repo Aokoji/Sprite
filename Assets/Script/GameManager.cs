@@ -6,6 +6,7 @@ using customEvent;
 public class GameManager : CSingel<GameManager>
 {
     public static bool isAllCardOpen = true;    //开放所有卡
+    public static bool isOpenGuide = false;  //引导
 
     public void initManager()
     {
