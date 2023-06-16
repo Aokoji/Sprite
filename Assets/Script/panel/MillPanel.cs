@@ -19,7 +19,7 @@ public class MillPanel : PanelBase
     public Text materCount1;
     public Text collectCount1;
     public Text workCount1; //工作详情
-    public RectTransform phyimg1;
+    public RectTransform phyimg1;   //工作条图片
     public Text materTime2;
     public Text materCount2;
     public Text collectCount2;
@@ -28,6 +28,7 @@ public class MillPanel : PanelBase
     public GameObject mill2;
 
     public Button upgrade;  //升级
+    //右侧有个拉板，显示当前详情，底下有这个升级按钮+++
 
     bool timerLock;
     MillData _data;
@@ -218,7 +219,7 @@ public class MillPanel : PanelBase
     void clickUpgrade()
     {
         //升级界面
-        PanelManager.Instance.OpenPanel(E_UIPrefab.MillAdditionPanel, new object[] { false, _data.pdid2, pd2 });
+        PanelManager.Instance.OpenPanel(E_UIPrefab.MillUpgradePanel);
     }
 
     void refreshMaterMill()

@@ -63,3 +63,23 @@ MonoBehaviour:
     describe: "\u7CBE\u7EC6\u7814\u78E8\u5F97\u5230\u7684\u66F4\u9AD8\u7EA7\u7684\u73CD\u73E0\u5C0F\u9EA6\u9762\u7C89\uFF0C\u7528\u6765\u52A0\u5DE5\u53EF\u4EE5\u5F97\u5230\u66F4\u597D\u7684\u6548\u679C"
     type: 1
     iconName: test1
+  - id: 11
+    sname: "\u6728\u6750"
+    describe: "\u5EFA\u7B51\u6750\u6599"
+    type: 1
+    iconName: test1
+  - id: 12
+    sname: "\u7C98\u571F"
+    describe: "\u5EFA\u7B51\u6750\u6599"
+    type: 1
+    iconName: test1
+  - id: 13
+    sname: "\u77F3\u7816"
+    describe: "\u5EFA\u7B51\u6750\u6599"
+    type: 1
+    iconName: test1
+  - id: 14
+    sname: "\u94C1\u9489"
+    describe: "\u5EFA\u7B51\u6750\u6599"
+    type: 1
+    iconName: test1

@@ -208,5 +208,9 @@ public class PlayerManager : CSingel<PlayerManager>
         }
         savePlayerData();
     }
+    public void upgradeMill(Action callback)
+    {
+
+    }
     #endregion
 }

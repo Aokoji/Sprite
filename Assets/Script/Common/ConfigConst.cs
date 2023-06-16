@@ -23,8 +23,9 @@ public static class ConfigConst
     public const int dealcard_blessGod = 92;    //神灵祝福 默认id
 
     public const int QUEST_MAX= 6;    //任务上限
-    public const int SPRITE_LEVEL_MAX = 50;
+    public const int SPRITE_LEVEL_MAX = 50; //精灵等级上限
     public const int SQUARE_MAX = 5;    //地区上限
+    public const int UPGRADE_MAX = 5;   //磨坊等级上限
     public const string NOIMG_ICON = "defaulticon";    //空图默认图片
 
     public static Vector3 colorForest = new Vector3(164,210,146);
