@@ -29,6 +29,7 @@ public class PlayerManager : CSingel<PlayerManager>
         playerItemDic = new Dictionary<int, int>();
         loadTestCardData();
         //初始化sprite         *******************************************     初始化字典数据     ***************************
+        playerdata.mill.paddingLv();
         playerdata.sprites.ForEach(item => { if (item.id == playerdata.curSprite) cursprite = item; spriteList.Add(item.id, item); });
         playerdata.playerAllCards.ForEach((item) => { playerMakenDic.Add(item.id, item.num); });
         playerdata.items.ForEach(item => { playerItemDic.Add(item.id, item.num); });
@@ -43,8 +44,6 @@ public class PlayerManager : CSingel<PlayerManager>
         {
             //playerAsset = AssetManager.loadAsset<PlayerAsset>(CARD_TEST_PATH);
             playerdata = data;
-            if (playerdata.travel.quest.Count > 0)
-                Debug.Log(playerdata.travel.quest[0].endTime);
         }
         else
         {
@@ -210,7 +209,21 @@ public class PlayerManager : CSingel<PlayerManager>
     }
     public void upgradeMill(Action callback)
     {
+        playerdata.mill.extendLv += 1;
+        playerdata.mill.paddingLv();
+        savePlayerData();
+        callback?.Invoke();
+    }
+    public void MillWorkStar(bool ismater2,int id)
+    {
+        if (ismater2)
+        {
 
+        }
+        else
+        {
+
+        }
     }
     #endregion
 }

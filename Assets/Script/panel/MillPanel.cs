@@ -27,14 +27,23 @@ public class MillPanel : PanelBase
     public RectTransform phyimg2;
     public GameObject mill2;
 
+    public GameObject upgradeBar;
+    public Text curLevel;
+    public Text mater1mess;
+    public Text mater2mess;
+    public Text extramess;
+    public Button barback;
     public Button upgrade;  //升级
-    //右侧有个拉板，显示当前详情，底下有这个升级按钮+++
+
+    public Button cancel;
 
     bool timerLock;
     MillData _data;
-    DateTime starttime; //同步时间
     bool eventlock1;
     bool eventlock2;
+    bool messAllow;
+    bool messActive;
+    bool flowBar;
 
     public override void registerEvent()
     {
@@ -46,6 +55,8 @@ public class MillPanel : PanelBase
         workstool1.onClick.AddListener(clickWork1);
         workstool2.onClick.AddListener(clickWork2);
         upgrade.onClick.AddListener(clickUpgrade);
+        barback.onClick.AddListener(clickBarBack);
+        cancel.onClick.AddListener(PanelManager.Instance.DisposePanel);
         EventAction.Instance.AddEventGather(eventType.millShutMater, refreshMaterMill);
         EventAction.Instance.AddEventGather<bool,int,int>(eventType.millChange_BII, millchangeAction);
     }
@@ -55,6 +66,8 @@ public class MillPanel : PanelBase
         _data = PlayerManager.Instance.Milldata;
         eventlock1 = true;
         eventlock2 = true;
+        messAllow = true;
+        messActive = false;
         refreshBuilders();
     }
     public override void afterAnimComplete()
@@ -189,6 +202,15 @@ public class MillPanel : PanelBase
     void clickWork1()
     {
         //工作界面
+        //有工作则取消或者悬浮取消
+        if (_data.workingID1 > 0)
+        {
+
+        }
+        else
+        {
+            PanelManager.Instance.OpenPanel(E_UIPrefab.MillSpriteWorkPanel, new object[] { false });
+        }
     }
     void clickWork2()
     {
@@ -216,8 +238,46 @@ public class MillPanel : PanelBase
         resetMater2Panel();
     }
 
+    void clickBarBack()
+    {
+        if (!messAllow) return;
+        if (messActive)
+        {
+            //隐藏
+            messAllow = false;
+            messActive = false;
+            AnimationTool.playAnimation(upgradeBar, "millUpgradeBarBack", false, () => { messAllow = true; });
+        }
+        else
+        {
+            //显示 更新信息
+            messActive = true;
+            var data = PlayerManager.Instance.Milldata;
+            curLevel.text = "磨坊等级："+data.extendLv;
+            mater1mess.text = "主仓储容量："+data.capMillCount1;
+            if (data.extendLv <= 2)
+                mater2mess.gameObject.SetActive(false);
+            else
+            {
+                mater2mess.gameObject.SetActive(true);
+                mater2mess.text = "副仓储容量：" + data.capMillCount2;
+            }
+            if (data.extendLv < 5)
+                extramess.gameObject.SetActive(false);
+            else
+            {
+                extramess.gameObject.SetActive(true);
+                extramess.text = "生产速度+5%";
+            }
+            messAllow = false;
+            AnimationTool.playAnimation(upgradeBar, "millUpgradeBarShow", false, () => { messAllow = true; });
+        }
+    }
     void clickUpgrade()
     {
+        if(!messAllow) return;
+        if(messActive)
+            clickBarBack();
         //升级界面
         PanelManager.Instance.OpenPanel(E_UIPrefab.MillUpgradePanel);
     }

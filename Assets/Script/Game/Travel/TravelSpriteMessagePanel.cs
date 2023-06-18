@@ -61,7 +61,7 @@ public class TravelSpriteMessagePanel : PanelTopBase
         foreach (var item in PlayerManager.Instance.spriteList)
         {
             var obj = scroll.addItemDefault().GetComponent<TravelSpriteMessageBar>();
-            obj.setData(item.Value);
+            obj.setData(item.Value, E_UIPrefab.TravelSpriteMessagePanel);
             obj.initAction(goTravelAction);
             obj.gameObject.SetActive(true);
             spriteBarList.Add(item.Key,obj);
@@ -72,7 +72,7 @@ public class TravelSpriteMessagePanel : PanelTopBase
     {
         foreach (var item in spriteBarList)
         {
-            item.Value.setData(PlayerManager.Instance.getSpriteData(item.Key));
+            item.Value.setData(PlayerManager.Instance.getSpriteData(item.Key), E_UIPrefab.TravelSpriteMessagePanel);
         }
     }
     void refreshBtnState()
@@ -104,6 +104,11 @@ public class TravelSpriteMessagePanel : PanelTopBase
         if (spdata.istraveling)
         {
             PanelManager.Instance.showTips3("妖精正在旅行中");
+            return;
+        }
+        if (spdata.isworking)
+        {
+            PanelManager.Instance.showTips3("妖精正在工作中");
             return;
         }
         TravelManager.Instance.goTravel(id, selectSquare);
