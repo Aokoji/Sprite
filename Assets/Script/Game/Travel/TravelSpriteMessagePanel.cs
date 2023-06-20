@@ -61,7 +61,7 @@ public class TravelSpriteMessagePanel : PanelTopBase
         foreach (var item in PlayerManager.Instance.spriteList)
         {
             var obj = scroll.addItemDefault().GetComponent<TravelSpriteMessageBar>();
-            obj.setData(item.Value, E_UIPrefab.TravelSpriteMessagePanel);
+            obj.setData(item.Value, e_workSquare.travel);
             obj.initAction(goTravelAction);
             obj.gameObject.SetActive(true);
             spriteBarList.Add(item.Key,obj);
@@ -72,7 +72,7 @@ public class TravelSpriteMessagePanel : PanelTopBase
     {
         foreach (var item in spriteBarList)
         {
-            item.Value.setData(PlayerManager.Instance.getSpriteData(item.Key), E_UIPrefab.TravelSpriteMessagePanel);
+            item.Value.setData(PlayerManager.Instance.getSpriteData(item.Key), e_workSquare.travel);
         }
     }
     void refreshBtnState()

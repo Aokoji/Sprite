@@ -515,7 +515,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -6}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 200}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &7507249846429405172
@@ -1051,9 +1051,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4079264084949600382}
-  - component: {fileID: 8921671583779058502}
+  - component: {fileID: 6868739196803355312}
   m_Layer: 5
-  m_Name: MillSpriteWorkPanel
+  m_Name: SpriteWorkPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1084,7 +1084,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 544.38464, y: 618.50464}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &8921671583779058502
+--- !u!114 &6868739196803355312
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1462,7 +1462,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6762787736095799067}
   m_HandleRect: {fileID: 7046558511095327734}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:

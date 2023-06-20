@@ -1,20 +1,21 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MillSpriteWorkPanel : PanelTopBase
+public class SpriteWorkPanel : PanelTopBase
 {
     public UITool_ScrollView scroll;
     public GameObject clone;
     public Button backBtn;
 
-    bool ismater2;
+    e_workSquare square;
 
     public override void init()
     {
         base.init();
-        ismater2 = (bool)message[0];
+        square = (e_workSquare)(int)message[0];
         StartCoroutine(initScrollData());
     }
     public override void registerEvent()
@@ -25,12 +26,11 @@ public class MillSpriteWorkPanel : PanelTopBase
 
     IEnumerator initScrollData()
     {
-        Debug.Log(PlayerManager.Instance.spriteList.Count);
         scroll.initConfig(455, 100, clone.gameObject);
         foreach (var item in PlayerManager.Instance.spriteList)
         {
             var obj = scroll.addItemDefault().GetComponent<TravelSpriteMessageBar>();
-            obj.setData(item.Value, E_UIPrefab.MillSpriteWorkPanel);
+            obj.setData(item.Value, square);
             obj.initAction(goWorkAction);
             obj.gameObject.SetActive(true);
         }
@@ -51,6 +51,12 @@ public class MillSpriteWorkPanel : PanelTopBase
             PanelManager.Instance.showTips3("妖精正在旅行中");
             return;
         }
-        PlayerManager.Instance.MillWorkStar(ismater2, id);
+        if (spdata.isworking)
+        {
+            PanelManager.Instance.showTips3("妖精正在工作中");
+            return;
+        }
+        WorkManager.Instance.WorkStart(square, id);
+        PanelManager.Instance.DisposePanel();
     }
 }

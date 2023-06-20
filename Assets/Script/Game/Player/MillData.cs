@@ -6,8 +6,6 @@ using UnityEngine;
 [Serializable]
 public class MillData : BaseData
 {
-    public int workingID1;
-    public int workingID2;
     public bool isupgrade;
     //精灵工作时间为固定消耗，在磨坊工作消耗固定5小时，x魔力  能够加速当前生产的速度并且产生若干精制材料。
     public string endtime1;

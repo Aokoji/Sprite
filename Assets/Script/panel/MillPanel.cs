@@ -14,17 +14,15 @@ public class MillPanel : PanelBase
     public Button collect1; //收集箱
     public Button collect2;
     public Button workstool1;   //岗位
+    public WorkMessageBar workNode1;
+    public WorkMessageBar workNode2;
     public Button workstool2;
     public Text materTime1;
     public Text materCount1;
     public Text collectCount1;
-    public Text workCount1; //工作详情
-    public RectTransform phyimg1;   //工作条图片
     public Text materTime2;
     public Text materCount2;
     public Text collectCount2;
-    public Text workCount2;
-    public RectTransform phyimg2;
     public GameObject mill2;
 
     public GameObject upgradeBar;
@@ -52,8 +50,6 @@ public class MillPanel : PanelBase
         mater2.onClick.AddListener(clickmater2);
         collect1.onClick.AddListener(clickCollect1);
         collect2.onClick.AddListener(clickCollect2);
-        workstool1.onClick.AddListener(clickWork1);
-        workstool2.onClick.AddListener(clickWork2);
         upgrade.onClick.AddListener(clickUpgrade);
         barback.onClick.AddListener(clickBarBack);
         cancel.onClick.AddListener(PanelManager.Instance.DisposePanel);
@@ -82,6 +78,7 @@ public class MillPanel : PanelBase
         base.reshow();
         eventlock1 = true;
         eventlock2 = true;
+        refreshSpriteData();
     }
     void refreshBuilders()
     {
@@ -153,32 +150,14 @@ public class MillPanel : PanelBase
     }
     void refreshSpriteData()
     {
-        if (_data.workingID1 > 0)
+        workNode1.init(e_workSquare.workmill);
+        if (_data.isupgrade)
         {
-            var dt = PlayerManager.Instance.getSpriteData(_data.workingID1);
-            workCount1.text = dt.phy_max + "/" + dt.phy_cur;
-            //设置image  +++ phyimg1
-            workCount1.gameObject.SetActive(true);
-            phyimg1.gameObject.SetActive(true);
+            workNode2.gameObject.SetActive(true);
+            workNode2.init(e_workSquare.workmill2);
         }
-        else
-        {
-            workCount1.gameObject.SetActive(false);
-            phyimg1.gameObject.SetActive(false);
-        }
-        if (_data.workingID2 > 0)
-        {
-            var dt = PlayerManager.Instance.getSpriteData(_data.workingID2);
-            workCount2.text = dt.phy_max + "/" + dt.phy_cur;
-            //设置image  +++ phyimg2
-            workCount2.gameObject.SetActive(true);
-            phyimg2.gameObject.SetActive(true);
-        }
-        else
-        {
-            workCount2.gameObject.SetActive(false);
-            phyimg2.gameObject.SetActive(false);
-        }
+        else 
+            workNode2.gameObject.SetActive(false);
     }
     #region 操作
     //引导
@@ -197,24 +176,6 @@ public class MillPanel : PanelBase
     {
         PanelManager.Instance.OpenPanel(E_UIPrefab.MillAdditionPanel, new object[] { false, _data.pdid2, pd2 });
         eventlock2 = false;
-    }
-    //派遣工作
-    void clickWork1()
-    {
-        //工作界面
-        //有工作则取消或者悬浮取消
-        if (_data.workingID1 > 0)
-        {
-
-        }
-        else
-        {
-            PanelManager.Instance.OpenPanel(E_UIPrefab.MillSpriteWorkPanel, new object[] { false });
-        }
-    }
-    void clickWork2()
-    {
-
     }
     //收获
     void clickCollect1()

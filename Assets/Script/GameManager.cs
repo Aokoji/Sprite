@@ -23,6 +23,7 @@ public class GameManager : CSingel<GameManager>
         while (!PlayerManager.Instance.loadsuccess)
             yield return null;
         TravelManager.Instance.init();
+        WorkManager.Instance.init();
         BattleManager.Instance.init();
 
         ParticleManager.Instance.init();

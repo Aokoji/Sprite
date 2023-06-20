@@ -16,15 +16,16 @@ public class TravelSpriteMessageBar : UIBase
     {
         gotravelBtn.onClick.AddListener(() =>{ gotravel(_data.id); });
     }
-    public void setData(SpriteData data,E_UIPrefab pref=E_UIPrefab.none)
+    public void setData(SpriteData data,e_workSquare square)
     {
         _data = data;
         spname.text = data.sname;
         phycontext.text = data.phy_cur + "/" + data.phy_max;
         icon.sprite = GetSprite(A_AtlasNames.itemsIcon.ToString(), data.icon);
-        switch (pref)
+
+        switch (square)
         {
-            case E_UIPrefab.TravelSpriteMessagePanel:
+            case e_workSquare.travel:
                 if (data.istraveling||data.isworking)
                 {
                     gotravelBtn.GetComponent<Image>().color = Color.gray;
@@ -37,12 +38,13 @@ public class TravelSpriteMessageBar : UIBase
                     travelBtnContext.text = "旅行";
                 }
                 break;
-            case E_UIPrefab.MillSpriteWorkPanel:
+            default:
                 if (data.phy_cur == 0)
                     gotravelBtn.GetComponent<Image>().color = Color.gray;
                 else
                     gotravelBtn.GetComponent<Image>().color = Color.white;
-                travelBtnContext.text = "委派工作";
+                if (data.isworking) travelBtnContext.text = "工作中..";
+                else travelBtnContext.text = "委派工作";
                 break;
         }
 

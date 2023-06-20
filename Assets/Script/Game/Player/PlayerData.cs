@@ -16,6 +16,7 @@ public class PlayerData
     public List<SpriteData> sprites;
     public int curSprite;
 
+    public List<WorkData> works;
     public TravelData travel;
     public MillData mill;
 
@@ -25,6 +26,7 @@ public class PlayerData
         playerCards = new List<int>();
         sprites = new List<SpriteData>();
         items = new List<ItemData>();
+        works = new List<WorkData>();
         //理论上有默认角色
         SpriteData sp = new SpriteData();
         sp.Convert_Data(Config_t_ActorMessage.getOne(1));

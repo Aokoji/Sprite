@@ -84,6 +84,13 @@ public enum CardType2
     //连击，重击，枯竭，获得卡，秘术，反，翻倍，破甲，装备，祝福     需要配
 }
 
+public enum e_workSquare
+{
+    travel=0,
+    workmill=6,
+    workmill2=7,
+    workfarm=8,
+}
 public enum ItemsType
 {
     none,

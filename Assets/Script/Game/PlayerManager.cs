@@ -152,6 +152,10 @@ public class PlayerManager : CSingel<PlayerManager>
     {
         return playerdata.travel;
     }
+    public List<WorkData> getplayerWork()
+    {
+        return playerdata.works;
+    }
     #region mill
     //仅mill界面用
     public MillData Milldata { get { return playerdata.mill; } }
@@ -214,16 +218,9 @@ public class PlayerManager : CSingel<PlayerManager>
         savePlayerData();
         callback?.Invoke();
     }
-    public void MillWorkStar(bool ismater2,int id)
+    public void WorkStart(e_workSquare square,int id)
     {
-        if (ismater2)
-        {
 
-        }
-        else
-        {
-
-        }
     }
     #endregion
 }
