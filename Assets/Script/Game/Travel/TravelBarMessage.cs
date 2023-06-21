@@ -164,7 +164,7 @@ public class TravelBarMessage : UIBase
     void click_backtravel()
     {
         //shut
-        PanelManager.Instance.showTips2("确定召回旅行中的妖精吗？", "（损失旅行25%的体力）", () => { TravelManager.Instance.shutTravel(_data); });
+        PanelManager.Instance.showTips2("确定召回旅行中的妖精吗？", "（返还旅行消耗75%的体力）", () => { TravelManager.Instance.shutTravel(_data); });
     }
     void click_timeoutClear()
     {

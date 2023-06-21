@@ -68,3 +68,36 @@ MonoBehaviour:
     questSpecial: 4
     questMain: 5
     randomGap: 900
+  - id: 6
+    sname: "\u78E8\u574A1"
+    describe: 111
+    spendTime: 120
+    spendPhy: 10
+    items: 10|17|20|23|26
+    itemsRare: 0
+    questNormal: 0
+    questSpecial: 0
+    questMain: 0
+    randomGap: 6
+  - id: 7
+    sname: "\u78E8\u574A2"
+    describe: 111
+    spendTime: 240
+    spendPhy: 20
+    items: 29|32|35|38|41|44|47
+    itemsRare: 0
+    questNormal: 0
+    questSpecial: 0
+    questMain: 0
+    randomGap: 8
+  - id: 8
+    sname: "\u519C\u573A"
+    describe: 111
+    spendTime: 480
+    spendPhy: 40
+    items: 8|15|18|21|24
+    itemsRare: 0
+    questNormal: 0
+    questSpecial: 0
+    questMain: 0
+    randomGap: 15

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -22,46 +23,53 @@ public class WorkMessageBar : UIBase
         square = sq;
         iscomplete = false;
         isCancelshow = false;
-        refreshData();
     }
-    void refreshData()
+    public bool checkGetTime()
+    {
+        _data = WorkManager.Instance.getSquareWork(square);
+        return _data != null;
+    }
+    public void refreshData(DateTime result)
     {
         _data = WorkManager.Instance.getSquareWork(square);
         stoneIcon.SetActive(false);
         completeAnim.SetActive(false);
+        cancelWork.gameObject.SetActive(false);
         if (_data != null)
         {
-            RunSingel.Instance.getBeiJingTime(result =>
+            icon.GetComponent<Image>().sprite = GetSprite(A_AtlasNames.itemsIcon.ToString(), Config_t_items.getOne(_data.spid).iconName);
+            var time = _data.getDate(_data.endtime);
+            Debug.Log(time.ToString());
+            Debug.Log(result.ToString());
+            if (time <= result)
             {
-                icon.GetComponent<Image>().sprite = GetSprite(A_AtlasNames.itemsIcon.ToString(), Config_t_items.getOne(_data.spid).iconName);
-                var time = _data.getDate(_data.endtime);
-                if (time > result)
-                {
-                    //完成
-                    workcontext.text = "工作完成";
-                    iscomplete = true;
-                    completeAnim.SetActive(true);
-                }
-                else
-                {
-                    workcontext.text = "剩余时间：" + PubTool.timeTranslate((time - result).Seconds);
-                    iscomplete = false;
-                    stoneIcon.SetActive(true);
-                }
-            });
+                //完成
+                workcontext.text = "工作完成";
+                iscomplete = true;
+                completeAnim.SetActive(true);
+            }
+            else
+            {
+                workcontext.text = "剩余时间：" + PubTool.timeTranslate((time - result).Minutes);
+                iscomplete = false;
+                stoneIcon.SetActive(true);
+            }
         }
         else
         {
             icon.GetComponent<Image>().sprite = GetSprite(A_AtlasNames.itemsIcon.ToString(), ConfigConst.NOIMG_ICON);
             iscomplete = false;
+            workcontext.text = "";
         }
     }
     void clickIcon()
     {
         if (iscomplete)
         {
-
-        }else if (_data == null)
+            WorkManager.Instance.WorkFinish(square);
+            //refreshData();
+        }
+        else if (_data == null)
         {
             //空图标
             PanelManager.Instance.OpenPanel(E_UIPrefab.SpriteWorkPanel, new object[] { (int)square});
@@ -83,10 +91,10 @@ public class WorkMessageBar : UIBase
     }
     void clickCancel()
     {
-
-    }
-    void showCancel()
-    {
-
+        PanelManager.Instance.showTips2("确定取消正在进行的工作吗？", "（返还旅行消耗75%的体力）",()=>
+        {
+            WorkManager.Instance.WorkShut(square);
+            //refreshData();
+        });
     }
 }

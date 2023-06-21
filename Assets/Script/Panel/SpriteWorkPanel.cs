@@ -56,7 +56,6 @@ public class SpriteWorkPanel : PanelTopBase
             PanelManager.Instance.showTips3("妖精正在工作中");
             return;
         }
-        WorkManager.Instance.WorkStart(square, id);
-        PanelManager.Instance.DisposePanel();
+        WorkManager.Instance.WorkStart(square, id, PanelManager.Instance.DisposePanel);
     }
 }

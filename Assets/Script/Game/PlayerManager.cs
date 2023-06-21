@@ -218,9 +218,25 @@ public class PlayerManager : CSingel<PlayerManager>
         savePlayerData();
         callback?.Invoke();
     }
-    public void WorkStart(e_workSquare square,int id)
+    public void WorkStart(WorkData work)
     {
-
+        spriteList[work.spid].isworking = true;
+        spriteList[work.spid].phy_cur -= work.spendPhy;
+        playerdata.works.Add(work);
+        savePlayerData();
+    }
+    public void WorkShut(WorkData work)
+    {
+        spriteList[work.spid].isworking = false;
+        spriteList[work.spid].phy_cur +=(int)(work.spendPhy*0.75f);
+        playerdata.works.Remove(work);
+        savePlayerData();
+    }
+    public void WorkFinish(WorkData work)
+    {
+        spriteList[work.spid].isworking = false;
+        playerdata.works.Remove(work);
+        addItems(work.reward);
     }
     #endregion
 }

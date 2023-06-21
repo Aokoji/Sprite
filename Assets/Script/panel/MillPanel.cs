@@ -64,6 +64,8 @@ public class MillPanel : PanelBase
         eventlock2 = true;
         messAllow = true;
         messActive = false;
+        workNode1.init(e_workSquare.workmill);
+        workNode2.init(e_workSquare.workmill2);
         refreshBuilders();
     }
     public override void afterAnimComplete()
@@ -78,17 +80,15 @@ public class MillPanel : PanelBase
         base.reshow();
         eventlock1 = true;
         eventlock2 = true;
-        refreshSpriteData();
+        refreshBuilders();
     }
     void refreshBuilders()
     {
         initNormalData();
-        //刨除    引导，材料1，2为空
-        if ((GameManager.isOpenGuide && PlayerPrefs.GetInt(guide, 0) == 0) || (_data.pdid1 == 0 && _data.pdid2 == 0))
-            return;
         //判断时间
         RunSingel.Instance.getBeiJingTime(result =>
         {
+            refreshSpriteData(result);
             initDynamicData(result);
         });
     }
@@ -105,7 +105,6 @@ public class MillPanel : PanelBase
             collectCount2.text = "<空>";
             materCount2.text = "<空>";
         }
-        refreshSpriteData();
         mill2.SetActive(_data.isupgrade);
     }
     void initDynamicData(DateTime nowatime)
@@ -148,13 +147,13 @@ public class MillPanel : PanelBase
             resetMater2Panel();
         }
     }
-    void refreshSpriteData()
+    void refreshSpriteData(DateTime time)
     {
-        workNode1.init(e_workSquare.workmill);
+        workNode1.refreshData(time);
         if (_data.isupgrade)
         {
             workNode2.gameObject.SetActive(true);
-            workNode2.init(e_workSquare.workmill2);
+            workNode2.refreshData(time);
         }
         else 
             workNode2.gameObject.SetActive(false);

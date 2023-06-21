@@ -108,7 +108,7 @@ public class RunSingel : MonoBehaviour
             {
                 res.TryGetValue(key, out value);
             }
-            Debug.Log(value);       //GMT时间格式
+            PubTool.Log(value);       //GMT时间格式
             PanelManager.Instance.panelUnlock();
             PanelManager.Instance.LoadingShow(false);
             Callback(convertTime(value));
