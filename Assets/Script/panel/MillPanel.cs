@@ -124,7 +124,7 @@ public class MillPanel : PanelBase
                 timerLock = false;
                 surplus1 = (int)(_data.getDate(_data.endtime1) - nowatime).TotalSeconds;
                 coef1 = Config_t_crop.getOne(_data.pdid1).produceCoef;
-                pd1 = surplus1 / coef1 + 1;
+                pd1 = Mathf.CeilToInt((float)surplus1 / coef1);
                 col1 = _data.pdnum1 - pd1;
             }
             resetMater1Panel();
@@ -141,7 +141,7 @@ public class MillPanel : PanelBase
                 timerLock = false;
                 surplus2 = (int)(_data.getDate(_data.endtime2) - nowatime).TotalSeconds;
                 coef2 = Config_t_crop.getOne(_data.pdid2).produceCoef;
-                pd2 = surplus2 / coef2 + 1;
+                pd2 = Mathf.CeilToInt(surplus2 / coef2);
                 col2 = _data.pdnum2  - pd2;
             }
             resetMater2Panel();
@@ -277,7 +277,7 @@ public class MillPanel : PanelBase
                 clickCollect1();
                 PlayerManager.Instance.createMillMater1(id, count, result);
             }
-            refreshBuilders();
+            PanelManager.Instance.DisposePanel();
         });
 
     }

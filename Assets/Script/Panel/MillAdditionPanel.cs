@@ -145,8 +145,6 @@ public class MillAdditionPanel : PanelTopBase
             return;
         }
         EventAction.Instance.TriggerAction(eventType.millChange_BII, ismater2, curid, curcount);
-
-        PanelManager.Instance.DisposePanel();
     }
     void clickChooseIcon()
     {

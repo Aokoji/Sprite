@@ -39,8 +39,6 @@ public class WorkMessageBar : UIBase
         {
             icon.GetComponent<Image>().sprite = GetSprite(A_AtlasNames.itemsIcon.ToString(), Config_t_items.getOne(_data.spid).iconName);
             var time = _data.getDate(_data.endtime);
-            Debug.Log(time.ToString());
-            Debug.Log(result.ToString());
             if (time <= result)
             {
                 //完成
@@ -50,7 +48,7 @@ public class WorkMessageBar : UIBase
             }
             else
             {
-                workcontext.text = "剩余时间：" + PubTool.timeTranslate((time - result).Minutes);
+                workcontext.text = "剩余时间：" + PubTool.timeTranslate((int)(time - result).TotalMinutes);
                 iscomplete = false;
                 stoneIcon.SetActive(true);
             }
@@ -67,7 +65,7 @@ public class WorkMessageBar : UIBase
         if (iscomplete)
         {
             WorkManager.Instance.WorkFinish(square);
-            //refreshData();
+            refreshData(DateTime.Now);
         }
         else if (_data == null)
         {
@@ -94,7 +92,7 @@ public class WorkMessageBar : UIBase
         PanelManager.Instance.showTips2("确定取消正在进行的工作吗？", "（返还旅行消耗75%的体力）",()=>
         {
             WorkManager.Instance.WorkShut(square);
-            //refreshData();
+            refreshData(DateTime.Now);
         });
     }
 }

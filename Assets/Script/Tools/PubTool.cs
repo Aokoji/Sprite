@@ -32,7 +32,8 @@ public class PubTool
         {
             str = h + " 小时 ";
         }
-        str=str+ minutes % 60 + " 分钟";
+        if(minutes%60!= 0)
+            str=str+ minutes % 60 + " 分钟";
         return str;
     }
     public static string timeTranslateSeconds(int second)
