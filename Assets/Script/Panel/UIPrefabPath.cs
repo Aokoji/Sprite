@@ -19,14 +19,15 @@ public enum E_UIPrefab
     MillUpgradePanel,   //升级磨坊
     SpriteWorkPanel,    //int 派遣枚举
     WorkshopPanel,
-    ExplorPanel,    //探索选框
     TravelPanel,   //委托
     TravelBackQuestPanel,       //旅行回来领委托       QuestData 单参数
     TravelMoreMessagePanel, //委托详细信息        QuestData，bool  双参
     TravelSpriteMessagePanel,   //派遣精灵详情
+    MarkPanel,  //商人
+    MarkSalePanel,  //卖背包东西     int 卖上限
+    ExplorPanel,    //探索选框
     FarmPanel,
     SpringPanel,
-
 
     //ui
     cardHand,

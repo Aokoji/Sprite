@@ -19,6 +19,7 @@ public class PlayerData
     public List<WorkData> works;
     public TravelData travel;
     public MillData mill;
+    public MarkData mark;
 
     public void initdata()
     {
@@ -34,6 +35,7 @@ public class PlayerData
         curSprite = sp.id;
         travel = new TravelData();
         mill = new MillData();
+        mark = new MarkData();
         //for(int i=0;i<20;i++)
         //   playerCards.Add(14);
     }

@@ -147,6 +147,7 @@ public class PlayerManager : CSingel<PlayerManager>
         }
         return 0;
     }
+    public MarkData GetMarkData() { return playerdata.mark; }
     //慎用
     public TravelData getplayerTravel()
     {

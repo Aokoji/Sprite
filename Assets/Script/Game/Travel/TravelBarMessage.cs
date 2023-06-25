@@ -25,19 +25,13 @@ public class TravelBarMessage : UIBase
     bool iscomplete;
     DateTime curtimeJust;
 
-    //特殊 处理一下   因为它继承uibase但却有panel的功能
-    bool isinit;
-
-    public void init()
+    private void Start()
     {
-        if (isinit) return;
-        isinit = true;
         questBar.GetComponent<Button>().onClick.AddListener(click_lookMoreMessage);
-    } 
+    }
 
     public void reset(QuestData quest,DateTime cur)
     {
-        init();
         iscomplete = false;
         curtimeJust = cur;
         _data = quest;

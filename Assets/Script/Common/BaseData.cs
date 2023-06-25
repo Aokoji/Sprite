@@ -95,8 +95,9 @@ public enum ItemsType
 {
     none,
     material,   //材料    1
-    consum,     //消耗品   2
-    card,   //卡片    3
+    produce,    //生产    2
+    consum,     //消耗品   3
+    card,   //卡片    4
 }
 //任务类型  0
 

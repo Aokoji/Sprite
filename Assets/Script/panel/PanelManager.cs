@@ -64,6 +64,13 @@ public class PanelManager : CSingel<PanelManager>
         curPanel.init(objdata);
         EventAction.Instance.TriggerAction(eventType.panelChangeLoadingComplete);
     }
+    public void RefreshCurPanel()
+    {
+        if (curPanel != null)
+        {
+            curPanel.reshow();
+        }
+    }
     public void DisposePanel()
     {
         if (panelStack.Count <= 0)

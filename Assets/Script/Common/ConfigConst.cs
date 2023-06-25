@@ -27,6 +27,10 @@ public static class ConfigConst
     public const int SQUARE_MAX = 5;    //地区上限
     public const int UPGRADE_MAX = 5;   //磨坊等级上限
     public const string NOIMG_ICON = "defaulticon";    //空图默认图片
+    public const int markOpenTime = 15;
+    public const int markEndTime = 17;  //商店起始时间
+    public const int markMaxCount = 80; //商店容量
+    public const int currencyID = 1;        //货币id
 
     public static Vector3 colorForest = new Vector3(164,210,146);
     public static Vector3 colorFire = new Vector3(215,129,125);
