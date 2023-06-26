@@ -24,7 +24,7 @@ public enum E_UIPrefab
     TravelMoreMessagePanel, //委托详细信息        QuestData，bool  双参
     TravelSpriteMessagePanel,   //派遣精灵详情
     MarkPanel,  //商人
-    MarkSalePanel,  //卖背包东西     int 卖上限
+    MarkSalePanel,  //卖背包东西     int 卖上限,itemdata 物品
     ExplorPanel,    //探索选框
     FarmPanel,
     SpringPanel,

@@ -27,6 +27,7 @@ public class GameManager : CSingel<GameManager>
         BattleManager.Instance.init();
 
         ParticleManager.Instance.init();
+        PubTool.Log("loading data success!");
     }
     
 }

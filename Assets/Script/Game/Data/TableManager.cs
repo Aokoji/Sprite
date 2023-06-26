@@ -15,40 +15,30 @@ public class TableManager : CSingel<TableManager>
         config.init();
     }
 
-    public List<int> stall_normal = new List<int>();
-    public List<int> stall_fire = new List<int>();
-    public List<int> stall_water = new List<int>();
-    public List<int> stall_thunder = new List<int>();
-    public List<int> stall_forest = new List<int>();
-    public List<int> stall_arcane = new List<int>();
-    public List<int> stall_arcane_special = new List<int>();
-
+    //商店预备字典
+    public Dictionary<int, List<int>> markDic { get; private set; }
+    //卡牌预备字典
+    public Dictionary<CardSelfType, List<int>> stallCardDic { get; private set; }
+    //任务品级
     public Dictionary<int, List<int>> questRankDic { get; private set; }
     public void LoadMessageData()
     {
         initAllCardStallTypeData();
         initQuestRankCheck();
+        initMarkDic();
     }
     //初始化卡牌分类
     private void initAllCardStallTypeData()
     {
-        foreach(var i in Config_t_DataCard._data)
+        stallCardDic = new Dictionary<CardSelfType, List<int>>();
+        foreach (var i in Config_t_DataCard._data)
         {
             if (i.Value.type1 != CardType1.take && i.Value.type1 != CardType1.untaken) continue;
-            if (i.Value.limit == CardSelfType.normal)
-                stall_normal.Add(i.Key);
-            if (i.Value.limit == CardSelfType.fire)
-                stall_fire.Add(i.Key);
-            if (i.Value.limit == CardSelfType.water)
-                stall_water.Add(i.Key);
-            if (i.Value.limit == CardSelfType.thunder)
-                stall_thunder.Add(i.Key);
-            if (i.Value.limit == CardSelfType.forest)
-                stall_forest.Add(i.Key);
-            if (i.Value.limit == CardSelfType.arcane)
-                stall_arcane.Add(i.Key);
-            if (i.Value.limit == CardSelfType.arcane_special)
-                stall_arcane_special.Add(i.Key);
+            if (!stallCardDic.ContainsKey(i.Value.limit))
+            {
+                stallCardDic.Add(i.Value.limit, new List<int>());
+            }
+            stallCardDic[i.Value.limit].Add(i.Value.id);
         }
     }
     //初始化任务分类
@@ -65,4 +55,16 @@ public class TableManager : CSingel<TableManager>
         }
     }
 
+    void initMarkDic()
+    {
+        markDic = new Dictionary<int, List<int>>();
+        foreach(var i in Config_t_Business._data)
+        {
+            if (!markDic.ContainsKey(i.Value.postype))
+            {
+                markDic[i.Value.postype] = new List<int>();
+            }
+            markDic[i.Value.postype].Add(i.Value.id);
+        }
+    }
 }

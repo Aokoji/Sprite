@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,6 +11,8 @@ public class MarkItemBar : UIBase
     public Text itemname;
     public Button exchange;
     public Text needPay;
+
+    public Action<ItemData> showpanel;
 
     t_Business mark;
     bool canbuy;
@@ -41,9 +44,9 @@ public class MarkItemBar : UIBase
                 PanelManager.Instance.RefreshCurPanel();
             });
         else
-            PanelManager.Instance.showTips2("货币不足，是否使用物品进行交换？", () =>
+            PanelManager.Instance.showTips2("银币不足，是否使用物品进行交换？", () =>
             {
-                PanelManager.Instance.OpenPanel(E_UIPrefab.MarkSalePanel);
+                showpanel?.Invoke(new ItemData(mark.itemid,mark.salenum));
             });
     }
     public int getCount() { return mark.salenum; }

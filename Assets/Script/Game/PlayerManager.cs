@@ -148,6 +148,28 @@ public class PlayerManager : CSingel<PlayerManager>
         return 0;
     }
     public MarkData GetMarkData() { return playerdata.mark; }
+    public void refreshNewMark()
+    {
+        TimeSpan time = new TimeSpan(23, 59, 59);
+        playerdata.mark.savetime = DateTime.Parse(time.ToString()).ToString();
+        System.Random random = new System.Random();
+        if (random.Next(10) < 3)
+            playerdata.mark.saleID.Add(TableManager.Instance.markDic[1][random.Next(TableManager.Instance.markDic[1].Count)]);
+        if(random.Next(10)<4)
+            playerdata.mark.saleID.Add(TableManager.Instance.markDic[2][random.Next(TableManager.Instance.markDic[2].Count)]);
+        if (random.Next(10) < 5)
+            playerdata.mark.saleID.Add(TableManager.Instance.markDic[3][random.Next(TableManager.Instance.markDic[3].Count)]);
+        playerdata.mark.saleID.Add(TableManager.Instance.markDic[4][random.Next(TableManager.Instance.markDic[4].Count)]);
+        if(playerdata.mark.saleID.Count<=3)
+            playerdata.mark.saleID.Add(TableManager.Instance.markDic[4][random.Next(TableManager.Instance.markDic[4].Count)]);
+        int num = 6 - playerdata.mark.saleID.Count;
+        for(int i = 0; i < num; i++)
+        {
+            playerdata.mark.saleID.Add(TableManager.Instance.markDic[5][random.Next(TableManager.Instance.markDic[5].Count)]);
+        }
+        playerdata.mark.saledcount = 0;
+        savePlayerData();
+    }
     //慎用
     public TravelData getplayerTravel()
     {

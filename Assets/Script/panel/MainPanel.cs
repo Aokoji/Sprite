@@ -10,6 +10,7 @@ public class MainPanel : PanelBase
     public Button workshop;
     public Button explor;   //探索
     public Button entrust;  //委托
+    public Button mark; //商人
     public Button farm;
     public Button spring;
 
@@ -22,6 +23,7 @@ public class MainPanel : PanelBase
         entrust.onClick.AddListener(jumpentrust);
         farm.onClick.AddListener(jumpfarm);
         spring.onClick.AddListener(jumpspring);
+        mark.onClick.AddListener(jumpMark);
     }
     public override void init()
     {
@@ -37,5 +39,6 @@ public class MainPanel : PanelBase
     void jumpentrust(){ PanelManager.Instance.OpenPanel(E_UIPrefab.TravelPanel);}
     void jumpfarm(){ PanelManager.Instance.ChangePanel(E_UIPrefab.MillPanel);}
     void jumpspring(){ PanelManager.Instance.ChangePanel(E_UIPrefab.MillPanel);}
+    void jumpMark(){ PanelManager.Instance.OpenPanel(E_UIPrefab.MarkPanel);}
     #endregion
 }

@@ -16,40 +16,40 @@ MonoBehaviour:
   - id: 1
     itemid: 8
     postype: 5
-    sealnum: 8
+    salenum: 8
   - id: 2
     itemid: 9
     postype: 3
-    sealnum: 3
+    salenum: 3
   - id: 3
     itemid: 11
     postype: 2
-    sealnum: 2
+    salenum: 2
   - id: 4
     itemid: 12
     postype: 2
-    sealnum: 2
+    salenum: 2
   - id: 5
     itemid: 13
     postype: 2
-    sealnum: 2
+    salenum: 2
   - id: 6
     itemid: 14
     postype: 2
-    sealnum: 2
+    salenum: 2
   - id: 7
     itemid: 15
     postype: 5
-    sealnum: 8
+    salenum: 8
   - id: 8
     itemid: 16
     postype: 3
-    sealnum: 3
+    salenum: 3
   - id: 9
     itemid: 2
     postype: 4
-    sealnum: 5
+    salenum: 5
   - id: 10
     itemid: 48
     postype: 1
-    sealnum: 1
+    salenum: 1
