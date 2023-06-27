@@ -2181,6 +2181,7 @@ MonoBehaviour:
   noneObj: {fileID: 437799551341163624}
   haventArriveObj: {fileID: 784669601095846374}
   businessBag: {fileID: 5612787685315876019}
+  playerbag: {fileID: 7823044329763237608}
   bussman: {fileID: 2444444431698457743}
   bussmancut: {fileID: 6774663538459102652}
   back: {fileID: 5405395980146804266}

@@ -41,6 +41,7 @@ public class MarkItemBar : UIBase
             {
                 PlayerManager.Instance.addItemsNosave(ConfigConst.currencyID, -pay);
                 PlayerManager.Instance.onMarkBuy(mark);
+                PanelManager.Instance.showTips4(new List<ItemData>() { new ItemData(mark.itemid, mark.salenum) });
                 PanelManager.Instance.RefreshCurPanel();
             });
         else

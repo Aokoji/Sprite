@@ -11,6 +11,7 @@ public class MarkPanel : PanelTopBase
     public GameObject noneObj;
     public GameObject haventArriveObj;
     public Text businessBag;    //商人容量
+    public Text playerbag;      //玩家银币
     public Button bussman;
     public Image bussmancut;
     public Button back;
@@ -51,6 +52,7 @@ public class MarkPanel : PanelTopBase
         bussman.gameObject.SetActive(true);
         bussmancut.gameObject.SetActive(false);
         businessBag.text = "";
+        playerbag.text = "";
         saleBtn.GetComponent<Image>().color = Color.gray;
         RunSingel.Instance.getBeiJingTime(result =>
         {
@@ -88,6 +90,7 @@ public class MarkPanel : PanelTopBase
                     businessBag.color = Color.white;
                 }
                 businessBag.text = "商人马车容量：" + (curSaleCount + _data.saledcount) + "/" + ConfigConst.markMaxCount;
+                playerbag.text = "拥有银币：" + PlayerManager.Instance.getItem(ConfigConst.currencyID);
             }
             else
             {
