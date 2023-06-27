@@ -21,6 +21,7 @@ public class PlayerData
     public MillData mill;
     public MarkData mark;
 
+    public int specialMarkNum;  //白给商店钱
     public void initdata()
     {
         playerAllCards = new List<ItemData>();

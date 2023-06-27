@@ -107,6 +107,11 @@ public class PlayerManager : CSingel<PlayerManager>
         savePlayerData();
     }
     #endregion
+    public void addSpecialMarkNum(int num)
+    {
+        playerdata.specialMarkNum += num;
+        savePlayerData();
+    }
     //更改物品
     public void addItems(List<ItemData> data)
     {
@@ -147,11 +152,13 @@ public class PlayerManager : CSingel<PlayerManager>
         }
         return 0;
     }
+    #region mark
     public MarkData GetMarkData() { return playerdata.mark; }
     public void refreshNewMark()
     {
         TimeSpan time = new TimeSpan(23, 59, 59);
         playerdata.mark.savetime = DateTime.Parse(time.ToString()).ToString();
+        playerdata.mark.saleID.Clear();
         System.Random random = new System.Random();
         if (random.Next(10) < 3)
             playerdata.mark.saleID.Add(TableManager.Instance.markDic[1][random.Next(TableManager.Instance.markDic[1].Count)]);
@@ -170,6 +177,16 @@ public class PlayerManager : CSingel<PlayerManager>
         playerdata.mark.saledcount = 0;
         savePlayerData();
     }
+    public void onMarkSale(int count)
+    {//卖物品
+        playerdata.mark.saledcount += count;
+    }
+    public void onMarkBuy(t_Business mark)
+    {//买！
+        playerdata.mark.saleID.Remove(mark.id);
+        addItems(mark.itemid, mark.salenum);
+    }
+    #endregion
     //慎用
     public TravelData getplayerTravel()
     {

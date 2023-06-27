@@ -12,7 +12,7 @@ public class MarkItemBar : UIBase
     public Button exchange;
     public Text needPay;
 
-    public Action<ItemData> showpanel;
+    public Action showpanel;
 
     t_Business mark;
     bool canbuy;
@@ -40,14 +40,11 @@ public class MarkItemBar : UIBase
             PanelManager.Instance.showTips2("确认要购买这组物品吗？", () =>
             {
                 PlayerManager.Instance.addItemsNosave(ConfigConst.currencyID, -pay);
-                PlayerManager.Instance.addItems(mark.itemid, mark.salenum);
+                PlayerManager.Instance.onMarkBuy(mark);
                 PanelManager.Instance.RefreshCurPanel();
             });
         else
-            PanelManager.Instance.showTips2("银币不足，是否使用物品进行交换？", () =>
-            {
-                showpanel?.Invoke(new ItemData(mark.itemid,mark.salenum));
-            });
+            showpanel?.Invoke();
     }
     public int getCount() { return mark.salenum; }
 

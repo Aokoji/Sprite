@@ -15,7 +15,7 @@ public class Main : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            PlayerManager.Instance.addItems(8, 10);
+            PlayerManager.Instance.addItems(48, 10);
         }
     }
 }

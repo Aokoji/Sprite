@@ -59,7 +59,6 @@ public class MarkPanel : PanelTopBase
                 //新的物品
                 PlayerManager.Instance.refreshNewMark();
             }
-            Debug.Log(result.Hour);
             //时间内
             if(result.Hour>=ConfigConst.markOpenTime && result.Hour < ConfigConst.markEndTime)
             {
@@ -71,12 +70,11 @@ public class MarkPanel : PanelTopBase
                     for (int i = 0; i < _data.saleID.Count; i++)
                     {
                         saleItems[i].setData(_data.saleID[i]);
-                        saleItems[i].showpanel = showSalePanel;
+                        saleItems[i].showpanel = specialCheck;
                         saleItems[i].gameObject.SetActive(true);
                         curSaleCount += saleItems[i].getCount();
                     }
                 }
-                businessBag.text = curSaleCount + "/" + ConfigConst.markMaxCount;
                 //数量
                 if ((curSaleCount + _data.saledcount) >= ConfigConst.markMaxCount)
                 {
@@ -89,6 +87,7 @@ public class MarkPanel : PanelTopBase
                     cansale = true;
                     businessBag.color = Color.white;
                 }
+                businessBag.text = "商人马车容量：" + (curSaleCount + _data.saledcount) + "/" + ConfigConst.markMaxCount;
             }
             else
             {
@@ -100,9 +99,19 @@ public class MarkPanel : PanelTopBase
             }
         });
     }
-    void showSalePanel(ItemData item)
+    void showSalePanel()
     {
-        PanelManager.Instance.OpenPanel(E_UIPrefab.MarkSalePanel, new object[] { ConfigConst.markMaxCount - curSaleCount , item });
+        PanelManager.Instance.OpenPanel(E_UIPrefab.MarkSalePanel, new object[] { ConfigConst.markMaxCount - curSaleCount });
+    }
+    void specialCheck()
+    {
+        if (cansale)
+            PanelManager.Instance.showTips2("银币不足，是否先进行银币交换？", () =>
+            {
+                showSalePanel();
+            });
+        else
+            PanelManager.Instance.showTips3("银币不足");
     }
     void clickSale()
     {
@@ -116,7 +125,7 @@ public class MarkPanel : PanelTopBase
             PanelManager.Instance.showTips3("商人的马车已经装满啦");
             return;
         }
-        showSalePanel(null);
+        showSalePanel();
     }
     void clickinteract()
     {

@@ -93,7 +93,7 @@ public enum e_workSquare
 }
 public enum ItemsType
 {
-    none,
+    none,       //货币类
     material,   //材料    1
     produce,    //生产    2
     consum,     //消耗品   3
