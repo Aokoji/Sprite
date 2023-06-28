@@ -73,6 +73,13 @@ public class PlayerManager : CSingel<PlayerManager>
     {
         return playerdata.playerCards;
     }
+    public int getOneCardNum(int id)
+    {
+        if (playerMakenDic.ContainsKey(id))
+            return playerMakenDic[id];
+        else
+            return 0;
+    }
     public SpriteData getSpriteData(int id)
     {
         if (spriteList.ContainsKey(id))

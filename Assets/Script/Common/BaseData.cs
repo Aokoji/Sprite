@@ -95,9 +95,17 @@ public enum ItemsType
 {
     none,       //货币类
     material,   //材料    1
-    produce,    //生产    2
-    consum,     //消耗品   3
+    consum,     //消耗品   3(直接消耗)
     card,   //卡片    4
+}
+public enum ItemType2
+{
+    coin,       //货币    0
+    maken,  //炼金材料  1
+    produce,    //生产    2
+    build,      //建材    3
+    plan,   //设计图   4
+    happy,      //精灵玩具  5
 }
 //任务类型  0
 

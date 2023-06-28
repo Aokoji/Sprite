@@ -13,6 +13,7 @@ public class MainPanel : PanelBase
     public Button mark; //商人
     public Button farm;
     public Button spring;
+    public Button ware; //仓库
 
     public override void registerEvent()
     {
@@ -24,6 +25,7 @@ public class MainPanel : PanelBase
         farm.onClick.AddListener(jumpfarm);
         spring.onClick.AddListener(jumpspring);
         mark.onClick.AddListener(jumpMark);
+        ware.onClick.AddListener(jumpWare);
     }
     public override void init()
     {
@@ -40,5 +42,6 @@ public class MainPanel : PanelBase
     void jumpfarm(){ PanelManager.Instance.ChangePanel(E_UIPrefab.MillPanel);}
     void jumpspring(){ PanelManager.Instance.ChangePanel(E_UIPrefab.MillPanel);}
     void jumpMark(){ PanelManager.Instance.OpenPanel(E_UIPrefab.MarkPanel);}
+    void jumpWare(){ PanelManager.Instance.OpenPanel(E_UIPrefab.WareHousePanel);}
     #endregion
 }

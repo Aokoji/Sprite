@@ -18,7 +18,7 @@ public enum E_UIPrefab
     MillAdditionPanel,  //添加生产物 bool ,int ,int   三参  ismater2,生产id,数量
     MillUpgradePanel,   //升级磨坊
     SpriteWorkPanel,    //int 派遣枚举
-    WorkshopPanel,
+    WorkshopPanel,      //工坊
     TravelPanel,   //委托
     TravelBackQuestPanel,       //旅行回来领委托       QuestData 单参数
     TravelMoreMessagePanel, //委托详细信息        QuestData，bool  双参
