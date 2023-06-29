@@ -18,11 +18,11 @@ public class WareHousePanel : PanelTopBase
     public Button _back;
 
     int curshowID;
+    t_items curshowItem;
     public override void init()
     {
         base.init();
         scroll.initConfig(80, 80, clone);
-        curshowID = 0;
         StartCoroutine(refreshScroll());
     }
     public override void registerEvent()
@@ -33,6 +33,7 @@ public class WareHousePanel : PanelTopBase
     }
     IEnumerator refreshScroll()
     {
+        curshowID = 0;
         messageBar.SetActive(false);
         scroll.recycleAll();
         var data = PlayerManager.Instance.playerItemDic;
@@ -49,12 +50,12 @@ public class WareHousePanel : PanelTopBase
     {
         if (curshowID == id) return;
         curshowID = id;
-        var data = Config_t_items.getOne(id);
-        _icon.sprite = GetSprite(A_AtlasNames.itemsIcon.ToString(), data.iconName);
-        _sname.text = data.sname;
-        _describe.text = data.describe;
+        curshowItem = Config_t_items.getOne(id);
+        _icon.sprite = GetSprite(A_AtlasNames.itemsIcon.ToString(), curshowItem.iconName);
+        _sname.text = curshowItem.sname;
+        _describe.text = curshowItem.describe;
         _haveCount.text = PlayerManager.Instance.playerItemDic[id].ToString();
-        if (data.type == (int)ItemsType.consum)
+        if (curshowItem.type == (int)ItemsType.consum)
         {
             _takeBtn.gameObject.SetActive(true);
         }
@@ -62,11 +63,31 @@ public class WareHousePanel : PanelTopBase
         {
             _takeBtn.gameObject.SetActive(false);
         }
-        _saleCount.text = "价值：" + data.pay;
+        _saleCount.text = "价值：" + curshowItem.pay;
         messageBar.SetActive(true);
     }
     void useItem()
     {
         //curshowID +++
+        switch (curshowItem.type2)
+        {
+            case (int)ItemType2.plan:
+                //设计图
+                if (PlayerManager.Instance.LearnPlan(curshowItem.connect))
+                {
+                    PlayerManager.Instance.addItems(curshowID, -1);
+                    PanelManager.Instance.showTips3("使用成功");
+                }
+                else
+                    PanelManager.Instance.showTips3("使用失败，已学会该配方");
+                break;
+            case (int)ItemType2.stone:
+                //消耗品
+                break;
+            default:
+                PanelManager.Instance.showTips3("使用失败");
+                return;
+        }
+        StartCoroutine(refreshScroll());
     }
 }

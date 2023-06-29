@@ -286,4 +286,45 @@ public class PlayerManager : CSingel<PlayerManager>
         addItems(work.reward);
     }
     #endregion
+    #region workshop
+    public void makenItem(int planid,int num,Action callback)
+    {
+        var plan = Config_t_Plan.getOne(planid);
+        string[] strid = plan.needid.Split('|');
+        string[] strnum = plan.needcount.Split('|');
+        List<ItemData> list = new List<ItemData>();
+        for(int i = 0; i < strid.Length; i++)
+        {
+            int id = int.Parse(strid[i]);
+            int count = int.Parse(strnum[i]);
+            addItems(id, -count * num);
+        }
+        if (plan.finishType == 1)
+        {
+            if (playerMakenDic.ContainsKey(plan.finishID))
+                playerMakenDic[plan.finishID] += num;
+            else
+                playerMakenDic[plan.finishID] = num;
+            savePlayerData();
+            PanelManager.Instance.showTips3("获得法术卡：‘" + Config_t_DataCard.getOne(plan.finishID).sname + "'×" + num);
+        }
+        else
+        {
+            addItems(plan.finishID, num);
+            PanelManager.Instance.showTips4(new List<ItemData>() { new ItemData(plan.finishID, num) });
+        }
+        callback?.Invoke();
+    }
+    public List<int> getLearnList() { return playerdata.learndPlan; }
+    public bool LearnPlan(int id)
+    {
+        if (playerdata.learndPlan.Contains(id))
+            return false;
+        else
+        {
+            playerdata.learndPlan.Add(id);
+            return true;
+        }
+    }
+    #endregion
 }

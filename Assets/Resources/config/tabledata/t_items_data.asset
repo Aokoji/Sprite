@@ -20,6 +20,7 @@ MonoBehaviour:
     type2: 0
     iconName: test1
     pay: 0
+    connect: 0
   - id: 2
     sname: "\u8702\u9488"
     describe: "\u80E1\u8702\u7684\u5C3E\u9488\uFF0C\u5341\u5206\u7684\u5C16\u9510\uFF0C\u53EF\u4EE5\u7528\u6765\u52A0\u5DE5"
@@ -27,6 +28,7 @@ MonoBehaviour:
     type2: 1
     iconName: test1
     pay: 6
+    connect: 0
   - id: 3
     sname: "\u6298\u65AD\u7684\u8702\u9488"
     describe: "\u80E1\u8702\u7684\u5C3E\u9488\uFF0C\u4F46\u662F\u5728\u6218\u6597\u4E2D\u6298\u65AD\u4E86\uFF0C\u8FD8\u53EF\u4EE5\u51D1\u5408\u52A0\u5DE5"
@@ -34,6 +36,7 @@ MonoBehaviour:
     type2: 1
     iconName: test1
     pay: 4
+    connect: 0
   - id: 4
     sname: "\u67D1\u6A58\u7684\u6A58\u53F6"
     describe: "\u6A58\u679C\u6389\u843D\u7684\u53F6\u5B50\uFF0C\u53EF\u4EE5\u7528\u6765\u52A0\u5DE5"
@@ -41,6 +44,7 @@ MonoBehaviour:
     type2: 1
     iconName: test1
     pay: 4
+    connect: 0
   - id: 5
     sname: "\u67D1\u6A58\u7684\u79CD\u5B50"
     describe: "\u6A58\u679C\u4E0D\u8981\u7684\u79CD\u5B50\uFF0C\u53EF\u4EE5\u7528\u6765\u52A0\u5DE5"
@@ -48,6 +52,7 @@ MonoBehaviour:
     type2: 1
     iconName: test1
     pay: 2
+    connect: 0
   - id: 6
     sname: "\u6A61\u679C\u58F3"
     describe: "\u6A61\u679C\u78B0\u6389\u7684\u679C\u58F3\uFF0C\u53EF\u4EE5\u7528\u6765\u52A0\u5DE5"
@@ -55,6 +60,7 @@ MonoBehaviour:
     type2: 1
     iconName: test1
     pay: 2
+    connect: 0
   - id: 7
     sname: "\u6A61\u679C\u7684\u5C0F\u9897\u679C\u5B9E"
     describe: "\u6A61\u679C\u9053\u6B49\u8D60\u9001\u7684\u5C0F\u9897\u679C\u5B9E\uFF0C\u53EF\u4EE5\u7528\u6765\u52A0\u5DE5"
@@ -62,6 +68,7 @@ MonoBehaviour:
     type2: 1
     iconName: test1
     pay: 2
+    connect: 0
   - id: 8
     sname: "\u73CD\u73E0\u5C0F\u9EA6"
     describe: "\u5409\u62C9\u5C14\u5730\u533A\u6700\u666E\u904D\u79CD\u690D\u7684\u5C0F\u9EA6\uFF0C\u7C92\u5982\u73CD\u73E0\uFF0C\u80FD\u591F\u901A\u8FC7\u52A0\u5DE5\u5F97\u5230\u9762\u7C89"
@@ -69,6 +76,7 @@ MonoBehaviour:
     type2: 2
     iconName: test1
     pay: 1
+    connect: 0
   - id: 9
     sname: "\u73CD\u73E0\u5C0F\u9EA6\u9762\u7C89"
     describe: "\u73CD\u73E0\u5C0F\u9EA6\u78E8\u6210\u7684\u9762\u7C89\uFF0C\u8D28\u5730\u7EC6\u817B\uFF0C\u53EF\u7528\u6765\u52A0\u5DE5\u98DF\u7269"
@@ -76,6 +84,7 @@ MonoBehaviour:
     type2: 1
     iconName: test2
     pay: 1
+    connect: 0
   - id: 10
     sname: "\u9AD8\u7EA7\u73CD\u73E0\u5C0F\u9EA6\u9762\u7C89"
     describe: "\u7CBE\u7EC6\u7814\u78E8\u5F97\u5230\u7684\u66F4\u9AD8\u7EA7\u7684\u73CD\u73E0\u5C0F\u9EA6\u9762\u7C89\uFF0C\u7528\u6765\u52A0\u5DE5\u53EF\u4EE5\u5F97\u5230\u66F4\u597D\u7684\u6548\u679C"
@@ -83,6 +92,7 @@ MonoBehaviour:
     type2: 1
     iconName: test1
     pay: 1
+    connect: 0
   - id: 11
     sname: "\u6728\u6750"
     describe: "\u5EFA\u7B51\u6750\u6599\uFF0C\u4E5F\u53EF\u7528\u6765\u52A0\u5DE5"
@@ -90,6 +100,7 @@ MonoBehaviour:
     type2: 3
     iconName: test1
     pay: 1
+    connect: 0
   - id: 12
     sname: "\u7C98\u571F"
     describe: "\u5EFA\u7B51\u6750\u6599\uFF0C\u4E5F\u53EF\u7528\u6765\u52A0\u5DE5"
@@ -97,6 +108,7 @@ MonoBehaviour:
     type2: 3
     iconName: test1
     pay: 1
+    connect: 0
   - id: 13
     sname: "\u77F3\u7816"
     describe: "\u5EFA\u7B51\u6750\u6599\uFF0C\u4E5F\u53EF\u7528\u6765\u52A0\u5DE5"
@@ -104,6 +116,7 @@ MonoBehaviour:
     type2: 3
     iconName: test1
     pay: 1
+    connect: 0
   - id: 14
     sname: "\u94C1\u9489"
     describe: "\u5EFA\u7B51\u6750\u6599\uFF0C\u4E5F\u53EF\u7528\u6765\u52A0\u5DE5"
@@ -111,6 +124,7 @@ MonoBehaviour:
     type2: 3
     iconName: test1
     pay: 1
+    connect: 0
   - id: 15
     sname: "\u9EC4\u5FC3\u6728\u85AF"
     describe: 1
@@ -118,6 +132,7 @@ MonoBehaviour:
     type2: 2
     iconName: test1
     pay: 1
+    connect: 0
   - id: 16
     sname: "\u9EC4\u8272\u6728\u85AF\u7C89"
     describe: 1
@@ -125,6 +140,7 @@ MonoBehaviour:
     type2: 1
     iconName: test1
     pay: 1
+    connect: 0
   - id: 17
     sname: "\u9AD8\u7EA7\u9EC4\u8272\u6728\u85AF\u7C89"
     describe: 1
@@ -132,6 +148,7 @@ MonoBehaviour:
     type2: 1
     iconName: test1
     pay: 1
+    connect: 0
   - id: 18
     sname: "\u5927\u8C46"
     describe: 1
@@ -139,6 +156,7 @@ MonoBehaviour:
     type2: 2
     iconName: test1
     pay: 1
+    connect: 0
   - id: 19
     sname: "\u5927\u8C46\u7C89"
     describe: 1
@@ -146,6 +164,7 @@ MonoBehaviour:
     type2: 1
     iconName: test1
     pay: 1
+    connect: 0
   - id: 20
     sname: "\u9AD8\u7EA7\u5927\u8C46\u7C89"
     describe: 1
@@ -153,6 +172,7 @@ MonoBehaviour:
     type2: 1
     iconName: test1
     pay: 1
+    connect: 0
   - id: 21
     sname: "\u957F\u7A57\u7389\u7C73"
     describe: 1
@@ -160,6 +180,7 @@ MonoBehaviour:
     type2: 2
     iconName: test1
     pay: 1
+    connect: 0
   - id: 22
     sname: "\u7389\u7C73\u7C89"
     describe: 1
@@ -167,6 +188,7 @@ MonoBehaviour:
     type2: 1
     iconName: test1
     pay: 1
+    connect: 0
   - id: 23
     sname: "\u9AD8\u7EA7\u7389\u7C73\u7C89"
     describe: 1
@@ -174,6 +196,7 @@ MonoBehaviour:
     type2: 1
     iconName: test1
     pay: 1
+    connect: 0
   - id: 24
     sname: "\u8131\u58F3\u5927\u7C73"
     describe: 1
@@ -181,6 +204,7 @@ MonoBehaviour:
     type2: 2
     iconName: test1
     pay: 1
+    connect: 0
   - id: 25
     sname: "\u7C73\u7C89"
     describe: 1
@@ -188,6 +212,7 @@ MonoBehaviour:
     type2: 1
     iconName: test1
     pay: 1
+    connect: 0
   - id: 26
     sname: "\u9AD8\u7EA7\u7C73\u7C89"
     describe: 1
@@ -195,6 +220,7 @@ MonoBehaviour:
     type2: 1
     iconName: test1
     pay: 1
+    connect: 0
   - id: 27
     sname: "\u5E72\u8910\u53C2"
     describe: 1
@@ -202,6 +228,7 @@ MonoBehaviour:
     type2: 2
     iconName: test1
     pay: 1
+    connect: 0
   - id: 28
     sname: "\u82E6\u8910\u7C89"
     describe: 1
@@ -209,6 +236,7 @@ MonoBehaviour:
     type2: 1
     iconName: test1
     pay: 1
+    connect: 0
   - id: 29
     sname: "\u9AD8\u7EA7\u82E6\u8910\u7C89"
     describe: 1
@@ -216,6 +244,7 @@ MonoBehaviour:
     type2: 1
     iconName: test1
     pay: 1
+    connect: 0
   - id: 30
     sname: "\u751C\u67D1"
     describe: 1
@@ -223,6 +252,7 @@ MonoBehaviour:
     type2: 2
     iconName: test1
     pay: 1
+    connect: 0
   - id: 31
     sname: "\u751C\u67D1\u7C89"
     describe: 1
@@ -230,6 +260,7 @@ MonoBehaviour:
     type2: 1
     iconName: test1
     pay: 1
+    connect: 0
   - id: 32
     sname: "\u9AD8\u7EA7\u751C\u67D1\u7C89"
     describe: 1
@@ -237,6 +268,7 @@ MonoBehaviour:
     type2: 1
     iconName: test1
     pay: 1
+    connect: 0
   - id: 33
     sname: "\u98CE\u5E72\u767D\u82A5"
     describe: 1
@@ -244,6 +276,7 @@ MonoBehaviour:
     type2: 2
     iconName: test1
     pay: 1
+    connect: 0
   - id: 34
     sname: "\u82A5\u8349\u7C89"
     describe: 1
@@ -251,6 +284,7 @@ MonoBehaviour:
     type2: 1
     iconName: test1
     pay: 1
+    connect: 0
   - id: 35
     sname: "\u9AD8\u7EA7\u82A5\u8349\u7C89"
     describe: 1
@@ -258,6 +292,7 @@ MonoBehaviour:
     type2: 1
     iconName: test1
     pay: 1
+    connect: 0
   - id: 36
     sname: "\u4E01\u9999\u8349"
     describe: 1
@@ -265,6 +300,7 @@ MonoBehaviour:
     type2: 2
     iconName: test1
     pay: 1
+    connect: 0
   - id: 37
     sname: "\u82B1\u5473\u9999\u6599"
     describe: 1
@@ -272,6 +308,7 @@ MonoBehaviour:
     type2: 1
     iconName: test1
     pay: 1
+    connect: 0
   - id: 38
     sname: "\u9AD8\u7EA7\u82B1\u5473\u9999\u6599"
     describe: 1
@@ -279,6 +316,7 @@ MonoBehaviour:
     type2: 1
     iconName: test1
     pay: 1
+    connect: 0
   - id: 39
     sname: "\u7518\u8349"
     describe: 1
@@ -286,6 +324,7 @@ MonoBehaviour:
     type2: 2
     iconName: test1
     pay: 1
+    connect: 0
   - id: 40
     sname: "\u6DA9\u5473\u9999\u6599"
     describe: 1
@@ -293,6 +332,7 @@ MonoBehaviour:
     type2: 1
     iconName: test1
     pay: 1
+    connect: 0
   - id: 41
     sname: "\u9AD8\u7EA7\u6DA9\u5473\u9999\u6599"
     describe: 1
@@ -300,6 +340,7 @@ MonoBehaviour:
     type2: 1
     iconName: test1
     pay: 1
+    connect: 0
   - id: 42
     sname: "\u5706\u9897\u6912"
     describe: 1
@@ -307,6 +348,7 @@ MonoBehaviour:
     type2: 2
     iconName: test1
     pay: 1
+    connect: 0
   - id: 43
     sname: "\u8FA3\u5473\u9999\u6599"
     describe: 1
@@ -314,6 +356,7 @@ MonoBehaviour:
     type2: 1
     iconName: test1
     pay: 1
+    connect: 0
   - id: 44
     sname: "\u9AD8\u7EA7\u8FA3\u5473\u9999\u6599"
     describe: 1
@@ -321,6 +364,7 @@ MonoBehaviour:
     type2: 1
     iconName: test1
     pay: 1
+    connect: 0
   - id: 45
     sname: "\u51B0\u8584\u8377"
     describe: 1
@@ -328,6 +372,7 @@ MonoBehaviour:
     type2: 2
     iconName: test1
     pay: 1
+    connect: 0
   - id: 46
     sname: "\u51B0\u51C9\u9999\u6599"
     describe: 1
@@ -335,6 +380,7 @@ MonoBehaviour:
     type2: 1
     iconName: test1
     pay: 1
+    connect: 0
   - id: 47
     sname: "\u9AD8\u7EA7\u51B0\u51C9\u9999\u6599"
     describe: 1
@@ -342,6 +388,7 @@ MonoBehaviour:
     type2: 1
     iconName: test1
     pay: 1
+    connect: 0
   - id: 48
     sname: "\u6CB3\u868C\u7684\u73CD\u73E0"
     describe: "\u5E38\u89C1\u7684\u6CB3\u868C\u5076\u5C14\u4EA7\u51FA\u7684\u73CD\u73E0\uFF0C\u662F\u5996\u7CBE\u4EEC\u6700\u7231\u7684\u4E00\u79CD\u88C5\u9970\u54C1\uFF0C\u9001\u7ED9\u5996\u7CBE"
@@ -349,10 +396,20 @@ MonoBehaviour:
     type2: 5
     iconName: test1
     pay: 180
+    connect: 0
   - id: 49
-    sname: "\u9F99\u708E\u672F\u5361\u724C\u8BBE\u8BA1\u56FE"
-    describe: "\u6D88\u8017\u54C1\uFF0C\u4F7F\u7528\u540E\u53EF\u4EE5\u5728\u5DE5\u574A\u5236\u4F5C\u2018\u9F99\u708E\u672F\u2019\u5361\u724C\u3002"
-    type: 3
+    sname: "\u8346\u68D8\u53CD\u51FB \u5361\u724C\u8BBE\u8BA1\u56FE"
+    describe: "\u6D88\u8017\u54C1\uFF0C\u4F7F\u7528\u540E\u53EF\u4EE5\u5728\u5DE5\u574A\u5236\u4F5C\u2018\u8346\u68D8\u53CD\u51FB\u2019\u5361\u724C\u3002"
+    type: 2
     type2: 4
     iconName: test1
     pay: 120
+    connect: 1
+  - id: 50
+    sname: "\u5361\u724C"
+    describe: "\u70BC\u5236\u7684\u6CD5\u672F\u5361\u7247\uFF0C\u6218\u6597\u4E2D\u4F7F\u7528\u4E00\u6B21\u540E\u5C31\u4F1A\u6D88\u5931\u3002"
+    type: 1
+    type2: 1
+    iconName: test1
+    pay: 0
+    connect: 0

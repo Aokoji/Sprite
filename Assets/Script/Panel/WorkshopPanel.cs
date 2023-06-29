@@ -37,7 +37,7 @@ public class WorkshopPanel : PanelBase
         canmakeMax = 0;
         cardData = Config_t_items.getOne(ConfigConst.cardGeneralID);
         _describeExtra.text = cardData.describe;
-        scroll.initConfig(80, 80, clone);
+        scroll.initConfig(260, 50, clone);
         StartCoroutine(refreshScroll());
     }
     public override void registerEvent()
@@ -45,44 +45,52 @@ public class WorkshopPanel : PanelBase
         base.registerEvent();
         _make.onClick.AddListener(clickMake);
         _Allmake.onClick.AddListener(clickAllMake);
+        typeConsum.onClick.AddListener(clickConsum);
+        typeCard.onClick.AddListener(clickCard);
+        typeMagic.onClick.AddListener(clickMagic);
     }
 
     IEnumerator refreshScroll()
     {
         panelMessage.SetActive(false);
         scroll.recycleAll();
-        var data = PlayerManager.Instance.playerItemDic;
+        var data = PlayerManager.Instance.getLearnList();
         foreach (var i in data)
         {
-            var script = scroll.addItemDefault().GetComponent<BagItem>();
-            script.setData(i.Key, i.Value);
-            script.initAction(onclickOneItem);
+            var plan= Config_t_Plan.getOne(i);
+            if (curPanel != plan.finishType) continue;
+            var script = scroll.addItemDefault();
+            script.GetComponentInChildren<Text>().text = plan.remark;
+            int index = i;
+            script.GetComponent<Button>().onClick.AddListener(()=> { onclickOneItem(index); });
         }
         yield return null;
     }
-
+    t_items curitem;
+    t_DataCard curcard;
     void onclickOneItem(int id)
     {
         if (curshowID == id) return;
         curshowID = id;
         var plandata= Config_t_Plan.getOne(id);
         finalID = plandata.finishID;
+        canmakeMax = 100;
         if (curPanel == 1)
         {
             //卡
-            var data = Config_t_DataCard.getOne(finalID);
+            curcard = Config_t_DataCard.getOne(finalID);
             _icon.sprite = GetSprite(A_AtlasNames.itemsIcon.ToString(), cardData.iconName);
-            _sname.text = data.sname;
-            _describe.text = data.sDescribe;
+            _sname.text = curcard.sname;
+            _describe.text = curcard.sDescribe;
             _have.text = "拥有：" + PlayerManager.Instance.getOneCardNum(id);
             _describeExtra.gameObject.SetActive(true);
         }
         else
         {
-            var data = Config_t_items.getOne(finalID);
-            _icon.sprite = GetSprite(A_AtlasNames.itemsIcon.ToString(), data.iconName);
-            _sname.text = data.sname;
-            _describe.text = data.describe;
+            curitem = Config_t_items.getOne(finalID);
+            _icon.sprite = GetSprite(A_AtlasNames.itemsIcon.ToString(), curitem.iconName);
+            _sname.text = curitem.sname;
+            _describe.text = curitem.describe;
             _have.text = "拥有："+ PlayerManager.Instance.playerItemDic[id];
             _describeExtra.gameObject.SetActive(false);
         }
@@ -109,7 +117,24 @@ public class WorkshopPanel : PanelBase
                     contexts[i].color = Color.white;
                     canmakeMax = Mathf.Min(canmakeMax, have / neednum);
                 }
+                icons[i].gameObject.SetActive(true);
+                contexts[i].gameObject.SetActive(true);
             }
+            else
+            {
+                icons[i].gameObject.SetActive(false);
+                contexts[i].gameObject.SetActive(false);
+            }
+        }
+        if (canmakeMax == 0)
+        {
+            _make.GetComponent<Image>().color = Color.gray;
+            _Allmake.GetComponent<Image>().color = Color.gray;
+        }
+        else
+        {
+            _make.GetComponent<Image>().color = Color.white;
+            _Allmake.GetComponent<Image>().color = Color.white;
         }
         panelMessage.SetActive(true);
     }
@@ -120,7 +145,23 @@ public class WorkshopPanel : PanelBase
             PanelManager.Instance.showTips1("材料不足");
             return;
         }
-        //PanelManager.Instance.showTips2("确认制作‘"++"’")
+        if (curPanel == 1)
+            PanelManager.Instance.showTips2("确认制作‘" + curcard.sname + "’吗？", () =>
+            {
+                PlayerManager.Instance.makenItem(curshowID, 1, makeItem);
+            });
+        else
+            PanelManager.Instance.showTips2("确认制作‘" + curitem.sname + "’×"+canmakeMax+"吗？", () =>
+            {
+                PlayerManager.Instance.makenItem(curshowID, canmakeMax, makeItem);
+            });
+    }
+    void makeItem()
+    {
+        int id = curshowID;
+        curshowID = 0;
+        onclickOneItem(id);
+        //短动画
     }
     void clickAllMake()
     {
@@ -129,5 +170,33 @@ public class WorkshopPanel : PanelBase
             PanelManager.Instance.showTips1("材料不足");
             return;
         }
+        if (curPanel == 1)
+            PanelManager.Instance.showTips2("确认制作‘" + curcard.sname + "’吗？", () =>
+            {
+                PlayerManager.Instance.makenItem(curshowID, canmakeMax, makeItem);
+            });
+        else
+            PanelManager.Instance.showTips2("确认制作‘" + curitem.sname + "’×" + canmakeMax + "吗？", () =>
+            {
+                PlayerManager.Instance.makenItem(curshowID, canmakeMax, makeItem);
+            });
+    }
+    void clickConsum()
+    {
+        if (curPanel == 0) return;
+        curPanel = 0;
+        StartCoroutine(refreshScroll());
+    }
+    void clickCard()
+    {
+        if (curPanel == 1) return;
+        curPanel = 1;
+        StartCoroutine(refreshScroll());
+    }
+    void clickMagic()
+    {
+        if (curPanel == 2) return;
+        curPanel = 2;
+        StartCoroutine(refreshScroll());
     }
 }

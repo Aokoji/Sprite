@@ -106,6 +106,8 @@ public enum ItemType2
     build,      //建材    3
     plan,   //设计图   4
     happy,      //精灵玩具  5
+    stone,  //魔石
+    food,       //食物
 }
 //任务类型  0
 

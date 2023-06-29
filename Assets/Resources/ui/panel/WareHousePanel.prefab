@@ -275,7 +275,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 5667864190354971742}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.9999786
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1821,8 +1821,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 369.4, y: 99}
-  m_SizeDelta: {x: 231.16864, y: 41.68959}
+  m_AnchoredPosition: {x: 369.8, y: 99}
+  m_SizeDelta: {x: 245.1629, y: 41.68959}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5901969744275484478
 CanvasRenderer:
@@ -1853,7 +1853,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: c9b7d5ecd7db0c14f9e3eabcf4cecb55, type: 3}
-    m_FontSize: 30
+    m_FontSize: 24
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -1864,7 +1864,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: aaaa
+  m_Text: aaa
 --- !u!114 &8130055556733423119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1877,7 +1877,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0.5377358, g: 0.44292802, b: 0.28662333, a: 0.5}
+  m_EffectColor: {r: 0.4245283, g: 0.33216333, b: 0.17822178, a: 0.5}
   m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1
 --- !u!1 &8840431645162026564
@@ -2007,7 +2007,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.000007670808}
+  m_AnchoredPosition: {x: 0, y: 0.000014489039}
   m_SizeDelta: {x: 0, y: 200}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &318981335130828667

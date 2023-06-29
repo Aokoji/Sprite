@@ -1,4 +1,4 @@
 id,remark,needid,needcount,finishID,finishType
 int,string,string,string,int,int
-itemid,自己看的注释,需要id,需要数量,成品id,成品类型-区分卡
-1,111,2,1,3,1
+itemid,item同名,需要id,需要数量,成品id,成品类型-区分卡
+1,荆棘反击 卡牌设计图,6,2,74,1

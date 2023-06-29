@@ -34,7 +34,7 @@ public class MainPanel : PanelBase
 
     #region  onclick
     void jumpmill(){ PanelManager.Instance.OpenPanel(E_UIPrefab.MillPanel);}
-    void jumpworkshop(){ PanelManager.Instance.OpenPanel(E_UIPrefab.MillPanel);}
+    void jumpworkshop(){ PanelManager.Instance.OpenPanel(E_UIPrefab.WorkshopPanel);}
     void jumpexplor(){
         BattleManager.Instance.EnterBattle();//PanelManager.Instance.OpenPanel(E_UIPrefab.MillPanel);
     }

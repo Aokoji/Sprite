@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   asset:
   - id: 1
-    remark: 111
-    needid: 2
-    needcount: 1
-    finishID: 3
+    remark: "\u8346\u68D8\u53CD\u51FB \u5361\u724C\u8BBE\u8BA1\u56FE"
+    needid: 6
+    needcount: 2
+    finishID: 74
     finishType: 1
