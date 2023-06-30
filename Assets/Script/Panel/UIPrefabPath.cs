@@ -28,7 +28,8 @@ public enum E_UIPrefab
     WareHousePanel,     //仓库
     ExplorPanel,    //探索选框
     FarmPanel,
-    SpringPanel,
+    SpringPanel,        //魔力之泉
+
 
     //ui
     cardHand,
@@ -50,6 +51,7 @@ public enum A_AtlasNames
 {
     atlasImg1, 
     itemsIcon,
+    changeSprite,
 }
 
 public enum B_BundleNames

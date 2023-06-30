@@ -36,7 +36,8 @@ public class MainPanel : PanelBase
     void jumpmill(){ PanelManager.Instance.OpenPanel(E_UIPrefab.MillPanel);}
     void jumpworkshop(){ PanelManager.Instance.OpenPanel(E_UIPrefab.WorkshopPanel);}
     void jumpexplor(){
-        BattleManager.Instance.EnterBattle();//PanelManager.Instance.OpenPanel(E_UIPrefab.MillPanel);
+        //BattleManager.Instance.EnterBattle();
+        PanelManager.Instance.OpenPanel(E_UIPrefab.ExplorPanel);
     }
     void jumpentrust(){ PanelManager.Instance.OpenPanel(E_UIPrefab.TravelPanel);}
     void jumpfarm(){ PanelManager.Instance.ChangePanel(E_UIPrefab.MillPanel);}

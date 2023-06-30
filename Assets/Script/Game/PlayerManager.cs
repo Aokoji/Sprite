@@ -327,4 +327,14 @@ public class PlayerManager : CSingel<PlayerManager>
         }
     }
     #endregion
+    #region explor
+    public ExplorData getExplorData() { return playerdata.explor; }
+    public void refreshNewDayExplor()
+    {
+        TimeSpan time = new TimeSpan(23, 59, 59);
+        playerdata.explor.savetime = DateTime.Parse(time.ToString()).ToString();
+        //随机一个天气
+        playerdata.explor.mapType = 1;
+    }
+    #endregion
 }

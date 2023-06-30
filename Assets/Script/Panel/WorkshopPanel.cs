@@ -145,16 +145,15 @@ public class WorkshopPanel : PanelBase
             PanelManager.Instance.showTips1("材料不足");
             return;
         }
+        string sname;
         if (curPanel == 1)
-            PanelManager.Instance.showTips2("确认制作‘" + curcard.sname + "’吗？", () =>
-            {
-                PlayerManager.Instance.makenItem(curshowID, 1, makeItem);
-            });
+            sname = curcard.sname;
         else
-            PanelManager.Instance.showTips2("确认制作‘" + curitem.sname + "’×"+canmakeMax+"吗？", () =>
-            {
-                PlayerManager.Instance.makenItem(curshowID, canmakeMax, makeItem);
-            });
+            sname = curitem.sname;
+        PanelManager.Instance.showTips2("确认制作‘" + sname + "’吗？", () =>
+        {
+            PlayerManager.Instance.makenItem(curshowID, 1, makeItem);
+        });
     }
     void makeItem()
     {
@@ -170,16 +169,15 @@ public class WorkshopPanel : PanelBase
             PanelManager.Instance.showTips1("材料不足");
             return;
         }
+        string sname;
         if (curPanel == 1)
-            PanelManager.Instance.showTips2("确认制作‘" + curcard.sname + "’吗？", () =>
-            {
-                PlayerManager.Instance.makenItem(curshowID, canmakeMax, makeItem);
-            });
+            sname = curcard.sname;
         else
-            PanelManager.Instance.showTips2("确认制作‘" + curitem.sname + "’×" + canmakeMax + "吗？", () =>
-            {
-                PlayerManager.Instance.makenItem(curshowID, canmakeMax, makeItem);
-            });
+            sname = curitem.sname;
+        PanelManager.Instance.showTips2("确认制作‘" + sname + "’×" + canmakeMax + "吗？", () =>
+        {
+            PlayerManager.Instance.makenItem(curshowID, canmakeMax, makeItem);
+        });
     }
     void clickConsum()
     {

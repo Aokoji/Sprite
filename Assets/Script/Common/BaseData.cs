@@ -109,6 +109,18 @@ public enum ItemType2
     stone,  //魔石
     food,       //食物
 }
+public enum explorType
+{
+    none,   //不行
+    easy1,
+    easy2,
+    easy3,
+    normal1,
+    normal2,
+    hard1,
+    hard2,
+    boss
+}
 //任务类型  0
 
 

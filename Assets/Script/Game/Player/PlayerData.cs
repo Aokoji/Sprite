@@ -20,6 +20,7 @@ public class PlayerData
     public TravelData travel;
     public MillData mill;
     public MarkData mark;
+    public ExplorData explor;
     public List<int> learndPlan;
 
     public int specialMarkNum;  //白给商店钱
@@ -38,6 +39,7 @@ public class PlayerData
         travel = new TravelData();
         mill = new MillData();
         mark = new MarkData();
+        explor = new ExplorData();
         learndPlan = new List<int>();
         //for(int i=0;i<20;i++)
         //   playerCards.Add(14);
