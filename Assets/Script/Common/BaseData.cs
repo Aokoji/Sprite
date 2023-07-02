@@ -121,6 +121,13 @@ public enum explorType
     hard2,
     boss
 }
+//悬赏类型
+public enum offerType
+{
+    battle, //跳转战斗
+    count,  //计数
+    change,     //物品
+}
 //任务类型  0
 
 

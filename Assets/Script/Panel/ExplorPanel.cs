@@ -9,7 +9,7 @@ public class ExplorPanel : PanelBase
     //关卡每天随机一种天气或地图
     public Button enter1;
     public Button enter2;
-    public GameObject[] offers; //四个告示      悬赏/交易/
+    public ExplorQuestBar[] offers; //四个告示      悬赏/交易/
     public Button cardset;
 
     public Button goBtn;
@@ -23,7 +23,9 @@ public class ExplorPanel : PanelBase
     }
     public override void registerEvent()
     {
-        base.registerEvent();
+        base.registerEvent();  
+        enter1.onClick.AddListener(clickEnter1);
+        enter2.onClick.AddListener(clickEnter2);
     }
 
     void refreshMap()
@@ -35,8 +37,30 @@ public class ExplorPanel : PanelBase
                 //新的一天
                 PlayerManager.Instance.refreshNewDayExplor();
             }
+            //文案做在图上
             enter1.GetComponent<Image>().sprite = GetSprite(A_AtlasNames.changeSprite.ToString(), Config_t_ExplorMap.getOne(_data.mapType).imageName);
+
+            //offer
+            for(int i = 0; i < offers.Length; i++)
+            {
+                if (i < _data.offer.Count)
+                {
+                    offers[i].setData(_data.offer[i]);
+                    offers[i].gameObject.SetActive(true);
+                }
+                else
+                    offers[i].gameObject.SetActive(false);
+            }
         });
+    }
+
+    void clickEnter1()
+    {
+        //进入森林
+    }
+    void clickEnter2()
+    {
+        //森林小径
     }
 
     //文案    9

@@ -27,6 +27,7 @@ public enum E_UIPrefab
     MarkSalePanel,  //卖背包东西     int 卖上限,
     WareHousePanel,     //仓库
     ExplorPanel,    //探索选框
+    ExplorOfferMorePanel,       //OfferData
     FarmPanel,
     SpringPanel,        //魔力之泉
 

@@ -335,6 +335,18 @@ public class PlayerManager : CSingel<PlayerManager>
         playerdata.explor.savetime = DateTime.Parse(time.ToString()).ToString();
         //随机一个天气
         playerdata.explor.mapType = 1;
+
+        //刷新offer
+        playerdata.explor.offer.Clear();
+        System.Random random = new System.Random();
+        int rand = random.Next(40);
+        if (rand < 1) rand = 0;
+        else if (rand <= 8) rand = 1;
+        else if (rand <= 22) rand = 2;
+        else if (rand <= 32) rand = 3;
+        else rand = 4;
+        for(int i = 0; i < rand; i++)
+            playerdata.explor.offer.Add(new OfferData(random.Next(1,Config_t_Offer._data.Count)));
     }
     #endregion
 }

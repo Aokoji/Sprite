@@ -1,0 +1,4 @@
+id,title,reward,describe,stype
+int,string,int,string,int
+id,任务标题,奖励,描述,类型0悬赏1讨伐2物资
+1,讨伐狼群,58,xxx,1
