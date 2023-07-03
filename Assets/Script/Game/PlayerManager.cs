@@ -347,6 +347,8 @@ public class PlayerManager : CSingel<PlayerManager>
         else rand = 4;
         for(int i = 0; i < rand; i++)
             playerdata.explor.offer.Add(new OfferData(random.Next(1,Config_t_Offer._data.Count)));
+
+        //填充day奖励   根据地图+++
     }
     #endregion
 }

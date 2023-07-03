@@ -9,4 +9,6 @@ public class ExplorData : MonoBehaviour
     public string savetime;
 
     public List<OfferData> offer=new List<OfferData>();
+    public List<int> daygift = new List<int>(); //宝箱id
+    public List<int> dayboss = new List<int>(); //通关奖励
 }

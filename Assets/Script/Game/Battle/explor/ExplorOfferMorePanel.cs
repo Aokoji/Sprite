@@ -10,11 +10,13 @@ public class ExplorOfferMorePanel : PanelTopBase
     public Text frontFInish;    //finish的描述
     public Text finishcount;        //or  have
     public Text reward;
+    public Image rewardimg;
     public Button back;
     public Button goBattle;
-    public Text goBtnText;
+    public Button finishBtn;
 
     OfferData _data;
+    t_Offer config;
     bool isfinish;
     offerType configtype;
 
@@ -22,36 +24,65 @@ public class ExplorOfferMorePanel : PanelTopBase
     {
         base.init();
         _data = message[0] as OfferData;
-        var config = Config_t_Offer.getOne(_data.id);
+        config = Config_t_Offer.getOne(_data.id);
         title.text = config.title;
         describe.text = config.describe;
         configtype = (offerType)config.stype;
-        if (configtype == offerType.change)
-            frontFInish.text = "收集进度：";
-        else
-            frontFInish.text = "击败数量：";
 
         //检查complete
-
-        if(configtype == offerType.battle)
+        goBattle.gameObject.SetActive(false);
+        if (configtype == offerType.battle)
         {
-            goBattle.gameObject.SetActive(true);
-            goBtnText.text = "";
+            frontFInish.text = "击败数量：";
+            if (_data.finishCount >= config.finishNum)
+                isfinish = true;
+            else
+                goBattle.gameObject.SetActive(true);
+            finishcount.text = _data.finishCount + "/" + config.finishNum;
+        }
+        else if(configtype==offerType.count)
+        {
+            frontFInish.text = "击败数量：";
+            if (_data.finishCount >= config.finishNum)
+                isfinish = true;
+            finishcount.text = _data.finishCount + "/" + config.finishNum;
         }
         else
         {
-            goBattle.gameObject.SetActive(false);
+            frontFInish.text = "收集进度：";
+            int have = PlayerManager.Instance.getItem(config.targetID);
+            if (have >= config.finishNum)
+                isfinish = true;
+            finishcount.text = have + "/" + config.finishNum;
         }
+        finishBtn.gameObject.SetActive(isfinish);
     }
     public override void registerEvent()
     {
         base.registerEvent();
         back.onClick.AddListener(PanelManager.Instance.DisposePanel);
-        goBattle.onClick.AddListener(completeaction);
+        finishBtn.onClick.AddListener(completeaction);
+        goBattle.onClick.AddListener(goBattleaction);
     }
 
     void completeaction()
     {
-
+        ItemData result;
+        if (configtype == offerType.change)
+        {
+            PlayerManager.Instance.addItems(config.changeID, config.changeNum);
+            result = new ItemData(config.changeID, config.changeNum);
+        }
+        else
+        {
+            PlayerManager.Instance.addItems(ConfigConst.currencyID, config.reward);
+            result = new ItemData(ConfigConst.currencyID, config.reward);
+        }
+        PanelManager.Instance.showTips4(new List<ItemData>() { result });
+        PanelManager.Instance.DisposePanel();
+    }
+    void goBattleaction()
+    {
+        //+++
     }
 }

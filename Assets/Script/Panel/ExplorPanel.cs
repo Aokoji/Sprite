@@ -27,7 +27,11 @@ public class ExplorPanel : PanelBase
         enter1.onClick.AddListener(clickEnter1);
         enter2.onClick.AddListener(clickEnter2);
     }
-
+    public override void reshow()
+    {
+        base.reshow();
+        refreshMap();
+    }
     void refreshMap()
     {
         RunSingel.Instance.getBeiJingTime(result =>

@@ -1,4 +1,4 @@
-id,title,reward,describe,stype
-int,string,int,string,int
-id,任务标题,奖励,描述,类型0悬赏1讨伐2物资
-1,讨伐狼群,58,xxx,1
+id,title,reward,describe,stype,targetID,finishNum,changeID,changeNum
+int,string,int,string,int,int,int,int,int
+id,任务标题,奖励,描述,类型0悬赏1讨伐2物资,完成id从act或item表,数量,交换id只有物品用,数量
+1,讨伐蘑菇怪,58,xxx,1,7,3,0,0
