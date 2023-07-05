@@ -14,6 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   asset:
   - id: 1
-    title: "\u8BA8\u4F10\u72FC\u7FA4"
+    title: "\u8BA8\u4F10\u8611\u83C7\u602A"
     reward: 58
     describe: xxx
+    stype: 1
+    targetID: 7
+    finishNum: 3
+    changeID: 0
+    changeNum: 0

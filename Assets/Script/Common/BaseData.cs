@@ -128,6 +128,16 @@ public enum offerType
     count,  //计数
     change,     //物品
 }
+public enum explorIcon
+{
+    outpost,    //哨站
+    battle, //战斗
+    rest,
+    gather,     //采集
+    box,
+    boss,
+    exitBox,
+}
 //任务类型  0
 
 

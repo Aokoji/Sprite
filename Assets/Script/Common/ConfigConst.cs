@@ -32,6 +32,8 @@ public static class ConfigConst
     public const int markMaxCount = 80; //商店容量
     public const int currencyID = 1;        //货币id
     public const int cardGeneralID = 50;        //通用卡牌id
+    public const int explorMoveSpend = 2;   //移动消耗
+    public const int explorBossAndSpecialSpend = 4;
 
     public static Vector3 colorForest = new Vector3(164,210,146);
     public static Vector3 colorFire = new Vector3(215,129,125);

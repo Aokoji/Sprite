@@ -28,6 +28,8 @@ public enum E_UIPrefab
     WareHousePanel,     //仓库
     ExplorPanel,    //探索选框
     ExplorOfferMorePanel,       //OfferData
+    ExplorMovingPanel,      //探索地图
+    ExplorBattleMessPanel,      //准备战斗
     FarmPanel,
     SpringPanel,        //魔力之泉
 

@@ -61,6 +61,7 @@ public class ExplorPanel : PanelBase
     void clickEnter1()
     {
         //进入森林
+        PanelManager.Instance.ChangeScenePanel(E_UIPrefab.ExplorMovingPanel);
     }
     void clickEnter2()
     {

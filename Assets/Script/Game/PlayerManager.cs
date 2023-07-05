@@ -334,7 +334,7 @@ public class PlayerManager : CSingel<PlayerManager>
         TimeSpan time = new TimeSpan(23, 59, 59);
         playerdata.explor.savetime = DateTime.Parse(time.ToString()).ToString();
         //随机一个天气
-        playerdata.explor.mapType = 1;
+        playerdata.explor.mapType = 2;
 
         //刷新offer
         playerdata.explor.offer.Clear();

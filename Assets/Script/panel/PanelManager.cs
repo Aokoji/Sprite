@@ -40,7 +40,25 @@ public class PanelManager : CSingel<PanelManager>
     }
     public void ChangePanel(E_UIPrefab pop, object[] obj = null)
     {
-        DisposePanel();
+        if (panelStack.Count <= 0)
+        {
+            Debug.LogError("退出界面错误，退栈为空");
+            return;
+        }
+        panelStack.Pop();
+        curPanel.Dispose();
+        curEnmu = "";
+        curPanel = null;
+        OpenPanel(pop, obj);
+    }
+    public void ChangeScenePanel(E_UIPrefab pop, object[] obj = null)
+    {
+        while (panelStack.Count > 0)
+        {
+            panelStack.Pop().Dispose();
+        }
+        curEnmu = "";
+        curPanel = null;
         OpenPanel(pop, obj);
     }
     IEnumerator enterPanel()

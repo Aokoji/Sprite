@@ -18,6 +18,7 @@ namespace customEvent
         millShutMater,
         millTimerMater_BI,
         millChange_BII,
+        explorGoNextRank_B,     //胜败
 
         roundEnd_C,
         playRoundNext,
