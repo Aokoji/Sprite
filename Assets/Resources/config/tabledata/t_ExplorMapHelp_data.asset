@@ -18,14 +18,26 @@ MonoBehaviour:
     mapheight: 4
     pointNumber: 0|4|7|11
     rewardNumber: 11
-    remark: "4\u70B9\u4F4D\u96BE\u5EA61"
+    remark: 75|2|15|8
     connection: 0-4|4-7|7-11
     startPos: 0
+    bossPos: 11
+    boxPool: 1
+    enemyPool: 1
+    gatherPool: 27|21|15
+    bossPool: 1
+    mapGiftPool: 1
   - id: 2
     mapwidth: 3
     mapheight: 3
     pointNumber: 0|1|5|8
     rewardNumber: 8
-    remark: "4\u70B9\u4F4D\u96BE\u5EA61"
+    remark: 75|2|13|10
     connection: 0-1|1-5|5-8
     startPos: 0
+    bossPos: 8
+    boxPool: 1
+    enemyPool: 1
+    gatherPool: 27|21|15
+    bossPool: 1
+    mapGiftPool: 1

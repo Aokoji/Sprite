@@ -9,12 +9,15 @@ public class BattleControl :Object
     public bool loadSuccess = false;
 
     #region 获取数据  加载的准备阶段
-    public void newbattle()
+    public void newbattle(int en)
     {
         loadSuccess = false;
         registerEvent();
         getPlayerCardData();
-        initData();
+        player = PlayerManager.Instance.cursprite.Copy();
+        enemy = EnemyCalculate.GetEnemyData(en);
+        player.refreshData();
+        enemy.refreshData();
         RunSingel.Instance.runTimer(loadtimer());
     }
     IEnumerator loadtimer()
@@ -30,13 +33,6 @@ public class BattleControl :Object
         EventAction.Instance.AddEventGather<List<CardEntity>>(eventType.roundEnd_C, settleRoundAction);
         EventAction.Instance.AddEventGather(eventType.playRoundNext, roundNext);
         EventAction.Instance.AddEventGather(eventType.panelChangeLoadingComplete, loadPanelComplete);
-    }
-    private void initData()
-    {
-        player = PlayerManager.Instance.cursprite.Copy();
-        enemy = EnemyCalculate.GetEnemyData();   //+++模拟一个数据
-        player.refreshData();
-        enemy.refreshData();
     }
     private void getPlayerCardData()
     {

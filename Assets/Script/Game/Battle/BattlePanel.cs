@@ -648,6 +648,7 @@ public class BattlePanel : PanelBase
     {
         PanelManager.Instance.showTips1("游戏结束");
         PanelManager.Instance.panelLock();
-		RunSingel.Instance.laterDo(1.5f, ()=>{ PanelManager.Instance.OpenPanel(E_UIPrefab.MainPanel);});
+        EventAction.Instance.TriggerAction(eventType.explorGoNextRank_B, true);
+        RunSingel.Instance.laterDo(1.5f, ()=>{ PanelManager.Instance.OpenPanel(E_UIPrefab.MainPanel);});
     }
 }

@@ -15,7 +15,6 @@ public class TipPop4 : TipsBase
     {
         allowClick = false;
         var items = whatthing as List<ItemData>;
-        initEvent();
         cloneBar.SetActive(false);
         Vector3 startpos = Vector3.zero;
         startpos.x -= (items.Count - 1) * xpos;

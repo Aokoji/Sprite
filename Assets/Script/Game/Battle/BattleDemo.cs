@@ -21,7 +21,7 @@ public class BattleDemo : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             BattleManager.Instance.battleEnemyID = battleEnemyid;
-            BattleManager.Instance.EnterBattle();
+            //BattleManager.Instance.EnterBattle();
         }
     }
 }

@@ -40,7 +40,7 @@ public class ExplorMovingPanel : PanelBase
             }
             else
             {
-                directhelp.showCurPosDirect(curPoint);
+                showDirectBtn();
             }
         }
     }
@@ -59,6 +59,8 @@ public class ExplorMovingPanel : PanelBase
         public explorIcon stype;
         public int enemyID;
         public ItemData sbox;
+        //新增  特殊地图或精英怪强化
+        public bool isboss;
     }
     rankReward currank;
     void initCalculate()
@@ -135,7 +137,6 @@ public class ExplorMovingPanel : PanelBase
                     break;
                 }
             }
-
             string[] ems;
             int itemid;
             //判断
@@ -143,7 +144,7 @@ public class ExplorMovingPanel : PanelBase
             {
                 case explorIcon.battle:
                     ems = mapconfig.enemyPool.Split('|');
-                    currank.enemyID = int.Parse(ems[Random.Range(0, str.Length)]);
+                    currank.enemyID = int.Parse(ems[Random.Range(0, ems.Length)]);
                     break;
                 case explorIcon.gather:
                     ems = mapconfig.gatherPool.Split('|');
@@ -203,20 +204,23 @@ public class ExplorMovingPanel : PanelBase
     void showBattleReady()
     {
         //展示战斗进入界面
-        PanelManager.Instance.OpenPanel(E_UIPrefab.ExplorBattleMessPanel, new object[] { currank });
+        if(currank.stype==explorIcon.battle|| currank.stype == explorIcon.boss)
+            PanelManager.Instance.OpenPanel(E_UIPrefab.ExplorBattleMessPanel, new object[] { currank });
+        else if (currank.stype == explorIcon.exitBox)
+        {
+
+        }else if (currank.stype == explorIcon.rest)
+        {
+
+        }
+        else
+            PanelManager.Instance.OpenPanel(E_UIPrefab.ExplorGatherMessPanel, new object[] { currank });
     }
     void showDirectBtn()
     {
         directhelp.transform.localPosition = curPos;
         directhelp.transform.SetAsLastSibling();
         directhelp.showCurPosDirect(curPoint);
-    }
-    public void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Q))
-            createANewPos(direct.ru);
-        if (Input.GetKeyDown(KeyCode.W))
-            createANewPos(direct.right);
     }
     #endregion
     public override void Dispose()

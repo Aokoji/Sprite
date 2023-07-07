@@ -66,7 +66,7 @@ MonoBehaviour:
     phybase: 0
     hpbase: 0
     costmax: 3
-    spritePower: 0
+    spritePower: 2
   - id: 7
     sname: "\u8611\u83C7\u602A"
     defaultCard: 2
@@ -75,7 +75,7 @@ MonoBehaviour:
     phybase: 0
     hpbase: 0
     costmax: 3
-    spritePower: 0
+    spritePower: 3
   - id: 8
     sname: "\u68D5\u718A"
     defaultCard: 2
@@ -84,7 +84,7 @@ MonoBehaviour:
     phybase: 0
     hpbase: 0
     costmax: 3
-    spritePower: 0
+    spritePower: 5
   - id: 9
     sname: "\u51F6\u6076\u7684\u8C7A\u72FC"
     defaultCard: 2
@@ -93,7 +93,7 @@ MonoBehaviour:
     phybase: 0
     hpbase: 0
     costmax: 3
-    spritePower: 0
+    spritePower: 4
   - id: 10
     sname: "\u987D\u76AE\u7684\u6A58\u679C"
     defaultCard: 2
@@ -102,7 +102,7 @@ MonoBehaviour:
     phybase: 0
     hpbase: 0
     costmax: 3
-    spritePower: 0
+    spritePower: 1
   - id: 11
     sname: "\u56FA\u6267\u7684\u6A61\u679C"
     defaultCard: 2
@@ -111,4 +111,4 @@ MonoBehaviour:
     phybase: 0
     hpbase: 0
     costmax: 3
-    spritePower: 0
+    spritePower: 1

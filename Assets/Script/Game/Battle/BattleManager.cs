@@ -12,11 +12,11 @@ public class BattleManager : CSingel<BattleManager>
         refreshBattleData();
     }
 
-    public void EnterBattle()
+    public void EnterBattle(int enemy)
     {
         ctrl = new BattleControl();
         refreshBattleData();
-        ctrl.newbattle();
+        ctrl.newbattle(enemy);
     }
 
     private void refreshBattleData()

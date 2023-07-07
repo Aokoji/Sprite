@@ -9,6 +9,11 @@ public class TipPop2 : TipsBase
     public Button cancel;
     public Text str2;
 
+    private void Start()
+    {
+        confirm.onClick.AddListener(confirmEvent);
+        cancel.onClick.AddListener(cancelEvent);
+    }
     public override void setString2(string str)
     {
         base.setString2(str);
@@ -17,11 +22,6 @@ public class TipPop2 : TipsBase
     public override void play()
     {
         AnimationTool.playAnimation(gameObject, "showtip2",false,()=> { allowClick = true; });
-    }
-    public override void initEvent()
-    {
-        confirm.onClick.AddListener(confirmEvent);
-        cancel.onClick.AddListener(cancelEvent);
     }
     void confirmEvent()
     {

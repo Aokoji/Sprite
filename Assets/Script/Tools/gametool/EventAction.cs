@@ -22,6 +22,8 @@ namespace customEvent
 
         roundEnd_C,
         playRoundNext,
+
+        jumpMainExplor, //跳转主页探索
     }
     public class EventAction:CSingel<EventAction>
     {

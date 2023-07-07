@@ -6,10 +6,10 @@ using System.Text;
 
 public class EnemyCalculate:CSingel<EnemyCalculate>
 {
-    public static SpriteData GetEnemyData()
-    {//+++
+    public static SpriteData GetEnemyData(int id)
+    {
         SpriteData enemy = new SpriteData();
-        enemy.Convert_Data(Config_t_ActorMessage.getOne(6));
+        enemy.Convert_Data(Config_t_ActorMessage.getOne(id));
         enemy.refreshData();
         return enemy;
     }

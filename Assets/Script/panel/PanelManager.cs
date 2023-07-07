@@ -81,6 +81,14 @@ public class PanelManager : CSingel<PanelManager>
         panelStack.Push(curPanel);
         curPanel.init(objdata);
         EventAction.Instance.TriggerAction(eventType.panelChangeLoadingComplete);
+        jumpaction?.Invoke();
+        jumpaction = null;
+    }
+    Action jumpaction;
+    public void JumpPanelScene(E_UIPrefab panel,Action callback)
+    {
+        ChangeScenePanel(panel);
+        jumpaction = callback;
     }
     public void RefreshCurPanel()
     {
@@ -140,6 +148,7 @@ public class PanelManager : CSingel<PanelManager>
         loadingPanel();
         loadTips1Panel();
         loadTips2Panel();
+        loadTips5Panel();
         loadTips3Panel();
         loadTips4Panel();
     }
@@ -164,6 +173,7 @@ public class PanelManager : CSingel<PanelManager>
     private TipsBase tip2;
     private TipsBase tip3;
     private TipsBase tip4;
+    private TipsBase tip5;
     private void loadTips1Panel()
     {
         var entity = AssetManager.loadAsset<GameObject>(COMMON_PATH+ E_UIPrefab.Tips1.ToString());
@@ -186,6 +196,7 @@ public class PanelManager : CSingel<PanelManager>
         tip3 = UnityEngine.Object.Instantiate(entity).GetComponent<TipsBase>();
         tip3.transform.SetParent(commonParent.transform);
         tip3.transform.localScale = Vector3.one;
+        tip3.transform.SetAsLastSibling();
         tip3.gameObject.SetActive(false);
     }
     private void loadTips4Panel()
@@ -195,6 +206,14 @@ public class PanelManager : CSingel<PanelManager>
         tip4.transform.SetParent(commonParent.transform);
         tip4.transform.localScale = Vector3.one;
         tip4.gameObject.SetActive(false);
+    }
+    private void loadTips5Panel()
+    {
+        var entity = AssetManager.loadAsset<GameObject>(COMMON_PATH + E_UIPrefab.Tips5.ToString());
+        tip5 = UnityEngine.Object.Instantiate(entity).GetComponent<TipsBase>();
+        tip5.transform.SetParent(commonParent.transform);
+        tip5.transform.localScale = Vector3.one;
+        tip5.gameObject.SetActive(false);
     }
     /// <summary>
     /// 占屏提示
@@ -234,5 +253,10 @@ public class PanelManager : CSingel<PanelManager>
     {
         tip4.init(items);
         tip4.play();
+    }
+    public void showTips5(string title,List<ItemData> items,Action callback)
+    {
+        tip5.init(title,items, callback);
+        tip5.play();
     }
 }

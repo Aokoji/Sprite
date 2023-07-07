@@ -17,10 +17,9 @@ public class TipsBase: UIBase
         callback = act;
         callback2 = act2;
         allowClick = false;
-        initEvent();
     }
     public virtual void setString2(string str) { }
     public virtual void init(object whatthing) { }
-    public virtual void initEvent() { }
+    public virtual void init(string title,List<ItemData> whatthing, Action act) { }
     public virtual void play() { }
 }

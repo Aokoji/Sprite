@@ -138,6 +138,11 @@ public enum explorIcon
     boss,
     exitBox,
 }
+public enum diffcultEnemy
+{
+    none,
+    normal
+}
 //任务类型  0
 
 
