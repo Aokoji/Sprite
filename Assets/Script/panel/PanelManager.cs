@@ -87,8 +87,8 @@ public class PanelManager : CSingel<PanelManager>
     Action jumpaction;
     public void JumpPanelScene(E_UIPrefab panel,Action callback)
     {
-        ChangeScenePanel(panel);
         jumpaction = callback;
+        ChangeScenePanel(panel);
     }
     public void RefreshCurPanel()
     {
@@ -257,6 +257,12 @@ public class PanelManager : CSingel<PanelManager>
     public void showTips5(string title,List<ItemData> items,Action callback)
     {
         tip5.init(title,items, callback);
+        tip5.play();
+    }
+    public void showTips5(string title, string des, Action callback)
+    {
+        tip5.init(title, new List<ItemData>(), callback);
+        tip5.setString2(des);
         tip5.play();
     }
 }

@@ -23,6 +23,7 @@ public class TipPop5 : TipsBase
         cloneBar.SetActive(false);
         scroll.initConfig(100, 100, cloneBar);
         scroll.recycleAll();
+        context.text = "";
         foreach (var i in whatthing)
         {
             var obj = scroll.addItemDefault();
@@ -30,6 +31,10 @@ public class TipPop5 : TipsBase
             obj.GetComponentInChildren<Text>().text = dat.sname + "×" + i.num;
             obj.GetComponentInChildren<Image>().sprite = GetSprite(A_AtlasNames.itemsIcon.ToString(), dat.iconName);
         }
+    }
+    public override void setString2(string str)
+    {
+        context.text = str;
     }
     public override void play()
     {

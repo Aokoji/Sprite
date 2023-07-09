@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using customEvent;
 
 public class MainPanel : PanelBase
 {
@@ -26,6 +27,12 @@ public class MainPanel : PanelBase
         spring.onClick.AddListener(jumpspring);
         mark.onClick.AddListener(jumpMark);
         ware.onClick.AddListener(jumpWare);
+        EventAction.Instance.AddEventGather(eventType.jumpMainExplor, jumpexplor);
+    }
+    public override void unregisterEvent()
+    {
+        base.unregisterEvent();
+        EventAction.Instance.RemoveAction(eventType.jumpMainExplor, jumpexplor);
     }
     public override void init()
     {
@@ -36,7 +43,6 @@ public class MainPanel : PanelBase
     void jumpmill(){ PanelManager.Instance.OpenPanel(E_UIPrefab.MillPanel);}
     void jumpworkshop(){ PanelManager.Instance.OpenPanel(E_UIPrefab.WorkshopPanel);}
     void jumpexplor(){
-        //BattleManager.Instance.EnterBattle();
         PanelManager.Instance.OpenPanel(E_UIPrefab.ExplorPanel);
     }
     void jumpentrust(){ PanelManager.Instance.OpenPanel(E_UIPrefab.TravelPanel);}

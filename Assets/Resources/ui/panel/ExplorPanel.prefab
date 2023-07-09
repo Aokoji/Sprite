@@ -925,6 +925,7 @@ MonoBehaviour:
   - {fileID: 8350255798023114790}
   cardset: {fileID: 0}
   goBtn: {fileID: 8354820981556602393}
+  back: {fileID: 8354820981049167325}
 --- !u!1 &3347453902575850359
 GameObject:
   m_ObjectHideFlags: 0

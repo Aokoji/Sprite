@@ -32,16 +32,30 @@ public class ExplorMovingPanel : PanelBase
         {
             if (currank.stype == explorIcon.boss)
             {
-                //+++奖励
-            }
-            else if (currank.stype == explorIcon.exitBox)
-            {
-
+                //奖励
+                PanelManager.Instance.showTips5("探索完成，获得首次奖励", new List<ItemData>() { new ItemData(PlayerManager.Instance.getExplorData().dayboss, 1) }, () =>
+                {
+                    PanelManager.Instance.JumpPanelScene(E_UIPrefab.MainPanel, () =>
+                    {
+                        EventAction.Instance.TriggerAction(eventType.jumpMainExplor);
+                    });
+                });
             }
             else
             {
                 showDirectBtn();
             }
+        }
+        else
+        {
+            //战败
+            PanelManager.Instance.showTips5("战斗失败", "损失最大体力的50%，即将返回哨站。", () =>
+            {
+                PanelManager.Instance.JumpPanelScene(E_UIPrefab.MainPanel, () =>
+                {
+                    EventAction.Instance.TriggerAction(eventType.jumpMainExplor);
+                });
+            });
         }
     }
 
@@ -84,6 +98,7 @@ public class ExplorMovingPanel : PanelBase
             PanelManager.Instance.showTips3("妖精体力不足！");
             return;
         }
+        PlayerManager.Instance.minusCurSprite(ConfigConst.explorMoveSpend);
         PanelManager.Instance.showTips3("妖精体力-" + ConfigConst.explorMoveSpend);
 
         currank.stype = explorIcon.outpost;
@@ -101,6 +116,7 @@ public class ExplorMovingPanel : PanelBase
         }
         directhelp.gameObject.SetActive(false);
         //计算奖励
+        System.Random random = new System.Random();
         string[] str = mapconfig.rewardNumber.Split('|');
         foreach(var i in str)
         {
@@ -112,11 +128,18 @@ public class ExplorMovingPanel : PanelBase
                 {
                     //boss每日奖励
                     currank.stype = explorIcon.boss;
+                    var ems = mapconfig.bossPool.Split('|');
+                    currank.enemyID = int.Parse(ems[Random.Range(0, ems.Length)]);
                 }
                 else
                 {
                     //普通宝箱
                     currank.stype = explorIcon.exitBox;
+                    var data = PlayerManager.Instance.getExplorData();
+                    if (data.daygift.Count > 0)
+                        currank.sbox = new ItemData(data.daygift[random.Next(data.daygift.Count)], 1);
+                    else
+                        currank.sbox = new ItemData(ConfigConst.currencyID, random.Next(10, 60));
                 }
                 break;
             }
@@ -125,7 +148,6 @@ public class ExplorMovingPanel : PanelBase
         {
             //普通随机
             string[] weight = mapconfig.remark.Split('|');
-            System.Random random = new System.Random();
             int result = random.Next(100);
             int count = 0;
             for(int i=0;i<weight.Length;i++)
@@ -208,10 +230,20 @@ public class ExplorMovingPanel : PanelBase
             PanelManager.Instance.OpenPanel(E_UIPrefab.ExplorBattleMessPanel, new object[] { currank });
         else if (currank.stype == explorIcon.exitBox)
         {
-
-        }else if (currank.stype == explorIcon.rest)
+            PlayerManager.Instance.getExplorData().daygift.Remove(currank.sbox.id);
+            PlayerManager.Instance.addItems(currank.sbox.id, 1);
+            PanelManager.Instance.showTips5("到达森林出口", new List<ItemData>() { currank.sbox }, () =>
+            {
+                PanelManager.Instance.JumpPanelScene(E_UIPrefab.MainPanel, () => { EventAction.Instance.TriggerAction(eventType.jumpMainExplor); });
+            });
+        }
+        else if (currank.stype == explorIcon.rest)
         {
-
+            PlayerManager.Instance.restCurSprite(PlayerManager.Instance.cursprite.phy_max/5);
+            PanelManager.Instance.showTips5("稍作休息", "在魔力浓郁的地方休息了一会，恢复了20%的体力", () =>
+            {
+                EventAction.Instance.TriggerAction(eventType.explorGoNextRank_B, true);
+            });
         }
         else
             PanelManager.Instance.OpenPanel(E_UIPrefab.ExplorGatherMessPanel, new object[] { currank });

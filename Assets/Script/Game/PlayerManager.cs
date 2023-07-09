@@ -349,6 +349,20 @@ public class PlayerManager : CSingel<PlayerManager>
             playerdata.explor.offer.Add(new OfferData(random.Next(1,Config_t_Offer._data.Count)));
 
         //填充day奖励   根据地图+++
+        playerdata.explor.daygift.Add(2);
+        playerdata.explor.daygift.Add(3);
+    }
+    public void restCurSprite(int num)
+    {
+        cursprite.phy_cur += num;
+        cursprite.phy_cur = Mathf.Min(cursprite.phy_cur, cursprite.phy_max);
+        savePlayerData();
+    }
+    public void minusCurSprite(int num)
+    {
+        cursprite.phy_cur -= num;
+        cursprite.phy_cur = Mathf.Max(cursprite.phy_cur, 0);
+        savePlayerData();
     }
     #endregion
 }

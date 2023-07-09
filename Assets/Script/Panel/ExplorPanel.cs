@@ -13,6 +13,8 @@ public class ExplorPanel : PanelBase
     public Button cardset;
 
     public Button goBtn;
+    public Button back;
+    public Button dayReward;
 
     ExplorData _data;
     public override void init()
@@ -26,6 +28,8 @@ public class ExplorPanel : PanelBase
         base.registerEvent();  
         enter1.onClick.AddListener(clickEnter1);
         enter2.onClick.AddListener(clickEnter2);
+        back.onClick.AddListener(PanelManager.Instance.DisposePanel);
+        dayReward.onClick.AddListener(showDayTips);
     }
     public override void reshow()
     {
@@ -66,6 +70,11 @@ public class ExplorPanel : PanelBase
     void clickEnter2()
     {
         //森林小径
+    }
+
+    void showDayTips()
+    {
+         
     }
 
     //文案    9

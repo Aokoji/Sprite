@@ -36,12 +36,19 @@ public class ExplorBattleMessPanel : PanelTopBase
         enemyIcon.sprite = GetSprite(A_AtlasNames.itemsIcon.ToString(), dat.titleIcon);
         enemyHp.text = dat.hpbase.ToString();
         enemyLevel.text = "难度："+dat.spritePower.ToString();
+        if (_data.stype == explorIcon.boss)
+        {
+            //+++
+        }
     }
     void clickRunBattle()
     {
         PanelManager.Instance.showTips2("确定放弃战斗返回哨站吗？", () =>
         {
-            PanelManager.Instance.JumpPanelScene(E_UIPrefab.MainPanel, () => { EventAction.Instance.TriggerAction(eventType.jumpMainExplor); });
+            PanelManager.Instance.JumpPanelScene(E_UIPrefab.MainPanel, () =>
+            {
+                EventAction.Instance.TriggerAction(eventType.jumpMainExplor);
+            });
         });
     }
     void clickBattleGo()
