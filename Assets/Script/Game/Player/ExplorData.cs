@@ -11,4 +11,5 @@ public class ExplorData : BaseData
     public List<OfferData> offer=new List<OfferData>();
     public List<int> daygift = new List<int>(); //宝箱id
     public int dayboss; //通关奖励宝箱
+    public int dayboss_short;
 }

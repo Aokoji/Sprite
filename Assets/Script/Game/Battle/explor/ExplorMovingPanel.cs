@@ -12,6 +12,12 @@ public class ExplorMovingPanel : PanelBase
     public GameObject pointClone;
     public DirectionHelp directhelp;
 
+    public Image spicon;
+    public Text curphutext;
+    public Button bagextra;
+
+    public Button runbtn;
+
     List<GameObject> points;
     List<GameObject> lines;     //统一销毁
     public override void init()
@@ -19,12 +25,25 @@ public class ExplorMovingPanel : PanelBase
         base.init();
         points = new List<GameObject>();
         lines = new List<GameObject>();
+        spicon.sprite = GetSprite(A_AtlasNames.itemsIcon.ToString(), PlayerManager.Instance.cursprite.icon);
         initCalculate();
+        refreshData();
     }
     public override void registerEvent()
     {
         base.registerEvent();
+        bagextra.onClick.AddListener(bagsitempage);
+        runbtn.onClick.AddListener(clickRun);
         EventAction.Instance.AddEventGather<bool>(eventType.explorGoNextRank_B, rankFinished);
+    }
+    public override void reshow()
+    {
+        base.reshow();
+        refreshData();
+    }
+    void refreshData()
+    {
+        curphutext.text = PlayerManager.Instance.cursprite.phy_cur + "/" + PlayerManager.Instance.cursprite.phy_max;
     }
     public void rankFinished(bool finish)
     {
@@ -58,7 +77,21 @@ public class ExplorMovingPanel : PanelBase
             });
         }
     }
+    void bagsitempage()
+    {
+        PanelManager.Instance.OpenPanel(E_UIPrefab.ExplorMovingPackage);
+    }
+    void clickRun()
+    {
+        PanelManager.Instance.showTips2("确定要返回哨站吗？", () =>
+        {
+            PanelManager.Instance.JumpPanelScene(E_UIPrefab.MainPanel, () =>
+            {
+                EventAction.Instance.TriggerAction(eventType.jumpMainExplor);
+            });
+        });
 
+    }
     #region calculate
     //棋盘        3x3 4x4 5x4 5x5 5x6 6x6 
     Vector2 curPos;

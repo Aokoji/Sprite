@@ -12,7 +12,7 @@ public class BattleManager : CSingel<BattleManager>
         refreshBattleData();
     }
 
-    public void EnterBattle(int enemy)
+    public void EnterBattle(int enemy,explorIcon stype=explorIcon.battle)
     {
         ctrl = new BattleControl();
         refreshBattleData();
@@ -20,6 +20,11 @@ public class BattleManager : CSingel<BattleManager>
     }
 
     private void refreshBattleData()
+    {
+
+    }
+
+    public void endreward(int id)
     {
 
     }

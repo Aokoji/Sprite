@@ -32,6 +32,7 @@ public enum E_UIPrefab
     ExplorMovingPanel,      //探索地图
     ExplorBattleMessPanel,      //准备战斗
     ExplorGatherMessPanel,
+    ExplorMovingPackage,    //探险背包
     FarmPanel,
     SpringPanel,        //魔力之泉
 

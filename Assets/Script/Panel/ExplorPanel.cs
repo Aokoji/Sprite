@@ -59,6 +59,10 @@ public class ExplorPanel : PanelBase
                 else
                     offers[i].gameObject.SetActive(false);
             }
+            if (PlayerManager.Instance.getExplorData().dayboss > 0)
+                dayReward.GetComponent<Image>().sprite = GetSprite(A_AtlasNames.itemsIcon.ToString(), "");
+            else
+                dayReward.GetComponent<Image>().sprite = GetSprite(A_AtlasNames.itemsIcon.ToString(), "");
         });
     }
 

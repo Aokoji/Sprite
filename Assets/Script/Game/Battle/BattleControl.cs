@@ -416,6 +416,11 @@ public class BattleControl :Object
     }
     private void gamesettle()
     {//游戏结算
+        if (iswin)
+        {
+            //计算enemy奖励
+            BattleManager.Instance.endreward(enemy.id);
+        }
         ui.gameSettle(iswin);
     }
     #endregion
