@@ -1408,3 +1408,18 @@ MonoBehaviour:
     cost: 1
     limitcount: 99
     level: 1
+  - id: 94
+    sname: "\u6D4B\u8BD5\u5361\u724C"
+    sDescribe: "30\u4F24\u5BB3\uFF0C\u724C\u9996"
+    type1: 2
+    type2: 0
+    limit: 0
+    conditionType1: 1
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 30
+    damage2: 0
+    damage3: 0
+    cost: 0
+    limitcount: 5
+    level: 0

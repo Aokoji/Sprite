@@ -58,11 +58,12 @@ public class CardsetPanel : PanelBase
         var carddic = PlayerManager.Instance.spriteLevelCardDic;
         var prefab = PanelManager.Instance.LoadUI(E_UIPrefab.cardShow, CARDPATH);
         scroll.initConfig(150, 200, prefab.gameObject);
+        scrollsp.initConfig(150, 200, prefab.gameObject);
         foreach (var item in Config_t_DataCard._data)
         {
             if (item.Value.limitcount == 99) continue;
             if (item.Value.type1 != CardType1.take && item.Value.type1 != CardType1.untaken) continue;
-            if (item.Value.level > carddic[item.Value.limit]) continue;
+            if (!carddic.ContainsKey(item.Value.limit) || item.Value.level > carddic[item.Value.limit]) continue;
             //添卡
             var card = scroll.addItemDefault().GetComponent<CardSetEntity>();
             card.initData(item.Value, GameManager.isAllCardOpen ? 2 : PlayerManager.Instance.playerMakenDic[item.Key], this);

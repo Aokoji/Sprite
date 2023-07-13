@@ -7,7 +7,7 @@ public class GameManager : CSingel<GameManager>
 {
     public static bool isAllCardOpen = true;    //开放所有卡
     public static bool isOpenGuide = false;  //引导
-
+    public static int testCardFront = 94;   //测试卡牌牌首
     public void initManager()
     {
         RunSingel.Instance.runTimer(managerInit());

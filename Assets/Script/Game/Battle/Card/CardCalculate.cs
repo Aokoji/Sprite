@@ -11,7 +11,7 @@ public class CardCalculate
         Queue<int> result = new Queue<int>();
         for (int i = 0; i < list.Count; i++)
         {
-            if (list[i] == ConfigConst.dealcard_blessed || list[i] == ConfigConst.dealcard_blessGod)
+            if (list[i] == ConfigConst.dealcard_blessed || list[i] == ConfigConst.dealcard_blessGod || list[i] == GameManager.testCardFront)
             {
                 result.Enqueue(list[i]);
                 list.RemoveAt(i);
