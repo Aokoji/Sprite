@@ -14,7 +14,7 @@ public class BattleControl :Object
         loadSuccess = false;
         registerEvent();
         getPlayerCardData();
-        player = PlayerManager.Instance.cursprite.Copy();
+        player = PlayerManager.Instance.getcursprite().Copy();
         enemy = EnemyCalculate.GetEnemyData(en);
         player.refreshData();
         enemy.refreshData();
@@ -425,6 +425,10 @@ public class BattleControl :Object
     }
     #endregion
 
+    public void dispose()
+    {
+        ui.Dispose();
+    }
     #region  卡牌操作判断
 
     #endregion

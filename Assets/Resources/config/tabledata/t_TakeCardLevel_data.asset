@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 292d4ebe911cf5040b83ed004a23b15c, type: 3}
+  m_Name: t_TakeCardLevel_data
+  m_EditorClassIdentifier: 
+  asset:
+  - id: 1
+    sname: "\u82B1\u5996\u7CBE"
+    normal: 2
+    fire: 0
+    water: 8
+    thunder: 2
+    forest: 4
+    arcane: 0
+    goden: 1
+  - id: 2
+    sname: "\u9E1F\u5996\u7CBE"
+    normal: 2
+    fire: 8
+    water: 0
+    thunder: 5
+    forest: 1
+    arcane: 0
+    goden: 1
+  - id: 3
+    sname: "\u53F6\u5996\u7CBE"
+    normal: 2
+    fire: 0
+    water: 3
+    thunder: 0
+    forest: 9
+    arcane: 2
+    goden: 1
+  - id: 4
+    sname: "\u6708\u5996\u7CBE"
+    normal: 2
+    fire: 2
+    water: 5
+    thunder: 0
+    forest: 1
+    arcane: 7
+    goden: 1
+  - id: 5
+    sname: "\u5149\u5996\u7CBE"
+    normal: 2
+    fire: 3
+    water: 0
+    thunder: 10
+    forest: 0
+    arcane: 0
+    goden: 1

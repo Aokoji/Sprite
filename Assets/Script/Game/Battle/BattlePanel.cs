@@ -41,6 +41,8 @@ public class BattlePanel : PanelBase
     public GameObject enemyExtra;
     public GameObject enemyExtra2;
 
+    public GameObject battleSettle;
+
     private Queue<int> playerque;
     private Queue<int> enemyque;
 
@@ -70,6 +72,7 @@ public class BattlePanel : PanelBase
     {
         player = player_data;
         enemy = enemy_data;
+        battleSettle.SetActive(false);
         getPlayerNewCardQue();
         getEnemyNewCardQue();
         refreshPlayerData();
@@ -96,7 +99,7 @@ public class BattlePanel : PanelBase
         else
         {
             //默认牌组
-            var cards = Config_t_DefaultCardGroup.getOne(PlayerManager.Instance.cursprite.takeDefaultCardsID);
+            var cards = Config_t_DefaultCardGroup.getOne(PlayerManager.Instance.getcursprite().takeDefaultCardsID);
             string[] ids = cards.cardlist.Split('|');
             list = new List<int>();
             for (int i = 0; i < ids.Length; i++)
@@ -646,9 +649,12 @@ public class BattlePanel : PanelBase
     }
     public void gameSettle(bool iswin)
     {
-        PanelManager.Instance.showTips1("游戏结束");
+        //播放动画，然后出结算
+        //战斗胜利弹窗
         PanelManager.Instance.panelLock();
-        EventAction.Instance.TriggerAction(eventType.explorGoNextRank_B, true);
-        RunSingel.Instance.laterDo(1.5f, ()=>{ PanelManager.Instance.OpenPanel(E_UIPrefab.MainPanel);});
+        AnimationTool.playAnimation(battleSettle, iswin ? "winsettle" : "losesettle", false, () =>
+        {
+            BattleManager.Instance.settleStep(iswin);
+        });
     }
 }

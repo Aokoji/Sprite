@@ -22,6 +22,10 @@ MonoBehaviour:
     hpbase: 20
     costmax: 3
     spritePower: 7
+    drop: 0
+    dropRare: 0
+    volume: 0
+    odds: 0
   - id: 2
     sname: "\u9E1F\u5996\u7CBE"
     defaultCard: 1
@@ -31,6 +35,10 @@ MonoBehaviour:
     hpbase: 16
     costmax: 3
     spritePower: 10
+    drop: 0
+    dropRare: 0
+    volume: 0
+    odds: 0
   - id: 3
     sname: "\u53F6\u5996\u7CBE"
     defaultCard: 1
@@ -40,6 +48,10 @@ MonoBehaviour:
     hpbase: 25
     costmax: 3
     spritePower: 8
+    drop: 0
+    dropRare: 0
+    volume: 0
+    odds: 0
   - id: 4
     sname: "\u6708\u5996\u7CBE"
     defaultCard: 1
@@ -49,6 +61,10 @@ MonoBehaviour:
     hpbase: 22
     costmax: 3
     spritePower: 14
+    drop: 0
+    dropRare: 0
+    volume: 0
+    odds: 0
   - id: 5
     sname: "\u5149\u5996\u7CBE"
     defaultCard: 1
@@ -58,6 +74,10 @@ MonoBehaviour:
     hpbase: 30
     costmax: 3
     spritePower: 5
+    drop: 0
+    dropRare: 0
+    volume: 0
+    odds: 0
   - id: 6
     sname: "\u80E1\u8702"
     defaultCard: 2
@@ -67,6 +87,10 @@ MonoBehaviour:
     hpbase: 0
     costmax: 3
     spritePower: 2
+    drop: 1
+    dropRare: 0
+    volume: 0
+    odds: 0
   - id: 7
     sname: "\u8611\u83C7\u602A"
     defaultCard: 2
@@ -76,6 +100,10 @@ MonoBehaviour:
     hpbase: 0
     costmax: 3
     spritePower: 3
+    drop: 1
+    dropRare: 0
+    volume: 0
+    odds: 0
   - id: 8
     sname: "\u68D5\u718A"
     defaultCard: 2
@@ -85,6 +113,10 @@ MonoBehaviour:
     hpbase: 0
     costmax: 3
     spritePower: 5
+    drop: 1
+    dropRare: 0
+    volume: 0
+    odds: 0
   - id: 9
     sname: "\u51F6\u6076\u7684\u8C7A\u72FC"
     defaultCard: 2
@@ -94,6 +126,10 @@ MonoBehaviour:
     hpbase: 0
     costmax: 3
     spritePower: 4
+    drop: 1
+    dropRare: 0
+    volume: 0
+    odds: 0
   - id: 10
     sname: "\u987D\u76AE\u7684\u6A58\u679C"
     defaultCard: 2
@@ -103,6 +139,10 @@ MonoBehaviour:
     hpbase: 0
     costmax: 3
     spritePower: 1
+    drop: 1
+    dropRare: 0
+    volume: 0
+    odds: 0
   - id: 11
     sname: "\u56FA\u6267\u7684\u6A61\u679C"
     defaultCard: 2
@@ -112,3 +152,7 @@ MonoBehaviour:
     hpbase: 0
     costmax: 3
     spritePower: 1
+    drop: 1
+    dropRare: 0
+    volume: 0
+    odds: 0

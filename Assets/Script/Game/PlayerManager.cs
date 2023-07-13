@@ -9,11 +9,12 @@ public class PlayerManager : CSingel<PlayerManager>
     //PlayerAsset playerAsset;
     PlayerData playerdata; //元数据
     //  ------------    解析数据
-    public SpriteData cursprite;
+    private SpriteData cursprite;
     public Dictionary<int, SpriteData> spriteList{ get; private set; }
     public Dictionary<int,int> playerMakenDic { get; private set; }
     public Dictionary<int,int> playerItemDic { get; private set; }
 
+    public Dictionary<CardSelfType, int> spriteLevelCardDic;
     public bool loadsuccess;
 
     public void init()
@@ -27,12 +28,14 @@ public class PlayerManager : CSingel<PlayerManager>
         spriteList = new Dictionary<int, SpriteData>();
         playerMakenDic = new Dictionary<int, int>();
         playerItemDic = new Dictionary<int, int>();
+        spriteLevelCardDic = new Dictionary<CardSelfType, int>();
         loadTestCardData();
         //初始化sprite         *******************************************     初始化字典数据     ***************************
         playerdata.mill.paddingLv();
-        playerdata.sprites.ForEach(item => { if (item.id == playerdata.curSprite) cursprite = item; spriteList.Add(item.id, item); });
+        playerdata.sprites.ForEach(item => { spriteList.Add(item.id, item); });
         playerdata.playerAllCards.ForEach((item) => { playerMakenDic.Add(item.id, item.num); });
         playerdata.items.ForEach(item => { playerItemDic.Add(item.id, item.num); });
+        changeSprite(playerdata.curSprite);
         loadsuccess = true;
     }
     
@@ -68,7 +71,24 @@ public class PlayerManager : CSingel<PlayerManager>
             Debug.Log(playerdata.travel.quest[0].endTime);
         AssetManager.saveJson(S_SaverNames.pdata.ToString(), playerdata); 
     }
-
+    public SpriteData getcursprite(){ return cursprite; }
+    public void changeSprite(int id)
+    {
+        playerdata.curSprite = id;
+        cursprite = spriteList[id];
+        calculateCardLevel();
+    }
+    void calculateCardLevel()
+    {
+        var data = Config_t_TakeCardLevel.getOne(cursprite.id);
+        spriteLevelCardDic[CardSelfType.normal] = data.normal;
+        spriteLevelCardDic[CardSelfType.fire] = data.fire;
+        spriteLevelCardDic[CardSelfType.water] = data.water;
+        spriteLevelCardDic[CardSelfType.thunder] = data.thunder;
+        spriteLevelCardDic[CardSelfType.forest] = data.forest;
+        spriteLevelCardDic[CardSelfType.arcane] = data.arcane;
+        spriteLevelCardDic[CardSelfType.goden] = data.goden;
+    }
     public List<int> getPlayerCards()
     {
         return playerdata.playerCards;

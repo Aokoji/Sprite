@@ -7,6 +7,7 @@ public class ItemData
 {
     public int id;
     public int num;
+    public int rare;
     public ItemData(int tid,int tnum)
     {
         id = tid;

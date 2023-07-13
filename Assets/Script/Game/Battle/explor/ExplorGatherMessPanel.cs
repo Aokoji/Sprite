@@ -50,12 +50,12 @@ public class ExplorGatherMessPanel : PanelTopBase
 
     void clickTakeBtn()
     {
-        if (PlayerManager.Instance.cursprite.phy_cur < 1)
+        if (PlayerManager.Instance.getcursprite().phy_cur < 1)
         {
             PanelManager.Instance.showTips3("妖精体力不足！");
             return;
         }
-        PlayerManager.Instance.cursprite.phy_cur -= 1;
+        PlayerManager.Instance.getcursprite().phy_cur -= 1;
         var reward = new List<ItemData>() { _data.sbox };
         PlayerManager.Instance.addItems(reward);
         PanelManager.Instance.showTips3("妖精体力-1");

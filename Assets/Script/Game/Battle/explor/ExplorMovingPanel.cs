@@ -20,12 +20,15 @@ public class ExplorMovingPanel : PanelBase
 
     List<GameObject> points;
     List<GameObject> lines;     //统一销毁
+    SpriteData cursp;
     public override void init()
     {
         base.init();
         points = new List<GameObject>();
         lines = new List<GameObject>();
-        spicon.sprite = GetSprite(A_AtlasNames.itemsIcon.ToString(), PlayerManager.Instance.cursprite.icon);
+        PlayerManager.Instance.getExplorData().dayboss_short = 0;
+        cursp = PlayerManager.Instance.getcursprite();
+        spicon.sprite = GetSprite(A_AtlasNames.itemsIcon.ToString(), cursp.icon);
         initCalculate();
         refreshData();
     }
@@ -43,7 +46,7 @@ public class ExplorMovingPanel : PanelBase
     }
     void refreshData()
     {
-        curphutext.text = PlayerManager.Instance.cursprite.phy_cur + "/" + PlayerManager.Instance.cursprite.phy_max;
+        curphutext.text = cursp.phy_cur + "/" + cursp.phy_max;
     }
     public void rankFinished(bool finish)
     {
@@ -51,14 +54,28 @@ public class ExplorMovingPanel : PanelBase
         {
             if (currank.stype == explorIcon.boss)
             {
-                //奖励
-                PanelManager.Instance.showTips5("探索完成，获得首次奖励", new List<ItemData>() { new ItemData(PlayerManager.Instance.getExplorData().dayboss, 1) }, () =>
+                var data = PlayerManager.Instance.getExplorData();
+                if (data.dayboss_short > 0)
                 {
-                    PanelManager.Instance.JumpPanelScene(E_UIPrefab.MainPanel, () =>
+                    PanelManager.Instance.showTips5("探索完成，获得每日奖励", new List<ItemData>() { new ItemData(data.dayboss_short, 1) }, () =>
                     {
-                        EventAction.Instance.TriggerAction(eventType.jumpMainExplor);
+                        data.dayboss_short = 0;
+                        PanelManager.Instance.JumpPanelScene(E_UIPrefab.MainPanel, () =>
+                        {
+                            EventAction.Instance.TriggerAction(eventType.jumpMainExplor);
+                        });
                     });
-                });
+                }
+                else
+                {
+                    PanelManager.Instance.showTips5("探索完成", "即将返回哨站", () =>
+                    {
+                        PanelManager.Instance.JumpPanelScene(E_UIPrefab.MainPanel, () =>
+                        {
+                            EventAction.Instance.TriggerAction(eventType.jumpMainExplor);
+                        });
+                    });
+                }
             }
             else
             {
@@ -125,7 +142,7 @@ public class ExplorMovingPanel : PanelBase
     }
     void directHelpCallBack(int id)
     {
-        if (PlayerManager.Instance.cursprite.phy_cur < 2)
+        if (cursp.phy_cur < 2)
         {
             //体力不足
             PanelManager.Instance.showTips3("妖精体力不足！");
@@ -272,7 +289,7 @@ public class ExplorMovingPanel : PanelBase
         }
         else if (currank.stype == explorIcon.rest)
         {
-            PlayerManager.Instance.restCurSprite(PlayerManager.Instance.cursprite.phy_max/5);
+            PlayerManager.Instance.restCurSprite(cursp.phy_max/5);
             PanelManager.Instance.showTips5("稍作休息", "在魔力浓郁的地方休息了一会，恢复了20%的体力", () =>
             {
                 EventAction.Instance.TriggerAction(eventType.explorGoNextRank_B, true);

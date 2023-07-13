@@ -47,7 +47,7 @@ public class CardsetPanel : PanelBase
         PanelManager.Instance.LoadingShow(true);
         ischanged = false;
         cardcopy = new List<int>(PlayerManager.Instance.getPlayerCards());
-        maxmana = PlayerManager.Instance.cursprite.spritePower;
+        maxmana = PlayerManager.Instance.getcursprite().spritePower;
         istoggleNormal = true;
         justBarIndex = -1;
         refreshToggleBtn();
@@ -55,12 +55,14 @@ public class CardsetPanel : PanelBase
     }
     IEnumerator initScrollData()
     {
+        var carddic = PlayerManager.Instance.spriteLevelCardDic;
         var prefab = PanelManager.Instance.LoadUI(E_UIPrefab.cardShow, CARDPATH);
         scroll.initConfig(150, 200, prefab.gameObject);
         foreach (var item in Config_t_DataCard._data)
         {
             if (item.Value.limitcount == 99) continue;
             if (item.Value.type1 != CardType1.take && item.Value.type1 != CardType1.untaken) continue;
+            if (item.Value.level > carddic[item.Value.limit]) continue;
             //添卡
             var card = scroll.addItemDefault().GetComponent<CardSetEntity>();
             card.initData(item.Value, GameManager.isAllCardOpen ? 2 : PlayerManager.Instance.playerMakenDic[item.Key], this);
@@ -70,6 +72,7 @@ public class CardsetPanel : PanelBase
         {
             if (item.Value.limitcount == 99) continue;
             if (item.Value.type1 == CardType1.take || item.Value.type1 == CardType1.untaken) continue;
+            if (item.Value.level > carddic[item.Value.limit]) continue;
             //添卡
             var card = scrollsp.addItemDefault().GetComponent<CardSetEntity>();
             card.initData(item.Value, GameManager.isAllCardOpen ? 2 : PlayerManager.Instance.playerMakenDic[item.Key], this);

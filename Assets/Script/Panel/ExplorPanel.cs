@@ -12,9 +12,10 @@ public class ExplorPanel : PanelBase
     public ExplorQuestBar[] offers; //四个告示      悬赏/交易/
     public Button cardset;
 
-    public Button goBtn;
     public Button back;
     public Button dayReward;
+
+    public Button setCardBtn;
 
     ExplorData _data;
     public override void init()
@@ -30,6 +31,7 @@ public class ExplorPanel : PanelBase
         enter2.onClick.AddListener(clickEnter2);
         back.onClick.AddListener(PanelManager.Instance.DisposePanel);
         dayReward.onClick.AddListener(showDayTips);
+        setCardBtn.onClick.AddListener(showCardset);
     }
     public override void reshow()
     {
@@ -80,7 +82,10 @@ public class ExplorPanel : PanelBase
     {
          
     }
-
+    void showCardset()
+    {
+        PanelManager.Instance.OpenPanel(E_UIPrefab.CardsetPanel);
+    }
     //文案    9
     //今天的迷雾格外浓厚，实在是无法深入呢。
     //迷雾较为浓厚，在周边小心探索为好。 4关
