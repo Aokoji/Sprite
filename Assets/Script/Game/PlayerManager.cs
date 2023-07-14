@@ -371,6 +371,7 @@ public class PlayerManager : CSingel<PlayerManager>
         //填充day奖励   根据地图+++
         playerdata.explor.daygift.Add(2);
         playerdata.explor.daygift.Add(3);
+        playerdata.explor.dayboss = 27;
     }
     public void restCurSprite(int num)
     {

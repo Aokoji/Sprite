@@ -25,6 +25,11 @@ public class TravelPanel : PanelTopBase
         backBtn.onClick.AddListener(PanelManager.Instance.DisposePanel);
         EventAction.Instance.AddEventGather(eventType.spriteTravelBackRefresh, refreshTravels);
     }
+    public override void unregisterEvent()
+    {
+        base.unregisterEvent();
+        EventAction.Instance.RemoveAction(eventType.spriteTravelBackRefresh, refreshTravels);
+    }
     public void initData()
     {
         travelAllow = true;

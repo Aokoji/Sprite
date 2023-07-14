@@ -84,12 +84,12 @@ MonoBehaviour:
     titleIcon: en_wasp
     wholeIcon: 0
     phybase: 0
-    hpbase: 0
+    hpbase: 15
     costmax: 3
     spritePower: 2
-    drop: 1
+    drop: 2|3
     dropRare: 0
-    volume: 0
+    volume: 1
     odds: 0
   - id: 7
     sname: "\u8611\u83C7\u602A"
@@ -97,12 +97,12 @@ MonoBehaviour:
     titleIcon: en_mush
     wholeIcon: 0
     phybase: 0
-    hpbase: 0
+    hpbase: 18
     costmax: 3
     spritePower: 3
-    drop: 1
+    drop: 33|36|39
     dropRare: 0
-    volume: 0
+    volume: 2
     odds: 0
   - id: 8
     sname: "\u68D5\u718A"

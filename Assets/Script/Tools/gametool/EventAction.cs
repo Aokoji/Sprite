@@ -42,7 +42,7 @@ namespace customEvent
         }
         public void AddEventGather<T>(eventType arg, act<T> action)
         {
-            Debug.Log(typeof(T).ToString());
+            //Debug.Log(typeof(T).ToString());
             if (!eventGather.ContainsKey(arg))
                 eventGather.Add(arg, null);
             eventGather[arg] = (act<T>)eventGather[arg] + action;

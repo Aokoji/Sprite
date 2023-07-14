@@ -14,12 +14,12 @@ public class BattleManager : CSingel<BattleManager>
         refreshBattleData();
     }
 
-    public void EnterBattle(int enemy,explorIcon stype=explorIcon.battle)
+    public void EnterBattle(int enemy, bool ischange = false, explorIcon stype=explorIcon.battle)
     {
         ctrl = new BattleControl();
         curtype = stype;
         refreshBattleData();
-        ctrl.newbattle(enemy);
+        ctrl.newbattle(enemy,ischange);
     }
 
     private void refreshBattleData()
@@ -34,7 +34,11 @@ public class BattleManager : CSingel<BattleManager>
 
         var data = Config_t_ActorMessage.getOne(id);
         System.Random random = new System.Random();
-        int num = random.Next(-1, 1) + data.volume;
+        int num;
+        if (data.volume == 1 || data.volume == 0) 
+            num = data.volume;
+        else
+            num = random.Next(-1, 1) + data.volume;
         if (random.Next(1000) <= data.odds)
         {
             num--;
@@ -49,12 +53,14 @@ public class BattleManager : CSingel<BattleManager>
         for(int i = 0; i < num; i++)
         {
             index = int.Parse(str[random.Next(str.Length)]);
-            if (list.ContainsKey(index))
+            if (!list.ContainsKey(index))
                 list[index] = 0;
             list[index]++;
         }
         foreach(var i in list)
+        {
             result.Add(new ItemData(i.Key, i.Value));
+        }
 
         if (curtype == explorIcon.boss)
         {

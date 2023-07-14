@@ -53,6 +53,6 @@ public class ExplorBattleMessPanel : PanelTopBase
     }
     void clickBattleGo()
     {
-        BattleManager.Instance.EnterBattle(_data.enemyID,_data.stype);
+        BattleManager.Instance.EnterBattle(_data.enemyID, true, _data.stype);
     }
 }

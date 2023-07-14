@@ -118,7 +118,6 @@ public class PanelManager : CSingel<PanelManager>
             curEnmu = "";
             curPanel = null;
         }
-
     }
 
     public UIBase LoadUI(E_UIPrefab pop,string custompath,Transform parent=null)

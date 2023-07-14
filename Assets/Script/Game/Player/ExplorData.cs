@@ -7,6 +7,7 @@ public class ExplorData : BaseData
 {
     public int mapType; //今日地图
     public string savetime;
+    public List<int> explorBag = new List<int>();
 
     public List<OfferData> offer=new List<OfferData>();
     public List<int> daygift = new List<int>(); //宝箱id

@@ -10,6 +10,7 @@ public class TipPop5 : TipsBase
     public GameObject cloneBar;
     public UITool_ScrollView scroll;
     public Button ok;
+    bool iscut;
     private void Start()
     {
         ok.onClick.AddListener(clickok);
@@ -18,6 +19,9 @@ public class TipPop5 : TipsBase
     public override void init(string title, List<ItemData> whatthing, Action act)
     {
         allowClick = false;
+        iscut = false;
+        if (callback != null)
+            iscut = true;
         callback = act;
         titleText.text = title;
         cloneBar.SetActive(false);
@@ -43,8 +47,10 @@ public class TipPop5 : TipsBase
     void clickok()
     {
         if (!allowClick) return;
-        callback?.Invoke();
-        callback = null;
         gameObject.SetActive(false);
+        callback?.Invoke();
+        if(!iscut)
+            callback = null;
+        iscut = false;
     }
 }

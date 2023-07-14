@@ -21,7 +21,7 @@ public class PlayerData
     public MillData mill;
     public MarkData mark;
     public ExplorData explor;
-    public List<int> learndPlan;
+    public List<int> learndPlan;    //学会的设计图
 
     public int specialMarkNum;  //白给商店钱
     public void initdata()

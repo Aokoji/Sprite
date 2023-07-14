@@ -55,6 +55,11 @@ public class TravelSpriteMessagePanel : PanelTopBase
         }
         EventAction.Instance.AddEventGather<int>(eventType.spriteTravelComplete_I, travelComplete);
     }
+    public override void unregisterEvent()
+    {
+        base.unregisterEvent();
+        EventAction.Instance.RemoveAction<int>(eventType.spriteTravelComplete_I, travelComplete);
+    }
     IEnumerator initScrollData()
     {
         scroll.initConfig(455, 100, clone.gameObject);

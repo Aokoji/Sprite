@@ -10,12 +10,17 @@ public class ExplorPanel : PanelBase
     public Button enter1;
     public Button enter2;
     public ExplorQuestBar[] offers; //四个告示      悬赏/交易/
-    public Button cardset;
 
     public Button back;
     public Button dayReward;
 
+    public Image _spicon;
+    public Text _sname;
+    public Text _curhp;
+    public Text _curphy;
     public Button setCardBtn;
+    public Text _curbag;
+    public Button setBagBtn;
 
     ExplorData _data;
     public override void init()
@@ -32,6 +37,7 @@ public class ExplorPanel : PanelBase
         back.onClick.AddListener(PanelManager.Instance.DisposePanel);
         dayReward.onClick.AddListener(showDayTips);
         setCardBtn.onClick.AddListener(showCardset);
+        setBagBtn.onClick.AddListener(showBagset);
     }
     public override void reshow()
     {
@@ -66,6 +72,13 @@ public class ExplorPanel : PanelBase
             else
                 dayReward.GetComponent<Image>().sprite = GetSprite(A_AtlasNames.itemsIcon.ToString(), "");
         });
+        //当前状态（不需要时间
+        var cursp = PlayerManager.Instance.getcursprite();
+        _spicon.sprite = GetSprite(A_AtlasNames.itemsIcon.ToString(), cursp.icon);
+        _sname.text = cursp.sname;
+        _curhp.text= cursp.hp_cur + "/" + cursp.hp_max;
+        _curphy.text= cursp.phy_cur + "/" + cursp.phy_max;
+        _curbag.text = PlayerManager.Instance.getExplorData().explorBag.Count+"/5";  //负重上限暂时为5
     }
 
     void clickEnter1()
@@ -85,6 +98,10 @@ public class ExplorPanel : PanelBase
     void showCardset()
     {
         PanelManager.Instance.OpenPanel(E_UIPrefab.CardsetPanel);
+    } 
+    void showBagset()
+    {
+        PanelManager.Instance.OpenPanel(E_UIPrefab.ExplorBagSetPanel);
     }
     //文案    9
     //今天的迷雾格外浓厚，实在是无法深入呢。

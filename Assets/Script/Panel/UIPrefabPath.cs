@@ -33,6 +33,7 @@ public enum E_UIPrefab
     ExplorBattleMessPanel,      //准备战斗
     ExplorGatherMessPanel,
     ExplorMovingPackage,    //探险背包
+    ExplorBagSetPanel,  //准备背包
     FarmPanel,
     SpringPanel,        //魔力之泉
 

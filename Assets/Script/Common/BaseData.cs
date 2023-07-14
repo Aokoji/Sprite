@@ -95,8 +95,8 @@ public enum ItemsType
 {
     none,       //货币类
     material,   //材料    1
-    consum,     //消耗品   3(直接消耗)
-    card,   //卡片    4
+    consum,     //消耗品   2(直接消耗)
+    card,   //卡片    3
 }
 public enum ItemType2
 {
@@ -106,8 +106,9 @@ public enum ItemType2
     build,      //建材    3
     plan,   //设计图   4
     happy,      //精灵玩具  5
-    stone,  //魔石
-    food,       //食物
+    stone,  //魔石    6
+    food,       //食物    7
+    box,        //礼盒    8
 }
 public enum explorType
 {

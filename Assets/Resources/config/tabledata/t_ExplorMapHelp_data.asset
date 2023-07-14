@@ -22,11 +22,11 @@ MonoBehaviour:
     connection: 0-4|4-7|7-11
     startPos: 0
     bossPos: 11
-    boxPool: 1
-    enemyPool: 1
+    boxPool: 45
+    enemyPool: 6
     gatherPool: 27|21|15
-    bossPool: 1
-    mapGiftPool: 1
+    bossPool: 7
+    mapGiftPool: 48
   - id: 2
     mapwidth: 3
     mapheight: 3
@@ -36,8 +36,8 @@ MonoBehaviour:
     connection: 0-1|1-5|5-8
     startPos: 0
     bossPos: 8
-    boxPool: 1
-    enemyPool: 1
+    boxPool: 45
+    enemyPool: 6
     gatherPool: 27|21|15
-    bossPool: 1
-    mapGiftPool: 1
+    bossPool: 7
+    mapGiftPool: 48

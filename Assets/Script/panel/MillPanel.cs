@@ -56,6 +56,12 @@ public class MillPanel : PanelBase
         EventAction.Instance.AddEventGather(eventType.millShutMater, refreshMaterMill);
         EventAction.Instance.AddEventGather<bool,int,int>(eventType.millChange_BII, millchangeAction);
     }
+    public override void unregisterEvent()
+    {
+        base.unregisterEvent();
+        EventAction.Instance.RemoveAction(eventType.millShutMater, refreshMaterMill);
+        EventAction.Instance.RemoveAction<bool, int, int>(eventType.millChange_BII, millchangeAction);
+    }
     public override void init()
     {
         base.init();

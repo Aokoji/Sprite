@@ -39,6 +39,11 @@ public class ExplorMovingPanel : PanelBase
         runbtn.onClick.AddListener(clickRun);
         EventAction.Instance.AddEventGather<bool>(eventType.explorGoNextRank_B, rankFinished);
     }
+    public override void unregisterEvent()
+    {
+        base.unregisterEvent();
+        EventAction.Instance.RemoveAction<bool>(eventType.explorGoNextRank_B, rankFinished);
+    }
     public override void reshow()
     {
         base.reshow();
@@ -150,7 +155,7 @@ public class ExplorMovingPanel : PanelBase
         }
         PlayerManager.Instance.minusCurSprite(ConfigConst.explorMoveSpend);
         PanelManager.Instance.showTips3("妖精体力-" + ConfigConst.explorMoveSpend);
-
+        refreshData();
         currank.stype = explorIcon.outpost;
         //选项回调
         switch (id)

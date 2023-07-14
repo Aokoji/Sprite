@@ -7,11 +7,12 @@ public class BattleControl :Object
 {
     private BattlePanel ui;
     public bool loadSuccess = false;
-
+    bool dochange;
     #region 获取数据  加载的准备阶段
-    public void newbattle(int en)
+    public void newbattle(int en,bool ischange)
     {
         loadSuccess = false;
+        dochange = ischange;
         registerEvent();
         getPlayerCardData();
         player = PlayerManager.Instance.getcursprite().Copy();
@@ -34,13 +35,22 @@ public class BattleControl :Object
         EventAction.Instance.AddEventGather(eventType.playRoundNext, roundNext);
         EventAction.Instance.AddEventGather(eventType.panelChangeLoadingComplete, loadPanelComplete);
     }
+    void unregisterEvent()
+    {
+        EventAction.Instance.RemoveAction<List<CardEntity>>(eventType.roundEnd_C, settleRoundAction);
+        EventAction.Instance.RemoveAction(eventType.playRoundNext, roundNext);
+        EventAction.Instance.RemoveAction(eventType.panelChangeLoadingComplete, loadPanelComplete);
+    }
     private void getPlayerCardData()
     {
 
     }
     private void createPanel()
     {
-        PanelManager.Instance.ChangePanel(E_UIPrefab.BattlePanel);
+        if(dochange)
+            PanelManager.Instance.ChangePanel(E_UIPrefab.BattlePanel);
+        else
+            PanelManager.Instance.OpenPanel(E_UIPrefab.BattlePanel);
     }
     void loadPanelComplete()
     {
@@ -427,7 +437,8 @@ public class BattleControl :Object
 
     public void dispose()
     {
-        ui.Dispose();
+        unregisterEvent();
+        PanelManager.Instance.DisposePanel();
     }
     #region  卡牌操作判断
 
