@@ -18,9 +18,17 @@ public class ExplorMovingPanel : PanelBase
 
     public Button runbtn;
 
+    public GameObject extrabar;
+    public Button extraclose;
+    public Button extrabgClose;
+    public UITool_ScrollView scroll;
+    public GameObject clone;
+    //public List
+
     List<GameObject> points;
     List<GameObject> lines;     //统一销毁
     SpriteData cursp;
+    bool isrefreshScroll;   //避免同界面反复开
     public override void init()
     {
         base.init();
@@ -30,13 +38,17 @@ public class ExplorMovingPanel : PanelBase
         cursp = PlayerManager.Instance.getcursprite();
         spicon.sprite = GetSprite(A_AtlasNames.itemsIcon.ToString(), cursp.icon);
         initCalculate();
+        scroll.initConfig(1,1,clone);
         refreshData();
+        refreshScroll();
     }
     public override void registerEvent()
     {
         base.registerEvent();
         bagextra.onClick.AddListener(bagsitempage);
         runbtn.onClick.AddListener(clickRun);
+        extraclose.onClick.AddListener(closeExtraBar);
+        extrabgClose.onClick.AddListener(closeExtraBar);
         EventAction.Instance.AddEventGather<bool>(eventType.explorGoNextRank_B, rankFinished);
     }
     public override void unregisterEvent()
@@ -47,8 +59,39 @@ public class ExplorMovingPanel : PanelBase
     public override void reshow()
     {
         base.reshow();
+        isrefreshScroll = true;
         refreshData();
     }
+
+    #region quick bag
+    void refreshScroll()
+    {
+        StartCoroutine(reloadScroll());
+    }
+    IEnumerator reloadScroll()
+    {
+        scroll.recycleAll();
+        var list = PlayerManager.Instance.getExplorData();
+        for (int i = 0; i < list.explorBag.Count; i++)
+        {
+            var script = scroll.addItemDefault().GetComponent<ExplorQuickBagBar>();
+            script.onused = onusedBag;
+            script.setData(list.explorBag[i]);
+        }
+        scroll.reCalculateHeigh();
+        isrefreshScroll = false;
+        yield return null;
+    }
+    void onusedBag()
+    {
+        isrefreshScroll = true;
+
+    }
+    void closeExtraBar()
+    {
+        extrabar.SetActive(false);
+    }
+    #endregion
     void refreshData()
     {
         curphutext.text = cursp.phy_cur + "/" + cursp.phy_max;
@@ -101,7 +144,10 @@ public class ExplorMovingPanel : PanelBase
     }
     void bagsitempage()
     {
-        PanelManager.Instance.OpenPanel(E_UIPrefab.ExplorMovingPackage);
+        if(isrefreshScroll)
+            refreshScroll();
+        extrabar.SetActive(true);
+        //PanelManager.Instance.OpenPanel(E_UIPrefab.ExplorMovingPackage);
     }
     void clickRun()
     {

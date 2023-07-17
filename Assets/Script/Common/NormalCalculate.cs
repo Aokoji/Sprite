@@ -12,4 +12,13 @@ public class NormalCalculate
         //test
         return 50 + levelnow * (10 + 4 * levelnow);
     }
+    public static string propertyName(int index)
+    {
+        switch (index)
+        {
+            case 1:return "生命";
+            case 2:return "体力";
+            default:return "";
+        }
+    }
 }

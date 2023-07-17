@@ -97,6 +97,7 @@ public enum ItemsType
     material,   //材料    1
     consum,     //消耗品   2(直接消耗)
     card,   //卡片    3
+    magic,      //魔法书   4
 }
 public enum ItemType2
 {
@@ -109,6 +110,7 @@ public enum ItemType2
     stone,  //魔石    6
     food,       //食物    7
     box,        //礼盒    8
+    letter,     //卷轴    9
 }
 public enum explorType
 {
