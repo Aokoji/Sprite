@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class WorkshopPanel : PanelBase
+public class WorkshopPanel : PanelTopBase
 {
     public UITool_ScrollView scroll;
     public GameObject clone;
@@ -22,6 +22,7 @@ public class WorkshopPanel : PanelBase
     public Text[] contexts;
     public Button _make;
     public Button _Allmake;
+    public Button back;
 
     int curPanel;
     int curshowID;
@@ -48,6 +49,7 @@ public class WorkshopPanel : PanelBase
         typeConsum.onClick.AddListener(clickConsum);
         typeCard.onClick.AddListener(clickCard);
         typeMagic.onClick.AddListener(clickMagic);
+        back.onClick.AddListener(PanelManager.Instance.DisposePanel);
     }
 
     IEnumerator refreshScroll()

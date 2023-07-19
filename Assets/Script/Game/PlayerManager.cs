@@ -14,7 +14,7 @@ public class PlayerManager : CSingel<PlayerManager>
     public Dictionary<int,int> playerMakenDic { get; private set; }
     public Dictionary<int,int> playerItemDic { get; private set; }
 
-    public Dictionary<CardSelfType, int> spriteLevelCardDic;
+    public Dictionary<CardSelfType, int> spriteLevelCardDic;        //当前妖精卡片等级
     public bool loadsuccess;
 
     public void init()

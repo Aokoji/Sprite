@@ -93,7 +93,7 @@ public class ExplorPanel : PanelBase
 
     void showDayTips()
     {
-         
+         //+++
     }
     void showCardset()
     {

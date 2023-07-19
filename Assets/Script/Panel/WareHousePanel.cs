@@ -7,6 +7,11 @@ public class WareHousePanel : PanelTopBase
 {
     public UITool_ScrollView scroll;
     public GameObject clone;
+    public UITool_ScrollView cardScroll;
+    public GameObject cardClone;
+
+    public GameObject itembar;
+    public GameObject cardbar;
 
     public GameObject messageBar;
     public Image _icon;
@@ -17,12 +22,18 @@ public class WareHousePanel : PanelTopBase
     public Button _takeBtn;
     public Button _back;
 
+    public Button check1;
+    public Button check2;
+
     int curshowID;
     t_items curshowItem;
+    int curcheck;
     public override void init()
     {
         base.init();
+        setCheckBar(1);
         scroll.initConfig(80, 80, clone);
+        cardScroll.initConfig(80, 80, clone);
         StartCoroutine(refreshScroll());
     }
     public override void registerEvent()
@@ -30,9 +41,12 @@ public class WareHousePanel : PanelTopBase
         base.registerEvent();
         _takeBtn.onClick.AddListener(useItem);
         _back.onClick.AddListener(PanelManager.Instance.DisposePanel);
+        check1.onClick.AddListener(() => { setCheckBar(1); });
+        check2.onClick.AddListener(() => { setCheckBar(2); });
     }
     IEnumerator refreshScroll()
     {
+        //item scroll
         curshowID = 0;
         messageBar.SetActive(false);
         scroll.recycleAll();
@@ -43,6 +57,12 @@ public class WareHousePanel : PanelTopBase
             script.setData(i.Key, i.Value);
             script.initAction(onclickOneItem);
         }
+        yield return null;
+    }
+    IEnumerator refreshCardScroll()
+    {
+        cardScroll.recycleAll();
+        var data = PlayerManager.Instance.getPlayerCards();
         yield return null;
     }
 
@@ -65,6 +85,15 @@ public class WareHousePanel : PanelTopBase
         }
         _saleCount.text = "价值：" + curshowItem.pay;
         messageBar.SetActive(true);
+    }
+    void setCheckBar(int barnum)
+    {
+        if (curcheck == barnum) return;
+        curcheck = barnum;
+        itembar.SetActive(barnum==1);
+        cardbar.SetActive(barnum==2);
+        check1.GetComponent<Image>().color = barnum == 1 ? Color.white : Color.gray;
+        check2.GetComponent<Image>().color = barnum == 2 ? Color.white : Color.gray;
     }
     void useItem()
     {
