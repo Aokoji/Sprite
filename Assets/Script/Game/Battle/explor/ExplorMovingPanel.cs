@@ -19,7 +19,6 @@ public class ExplorMovingPanel : PanelBase
     public Button runbtn;
 
     public GameObject extrabar;
-    public Button extraclose;
     public Button extrabgClose;
     public UITool_ScrollView scroll;
     public GameObject clone;
@@ -38,16 +37,16 @@ public class ExplorMovingPanel : PanelBase
         cursp = PlayerManager.Instance.getcursprite();
         spicon.sprite = GetSprite(A_AtlasNames.itemsIcon.ToString(), cursp.icon);
         initCalculate();
-        scroll.initConfig(1,1,clone);
+        scroll.initConfig(200, 50, clone);
         refreshData();
         refreshScroll();
+        closeExtraBar();
     }
     public override void registerEvent()
     {
         base.registerEvent();
         bagextra.onClick.AddListener(bagsitempage);
         runbtn.onClick.AddListener(clickRun);
-        extraclose.onClick.AddListener(closeExtraBar);
         extrabgClose.onClick.AddListener(closeExtraBar);
         EventAction.Instance.AddEventGather<bool>(eventType.explorGoNextRank_B, rankFinished);
     }
@@ -89,6 +88,7 @@ public class ExplorMovingPanel : PanelBase
     }
     void closeExtraBar()
     {
+        extrabgClose.gameObject.SetActive(false);
         extrabar.SetActive(false);
     }
     #endregion
@@ -146,8 +146,8 @@ public class ExplorMovingPanel : PanelBase
     {
         if(isrefreshScroll)
             refreshScroll();
-        extrabar.SetActive(true);
-        //PanelManager.Instance.OpenPanel(E_UIPrefab.ExplorMovingPackage);
+        AnimationTool.playAnimation(extrabar, "movingBagShow");
+        extrabgClose.gameObject.SetActive(true);
     }
     void clickRun()
     {

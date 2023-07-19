@@ -1,5 +1,5 @@
 id,sname,describe,type,type2,iconName,pay,connect,remark
-int,string,string,int,int,string,int,int,string
+int,string,string,ItemsType,ItemType2,string,int,int,string
 注释行,名,描述,类型,细分类型2,图标,价值-买,关联数值或id,辅助参数
 1,银币,人类的钱币，银闪闪的很好看，但对于妖精来说没什么用，不过可以向人类购买物品。,0,0,test1,0,0,0
 2,蜂针,胡蜂的尾针，十分的尖锐，可以用来加工,1,1,test1,6,0,0
@@ -52,3 +52,5 @@ int,string,string,int,int,string,int,int,string
 49,荆棘反击 卡牌设计图,消耗品，使用后可以在工坊制作‘荆棘反击’卡牌。,2,4,test1,120,1,0
 50,卡牌,炼制的法术卡片，战斗中使用一次后就会消失。,1,1,test1,0,0,0
 51,通用礼盒,测试礼盒,2,8,test2,0,0,15|18|21
+52,小瓶圣水,圣泉的湖水，蕴含不可思议的魔力，恢复妖精8点体力。,2,11,test2,200,0,0
+53,仙灵之书,蕴含仙灵之力的魔法书，使用可以释放仙灵祝福，使用10次后消失,4,10,test2,750,0,0

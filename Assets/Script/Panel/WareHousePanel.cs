@@ -55,7 +55,7 @@ public class WareHousePanel : PanelTopBase
         _sname.text = curshowItem.sname;
         _describe.text = curshowItem.describe;
         _haveCount.text = PlayerManager.Instance.playerItemDic[id].ToString();
-        if (curshowItem.type == (int)ItemsType.consum)
+        if (curshowItem.type == ItemsType.consum)
         {
             _takeBtn.gameObject.SetActive(true);
         }
@@ -71,7 +71,7 @@ public class WareHousePanel : PanelTopBase
         //curshowID +++
         switch (curshowItem.type2)
         {
-            case (int)ItemType2.plan:
+            case ItemType2.plan:
                 //设计图
                 if (PlayerManager.Instance.LearnPlan(curshowItem.connect))
                 {
@@ -81,7 +81,7 @@ public class WareHousePanel : PanelTopBase
                 else
                     PanelManager.Instance.showTips3("使用失败，已学会该配方");
                 break;
-            case (int)ItemType2.stone:
+            case ItemType2.stone:
                 //消耗品
                 break;
             default:

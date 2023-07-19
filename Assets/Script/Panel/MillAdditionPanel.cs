@@ -70,7 +70,7 @@ public class MillAdditionPanel : PanelTopBase
         GameObject obj;
         foreach(var item in dat)
         {
-            if (Config_t_items.getOne(item.Key).type2 == (int)ItemType2.produce)
+            if (Config_t_items.getOne(item.Key).type2 == ItemType2.produce)
             {
                 obj = scroll.addItemDefault();
                 var script = obj.GetComponent<BagItem>();

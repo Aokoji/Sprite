@@ -26,7 +26,7 @@ public class Main : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            PlayerManager.Instance.addItems(49, 1);
+            PlayerManager.Instance.addItems(52, 1);
         }
     }
 }

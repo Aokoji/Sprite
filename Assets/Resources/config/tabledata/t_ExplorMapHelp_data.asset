@@ -41,3 +41,17 @@ MonoBehaviour:
     gatherPool: 27|21|15
     bossPool: 7
     mapGiftPool: 48
+  - id: 3
+    mapwidth: 4
+    mapheight: 3
+    pointNumber: 0|1|3|4|6|9|11
+    rewardNumber: 1|11
+    remark: 84|4|8|4
+    connection: 0-4|4-9|9-6|6-1|6-3|3-11
+    startPos: 0
+    bossPos: 11
+    boxPool: 45
+    enemyPool: 6
+    gatherPool: 27|21|15
+    bossPool: 7
+    mapGiftPool: 48

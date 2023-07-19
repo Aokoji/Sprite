@@ -372,18 +372,29 @@ public class PlayerManager : CSingel<PlayerManager>
         playerdata.explor.daygift.Add(2);
         playerdata.explor.daygift.Add(3);
         playerdata.explor.dayboss = 27;
+        playerdata.explor.explorBag.Add(52);
+        playerdata.explor.explorBag.Add(53);
     }
+    //更改当前精灵
     public void restCurSprite(int num)
     {
         cursprite.phy_cur += num;
         cursprite.phy_cur = Mathf.Min(cursprite.phy_cur, cursprite.phy_max);
         savePlayerData();
     }
+    //当前精灵体力状态变化
     public void minusCurSprite(int num)
     {
         cursprite.phy_cur -= num;
         cursprite.phy_cur = Mathf.Max(cursprite.phy_cur, 0);
         savePlayerData();
+    }
+    //保存新的探索背包
+    public void setExplorBag(List<int> bag,Action callback=null)
+    {
+        playerdata.explor.explorBag = bag;
+        savePlayerData();
+        callback?.Invoke();
     }
     #endregion
 }

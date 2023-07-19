@@ -28,6 +28,8 @@ public class AssetData:ScriptableObject
             case "CardType1":return (CardType1)int.Parse(context);
             case "CardType2": return (CardType2)int.Parse(context);
             case "CardSelfType": return (CardSelfType)int.Parse(context);
+            case "ItemsType":return (ItemsType)int.Parse(context);
+            case "ItemType2": return (ItemType2)int.Parse(context);
             default:return null;
         }
     }
@@ -111,6 +113,8 @@ public enum ItemType2
     food,       //食物    7
     box,        //礼盒    8
     letter,     //卷轴    9
+    use,        //使用    10
+    explor,     //冒险用品  11
 }
 public enum explorType
 {

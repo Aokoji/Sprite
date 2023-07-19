@@ -17,7 +17,10 @@ public class ExplorQuickBagBar : UIBase
     public void setData(int id)
     {
         var item = Config_t_Consumable.getOne(id);
-        if (item.type == (int)ItemsType.magic)
+        var config = Config_t_items.getOne(id);
+        _icon.sprite = GetSprite(A_AtlasNames.itemsIcon.ToString(), config.iconName);
+        _sname.text = config.sname;
+        if (item.type == ItemsType.magic)
         {
             //
             takeuse.gameObject.SetActive(false);

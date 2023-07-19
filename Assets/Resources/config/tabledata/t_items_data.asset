@@ -472,3 +472,21 @@ MonoBehaviour:
     pay: 0
     connect: 0
     remark: 15|18|21
+  - id: 52
+    sname: "\u5C0F\u74F6\u5723\u6C34"
+    describe: "\u5723\u6CC9\u7684\u6E56\u6C34\uFF0C\u8574\u542B\u4E0D\u53EF\u601D\u8BAE\u7684\u9B54\u529B\uFF0C\u6062\u590D\u5996\u7CBE8\u70B9\u4F53\u529B\u3002"
+    type: 2
+    type2: 11
+    iconName: test2
+    pay: 200
+    connect: 0
+    remark: 0
+  - id: 53
+    sname: "\u4ED9\u7075\u4E4B\u4E66"
+    describe: "\u8574\u542B\u4ED9\u7075\u4E4B\u529B\u7684\u9B54\u6CD5\u4E66\uFF0C\u4F7F\u7528\u53EF\u4EE5\u91CA\u653E\u4ED9\u7075\u795D\u798F\uFF0C\u4F7F\u752810\u6B21\u540E\u6D88\u5931"
+    type: 4
+    type2: 10
+    iconName: test2
+    pay: 750
+    connect: 0
+    remark: 0
