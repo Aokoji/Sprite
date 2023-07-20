@@ -134,7 +134,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 50.6, y: -27.6}
-  m_SizeDelta: {x: 985.0242, y: 478.88373}
+  m_SizeDelta: {x: 860, y: 478.88373}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &229994213686624349
 CanvasRenderer:
@@ -394,6 +394,9 @@ MonoBehaviour:
   PanelName: 
   scroll: {fileID: 1023280673432996743}
   clone: {fileID: 8092153689357766742}
+  cardScroll: {fileID: 7195583554991410770}
+  itembar: {fileID: 2909717867773255951}
+  cardbar: {fileID: 3945806354316205891}
   messageBar: {fileID: 2342426518218486017}
   _icon: {fileID: 4435064876861472236}
   _sname: {fileID: 7226162954662286791}
@@ -402,6 +405,8 @@ MonoBehaviour:
   _haveCount: {fileID: 9062820493301970366}
   _takeBtn: {fileID: 1262134733010747024}
   _back: {fileID: 8090260761842853117}
+  check1: {fileID: 3728860814249294642}
+  check2: {fileID: 4891229972768198800}
 --- !u!1 &557114548337376079
 GameObject:
   m_ObjectHideFlags: 0
@@ -689,7 +694,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.000028014183}
+  m_AnchoredPosition: {x: 0, y: 0.000023894263}
   m_SizeDelta: {x: 0, y: 200}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &5804345954819379881
@@ -1156,7 +1161,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0.2, y: -25.9}
-  m_SizeDelta: {x: 1008.76154, y: 516.80383}
+  m_SizeDelta: {x: 976.6202, y: 516.80383}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5238578915395458977
 CanvasRenderer:

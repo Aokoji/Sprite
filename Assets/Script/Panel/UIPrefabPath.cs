@@ -36,7 +36,7 @@ public enum E_UIPrefab
     ExplorBagSetPanel,  //准备背包
     FarmPanel,
     SpringPanel,        //魔力之泉
-
+    CardMessageBar,     //卡牌详情
 
     //ui
     cardHand,

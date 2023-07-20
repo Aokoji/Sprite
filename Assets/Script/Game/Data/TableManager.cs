@@ -17,8 +17,9 @@ public class TableManager : CSingel<TableManager>
 
     //商店预备字典
     public Dictionary<int, List<int>> markDic { get; private set; }
-    //卡牌预备字典
+    //卡牌预备字典    根据属性类型分类
     public Dictionary<CardSelfType, List<int>> stallCardDic { get; private set; }
+    public List<int> basicList { get; private set; }
     //任务品级
     public Dictionary<int, List<int>> questRankDic { get; private set; }
     public void LoadMessageData()
@@ -31,9 +32,14 @@ public class TableManager : CSingel<TableManager>
     private void initAllCardStallTypeData()
     {
         stallCardDic = new Dictionary<CardSelfType, List<int>>();
+        basicList = new List<int>();
         foreach (var i in Config_t_DataCard._data)
         {
             if (i.Value.type1 != CardType1.take && i.Value.type1 != CardType1.untaken) continue;
+            //录入基础卡牌（杂属性
+            if (i.Value.type1 == CardType1.take)
+                basicList.Add(i.Value.id);
+            //录入常用属性分类
             if (!stallCardDic.ContainsKey(i.Value.limit))
             {
                 stallCardDic.Add(i.Value.limit, new List<int>());

@@ -48,4 +48,33 @@ public static class ConfigConst
     public const int Quest_C = 900;
     public const int Quest_D = 400;
     public const int Quest_E = 250;
+
+    //词条描述
+    public static string entryname(string str)
+    {
+        switch (str)
+        {
+            case "2":return "先制\n本张牌执行结束后立即执行下一张牌";
+            case "3":return "连击\n若自己的上一张牌造成过伤害，则触发连击词条的效果";
+            case "4":return "重击";
+            case "7":return "诅咒";
+            case "9":return "魔力枯竭";
+            case "12":return "屏障";
+            case "13":return "秘术";
+            case "14":return "真言";
+            case "16":return "破甲";
+            default:return "";
+        }
+    }
+    //卡牌类型
+    public static string getCardType(CardType1 stype)
+    {
+        switch (stype)
+        {
+            case CardType1.take:return "基础卡";
+            case CardType1.untaken:return "魔法卡";
+            case CardType1.condition: return "限制卡";
+            default:return "";
+        }
+    }
 }

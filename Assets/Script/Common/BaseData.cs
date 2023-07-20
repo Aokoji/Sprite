@@ -38,8 +38,8 @@ public enum CardType1
 {
     take,       //非集换   //默认卡      显示属性  
     untaken,    //制作
-    condition,  //限定卡    //制作卡 全职业卡
-    hidden,     //特殊卡 不显示
+    condition,  //限定卡    //制作卡 全职业卡 mana点数卡
+    hidden,     //特殊卡 不显示(不进卡池
     condition_two,  //培养
     condition_special,  //消耗魔法书
     condition_special1,  //普通魔法书不消耗

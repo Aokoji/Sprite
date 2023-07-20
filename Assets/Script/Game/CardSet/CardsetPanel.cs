@@ -59,6 +59,26 @@ public class CardsetPanel : PanelBase
         var prefab = PanelManager.Instance.LoadUI(E_UIPrefab.cardShow, CARDPATH);
         scroll.initConfig(150, 200, prefab.gameObject);
         scrollsp.initConfig(150, 200, prefab.gameObject);
+        var normallist = TableManager.Instance.basicList;
+        foreach(var item in normallist)
+        {
+            var config = Config_t_DataCard.getOne(item);
+            if (!carddic.ContainsKey(config.limit) || config.level > carddic[config.limit]) continue;
+            var card = scroll.addItemDefault().GetComponent<CardSetEntity>();
+            card.initData(item,2, chooseCard);
+            allcards.Add(item, card);
+        }
+        var makenlist = PlayerManager.Instance.playerMakenDic;
+        foreach(var item in makenlist)
+        {
+            var config = Config_t_DataCard.getOne(item.Key);
+            if (config.level > carddic[config.limit]) continue;
+            //添卡
+            var card = scrollsp.addItemDefault().GetComponent<CardSetEntity>();
+            card.initData(item.Key, item.Value, chooseCard);
+            allcards.Add(card._data.id, card);
+        }
+        /*
         foreach (var item in Config_t_DataCard._data)
         {
             if (item.Value.limitcount == 99) continue;
@@ -79,6 +99,7 @@ public class CardsetPanel : PanelBase
             card.initData(item.Value, GameManager.isAllCardOpen ? 2 : PlayerManager.Instance.playerMakenDic[item.Key], this);
             allcards.Add(card._data.id, card);
         }
+        */
         List<int> list = new List<int>();   //短暂记录
         //数量限制计算
         for (int i = 0; i < cardcopy.Count; i++)
@@ -125,24 +146,16 @@ public class CardsetPanel : PanelBase
             spriteManaText.color = Color.white;
         spriteManaText.text = mana + "/" + maxmana;
     }
-    private CardSetEntity newcard(t_DataCard data, bool isback = false)
+    public void chooseCard(CardSetEntity card)
     {
-        CardSetEntity item;
-        if (discardCard.Count > 0)
+        if (checkCardsFull())
         {
-            item = discardCard.Dequeue();
-            item.transform.SetAsLastSibling();
+            PanelManager.Instance.showTips3("卡组已满");
+            return;
         }
-        else
-        {
-            item = PanelManager.Instance.LoadUI(E_UIPrefab.cardShow, CARDPATH).GetComponent<CardSetEntity>();
-        }
-        item.initData(data, GameManager.isAllCardOpen ? 2 : PlayerManager.Instance.playerMakenDic[data.id], this);
-        return item;
-    }
-
-    public void chooseCard(int cardid)
-    {
+        int cardid = card._data.id;
+        card.chooseThisCard();
+        card.showChooseParticle();
         //能进这里代表能choose
         if (cardcopy.Count >= 20) return;
 

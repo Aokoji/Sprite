@@ -16,21 +16,24 @@ public class CardSetEntity : UIBase
     public GameObject limit;
     public Text havenum;
 
+    public Text level;
+    public Text cardtype;
+
     //单张
     public t_DataCard _data;
     public bool clickAllow;
 
     private int count;  //拥有数量
     private int chooseNum;  //选择数量
-    private CardsetPanel ctrl;
 
-    public void initData(t_DataCard data, int num,CardsetPanel ctl)
+    Action<CardSetEntity> clickAction;
+    public void initData(int id, int num,Action<CardSetEntity> clickaction)
     {
-        ctrl = ctl;
+        clickAction = clickaction;
         transform.position = Vector3.zero;
         transform.eulerAngles = Vector3.zero;
         transform.localScale = Vector3.one;
-        _data = data;
+        _data = Config_t_DataCard.getOne(id);
         refreshCard();
         GetComponent<Button>().onClick.AddListener(onchoose);
         clickAllow = true;
@@ -47,6 +50,8 @@ public class CardSetEntity : UIBase
 
         bg.color = Color.white;
         bg.sprite = GetSprite(A_AtlasNames.atlasImg1.ToString(), "card" + (int)_data.limit);
+        level.text = _data.level.ToString();
+        cardtype.text = ConfigConst.getCardType(_data.type1);
         /*
         if (_data.type1 == 0)
         {
@@ -68,15 +73,8 @@ public class CardSetEntity : UIBase
     private void onchoose()
     {
         if (!clickAllow) return;
-        if (ctrl.checkCardsFull())
-        {
-            PanelManager.Instance.showTips3("卡组已满");
-            return;
-        }
         //可以点说明在open
-        chooseThisCard();
-        ctrl.chooseCard(_data.id);
-        ParticleManager.Instance.playEffect(E_Particle.particle_chooseCardSet, transform.position);
+        clickAction(this);
     }
     public void setOpen(bool isopen)
     {
@@ -84,7 +82,10 @@ public class CardSetEntity : UIBase
         clickAllow = isopen;
     }
     //
-
+    public void showChooseParticle()
+    {
+        ParticleManager.Instance.playEffect(E_Particle.particle_chooseCardSet, transform.position);
+    }
     public void chooseThisCard()
     {
         chooseNum++;

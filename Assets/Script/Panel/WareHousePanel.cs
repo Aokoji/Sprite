@@ -8,7 +8,6 @@ public class WareHousePanel : PanelTopBase
     public UITool_ScrollView scroll;
     public GameObject clone;
     public UITool_ScrollView cardScroll;
-    public GameObject cardClone;
 
     public GameObject itembar;
     public GameObject cardbar;
@@ -28,13 +27,16 @@ public class WareHousePanel : PanelTopBase
     int curshowID;
     t_items curshowItem;
     int curcheck;
+    string CARDPATH = "ui/battle/card/";
     public override void init()
     {
         base.init();
         setCheckBar(1);
         scroll.initConfig(80, 80, clone);
-        cardScroll.initConfig(80, 80, clone);
+        var prefab = PanelManager.Instance.LoadUI(E_UIPrefab.cardShow, CARDPATH);
+        cardScroll.initConfig(150, 200, prefab.gameObject);
         StartCoroutine(refreshScroll());
+        StartCoroutine(refreshCardScroll());
     }
     public override void registerEvent()
     {
@@ -62,10 +64,28 @@ public class WareHousePanel : PanelTopBase
     IEnumerator refreshCardScroll()
     {
         cardScroll.recycleAll();
-        var data = PlayerManager.Instance.getPlayerCards();
+        var normallist = TableManager.Instance.basicList;
+        foreach (var item in normallist)
+        {
+            var config = Config_t_DataCard.getOne(item);
+            var card = cardScroll.addItemDefault().GetComponent<CardSetEntity>();
+            card.initData(item, 2, chooseCard);
+        }
+        var data = PlayerManager.Instance.playerMakenDic;
+        foreach(var item in data)
+        {
+            var config = Config_t_DataCard.getOne(item.Key);
+            var card = cardScroll.addItemDefault().GetComponent<CardSetEntity>();
+            card.initData(item.Key, 2, chooseCard);
+        }
+        cardScroll.reCalculateHeigh();
         yield return null;
     }
-
+    void chooseCard(CardSetEntity card)
+    {
+        PanelManager.Instance.OpenPanel(E_UIPrefab.CardMessageBar, new object[] { card._data.id });
+    }
+    //选中item物品
     void onclickOneItem(int id)
     {
         if (curshowID == id) return;
