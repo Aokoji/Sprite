@@ -32,6 +32,7 @@ public class MillPanel : PanelBase
     public Text extramess;
     public Button barback;
     public Button upgrade;  //升级
+    public Button allSpriteBtn;
 
     public Button cancel;
 
@@ -53,6 +54,7 @@ public class MillPanel : PanelBase
         upgrade.onClick.AddListener(clickUpgrade);
         barback.onClick.AddListener(clickBarBack);
         cancel.onClick.AddListener(PanelManager.Instance.DisposePanel);
+        allSpriteBtn.onClick.AddListener(clickAllSprite);
         EventAction.Instance.AddEventGather(eventType.millShutMater, refreshMaterMill);
         EventAction.Instance.AddEventGather<bool,int,int>(eventType.millChange_BII, millchangeAction);
     }
@@ -285,7 +287,10 @@ public class MillPanel : PanelBase
             }
             PanelManager.Instance.DisposePanel();
         });
-
+    }
+    void clickAllSprite()
+    {
+        PanelManager.Instance.OpenPanel(E_UIPrefab.SpriteMessagePanel);
     }
     #endregion
     #region timer

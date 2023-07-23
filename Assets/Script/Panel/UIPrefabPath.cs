@@ -34,6 +34,7 @@ public enum E_UIPrefab
     ExplorGatherMessPanel,
     ExplorMovingPackage,    //探险背包
     ExplorBagSetPanel,  //准备背包
+    SpriteMessagePanel,     //妖精详情
     FarmPanel,
     SpringPanel,        //魔力之泉
     CardMessageBar,     //卡牌详情

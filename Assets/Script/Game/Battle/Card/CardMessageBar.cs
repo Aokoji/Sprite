@@ -23,7 +23,7 @@ public class CardMessageBar : PanelTopBase
         base.init();
         _data = Config_t_DataCard.getOne(int.Parse(message[0].ToString()));
         setcard();
-        scroll.initConfig(80, 80, clone);   //+++词条
+        scroll.initConfig(270, 100, clone);
         StartCoroutine(initscroll());
     }
     public override void registerEvent()
@@ -44,7 +44,7 @@ public class CardMessageBar : PanelTopBase
     IEnumerator initscroll()
     {
         scroll.recycleAll();
-        string[] str = _data.sname.Split('|');
+        string[] str = _data.explain.Split('|');
         if (str.Length == 1 && str[0].Equals("0"))
             explainbar.SetActive(false);
         else
