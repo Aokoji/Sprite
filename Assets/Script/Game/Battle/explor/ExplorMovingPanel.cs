@@ -23,7 +23,7 @@ public class ExplorMovingPanel : PanelBase
     public UITool_ScrollView scroll;
     public GameObject clone;
     //public List
-
+    bool isway; //小径
     List<GameObject> points;
     List<GameObject> lines;     //统一销毁
     SpriteData cursp;
@@ -31,6 +31,7 @@ public class ExplorMovingPanel : PanelBase
     public override void init()
     {
         base.init();
+        isway = (bool)message[0];
         points = new List<GameObject>();
         lines = new List<GameObject>();
         PlayerManager.Instance.getExplorData().dayboss_short = 0;
@@ -183,8 +184,13 @@ public class ExplorMovingPanel : PanelBase
     {
         curPos = startPos.transform.localPosition;
         var data = PlayerManager.Instance.getExplorData();
-        string[] str = Config_t_ExplorMap.getOne(data.mapType).mapHelp.Split('|') ;
-        mapconfig = Config_t_ExplorMapHelp.getOne(int.Parse(str[Random.Range(0, str.Length)]));
+        if (isway)
+        {
+            string[] str = Config_t_ExplorMap.getOne(data.mapType).mapHelp.Split('|');
+            mapconfig = Config_t_ExplorMapHelp.getOne(int.Parse(str[Random.Range(0, str.Length)]));
+        }
+        else
+            mapconfig = Config_t_ExplorMapHelp.getOne(ConfigConst.explorWayID);
         width = (int)maxgap / mapconfig.mapwidth;
         height = (int)maxgap / mapconfig.mapheight;
         currank = new rankReward();

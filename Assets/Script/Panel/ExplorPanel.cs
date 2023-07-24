@@ -89,11 +89,12 @@ public class ExplorPanel : PanelBase
     void clickEnter1()
     {
         //进入森林
-        PanelManager.Instance.ChangeScenePanel(E_UIPrefab.ExplorMovingPanel);
+        PanelManager.Instance.ChangeScenePanel(E_UIPrefab.ExplorMovingPanel, new object[] { true });
     }
     void clickEnter2()
     {
-        //森林小径 +++
+        //森林小径
+        PanelManager.Instance.ChangeScenePanel(E_UIPrefab.ExplorMovingPanel, new object[] { false });
     }
 
     void showDayTips()

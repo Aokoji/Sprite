@@ -117,7 +117,6 @@ public class WareHousePanel : PanelTopBase
     }
     void useItem()
     {
-        //curshowID +++
         switch (curshowItem.type2)
         {
             case ItemType2.plan:
@@ -132,6 +131,9 @@ public class WareHousePanel : PanelTopBase
                 break;
             case ItemType2.stone:
                 //消耗品
+                break;
+            case ItemType2.use:
+                //+++
                 break;
             default:
                 PanelManager.Instance.showTips3("使用失败");

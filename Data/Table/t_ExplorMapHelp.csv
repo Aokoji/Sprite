@@ -1,6 +1,7 @@
 id,mapwidth,mapheight,pointNumber,rewardNumber,remark,connection,startPos,bossPos,boxPool,enemyPool,gatherPool,bossPool
 int,int,int,string,string,string,string,int,int,string,string,string,string
 地图id,地图宽,地图高,点位,奖励点位所有,顺序权重-战斗-休息-采集-宝箱,点位关系,起点编号,boss位置,小宝箱池-地图小奖励,怪池,采集池,boss池
+0,3,3,0|4|8,8,85|1|13|1,0-4|4-8,0,8,45,6,27,7
 1,3,4,0|4|7|11,11,75|2|15|8,0-4|4-7|7-11,0,11,45,6,27|21|15,7
 2,3,3,0|1|5|8,8,75|2|13|10,0-1|1-5|5-8,0,8,45,6,27|21|15,7
 3,4,3,0|1|3|4|6|9|11,1|11,84|4|8|4,0-4|4-9|9-6|6-1|6-3|3-11,0,11,45,6,27|21|15,7
