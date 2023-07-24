@@ -142,7 +142,10 @@ public enum explorIcon
     rest,
     gather,     //采集
     box,
-    boss,
+    boss,   //普通boss
+    elite,  //精英
+    monster,    //巨兽
+    lord,   //领主
     exitBox,
 }
 public enum diffcultEnemy

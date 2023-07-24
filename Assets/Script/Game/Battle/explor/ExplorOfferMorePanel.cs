@@ -83,6 +83,11 @@ public class ExplorOfferMorePanel : PanelTopBase
     }
     void goBattleaction()
     {
-        //+++
+        ExplorMovingPanel.rankReward config1 = new ExplorMovingPanel.rankReward();
+        config1.enemyID = config.targetID;
+        config1.stype = explorIcon.battle;
+        config1.isboss = false;
+        config1.isexploring = false;
+        PanelManager.Instance.OpenPanel(E_UIPrefab.ExplorBattleMessPanel, new object[] { config1 });
     }
 }

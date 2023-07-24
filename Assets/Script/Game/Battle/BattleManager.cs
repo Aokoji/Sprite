@@ -4,8 +4,7 @@ using UnityEngine;
 using customEvent;
 public class BattleManager : CSingel<BattleManager>
 {
-    BattleControl ctrl;         //目前未做销毁    +++
-    public int battleEnemyID;
+    BattleControl ctrl;
     explorIcon curtype;
     List<ItemData> result;
 
@@ -19,7 +18,7 @@ public class BattleManager : CSingel<BattleManager>
         ctrl = new BattleControl();
         curtype = stype;
         refreshBattleData();
-        ctrl.newbattle(enemy,ischange);
+        ctrl.newbattle(enemy, curtype, ischange);
     }
 
     private void refreshBattleData()

@@ -1,11 +1,11 @@
 id,sname,defaultCard,titleIcon,wholeIcon,phybase,hpbase,costmax,spritePower,drop,dropRare,volume,odds
 int,string,int,string,string,int,int,int,int,string,string,int,int
 注释行,名字,默认卡组,头像图标,立绘,基础体力,基础生命,消耗点-boss会很多,精灵能量和难度评级1-10,掉落,稀有掉落,体量+-1,稀有率
-1,花妖精,1,elf_flower,0,50,20,3,7,0,0,0,0
-2,鸟妖精,1,elf_bird,0,65,16,3,10,0,0,0,0
-3,叶妖精,1,elf_leaf,0,80,25,3,8,0,0,0,0
-4,月妖精,1,elf_moon,0,70,22,3,14,0,0,0,0
-5,光妖精,1,elf_light,0,90,30,3,5,0,0,0,0
+1,花妖精,1,elf_flower,elf_flower,50,20,3,7,0,0,0,0
+2,鸟妖精,1,elf_bird,elf_bird,65,16,3,10,0,0,0,0
+3,叶妖精,1,elf_leaf,elf_leaf,80,25,3,8,0,0,0,0
+4,月妖精,1,elf_moon,elf_moon,70,22,3,14,0,0,0,0
+5,光妖精,1,elf_light,elf_light,90,30,3,5,0,0,0,0
 6,胡蜂,2,en_wasp,0,0,15,3,2,2|3,0,1,0
 7,蘑菇怪,2,en_mush,0,0,18,3,3,33|36|39,0,2,0
 8,棕熊,2,en_bear,0,0,0,3,5,1,0,0,0

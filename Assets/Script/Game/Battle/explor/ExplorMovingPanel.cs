@@ -176,6 +176,7 @@ public class ExplorMovingPanel : PanelBase
         public ItemData sbox;
         //新增  特殊地图或精英怪强化
         public bool isboss;
+        public bool isexploring;    //用于悬赏，无特殊用途
     }
     rankReward currank;
     void initCalculate()
@@ -187,6 +188,7 @@ public class ExplorMovingPanel : PanelBase
         width = (int)maxgap / mapconfig.mapwidth;
         height = (int)maxgap / mapconfig.mapheight;
         currank = new rankReward();
+        currank.isexploring = true;
         //哨站和方向
         curPoint = mapconfig.startPos;
         createANewPos(direct.none);
@@ -240,7 +242,7 @@ public class ExplorMovingPanel : PanelBase
                     if (data.daygift.Count > 0)
                         currank.sbox = new ItemData(data.daygift[random.Next(data.daygift.Count)], 1);
                     else
-                        currank.sbox = new ItemData(ConfigConst.currencyID, random.Next(10, 60));
+                        currank.sbox = new ItemData(ConfigConst.currencyID, random.Next(10, ConfigConst.explorExitBoxMaxMoney));
                 }
                 break;
             }
@@ -331,8 +333,9 @@ public class ExplorMovingPanel : PanelBase
             PanelManager.Instance.OpenPanel(E_UIPrefab.ExplorBattleMessPanel, new object[] { currank });
         else if (currank.stype == explorIcon.exitBox)
         {
-            PlayerManager.Instance.getExplorData().daygift.Remove(currank.sbox.id);
-            PlayerManager.Instance.addItems(currank.sbox.id, 1);
+            if (currank.sbox.id != ConfigConst.currencyID)
+                PlayerManager.Instance.getExplorData().daygift.Remove(currank.sbox.id);
+            PlayerManager.Instance.addItems(currank.sbox.id, currank.sbox.num);
             PanelManager.Instance.showTips5("到达森林出口", new List<ItemData>() { currank.sbox }, () =>
             {
                 PanelManager.Instance.JumpPanelScene(E_UIPrefab.MainPanel, () => { EventAction.Instance.TriggerAction(eventType.jumpMainExplor); });

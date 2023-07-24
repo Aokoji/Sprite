@@ -40,7 +40,7 @@ public class TravelBarMessage : UIBase
     //刷新单张委托卡
     void refreshQuestCard()
     {
-        //状态5   空，派遣，归来，任务单,超时      交付中，领取奖励+++
+        //状态5   空，派遣，归来，任务单,超时      交付中，领取奖励
         travelingBar.SetActive(false);
         questBar.SetActive(false);
         alivetime.gameObject.SetActive(true);

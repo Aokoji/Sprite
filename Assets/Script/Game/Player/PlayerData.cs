@@ -35,6 +35,9 @@ public class PlayerData
         SpriteData sp = new SpriteData();
         sp.Convert_Data(Config_t_ActorMessage.getOne(1));
         sprites.Add(sp);
+        sp = new SpriteData();
+        sp.Convert_Data(Config_t_ActorMessage.getOne(2));
+        sprites.Add(sp);
         curSprite = sp.id;
         travel = new TravelData();
         mill = new MillData();

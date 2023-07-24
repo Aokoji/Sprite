@@ -9,7 +9,7 @@ public class BattleControl :Object
     public bool loadSuccess = false;
     bool dochange;
     #region 获取数据  加载的准备阶段
-    public void newbattle(int en,bool ischange)
+    public void newbattle(int en,explorIcon stype,bool ischange)
     {
         loadSuccess = false;
         dochange = ischange;
@@ -17,6 +17,32 @@ public class BattleControl :Object
         getPlayerCardData();
         player = PlayerManager.Instance.getcursprite().Copy();
         enemy = EnemyCalculate.GetEnemyData(en);
+        if (stype == explorIcon.boss)
+        {
+            enemy.hp_max += 10;
+            enemy.hp_cur = enemy.hp_max;
+            enemy.cost_max = enemy.cost_cur = 4;
+            enemy.extraLimit = 1;
+        }
+        if (stype == explorIcon.elite)
+        {
+            enemy.hp_max += 5;
+            enemy.hp_cur = enemy.hp_max;
+        }
+        if (stype == explorIcon.monster)
+        {
+            enemy.hp_max += 20;
+            enemy.hp_cur = enemy.hp_max;
+            enemy.cost_max = enemy.cost_cur = 4;
+            enemy.extraLimit = 1;
+        }
+        if (stype == explorIcon.lord)
+        {
+            enemy.hp_max *= 2;
+            enemy.hp_cur = enemy.hp_max;
+            enemy.cost_max = enemy.cost_cur = 5;
+            enemy.extraLimit =2;
+        }
         player.refreshData();
         enemy.refreshData();
         RunSingel.Instance.runTimer(loadtimer());
@@ -429,6 +455,7 @@ public class BattleControl :Object
         if (iswin)
         {
             //计算enemy奖励
+            EventAction.Instance.TriggerAction(eventType.battleFinish_I, enemy.id);
             BattleManager.Instance.endreward(enemy.id);
         }
         ui.gameSettle(iswin);

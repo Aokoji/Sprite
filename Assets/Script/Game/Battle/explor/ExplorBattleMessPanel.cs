@@ -13,6 +13,7 @@ public class ExplorBattleMessPanel : PanelTopBase
     public Text enemyLevel; //难度
     public Button runBattle;   //放弃
     public Button takebattle;  //战斗
+    public Image bossimg;
 
     ExplorMovingPanel.rankReward _data;
     public override void init()
@@ -38,18 +39,27 @@ public class ExplorBattleMessPanel : PanelTopBase
         enemyLevel.text = "难度："+dat.spritePower.ToString();
         if (_data.stype == explorIcon.boss)
         {
-            //+++
+            enemyHp.text = (dat.hpbase+5).ToString();
+            bossimg.gameObject.SetActive(true);
+        }
+        else
+        {
+            enemyHp.text = dat.hpbase.ToString();
+            bossimg.gameObject.SetActive(false);
         }
     }
     void clickRunBattle()
     {
-        PanelManager.Instance.showTips2("确定放弃战斗返回哨站吗？", () =>
-        {
-            PanelManager.Instance.JumpPanelScene(E_UIPrefab.MainPanel, () =>
+        if (_data.isexploring)
+            PanelManager.Instance.showTips2("确定放弃战斗返回哨站吗？", () =>
             {
-                EventAction.Instance.TriggerAction(eventType.jumpMainExplor);
+                PanelManager.Instance.JumpPanelScene(E_UIPrefab.MainPanel, () =>
+                {
+                    EventAction.Instance.TriggerAction(eventType.jumpMainExplor);
+                });
             });
-        });
+        else
+            PanelManager.Instance.DisposePanel();
     }
     void clickBattleGo()
     {

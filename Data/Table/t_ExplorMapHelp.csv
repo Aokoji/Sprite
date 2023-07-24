@@ -1,6 +1,6 @@
-id,mapwidth,mapheight,pointNumber,rewardNumber,remark,connection,startPos,bossPos,boxPool,enemyPool,gatherPool,bossPool,mapGiftPool
-int,int,int,string,string,string,string,int,int,string,string,string,string,string
-µØÍ¼id,µØÍ¼¿í,µØÍ¼¸ß,µãÎ»,½±ÀøµãÎ»ËùÓĞ,Ë³ĞòÈ¨ÖØ-Õ½¶·-ĞİÏ¢-²É¼¯-±¦Ïä,µãÎ»¹ØÏµ,Æğµã±àºÅ,bossÎ»ÖÃ,Ğ¡±¦Ïä³Ø-µØÍ¼Ğ¡½±Àø,¹Ö³Ø,²É¼¯³Ø,boss³Ø,µØÍ¼½±Àø³Ø
-1,3,4,0|4|7|11,11,75|2|15|8,0-4|4-7|7-11,0,11,45,6,27|21|15,7,48
-2,3,3,0|1|5|8,8,75|2|13|10,0-1|1-5|5-8,0,8,45,6,27|21|15,7,48
-3,4,3,0|1|3|4|6|9|11,1|11,84|4|8|4,0-4|4-9|9-6|6-1|6-3|3-11,0,11,45,6,27|21|15,7,48
+id,mapwidth,mapheight,pointNumber,rewardNumber,remark,connection,startPos,bossPos,boxPool,enemyPool,gatherPool,bossPool
+int,int,int,string,string,string,string,int,int,string,string,string,string
+åœ°å›¾id,åœ°å›¾å®½,åœ°å›¾é«˜,ç‚¹ä½,å¥–åŠ±ç‚¹ä½æ‰€æœ‰,é¡ºåºæƒé‡-æˆ˜æ–—-ä¼‘æ¯-é‡‡é›†-å®ç®±,ç‚¹ä½å…³ç³»,èµ·ç‚¹ç¼–å·,bossä½ç½®,å°å®ç®±æ± -åœ°å›¾å°å¥–åŠ±,æ€ªæ± ,é‡‡é›†æ± ,bossæ± 
+1,3,4,0|4|7|11,11,75|2|15|8,0-4|4-7|7-11,0,11,45,6,27|21|15,7
+2,3,3,0|1|5|8,8,75|2|13|10,0-1|1-5|5-8,0,8,45,6,27|21|15,7
+3,4,3,0|1|3|4|6|9|11,1|11,84|4|8|4,0-4|4-9|9-6|6-1|6-3|3-11,0,11,45,6,27|21|15,7

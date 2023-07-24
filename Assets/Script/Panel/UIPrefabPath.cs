@@ -60,6 +60,7 @@ public enum A_AtlasNames
     atlasImg1, 
     itemsIcon,
     changeSprite,
+    wholeImg,
 }
 
 public enum B_BundleNames

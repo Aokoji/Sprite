@@ -13,6 +13,9 @@ public class ExplorPanel : PanelBase
 
     public Button back;
     public Button dayReward;
+    public Button daytipbar;
+    public Image dayicon;
+    public Text daycontext;
 
     public Image _spicon;
     public Text _sname;
@@ -38,6 +41,7 @@ public class ExplorPanel : PanelBase
         dayReward.onClick.AddListener(showDayTips);
         setCardBtn.onClick.AddListener(showCardset);
         setBagBtn.onClick.AddListener(showBagset);
+        daytipbar.onClick.AddListener(closeDayTips);
     }
     public override void reshow()
     {
@@ -46,6 +50,7 @@ public class ExplorPanel : PanelBase
     }
     void refreshMap()
     {
+        daytipbar.gameObject.SetActive(false);
         RunSingel.Instance.getBeiJingTime(result =>
         {
             if (string.IsNullOrEmpty(_data.savetime) || (!string.IsNullOrEmpty(_data.savetime) && DateTime.Parse(_data.savetime) < result))
@@ -88,12 +93,19 @@ public class ExplorPanel : PanelBase
     }
     void clickEnter2()
     {
-        //森林小径
+        //森林小径 +++
     }
 
     void showDayTips()
     {
-         //+++
+        var conf = Config_t_items.getOne(_data.dayboss);
+        dayicon.sprite = GetSprite(A_AtlasNames.itemsIcon.ToString(), conf.iconName);
+        daycontext.text = conf.sname;
+        daytipbar.gameObject.SetActive(true);
+    }
+    void closeDayTips()
+    {
+        daytipbar.gameObject.SetActive(false);
     }
     void showCardset()
     {

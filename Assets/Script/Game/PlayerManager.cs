@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using System.IO;
+using customEvent;
 
 public class PlayerManager : CSingel<PlayerManager>
 {
@@ -20,9 +20,9 @@ public class PlayerManager : CSingel<PlayerManager>
     public void init()
     {
         loadsuccess = false;
+        EventAction.Instance.AddEventGather<int>(eventType.battleFinish_I, onbattle);
         injectPlayer();
     }
-
     public void injectPlayer()
     {//暂定为读asset文件  改了 读json
         spriteList = new Dictionary<int, SpriteData>();
@@ -353,8 +353,6 @@ public class PlayerManager : CSingel<PlayerManager>
     {
         TimeSpan time = new TimeSpan(23, 59, 59);
         playerdata.explor.savetime = DateTime.Parse(time.ToString()).ToString();
-        //随机一个天气
-        playerdata.explor.mapType = 2;
 
         //刷新offer
         playerdata.explor.offer.Clear();
@@ -367,13 +365,28 @@ public class PlayerManager : CSingel<PlayerManager>
         else rand = 4;
         for(int i = 0; i < rand; i++)
             playerdata.explor.offer.Add(new OfferData(random.Next(1,Config_t_Offer._data.Count)));
-
-        //填充day奖励   根据地图+++
-        playerdata.explor.daygift.Add(2);
-        playerdata.explor.daygift.Add(3);
-        playerdata.explor.dayboss = 27;
-        playerdata.explor.explorBag.Add(52);
-        playerdata.explor.explorBag.Add(53);
+        //随机一个天气    1-9
+        //  2   5   321
+        rand = random.Next(33);
+        int fintyp = 1;
+        if (rand < 25) fintyp = rand / 5 + 2;
+        else if (rand < 27) fintyp = 1;
+        else if (rand < 30) fintyp = 7;
+        else if (rand < 32) fintyp = 8;
+        else if (rand < 33) fintyp = 9;
+        playerdata.explor.mapType = fintyp;
+        //填充day box count奖励
+        var mapconfig = Config_t_ExplorMap.getOne(fintyp);
+        string[] room = mapconfig.mapGiftPool.Split('-');
+        string boxes = room[random.Next(room.Length)];
+        room = boxes.Split('|');
+        foreach(var i in room)
+        {
+            playerdata.explor.daygift.Add(int.Parse(i));
+        }
+        //day boss奖励
+        room = mapconfig.mapDayBox.Split('|');
+        playerdata.explor.dayboss = int.Parse(room[random.Next(room.Length)]);
     }
     //更改当前精灵
     public void restCurSprite(int num)
@@ -397,4 +410,18 @@ public class PlayerManager : CSingel<PlayerManager>
         callback?.Invoke();
     }
     #endregion
+    void onbattle(int id)
+    {
+        bool changed=false;
+        foreach(var item in playerdata.explor.offer)
+        {
+            if (item.id == id)
+            {
+                changed = true;
+                item.finishCount++;
+            }
+        }
+        if (changed)
+            savePlayerData();
+    }
 }

@@ -18,7 +18,8 @@ namespace customEvent
         millShutMater,
         millTimerMater_BI,
         millChange_BII,
-        explorGoNextRank_B,     //胜败
+        explorGoNextRank_B,     //胜败    探险下一步
+        battleFinish_I,     //战胜 enemyid
 
         roundEnd_C,
         playRoundNext,
