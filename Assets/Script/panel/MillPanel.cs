@@ -372,7 +372,7 @@ public class MillPanel : PanelBase
             materTime1.text = "预计完成：" + PubTool.timeTranslateSeconds(surplus1);
             materTime1.gameObject.SetActive(true);
         }
-        //+++他们还负责图标的刷新
+        //+++他们还负责图标的刷新 生产的按钮其实有个图标
     }
     void resetMater2Panel()
     {

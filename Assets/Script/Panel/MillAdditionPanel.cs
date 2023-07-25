@@ -126,7 +126,7 @@ public class MillAdditionPanel : PanelTopBase
     #region click
     void addCount(int count)
     {
-        //检测上限+++
+        //检测上限
         curcount += count;
         if (curcount <= 0)
             curcount = 0;
@@ -148,8 +148,8 @@ public class MillAdditionPanel : PanelTopBase
     }
     void clickChooseIcon()
     {
-        //详细+++
-
+        if (curid == 0) return;
+        PanelManager.Instance.showComItemTip(curid, itemImg.transform.position);
     }
     //取消生产
     void clickCancelGring()

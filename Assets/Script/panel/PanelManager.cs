@@ -167,6 +167,7 @@ public class PanelManager : CSingel<PanelManager>
         if (null != loading) loading.Loading(show, isconect);
     }
 
+    #region tip
     //------------------------ tips ----------------------------
     private TipsBase tip1;
     private TipsBase tip2;
@@ -258,10 +259,25 @@ public class PanelManager : CSingel<PanelManager>
         tip5.init(title,items, callback);
         tip5.play();
     }
+    public void showTips5(ItemData items)
+    {
+        tip5.init(items);
+        tip5.play();
+    }
     public void showTips5(string title, string des, Action callback)
     {
         tip5.init(title, new List<ItemData>(), callback);
         tip5.setString2(des);
         tip5.play();
+    }
+    #endregion
+
+    public void showComItemTip(int id,Vector3 pos)
+    {
+        var entity = AssetManager.loadAsset<GameObject>(COMMON_PATH + E_UIPrefab.ItemExplain.ToString());
+        var script = UnityEngine.Object.Instantiate(entity).GetComponent<ItemExplain>();
+        script.transform.SetParent(commonParent.transform);
+        script.transform.localScale = Vector3.one;
+        script.initShow(id, pos);
     }
 }

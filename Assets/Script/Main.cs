@@ -22,7 +22,7 @@ public class Main : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            PlayerManager.Instance.addItems(6, 10);
+            PlayerManager.Instance.addItems(8, 10);
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {

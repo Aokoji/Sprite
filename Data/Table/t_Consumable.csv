@@ -1,5 +1,5 @@
-id,sname,type,rewardType,takeid,takenum,rewardlist
-int,string,ItemsType,int,int,int,string
-id,不知道干啥的,同item类型1,类型,作用属性,数值,奖励列表固定
-52,小瓶圣水,2,2,1,8,0
-53,仙灵之书,4,0,0,0,0
+id,sname,type,rewardType,takeid,takenum,rewardGiven,rewardNum,rewardPool
+int,string,ItemsType,int,int,int,int,int,string
+id,不知道干啥的,同item类型1,类型0使用1随机开箱走池2固定奖励,作用属性0hp1体力,数值,奖励固定,奖励数量,奖励池
+52,小瓶圣水,2,0,1,8,0,0,0
+53,仙灵之书,4,0,0,0,0,0,0

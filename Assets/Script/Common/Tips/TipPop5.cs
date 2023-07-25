@@ -36,6 +36,23 @@ public class TipPop5 : TipsBase
             obj.GetComponentInChildren<Image>().sprite = GetSprite(A_AtlasNames.itemsIcon.ToString(), dat.iconName);
         }
     }
+    public override void init(object whatthing)
+    {
+        allowClick = false;
+        iscut = false;
+        if (callback != null)
+            iscut = true;
+        titleText.text = "获得物品";
+        cloneBar.SetActive(false);
+        scroll.initConfig(100, 100, cloneBar);
+        scroll.recycleAll();
+        context.text = "";
+        ItemData itm = whatthing as ItemData;
+        var obj = scroll.addItemDefault();
+        var dat = Config_t_items.getOne(itm.id);
+        obj.GetComponentInChildren<Text>().text = dat.sname + "×" + itm.num;
+        obj.GetComponentInChildren<Image>().sprite = GetSprite(A_AtlasNames.itemsIcon.ToString(), dat.iconName);
+    }
     public override void setString2(string str)
     {
         context.text = str;

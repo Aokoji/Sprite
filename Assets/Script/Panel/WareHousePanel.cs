@@ -46,6 +46,11 @@ public class WareHousePanel : PanelTopBase
         check1.onClick.AddListener(() => { setCheckBar(1); });
         check2.onClick.AddListener(() => { setCheckBar(2); });
     }
+    public override void reshow()
+    {
+        base.reshow();
+        StartCoroutine(refreshScroll());
+    }
     IEnumerator refreshScroll()
     {
         //item scroll
@@ -130,10 +135,27 @@ public class WareHousePanel : PanelTopBase
                     PanelManager.Instance.showTips3("使用失败，已学会该配方");
                 break;
             case ItemType2.stone:
-                //消耗品
+                //消耗品       魔石，待定，目前先当消耗品用  压缩消耗品
+                var config = Config_t_Consumable.getOne(curshowItem.id);
+                PlayerManager.Instance.addItemsNosave(curshowItem.id, -1);
+                PlayerManager.Instance.addItems(config.rewardGiven, config.rewardNum);
+                PanelManager.Instance.showTips5(new ItemData(config.rewardGiven, config.rewardNum));
                 break;
             case ItemType2.use:
-                //+++
+                //+++药剂或食物
+                //弹出精灵
+                PanelManager.Instance.OpenPanel(E_UIPrefab.SpriteCheckPanel, new object[] { spriteChooseType.useSth, curshowItem.id });
+                break;
+            case ItemType2.explor:
+                //冒险用品
+                PanelManager.Instance.OpenPanel(E_UIPrefab.SpriteCheckPanel, new object[] { spriteChooseType.useSth, curshowItem.id });
+                break;
+            case ItemType2.box:
+                //礼盒
+                var list = NormalCalculate.getBoxReward(curshowItem.id);
+                PlayerManager.Instance.addItemsNosave(curshowItem.id, -1);
+                PlayerManager.Instance.addItems(list);
+                PanelManager.Instance.showTips5("获得物品",list,null);
                 break;
             default:
                 PanelManager.Instance.showTips3("使用失败");

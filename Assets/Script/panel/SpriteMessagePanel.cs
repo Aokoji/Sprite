@@ -68,7 +68,7 @@ public class SpriteMessagePanel : PanelTopBase
     {
         var data = PlayerManager.Instance.spriteList[curid];
         _icon.sprite = GetSprite(A_AtlasNames.itemsIcon.ToString(), data.icon);
-        //+++_whole.sprite = GetSprite(A_AtlasNames.wholeImg.ToString(), Config_t_ActorMessage.getOne(curid).wholeIcon);
+        _whole.sprite = GetSprite(A_AtlasNames.wholeImg.ToString(), Config_t_ActorMessage.getOne(curid).wholeIcon);
         _sname.text = data.sname;
         _health.text = "生命值：" + data.hp_cur + "/" + data.hp_max;
         _phy.text = "体力值：" + data.phy_cur + "/" + data.phy_max;

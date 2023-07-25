@@ -410,6 +410,7 @@ public class PlayerManager : CSingel<PlayerManager>
         callback?.Invoke();
     }
     #endregion
+    //战斗响应
     void onbattle(int id)
     {
         bool changed=false;
@@ -423,5 +424,29 @@ public class PlayerManager : CSingel<PlayerManager>
         }
         if (changed)
             savePlayerData();
+    }
+    //用东西
+    public bool useProp(int index,int spid)
+    {
+        var config = Config_t_Consumable.getOne(index);
+        var sp = spriteList[spid];
+        if (config.takeid == 0)
+        {
+            //health
+            if (sp.hp_cur == sp.hp_max)
+                return false;
+            sp.hp_cur += config.takenum;
+            sp.hp_cur = Mathf.Min(sp.hp_cur, sp.hp_max);
+        }
+        if (config.takeid == 1)
+        {
+            //phy
+            if (sp.phy_cur == sp.phy_max)
+                return false;
+            sp.phy_cur += config.takenum;
+            sp.phy_cur = Mathf.Min(sp.phy_cur, sp.phy_max);
+        }
+        addItems(index, -1);
+        return true;
     }
 }

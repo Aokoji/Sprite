@@ -42,6 +42,7 @@ public class ExplorPanel : PanelBase
         setCardBtn.onClick.AddListener(showCardset);
         setBagBtn.onClick.AddListener(showBagset);
         daytipbar.onClick.AddListener(closeDayTips);
+        _spicon.GetComponent<Button>().onClick.AddListener(clickSpChoose);
     }
     public override void reshow()
     {
@@ -96,7 +97,10 @@ public class ExplorPanel : PanelBase
         //森林小径
         PanelManager.Instance.ChangeScenePanel(E_UIPrefab.ExplorMovingPanel, new object[] { false });
     }
-
+    void clickSpChoose()
+    {
+        PanelManager.Instance.OpenPanel(E_UIPrefab.SpriteCheckPanel, new object[] { spriteChooseType.changeCur });
+    }
     void showDayTips()
     {
         var conf = Config_t_items.getOne(_data.dayboss);

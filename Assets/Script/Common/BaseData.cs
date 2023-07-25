@@ -86,7 +86,7 @@ public enum CardType2
     //连击，重击，枯竭，获得卡，秘术，反，翻倍，破甲，装备，祝福     需要配
 }
 
-public enum e_workSquare
+public enum e_workSquare        //t_TravelRandom表合并了旅行和工作
 {
     travel=0,
     workmill=6,
@@ -109,7 +109,7 @@ public enum ItemType2
     build,      //建材    3
     plan,   //设计图   4
     happy,      //精灵玩具  5
-    stone,  //魔石    6
+    stone,  //魔石类    6  (压缩类
     food,       //食物    7
     box,        //礼盒    8
     letter,     //卷轴    9
@@ -148,10 +148,10 @@ public enum explorIcon
     lord,   //领主
     exitBox,
 }
-public enum diffcultEnemy
+public enum spriteChooseType
 {
-    none,
-    normal
+    changeCur,  //切换精灵
+    useSth,     //使用物品
 }
 //任务类型  0
 

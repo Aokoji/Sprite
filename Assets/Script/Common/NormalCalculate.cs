@@ -21,4 +21,24 @@ public class NormalCalculate
             default:return "";
         }
     }
+    //开盒子
+    public static List<ItemData> getBoxReward(int id)
+    {
+        List<ItemData> list = new List<ItemData>();
+        Dictionary<int, int> dic = new Dictionary<int, int>();
+        var item = Config_t_Consumable.getOne(id);
+        string[] str = item.rewardPool.Split('|');
+        System.Random random = new System.Random();
+        int index = 0;
+        for(int i = 0; i < item.rewardNum; i++)
+        {
+            index = int.Parse(str[random.Next(str.Length)]);
+            if (!dic.ContainsKey(index))
+                dic[index] = 0;
+            dic[index]++;
+        }
+        foreach(var i in dic)
+            list.Add(new ItemData(i.Key, i.Value));
+        return list;
+    }
 }
