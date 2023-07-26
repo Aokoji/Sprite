@@ -25,6 +25,7 @@ public class AssetData:ScriptableObject
             case "int":return int.Parse(context);
             case "string":return context;
             case "float":return float.Parse(context);
+            case "bool":return context.Equals("0") ? false : true;
             case "CardType1":return (CardType1)int.Parse(context);
             case "CardType2": return (CardType2)int.Parse(context);
             case "CardSelfType": return (CardSelfType)int.Parse(context);
