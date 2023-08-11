@@ -38,6 +38,7 @@ public class BattleManager : CSingel<BattleManager>
             num = data.volume;
         else
             num = random.Next(-1, 1) + data.volume;
+        //稀有奖励
         if (random.Next(1000) <= data.odds)
         {
             num--;
@@ -49,6 +50,7 @@ public class BattleManager : CSingel<BattleManager>
         string[] str = data.drop.Split('|');
         Dictionary<int, int> list = new Dictionary<int, int>();
         int index;
+        //普通奖励
         for(int i = 0; i < num; i++)
         {
             index = int.Parse(str[random.Next(str.Length)]);
@@ -56,6 +58,9 @@ public class BattleManager : CSingel<BattleManager>
                 list[index] = 0;
             list[index]++;
         }
+        //+++固定奖励
+
+
         foreach(var i in list)
         {
             result.Add(new ItemData(i.Key, i.Value));
