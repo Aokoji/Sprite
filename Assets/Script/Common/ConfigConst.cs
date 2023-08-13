@@ -34,7 +34,7 @@ public static class ConfigConst
     public const int cardGeneralID = 50;        //通用卡牌id
     public const int explorMoveSpend = 2;   //移动消耗
     public const int explorBossAndSpecialSpend = 4;
-    public const int explorExitBoxMaxMoney = 60;
+    public const int explorExitBoxMaxMoneyID = 221; //小包银币
     public const int explorWayID = 0;   //森林小径id
 
     public static Vector3 colorForest = new Vector3(164,210,146);

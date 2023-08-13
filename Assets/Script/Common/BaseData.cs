@@ -148,6 +148,7 @@ public enum explorIcon
     monster,    //巨兽
     lord,   //领主
     exitBox,
+    exit,
 }
 public enum spriteChooseType
 {

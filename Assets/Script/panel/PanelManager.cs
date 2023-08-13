@@ -270,6 +270,11 @@ public class PanelManager : CSingel<PanelManager>
         tip5.setString2(des);
         tip5.play();
     }
+    public void showTips6(string str, Action callback = null)
+    {
+        tip1.init(str, callback);
+        tip1.play();
+    }
     #endregion
 
     public void showComItemTip(int id,Vector3 pos)

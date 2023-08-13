@@ -180,13 +180,17 @@ public class ExplorMovingPanel : PanelBase
         public bool isexploring;    //用于悬赏，无特殊用途
     }
     rankReward currank;
+    List<int> exitPos = new List<int>();
+    List<int> rewardPos = new List<int>();
+    int bossPos;
     void initCalculate()
     {
         curPos = startPos.transform.localPosition;
         var data = PlayerManager.Instance.getExplorData();
+        string[] str;
         if (isway)
         {
-            string[] str = Config_t_ExplorMap.getOne(data.mapType).mapHelp.Split('|');
+            str = Config_t_ExplorMap.getOne(data.mapType).mapHelp.Split('|');
             mapconfig = Config_t_ExplorMapHelp.getOne(int.Parse(str[Random.Range(0, str.Length)]));
         }
         else
@@ -195,6 +199,15 @@ public class ExplorMovingPanel : PanelBase
         height = (int)maxgap / mapconfig.mapheight;
         currank = new rankReward();
         currank.isexploring = true;
+        //初始化位置数据
+        str = mapconfig.exitNum.Split('|');
+        foreach (var i in str)
+            exitPos.Add(int.Parse(i));
+        str=mapconfig.rewardNumber.Split('|');
+        foreach(var i in str)
+            rewardPos.Add(int.Parse(i));
+        str=mapconfig.bossPos.Split('|');
+        bossPos = int.Parse(str[Random.Range(0, str.Length)]);
         //哨站和方向
         curPoint = mapconfig.startPos;
         createANewPos(direct.none);
@@ -226,40 +239,40 @@ public class ExplorMovingPanel : PanelBase
         directhelp.gameObject.SetActive(false);
         //计算奖励
         System.Random random = new System.Random();
-        string[] str = mapconfig.rewardNumber.Split('|');
-        foreach(var i in str)
+
+        if (exitPos.Contains(curPoint))
         {
-            int pos = int.Parse(i);
-            if (curPoint == pos)
+            if (curPoint == bossPos)
             {
-                //奖励
-                if (curPoint == mapconfig.bossPos)
-                {
-                    //boss每日奖励
-                    currank.stype = explorIcon.boss;
-                    var ems = mapconfig.bossPool.Split('|');
-                    currank.enemyID = int.Parse(ems[Random.Range(0, ems.Length)]);
-                }
+                //boss每日奖励
+                currank.stype = explorIcon.boss;
+                var ems = mapconfig.bossPool.Split('|');
+                currank.enemyID = int.Parse(ems[Random.Range(0, ems.Length)]);
+            }
+            else if (rewardPos.Contains(curPoint))
+            {
+                //普通宝箱
+                currank.stype = explorIcon.exitBox;
+                var data = PlayerManager.Instance.getExplorData();
+                if (data.daygift.Count > 0)
+                    currank.sbox = new ItemData(data.daygift[random.Next(data.daygift.Count)], 1);
                 else
-                {
-                    //普通宝箱
-                    currank.stype = explorIcon.exitBox;
-                    var data = PlayerManager.Instance.getExplorData();
-                    if (data.daygift.Count > 0)
-                        currank.sbox = new ItemData(data.daygift[random.Next(data.daygift.Count)], 1);
-                    else
-                        currank.sbox = new ItemData(ConfigConst.currencyID, random.Next(10, ConfigConst.explorExitBoxMaxMoney));
-                }
-                break;
+                    currank.sbox = new ItemData(ConfigConst.explorExitBoxMaxMoneyID,1);
+            }
+            else
+            {
+                //普通出口
+                currank.stype = explorIcon.exit;
             }
         }
-        if (currank.stype == explorIcon.outpost)
+        //非出口则开始随机下一步事件
+        else
         {
             //普通随机
             string[] weight = mapconfig.remark.Split('|');
             int result = random.Next(100);
             int count = 0;
-            for(int i=0;i<weight.Length;i++)
+            for (int i = 0; i < weight.Length; i++)
             {
                 count += int.Parse(weight[i]);
                 if (result < count)
@@ -289,6 +302,7 @@ public class ExplorMovingPanel : PanelBase
                     break;
             }
         }
+
         createANewPos((direct)id);
     }
     void createANewPos(direct dir)
@@ -339,10 +353,17 @@ public class ExplorMovingPanel : PanelBase
             PanelManager.Instance.OpenPanel(E_UIPrefab.ExplorBattleMessPanel, new object[] { currank });
         else if (currank.stype == explorIcon.exitBox)
         {
-            if (currank.sbox.id != ConfigConst.currencyID)
+            if (currank.sbox.id != ConfigConst.explorExitBoxMaxMoneyID)
                 PlayerManager.Instance.getExplorData().daygift.Remove(currank.sbox.id);
             PlayerManager.Instance.addItems(currank.sbox.id, currank.sbox.num);
-            PanelManager.Instance.showTips5("到达森林出口", new List<ItemData>() { currank.sbox }, () =>
+            PanelManager.Instance.showTips5("到达森林出口，寻找到了战利品", new List<ItemData>() { currank.sbox }, () =>
+            {
+                PanelManager.Instance.JumpPanelScene(E_UIPrefab.MainPanel, () => { EventAction.Instance.TriggerAction(eventType.jumpMainExplor); });
+            });
+        }
+        else if (currank.stype == explorIcon.exit)
+        {
+            PanelManager.Instance.showTips6("到达森林出口，即将返回哨站", () =>
             {
                 PanelManager.Instance.JumpPanelScene(E_UIPrefab.MainPanel, () => { EventAction.Instance.TriggerAction(eventType.jumpMainExplor); });
             });
