@@ -106,24 +106,20 @@ public class ExplorMovingPanel : PanelBase
                 var data = PlayerManager.Instance.getExplorData();
                 if (data.dayboss_short > 0)
                 {
-                    PanelManager.Instance.showTips5("探索完成，获得每日奖励", new List<ItemData>() { new ItemData(data.dayboss_short, 1) }, () =>
-                    {
-                        data.dayboss_short = 0;
-                        PanelManager.Instance.JumpPanelScene(E_UIPrefab.MainPanel, () =>
-                        {
-                            EventAction.Instance.TriggerAction(eventType.jumpMainExplor);
-                        });
-                    });
+                    PanelManager.Instance.showTips5("探索完成，获得每日奖励", new List<ItemData>() { new ItemData(data.dayboss_short, 1) }, jumpMainPanel);
                 }
                 else
                 {
-                    PanelManager.Instance.showTips5("探索完成", "即将返回哨站", () =>
+                    if (currank.sbox != null && currank.sbox.id != ConfigConst.explorExitBoxMaxMoneyID)
                     {
-                        PanelManager.Instance.JumpPanelScene(E_UIPrefab.MainPanel, () =>
-                        {
-                            EventAction.Instance.TriggerAction(eventType.jumpMainExplor);
-                        });
-                    });
+                        PlayerManager.Instance.getExplorData().daygift.Remove(currank.sbox.id);
+                        PlayerManager.Instance.addItems(currank.sbox.id, currank.sbox.num);
+                        PanelManager.Instance.showTips5("探索完成，得到了战利品", new List<ItemData>() { currank.sbox }, jumpMainPanel);
+                    }
+                    else
+                    {
+                        PanelManager.Instance.showTips5("探索完成", "即将返回哨站", jumpMainPanel);
+                    }
                 }
             }
             else
@@ -134,14 +130,16 @@ public class ExplorMovingPanel : PanelBase
         else
         {
             //战败
-            PanelManager.Instance.showTips5("战斗失败", "损失最大体力的50%，即将返回哨站。", () =>
-            {
-                PanelManager.Instance.JumpPanelScene(E_UIPrefab.MainPanel, () =>
-                {
-                    EventAction.Instance.TriggerAction(eventType.jumpMainExplor);
-                });
-            });
+            PanelManager.Instance.showTips5("战斗失败", "损失最大体力的50%，即将返回哨站。", jumpMainPanel);
         }
+    }
+
+    void jumpMainPanel()
+    {
+        PanelManager.Instance.JumpPanelScene(E_UIPrefab.MainPanel, () =>
+        {
+            EventAction.Instance.TriggerAction(eventType.jumpMainExplor);
+        });
     }
     void bagsitempage()
     {
@@ -152,13 +150,7 @@ public class ExplorMovingPanel : PanelBase
     }
     void clickRun()
     {
-        PanelManager.Instance.showTips2("确定要返回哨站吗？", () =>
-        {
-            PanelManager.Instance.JumpPanelScene(E_UIPrefab.MainPanel, () =>
-            {
-                EventAction.Instance.TriggerAction(eventType.jumpMainExplor);
-            });
-        });
+        PanelManager.Instance.showTips2("确定要返回哨站吗？", jumpMainPanel);
 
     }
     #region calculate
@@ -239,7 +231,7 @@ public class ExplorMovingPanel : PanelBase
         directhelp.gameObject.SetActive(false);
         //计算奖励
         System.Random random = new System.Random();
-
+        //出口检测
         if (exitPos.Contains(curPoint))
         {
             if (curPoint == bossPos)
@@ -248,6 +240,12 @@ public class ExplorMovingPanel : PanelBase
                 currank.stype = explorIcon.boss;
                 var ems = mapconfig.bossPool.Split('|');
                 currank.enemyID = int.Parse(ems[Random.Range(0, ems.Length)]);
+
+                var data = PlayerManager.Instance.getExplorData();
+                if (data.daygift.Count > 0 && data.dayboss == 0)
+                    currank.sbox = new ItemData(data.daygift[random.Next(data.daygift.Count)], 1);
+                else
+                    currank.sbox = null;
             }
             else if (rewardPos.Contains(curPoint))
             {
@@ -356,17 +354,11 @@ public class ExplorMovingPanel : PanelBase
             if (currank.sbox.id != ConfigConst.explorExitBoxMaxMoneyID)
                 PlayerManager.Instance.getExplorData().daygift.Remove(currank.sbox.id);
             PlayerManager.Instance.addItems(currank.sbox.id, currank.sbox.num);
-            PanelManager.Instance.showTips5("到达森林出口，寻找到了战利品", new List<ItemData>() { currank.sbox }, () =>
-            {
-                PanelManager.Instance.JumpPanelScene(E_UIPrefab.MainPanel, () => { EventAction.Instance.TriggerAction(eventType.jumpMainExplor); });
-            });
+            PanelManager.Instance.showTips5("到达森林出口，寻找到了战利品", new List<ItemData>() { currank.sbox }, jumpMainPanel);
         }
         else if (currank.stype == explorIcon.exit)
         {
-            PanelManager.Instance.showTips6("到达森林出口，即将返回哨站", () =>
-            {
-                PanelManager.Instance.JumpPanelScene(E_UIPrefab.MainPanel, () => { EventAction.Instance.TriggerAction(eventType.jumpMainExplor); });
-            });
+            PanelManager.Instance.showTips5("到达森林出口，即将返回哨站", "", jumpMainPanel);
         }
         else if (currank.stype == explorIcon.rest)
         {

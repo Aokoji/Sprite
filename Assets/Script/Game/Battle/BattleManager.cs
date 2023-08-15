@@ -59,13 +59,20 @@ public class BattleManager : CSingel<BattleManager>
             list[index]++;
         }
         //+++固定奖励
-
-
-        foreach(var i in list)
+        str = data.dropCommon.Split('|');
+        foreach(var i in str)
+        {
+            index = int.Parse(i);
+            if (!list.ContainsKey(index))
+                list[index] = 0;
+            list[index]++;
+        }
+        //整合dic
+        foreach (var i in list)
         {
             result.Add(new ItemData(i.Key, i.Value));
         }
-
+        //获得boss每日奖励
         if (curtype == explorIcon.boss)
         {
             var explor = PlayerManager.Instance.getExplorData();
@@ -80,6 +87,10 @@ public class BattleManager : CSingel<BattleManager>
                 explor.dayboss_short = 0;
             }
         }
+        else
+        {
+            //普通奖励
+        }
         PlayerManager.Instance.addItems(result);
     }
     public void settleStep(bool iswin)
@@ -87,7 +98,7 @@ public class BattleManager : CSingel<BattleManager>
         PanelManager.Instance.panelUnlock();
         if (iswin )
         {
-            PanelManager.Instance.showTips5("获得奖励", result, () =>
+            PanelManager.Instance.showTips5("获得素材", result, () =>
             {
                 EventAction.Instance.TriggerAction(eventType.explorGoNextRank_B, true);
                 ctrl.dispose();
