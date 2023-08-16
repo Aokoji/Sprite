@@ -61,7 +61,7 @@ public class BattlePanel : PanelBase
     enum rank
     {
         none,
-        dealcard,
+        //dealcard,
         takecard,
         roundCalcu,
         showcard,
@@ -121,7 +121,7 @@ public class BattlePanel : PanelBase
     //开始阶段
     public void startGame()
     {
-        currank = rank.dealcard;
+        currank = rank.takecard;
         dealbtnAllow = true;
         addAction(() =>
         {
@@ -147,11 +147,6 @@ public class BattlePanel : PanelBase
     {
         switch (currank)
         {
-            case rank.dealcard:
-                currank = rank.showcard;
-                //回合开始
-                PanelManager.Instance.showTips1("回合开始");
-                break;
             case rank.showcard:
                 currank = rank.roundCalcu;
                 PanelManager.Instance.panelLock();
@@ -162,10 +157,12 @@ public class BattlePanel : PanelBase
                 EventAction.Instance.TriggerAction(eventType.playRoundNext);
                 break;
             case rank.takecard:
-                currank = rank.dealcard;
+                currank = rank.showcard;
                 refreshMana();
-                addAction(() => { dealCard(1); });
-                dealEnemyCard(1);
+                //回合开始
+                PanelManager.Instance.showTips1("回合开始");
+                //addAction(() => { dealCard(1); });
+                //dealEnemyCard(1);
                 break;
         }
     }

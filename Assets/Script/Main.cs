@@ -8,11 +8,15 @@ using UnityEditor;
 public class Main : MonoBehaviour
 {
     public bool isClearData;
+    public int dayMapID;
+
+    public static int DayMapID;
     void Start()
     {
 #if UNITY_EDITOR
         if (isClearData)
             File.Delete(Application.persistentDataPath + "/" + S_SaverNames.pdata.ToString());
+        DayMapID = dayMapID;
 #endif
         GameManager.Instance.initManager();
         PanelManager.Instance.OpenPanel(E_UIPrefab.StartPanel);

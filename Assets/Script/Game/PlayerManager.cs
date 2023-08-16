@@ -375,6 +375,7 @@ public class PlayerManager : CSingel<PlayerManager>
         else if (rand < 32) fintyp = 8;
         else if (rand < 33) fintyp = 9;
         playerdata.explor.mapType = fintyp;
+        if (Main.DayMapID > 0) playerdata.explor.mapType = Main.DayMapID;
         //填充day box count奖励
         var mapconfig = Config_t_ExplorMap.getOne(fintyp);
         string[] room = mapconfig.mapGiftPool.Split('-');

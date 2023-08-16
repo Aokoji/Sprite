@@ -14,77 +14,77 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   asset:
   - id: 8
-    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\u0421\uFFFD\uFFFD"
+    sname: "\u73CD\u73E0\u5C0F\u9EA6"
     produceCoef: 270
     finishID: 9
     rareID: 10
   - id: 15
-    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\u013E\uFFFD\uFFFD"
+    sname: "\u9EC4\u5FC3\u6728\u85AF"
     produceCoef: 360
     finishID: 16
     rareID: 17
   - id: 18
-    sname: "\uFFFD\uFFFD"
+    sname: "\u5927\u8C46"
     produceCoef: 300
     finishID: 19
     rareID: 20
   - id: 21
-    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    sname: "\u957F\u7A57\u7389\u7C73"
     produceCoef: 240
     finishID: 22
     rareID: 23
   - id: 24
-    sname: "\uFFFD\u047F\u01F4\uFFFD\uFFFD\uFFFD"
+    sname: "\u8131\u58F3\u5927\u7C73"
     produceCoef: 180
     finishID: 25
     rareID: 26
   - id: 27
-    sname: "\uFFFD\u027A\u05B2\uFFFD"
+    sname: "\u5E72\u8910\u53C2"
     produceCoef: 115
     finishID: 28
     rareID: 29
   - id: 30
-    sname: "\uFFFD\uFFFD\uFFFD"
+    sname: "\u751C\u67D1"
     produceCoef: 150
     finishID: 31
     rareID: 32
   - id: 33
-    sname: "\uFFFD\uFFFD\u0270\u05FD\uFFFD"
+    sname: "\u98CE\u5E72\u767D\u82A5"
     produceCoef: 95
     finishID: 34
     rareID: 35
   - id: 36
-    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    sname: "\u4E01\u9999\u8349"
     produceCoef: 60
     finishID: 37
     rareID: 38
   - id: 39
-    sname: "\uFFFD\u02B2\uFFFD"
+    sname: "\u7518\u8349"
     produceCoef: 80
     finishID: 40
     rareID: 41
   - id: 42
-    sname: "\u0532\uFFFD\u017D\uFFFD"
+    sname: "\u5706\u9897\u6912"
     produceCoef: 100
     finishID: 43
     rareID: 44
   - id: 45
-    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    sname: "\u51B0\u8584\u8377"
     produceCoef: 50
     finishID: 46
     rareID: 47
   - id: 54
-    sname: "\uFFFD\xBE\u0275\uFFFD\u0421\uFFFD\uFFFD"
+    sname: "\u9648\u65E7\u7684\u5C0F\u9EA6"
     produceCoef: 180
     finishID: 55
     rareID: 56
   - id: 56
-    sname: "\u0421\uFFFD\uFFFD"
+    sname: "\u5C0F\u9EA6"
     produceCoef: 150
     finishID: 57
     rareID: 58
   - id: 59
-    sname: "\uFFFD\u0339\uFFFD\uFFFD\uFFFD"
+    sname: "\u70DF\u679C\u58F3"
     produceCoef: 720
     finishID: 60
     rareID: 0

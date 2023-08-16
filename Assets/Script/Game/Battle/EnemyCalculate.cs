@@ -379,7 +379,7 @@ public class EnemyCalculate:CSingel<EnemyCalculate>
                     else return true;
                 }
         }
-        Debug.LogWarning("有未用完能量点:  "+edata.cost_cur);
+        Debug.LogWarning("enemy有未用完能量点:  "+edata.cost_cur);
         return false;
     }
     #endregion

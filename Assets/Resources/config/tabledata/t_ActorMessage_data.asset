@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   asset:
   - id: 1
-    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    sname: "\u82B1\u5996\u7CBE"
     defaultCard: 1
     titleIcon: elf_flower
     wholeIcon: elf_flower
@@ -22,13 +22,13 @@ MonoBehaviour:
     hpbase: 20
     costmax: 3
     spritePower: 7
-    drop: "\uFFFD\uFFFD\uFFFD\uFFFD\u02FF"
+    drop: "\u7C73\u8389\u4E1D"
     dropRare: 0
     dropCommon: 0
     volume: 0
     odds: 0
   - id: 2
-    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    sname: "\u9E1F\u5996\u7CBE"
     defaultCard: 1
     titleIcon: elf_bird
     wholeIcon: elf_bird
@@ -36,13 +36,13 @@ MonoBehaviour:
     hpbase: 16
     costmax: 3
     spritePower: 10
-    drop: "\uFFFD\uFFFD\uFFFD\uFFFD"
+    drop: "\u827E\u683C"
     dropRare: 0
     dropCommon: 0
     volume: 0
     odds: 0
   - id: 3
-    sname: "\u04B6\uFFFD\uFFFD\uFFFD\uFFFD"
+    sname: "\u53F6\u5996\u7CBE"
     defaultCard: 1
     titleIcon: elf_leaf
     wholeIcon: elf_leaf
@@ -50,13 +50,13 @@ MonoBehaviour:
     hpbase: 25
     costmax: 3
     spritePower: 8
-    drop: "\uFFFD\uFFFD"
+    drop: "\u67DA"
     dropRare: 0
     dropCommon: 0
     volume: 0
     odds: 0
   - id: 4
-    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    sname: "\u6708\u5996\u7CBE"
     defaultCard: 1
     titleIcon: elf_moon
     wholeIcon: elf_moon
@@ -64,13 +64,13 @@ MonoBehaviour:
     hpbase: 22
     costmax: 3
     spritePower: 14
-    drop: "\u023D"
+    drop: "\u5189"
     dropRare: 0
     dropCommon: 0
     volume: 0
     odds: 0
   - id: 5
-    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    sname: "\u5149\u5996\u7CBE"
     defaultCard: 1
     titleIcon: elf_light
     wholeIcon: elf_light
@@ -78,13 +78,13 @@ MonoBehaviour:
     hpbase: 30
     costmax: 3
     spritePower: 5
-    drop: "\uFFFD\uFFFD\uFFFD\uFFFD"
+    drop: "\u590F\u4E9A"
     dropRare: 0
     dropCommon: 0
     volume: 0
     odds: 0
   - id: 6
-    sname: "\uFFFD\uFFFD\uFFFD\uFFFD"
+    sname: "\u80E1\u8702"
     defaultCard: 2
     titleIcon: en_wasp
     wholeIcon: 0
@@ -98,7 +98,7 @@ MonoBehaviour:
     volume: 1
     odds: 30
   - id: 7
-    sname: "\u0122\uFFFD\uFFFD\uFFFD\uFFFD"
+    sname: "\u8611\u83C7\u602A"
     defaultCard: 2
     titleIcon: en_mush
     wholeIcon: 0
@@ -112,7 +112,7 @@ MonoBehaviour:
     volume: 3
     odds: 18
   - id: 8
-    sname: "\uFFFD\uFFFD\uFFFD\uFFFD"
+    sname: "\u68D5\u718A"
     defaultCard: 2
     titleIcon: en_bear
     wholeIcon: 0
@@ -126,7 +126,7 @@ MonoBehaviour:
     volume: 6
     odds: 12
   - id: 9
-    sname: "\uFFFD\u05F6\uFFFD\u0132\uFFFD\uFFFD\uFFFD"
+    sname: "\u51F6\u6076\u7684\u8C7A\u72FC"
     defaultCard: 2
     titleIcon: en_wolves
     wholeIcon: 0
@@ -140,7 +140,7 @@ MonoBehaviour:
     volume: 5
     odds: 0
   - id: 10
-    sname: "\uFFFD\u0679\uFFFD\uFFFD\uFFFD"
+    sname: "\u6A58\u679C\u602A"
     defaultCard: 2
     titleIcon: en_citrus
     wholeIcon: 0
@@ -154,7 +154,7 @@ MonoBehaviour:
     volume: 1
     odds: 0
   - id: 11
-    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    sname: "\u6A61\u679C\u602A"
     defaultCard: 2
     titleIcon: en_acorn
     wholeIcon: 0
@@ -168,7 +168,7 @@ MonoBehaviour:
     volume: 1
     odds: 0
   - id: 12
-    sname: "\u0330\uFFFD\uFFFD\u013B\uFFFD\uFFFD\uFFFD"
+    sname: "\u8D2A\u73A9\u7684\u82B1\u5996"
     defaultCard: 2
     titleIcon: en
     wholeIcon: 0
@@ -182,7 +182,7 @@ MonoBehaviour:
     volume: 2
     odds: 12
   - id: 13
-    sname: "\uFFFD\uFFFD\xB7\u02AF\u0377\uFFFD\uFFFD"
+    sname: "\u62E6\u8DEF\u77F3\u5934\u602A"
     defaultCard: 2
     titleIcon: en
     wholeIcon: 0
@@ -196,7 +196,7 @@ MonoBehaviour:
     volume: 1
     odds: 0
   - id: 14
-    sname: "\u0421\uFFFD\uFFFD\uFFFD\uFFFD"
+    sname: "\u5C0F\u6811\u5996"
     defaultCard: 2
     titleIcon: en
     wholeIcon: 0
@@ -210,7 +210,7 @@ MonoBehaviour:
     volume: 2
     odds: 0
   - id: 15
-    sname: "\uFFFD\uFFFD\uFFFD\u04B5\u0136\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    sname: "\u6DF7\u4E71\u7684\u72EC\u89D2\u4ED9"
     defaultCard: 2
     titleIcon: en
     wholeIcon: 0
@@ -224,7 +224,7 @@ MonoBehaviour:
     volume: 1
     odds: 25
   - id: 16
-    sname: "\uFFFD\uFFFD\xEB\uFFFD\uFFFD"
+    sname: "\u9ED1\u6BDB\u9F20"
     defaultCard: 2
     titleIcon: en
     wholeIcon: 0
@@ -238,7 +238,7 @@ MonoBehaviour:
     volume: 2
     odds: 15
   - id: 17
-    sname: "\u0573\u0573\uFFFD\uFFFD"
+    sname: "\u7C98\u7C98\u866B"
     defaultCard: 2
     titleIcon: en
     wholeIcon: 0
@@ -252,7 +252,7 @@ MonoBehaviour:
     volume: 3
     odds: 20
   - id: 18
-    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    sname: "\u82B1\u6591\u87B3\u8782"
     defaultCard: 2
     titleIcon: en
     wholeIcon: 0
@@ -266,7 +266,7 @@ MonoBehaviour:
     volume: 2
     odds: 35
   - id: 19
-    sname: "\u0127\uFFFD\uFFFD\uFFFD\uFFFD"
+    sname: "\u9B54\u6CD5\u7130"
     defaultCard: 2
     titleIcon: en
     wholeIcon: 0
@@ -280,7 +280,7 @@ MonoBehaviour:
     volume: 3
     odds: 0
   - id: 20
-    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    sname: "\u7ED3\u7F51\u6BD2\u86DB"
     defaultCard: 2
     titleIcon: en
     wholeIcon: 0
@@ -294,7 +294,7 @@ MonoBehaviour:
     volume: 3
     odds: 24
   - id: 21
-    sname: "\u02B3\u0127\uFFFD\uFFFD"
+    sname: "\u98DF\u9B54\u82B1"
     defaultCard: 2
     titleIcon: en
     wholeIcon: 0
@@ -308,7 +308,7 @@ MonoBehaviour:
     volume: 4
     odds: 15
   - id: 22
-    sname: "\uFFFD\uFFFD\uFFFD\u033E\uFFFD\uFFFD\uFFFD"
+    sname: "\u6BD2\u523A\u8346\u68D8"
     defaultCard: 2
     titleIcon: en
     wholeIcon: 0
@@ -322,7 +322,7 @@ MonoBehaviour:
     volume: 3
     odds: 0
   - id: 23
-    sname: "\uFFFD\uFFFD\u02AF\uFFFD\uFFFD\uFFFD\uFFFD"
+    sname: "\u5B9D\u77F3\u9CDE\u86C7"
     defaultCard: 2
     titleIcon: en
     wholeIcon: 0
@@ -336,7 +336,7 @@ MonoBehaviour:
     volume: 3
     odds: 7
   - id: 24
-    sname: "\u037A\uFFFD\uFFFD"
+    sname: "\u79C3\u9E6B"
     defaultCard: 2
     titleIcon: en
     wholeIcon: 0
@@ -350,7 +350,7 @@ MonoBehaviour:
     volume: 4
     odds: 0
   - id: 25
-    sname: "\uFFFD\u05F6\uFFFD\uFFFD\uFFFD\xBC\uFFFD\u0127\uFFFD\uFFFD"
+    sname: "\u51F6\u6076\u7684\u4E0B\u7EA7\u9B54\u65CF"
     defaultCard: 2
     titleIcon: en
     wholeIcon: 0
@@ -364,7 +364,7 @@ MonoBehaviour:
     volume: 4
     odds: 15
   - id: 26
-    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u0127\uFFFD\uFFFD\xB9"
+    sname: "\u8150\u5316\u7684\u9B54\u6CD5\u9E7F"
     defaultCard: 2
     titleIcon: en
     wholeIcon: 0
@@ -378,7 +378,7 @@ MonoBehaviour:
     volume: 2
     odds: 7
   - id: 27
-    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u0265\u02AC"
+    sname: "\u590D\u6D3B\u7684\u4E27\u5C38"
     defaultCard: 2
     titleIcon: en
     wholeIcon: 0
@@ -392,7 +392,7 @@ MonoBehaviour:
     volume: 4
     odds: 0
   - id: 28
-    sname: "\u0139\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    sname: "\u5893\u5730\u9AB7\u9AC5"
     defaultCard: 2
     titleIcon: en
     wholeIcon: 0
@@ -406,7 +406,7 @@ MonoBehaviour:
     volume: 3
     odds: 0
   - id: 29
-    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\u0127\uFFFD\uFFFD\uFFFD\uFFFD"
+    sname: "\u7070\u7FFC\u9B54\u65CF\u65A5\u5019"
     defaultCard: 2
     titleIcon: en
     wholeIcon: 0
@@ -420,7 +420,7 @@ MonoBehaviour:
     volume: 6
     odds: 30
   - id: 30
-    sname: "\uFFFD\U00071A75\u0138\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    sname: "\u72C2\u66B4\u7684\u8150\u5316\u5DE8\u718A"
     defaultCard: 2
     titleIcon: en
     wholeIcon: 0
@@ -434,7 +434,7 @@ MonoBehaviour:
     volume: 8
     odds: 25
   - id: 31
-    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\u02B4\uFFFD\uFFFD\u0127\uFFFD\uFFFD"
+    sname: "\u88AB\u4FB5\u8680\u7684\u9B54\u65CF"
     defaultCard: 2
     titleIcon: en
     wholeIcon: 0
@@ -448,7 +448,7 @@ MonoBehaviour:
     volume: 6
     odds: 25
   - id: 32
-    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    sname: "\u67AF\u85E4\u6811\u5996"
     defaultCard: 2
     titleIcon: en
     wholeIcon: 0
@@ -462,7 +462,7 @@ MonoBehaviour:
     volume: 11
     odds: 30
   - id: 33
-    sname: "\uFFFD\uFFFD\uFFFD\u06FA\uFFFD\uFFFD\uFFFD\u057D\u02BF"
+    sname: "\u91D1\u9CDE\u6D77\u5996\u6218\u58EB"
     defaultCard: 2
     titleIcon: en
     wholeIcon: 0
@@ -476,7 +476,7 @@ MonoBehaviour:
     volume: 9
     odds: 25
   - id: 34
-    sname: "\uFFFD\uFFFD\u02B4\uFFFD\u013E\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u01E7\uFFFD\uFFFD\uFFFD"
+    sname: "\u4FB5\u8680\u7684\u6676\u5316\u5DE8\u578B\u5343\u8DB3\u866B"
     defaultCard: 2
     titleIcon: en
     wholeIcon: 0
@@ -490,7 +490,7 @@ MonoBehaviour:
     volume: 25
     odds: 25
   - id: 35
-    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    sname: "\u9AB7\u9AC5\u9886\u519B"
     defaultCard: 2
     titleIcon: en
     wholeIcon: 0
@@ -504,7 +504,7 @@ MonoBehaviour:
     volume: 10
     odds: 25
   - id: 36
-    sname: "\uFFFD\uFFFD\uFFFD\u02F5\u013A\uFFFD\uFFFD\uFFFD\u0127\uFFFD\uFFFD\u0373\uFFFD\uFFFD"
+    sname: "\u53D7\u4F24\u7684\u9ED1\u7FFC\u9B54\u65CF\u7EDF\u9886"
     defaultCard: 2
     titleIcon: en
     wholeIcon: 0
@@ -518,7 +518,7 @@ MonoBehaviour:
     volume: 13
     odds: 20
   - id: 37
-    sname: "\uFFFD\uFFFD\u04E1\uFFFD\u013B\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    sname: "\u5C01\u5370\u7684\u706B\u7130\u9886\u4E3B"
     defaultCard: 2
     titleIcon: en
     wholeIcon: 0
@@ -532,7 +532,7 @@ MonoBehaviour:
     volume: 14
     odds: 20
   - id: 38
-    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    sname: "\u6D77\u5996\u5DE8\u9CB6\u9886\u519B"
     defaultCard: 2
     titleIcon: en
     wholeIcon: 0
