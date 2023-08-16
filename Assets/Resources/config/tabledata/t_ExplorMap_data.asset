@@ -16,63 +16,72 @@ MonoBehaviour:
   - id: 1
     sname: 1
     imageName: mapenter1
-    describe: "\u4ECA\u5929\u7684\u8FF7\u96FE\u683C\u5916\u6D53\u539A\uFF0C\u5B9E\u5728\u662F\u65E0\u6CD5\u6DF1\u5165\u5462\u3002"
+    describe: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u0168\uFFFD\uFFFD\u02B5\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u07B7\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u0621\uFFFD"
     maplength: 0
     mapHelp: 0
-    mapDayBox: 0
+    mapDayBox: 78
+    mapGiftPool: 0
   - id: 2
     sname: 1
     imageName: mapenter2
-    describe: "\u8FF7\u96FE\u8F83\u4E3A\u6D53\u539A\uFF0C\u5728\u5468\u8FB9\u5C0F\u5FC3\u63A2\u7D22\u4E3A\u597D\u3002"
+    describe: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u03AA\u0168\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u0731\uFFFD\u0421\uFFFD\uFFFD\u033D\uFFFD\uFFFD\u03AA\uFFFD\xE1\uFFFD"
     maplength: 4
     mapHelp: 1|2
-    mapDayBox: 51
+    mapDayBox: 214|215
+    mapGiftPool: 221|228|230-231|221|230-220|235|231|230
   - id: 3
     sname: 1
     imageName: mapenter3
-    describe: "\u68EE\u6797\u4ECD\u7136\u88AB\u8FF7\u96FE\u7B3C\u7F69\uFF0C\u51C6\u5907\u597D\u63D0\u706F\u5C0F\u5FC3\u63A2\u7D22\u3002"
+    describe: "\u026D\uFFFD\uFFFD\uFFFD\uFFFD\u023B\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u05A3\uFFFD\u05FC\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u0421\uFFFD\uFFFD\u033D\uFFFD\uFFFD\uFFFD\uFFFD"
     maplength: 6
-    mapHelp: 1|3
-    mapDayBox: 51
+    mapHelp: 3|4|5
+    mapDayBox: 214|215
+    mapGiftPool: 51|221|228|230|234-51|221|228|231|235-51|220|221|231|235-232|231|221|220|51|235
   - id: 4
     sname: 1
     imageName: mapenter4
-    describe: "\u4ECA\u65E5\u4E0B\u96E8\uFF0C\u8FF7\u96FE\u7A0D\u6709\u6D88\u6563\uFF0C\u53EF\u4EE5\u91C7\u96C6\u4E00\u4E9B\u8D44\u6E90\u3002"
+    describe: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uA8EC\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u0262\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u0532\u027C\uFFFD\u04BB\u0429\uFFFD\uFFFD\u0534\uFFFD\uFFFD"
     maplength: 8
-    mapHelp: 1|4
-    mapDayBox: 51
+    mapHelp: 6|7|8
+    mapDayBox: 214|215
+    mapGiftPool: 51|220|232|231|221|234|235
   - id: 5
     sname: 1
     imageName: mapenter4
-    describe: "\u8FF7\u96FE\u8F83\u7A00\uFF0C\u68EE\u6797\u5076\u6709\u5486\u54EE\u58F0\uFF0C\u4F3C\u4E4E\u6709\u91CE\u517D\u51FA\u6CA1\u3002"
+    describe: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u03E1\uFFFD\uFFFD\u026D\uFFFD\uFFFD\u017C\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u01BA\uFFFD\uFFFD\uFFFD\u04B0\uFFFD\u07B3\uFFFD\xFB\uFFFD\uFFFD"
     maplength: 9
-    mapHelp: 1|5
-    mapDayBox: 51
+    mapHelp: 9|10|11|12
+    mapDayBox: 214|215
+    mapGiftPool: 51|220|232|231|230|234|235
   - id: 6
     sname: 1
     imageName: mapenter4
-    describe: "\u8FF7\u96FE\u7A00\u8584\uFF0C\u9002\u5408\u9002\u5F53\u7684\u6DF1\u5165\uFF0C\u4F46\u8981\u5C0F\u5FC3\u884C\u4E8B\u3002"
+    describe: "\uFFFD\uFFFD\uFFFD\uFFFD\u03E1\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u02BA\uFFFD\uFFFD\u02B5\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uB8EC\uFFFD\uFFFD\u04AA\u0421\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\xA1\uFFFD"
     maplength: 12
-    mapHelp: 1|6
-    mapDayBox: 51
+    mapHelp: 13|14|15
+    mapDayBox: 217|216
+    mapGiftPool: 51|220|231|230|234|235
   - id: 7
     sname: 1
     imageName: mapenter4
-    describe: "\u8FF7\u96FE\u6682\u65F6\u6D88\u6563\uFF0C\u51F6\u731B\u7684\u9B54\u7269\u4E5F\u5F00\u59CB\u56DB\u5904\u6D3B\u52A8\u4E86\uFF0C\u4F46\u540C\u65F6\u4E5F\u662F\u5BFB\u627E\u5B9D\u7269\u7684\u597D\u65F6\u673A\uFF01"
+    describe: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u02B1\uFFFD\uFFFD\u0262\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u0375\uFFFD\u0127\uFFFD\uFFFD\u04B2\uFFFD\uFFFD\u02BC\uFFFD\u0134\uFFFD\uFFFD\uEDAF\uFFFD\u02E3\uFFFD\uFFFD\uFFFD\u036C\u02B1\u04B2\uFFFD\uFFFD\u0470\uFFFD\u04B1\uFFFD\uFFFD\uFFFD\u013A\uFFFD\u02B1\uFFFD\uFFFD\uFFFD\uFFFD"
     maplength: 15
-    mapHelp: 1|7
-    mapDayBox: 51
+    mapHelp: 16|17|18|19|20
+    mapDayBox: 216|217
+    mapGiftPool: 213|222|236|237|235|234
   - id: 8
     sname: 1
     imageName: mapenter4
-    describe: "\u68EE\u6797\u4E2D\u4F20\u51FA\u731B\u70C8\u7684\u9B54\u7269\u6C14\u606F\uFF0C\u4F3C\u4E4E\u6709\u5E9E\u7136\u5927\u7269\u7ECF\u8FC7\u3002"
+    describe: "\u026D\uFFFD\uFFFD\uFFFD\u0434\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u04B5\uFFFD\u0127\uFFFD\uFFFD\uFFFD\uFFFD\u03E2\uFFFD\uFFFD\uFFFD\u01BA\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u023B\uFFFD\uFFFD\uFFFD\uFFAD\uFFFD\uFFFD\uFFFD\uFFFD"
     maplength: 5
-    mapHelp: 1|8
-    mapDayBox: 51
+    mapHelp: 21|22|23
+    mapDayBox: 218|219
+    mapGiftPool: 213|222|235
   - id: 9
     sname: 1
     imageName: mapenter4
-    describe: "\u4E4C\u4E91\u7B3C\u7F69\uFF0C\u4F3C\u4E4E\u6709\u9886\u4E3B\u82CF\u9192\u4E86\u3002"
+    describe: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u05A3\uFFFD\uFFFD\u01BA\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u02E1\uFFFD"
     maplength: 20
-    mapHelp: 1|9
-    mapDayBox: 51
+    mapHelp: 24|25|26|27|28
+    mapDayBox: 218|219
+    mapGiftPool: 213|223|233|216|217|237|236

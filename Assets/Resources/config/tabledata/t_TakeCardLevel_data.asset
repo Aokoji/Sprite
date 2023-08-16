@@ -14,47 +14,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   asset:
   - id: 1
-    sname: "\u82B1\u5996\u7CBE"
-    normal: 2
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    normal: 1
     fire: 0
-    water: 8
-    thunder: 2
-    forest: 4
+    water: 3
+    thunder: 1
+    forest: 2
     arcane: 0
     goden: 1
   - id: 2
-    sname: "\u9E1F\u5996\u7CBE"
-    normal: 2
-    fire: 8
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    normal: 1
+    fire: 3
     water: 0
-    thunder: 5
+    thunder: 2
     forest: 1
     arcane: 0
     goden: 1
   - id: 3
-    sname: "\u53F6\u5996\u7CBE"
-    normal: 2
+    sname: "\u04B6\uFFFD\uFFFD\uFFFD\uFFFD"
+    normal: 1
     fire: 0
-    water: 3
+    water: 1
     thunder: 0
-    forest: 9
-    arcane: 2
+    forest: 3
+    arcane: 0
     goden: 1
   - id: 4
-    sname: "\u6708\u5996\u7CBE"
-    normal: 2
-    fire: 2
-    water: 5
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    normal: 1
+    fire: 1
+    water: 2
     thunder: 0
     forest: 1
-    arcane: 7
+    arcane: 3
     goden: 1
   - id: 5
-    sname: "\u5149\u5996\u7CBE"
-    normal: 2
-    fire: 3
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    normal: 1
+    fire: 2
     water: 0
-    thunder: 10
+    thunder: 3
     forest: 0
     arcane: 0
     goden: 1

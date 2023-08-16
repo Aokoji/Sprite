@@ -14,145 +14,534 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   asset:
   - id: 1
-    sname: "\u82B1\u5996\u7CBE"
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
     defaultCard: 1
     titleIcon: elf_flower
-    wholeIcon: 0
+    wholeIcon: elf_flower
     phybase: 50
     hpbase: 20
     costmax: 3
     spritePower: 7
-    drop: 0
+    drop: "\uFFFD\uFFFD\uFFFD\uFFFD\u02FF"
     dropRare: 0
+    dropCommon: 0
     volume: 0
     odds: 0
   - id: 2
-    sname: "\u9E1F\u5996\u7CBE"
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
     defaultCard: 1
     titleIcon: elf_bird
-    wholeIcon: 0
+    wholeIcon: elf_bird
     phybase: 65
     hpbase: 16
     costmax: 3
     spritePower: 10
-    drop: 0
+    drop: "\uFFFD\uFFFD\uFFFD\uFFFD"
     dropRare: 0
+    dropCommon: 0
     volume: 0
     odds: 0
   - id: 3
-    sname: "\u53F6\u5996\u7CBE"
+    sname: "\u04B6\uFFFD\uFFFD\uFFFD\uFFFD"
     defaultCard: 1
     titleIcon: elf_leaf
-    wholeIcon: 0
+    wholeIcon: elf_leaf
     phybase: 80
     hpbase: 25
     costmax: 3
     spritePower: 8
-    drop: 0
+    drop: "\uFFFD\uFFFD"
     dropRare: 0
+    dropCommon: 0
     volume: 0
     odds: 0
   - id: 4
-    sname: "\u6708\u5996\u7CBE"
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
     defaultCard: 1
     titleIcon: elf_moon
-    wholeIcon: 0
+    wholeIcon: elf_moon
     phybase: 70
     hpbase: 22
     costmax: 3
     spritePower: 14
-    drop: 0
+    drop: "\u023D"
     dropRare: 0
+    dropCommon: 0
     volume: 0
     odds: 0
   - id: 5
-    sname: "\u5149\u5996\u7CBE"
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
     defaultCard: 1
     titleIcon: elf_light
-    wholeIcon: 0
+    wholeIcon: elf_light
     phybase: 90
     hpbase: 30
     costmax: 3
     spritePower: 5
-    drop: 0
+    drop: "\uFFFD\uFFFD\uFFFD\uFFFD"
     dropRare: 0
+    dropCommon: 0
     volume: 0
     odds: 0
   - id: 6
-    sname: "\u80E1\u8702"
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD"
     defaultCard: 2
     titleIcon: en_wasp
     wholeIcon: 0
-    phybase: 0
-    hpbase: 15
-    costmax: 3
+    phybase: 1
+    hpbase: 14
+    costmax: 1
     spritePower: 2
     drop: 2|3
-    dropRare: 0
+    dropRare: 72
+    dropCommon: 73
     volume: 1
-    odds: 0
+    odds: 30
   - id: 7
-    sname: "\u8611\u83C7\u602A"
+    sname: "\u0122\uFFFD\uFFFD\uFFFD\uFFFD"
     defaultCard: 2
     titleIcon: en_mush
     wholeIcon: 0
-    phybase: 0
+    phybase: 1
     hpbase: 18
-    costmax: 3
+    costmax: 1
     spritePower: 3
-    drop: 33|36|39
-    dropRare: 0
-    volume: 2
-    odds: 0
+    drop: 74|75|77
+    dropRare: 76
+    dropCommon: 0
+    volume: 3
+    odds: 18
   - id: 8
-    sname: "\u68D5\u718A"
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD"
     defaultCard: 2
     titleIcon: en_bear
     wholeIcon: 0
-    phybase: 0
-    hpbase: 0
-    costmax: 3
+    phybase: 2
+    hpbase: 32
+    costmax: 2
     spritePower: 5
-    drop: 1
-    dropRare: 0
-    volume: 0
-    odds: 0
+    drop: 80|81|82|83
+    dropRare: 84
+    dropCommon: 79|80
+    volume: 6
+    odds: 12
   - id: 9
-    sname: "\u51F6\u6076\u7684\u8C7A\u72FC"
+    sname: "\uFFFD\u05F6\uFFFD\u0132\uFFFD\uFFFD\uFFFD"
     defaultCard: 2
     titleIcon: en_wolves
     wholeIcon: 0
-    phybase: 0
-    hpbase: 0
-    costmax: 3
+    phybase: 2
+    hpbase: 26
+    costmax: 2
     spritePower: 4
-    drop: 1
-    dropRare: 0
-    volume: 0
+    drop: 80|81|85|86
+    dropRare: 87
+    dropCommon: 79|80
+    volume: 5
     odds: 0
   - id: 10
-    sname: "\u987D\u76AE\u7684\u6A58\u679C"
+    sname: "\uFFFD\u0679\uFFFD\uFFFD\uFFFD"
     defaultCard: 2
     titleIcon: en_citrus
     wholeIcon: 0
     phybase: 0
-    hpbase: 0
-    costmax: 3
+    hpbase: 7
+    costmax: 0
     spritePower: 1
-    drop: 1
+    drop: 4|5
     dropRare: 0
-    volume: 0
+    dropCommon: 0
+    volume: 1
     odds: 0
   - id: 11
-    sname: "\u56FA\u6267\u7684\u6A61\u679C"
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
     defaultCard: 2
     titleIcon: en_acorn
     wholeIcon: 0
     phybase: 0
-    hpbase: 0
-    costmax: 3
+    hpbase: 9
+    costmax: 0
     spritePower: 1
-    drop: 1
+    drop: 6|7
     dropRare: 0
-    volume: 0
+    dropCommon: 0
+    volume: 1
     odds: 0
+  - id: 12
+    sname: "\u0330\uFFFD\uFFFD\u013B\uFFFD\uFFFD\uFFFD"
+    defaultCard: 2
+    titleIcon: en
+    wholeIcon: 0
+    phybase: 0
+    hpbase: 8
+    costmax: 0
+    spritePower: 0
+    drop: 68|88|89
+    dropRare: 90
+    dropCommon: 0
+    volume: 2
+    odds: 12
+  - id: 13
+    sname: "\uFFFD\uFFFD\xB7\u02AF\u0377\uFFFD\uFFFD"
+    defaultCard: 2
+    titleIcon: en
+    wholeIcon: 0
+    phybase: 0
+    hpbase: 13
+    costmax: 0
+    spritePower: 0
+    drop: 91|92
+    dropRare: 0
+    dropCommon: 0
+    volume: 1
+    odds: 0
+  - id: 14
+    sname: "\u0421\uFFFD\uFFFD\uFFFD\uFFFD"
+    defaultCard: 2
+    titleIcon: en
+    wholeIcon: 0
+    phybase: 0
+    hpbase: 9
+    costmax: 0
+    spritePower: 0
+    drop: 93|94
+    dropRare: 0
+    dropCommon: 93
+    volume: 2
+    odds: 0
+  - id: 15
+    sname: "\uFFFD\uFFFD\uFFFD\u04B5\u0136\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    defaultCard: 2
+    titleIcon: en
+    wholeIcon: 0
+    phybase: 0
+    hpbase: 10
+    costmax: 0
+    spritePower: 0
+    drop: 96
+    dropRare: 95
+    dropCommon: 0
+    volume: 1
+    odds: 25
+  - id: 16
+    sname: "\uFFFD\uFFFD\xEB\uFFFD\uFFFD"
+    defaultCard: 2
+    titleIcon: en
+    wholeIcon: 0
+    phybase: 1
+    hpbase: 19
+    costmax: 1
+    spritePower: 0
+    drop: 98|99
+    dropRare: 100
+    dropCommon: 97
+    volume: 2
+    odds: 15
+  - id: 17
+    sname: "\u0573\u0573\uFFFD\uFFFD"
+    defaultCard: 2
+    titleIcon: en
+    wholeIcon: 0
+    phybase: 1
+    hpbase: 16
+    costmax: 1
+    spritePower: 0
+    drop: 101|104
+    dropRare: 102|103
+    dropCommon: 0
+    volume: 3
+    odds: 20
+  - id: 18
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    defaultCard: 2
+    titleIcon: en
+    wholeIcon: 0
+    phybase: 1
+    hpbase: 16
+    costmax: 1
+    spritePower: 0
+    drop: 105|108
+    dropRare: 107
+    dropCommon: 106|106|105
+    volume: 2
+    odds: 35
+  - id: 19
+    sname: "\u0127\uFFFD\uFFFD\uFFFD\uFFFD"
+    defaultCard: 2
+    titleIcon: en
+    wholeIcon: 0
+    phybase: 1
+    hpbase: 12
+    costmax: 1
+    spritePower: 0
+    drop: 109|110
+    dropRare: 0
+    dropCommon: 139
+    volume: 3
+    odds: 0
+  - id: 20
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    defaultCard: 2
+    titleIcon: en
+    wholeIcon: 0
+    phybase: 2
+    hpbase: 20
+    costmax: 2
+    spritePower: 0
+    drop: 111|112|113
+    dropRare: 115|116
+    dropCommon: 114
+    volume: 3
+    odds: 24
+  - id: 21
+    sname: "\u02B3\u0127\uFFFD\uFFFD"
+    defaultCard: 2
+    titleIcon: en
+    wholeIcon: 0
+    phybase: 2
+    hpbase: 24
+    costmax: 2
+    spritePower: 0
+    drop: 117|119|120|139
+    dropRare: 121
+    dropCommon: 118
+    volume: 4
+    odds: 15
+  - id: 22
+    sname: "\uFFFD\uFFFD\uFFFD\u033E\uFFFD\uFFFD\uFFFD"
+    defaultCard: 2
+    titleIcon: en
+    wholeIcon: 0
+    phybase: 2
+    hpbase: 24
+    costmax: 2
+    spritePower: 0
+    drop: 122
+    dropRare: 0
+    dropCommon: 0
+    volume: 3
+    odds: 0
+  - id: 23
+    sname: "\uFFFD\uFFFD\u02AF\uFFFD\uFFFD\uFFFD\uFFFD"
+    defaultCard: 2
+    titleIcon: en
+    wholeIcon: 0
+    phybase: 2
+    hpbase: 28
+    costmax: 2
+    spritePower: 0
+    drop: 123|124|125
+    dropRare: 127|128
+    dropCommon: 126|123
+    volume: 3
+    odds: 7
+  - id: 24
+    sname: "\u037A\uFFFD\uFFFD"
+    defaultCard: 2
+    titleIcon: en
+    wholeIcon: 0
+    phybase: 2
+    hpbase: 22
+    costmax: 2
+    spritePower: 0
+    drop: 130|80
+    dropRare: 0
+    dropCommon: 129
+    volume: 4
+    odds: 0
+  - id: 25
+    sname: "\uFFFD\u05F6\uFFFD\uFFFD\uFFFD\xBC\uFFFD\u0127\uFFFD\uFFFD"
+    defaultCard: 2
+    titleIcon: en
+    wholeIcon: 0
+    phybase: 2
+    hpbase: 35
+    costmax: 2
+    spritePower: 0
+    drop: 132|133|134
+    dropRare: 135
+    dropCommon: 131
+    volume: 4
+    odds: 15
+  - id: 26
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u0127\uFFFD\uFFFD\xB9"
+    defaultCard: 2
+    titleIcon: en
+    wholeIcon: 0
+    phybase: 2
+    hpbase: 23
+    costmax: 2
+    spritePower: 0
+    drop: 136|138
+    dropRare: 137
+    dropCommon: 139
+    volume: 2
+    odds: 7
+  - id: 27
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u0265\u02AC"
+    defaultCard: 2
+    titleIcon: en
+    wholeIcon: 0
+    phybase: 2
+    hpbase: 30
+    costmax: 2
+    spritePower: 0
+    drop: 139|141
+    dropRare: 0
+    dropCommon: 140
+    volume: 4
+    odds: 0
+  - id: 28
+    sname: "\u0139\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    defaultCard: 2
+    titleIcon: en
+    wholeIcon: 0
+    phybase: 2
+    hpbase: 21
+    costmax: 2
+    spritePower: 0
+    drop: 142
+    dropRare: 0
+    dropCommon: 139
+    volume: 3
+    odds: 0
+  - id: 29
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\u0127\uFFFD\uFFFD\uFFFD\uFFFD"
+    defaultCard: 2
+    titleIcon: en
+    wholeIcon: 0
+    phybase: 2
+    hpbase: 30
+    costmax: 3
+    spritePower: 0
+    drop: 132|134|144
+    dropRare: 135|145
+    dropCommon: 143
+    volume: 6
+    odds: 30
+  - id: 30
+    sname: "\uFFFD\U00071A75\u0138\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    defaultCard: 2
+    titleIcon: en
+    wholeIcon: 0
+    phybase: 3
+    hpbase: 65
+    costmax: 3
+    spritePower: 0
+    drop: 136|146|147|148|149
+    dropRare: 150
+    dropCommon: 0
+    volume: 8
+    odds: 25
+  - id: 31
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\u02B4\uFFFD\uFFFD\u0127\uFFFD\uFFFD"
+    defaultCard: 2
+    titleIcon: en
+    wholeIcon: 0
+    phybase: 3
+    hpbase: 50
+    costmax: 3
+    spritePower: 0
+    drop: 153|132|134
+    dropRare: 150|151
+    dropCommon: 152
+    volume: 6
+    odds: 25
+  - id: 32
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    defaultCard: 2
+    titleIcon: en
+    wholeIcon: 0
+    phybase: 3
+    hpbase: 87
+    costmax: 3
+    spritePower: 0
+    drop: 94|136|154
+    dropRare: 155
+    dropCommon: 154
+    volume: 11
+    odds: 30
+  - id: 33
+    sname: "\uFFFD\uFFFD\uFFFD\u06FA\uFFFD\uFFFD\uFFFD\u057D\u02BF"
+    defaultCard: 2
+    titleIcon: en
+    wholeIcon: 0
+    phybase: 3
+    hpbase: 56
+    costmax: 3
+    spritePower: 0
+    drop: 156|157|158
+    dropRare: 159
+    dropCommon: 0
+    volume: 9
+    odds: 25
+  - id: 34
+    sname: "\uFFFD\uFFFD\u02B4\uFFFD\u013E\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u01E7\uFFFD\uFFFD\uFFFD"
+    defaultCard: 2
+    titleIcon: en
+    wholeIcon: 0
+    phybase: 3
+    hpbase: 105
+    costmax: 4
+    spritePower: 0
+    drop: 161|162|163|164
+    dropRare: 160
+    dropCommon: 0
+    volume: 25
+    odds: 25
+  - id: 35
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    defaultCard: 2
+    titleIcon: en
+    wholeIcon: 0
+    phybase: 3
+    hpbase: 70
+    costmax: 3
+    spritePower: 0
+    drop: 142|165
+    dropRare: 167
+    dropCommon: 166|166
+    volume: 10
+    odds: 25
+  - id: 36
+    sname: "\uFFFD\uFFFD\uFFFD\u02F5\u013A\uFFFD\uFFFD\uFFFD\u0127\uFFFD\uFFFD\u0373\uFFFD\uFFFD"
+    defaultCard: 2
+    titleIcon: en
+    wholeIcon: 0
+    phybase: 4
+    hpbase: 125
+    costmax: 5
+    spritePower: 0
+    drop: 132|134|168|171
+    dropRare: 170|190
+    dropCommon: 169|172
+    volume: 13
+    odds: 20
+  - id: 37
+    sname: "\uFFFD\uFFFD\u04E1\uFFFD\u013B\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    defaultCard: 2
+    titleIcon: en
+    wholeIcon: 0
+    phybase: 4
+    hpbase: 140
+    costmax: 5
+    spritePower: 0
+    drop: 109|174|175|184
+    dropRare: 173
+    dropCommon: 0
+    volume: 14
+    odds: 20
+  - id: 38
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    defaultCard: 2
+    titleIcon: en
+    wholeIcon: 0
+    phybase: 4
+    hpbase: 150
+    costmax: 5
+    spritePower: 0
+    drop: 156|176|178|179
+    dropRare: 180
+    dropCommon: 177
+    volume: 15
+    odds: 20

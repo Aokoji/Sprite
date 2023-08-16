@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   asset:
   - id: 1
-    sname: "\u9B54\u6CD5\u5C04\u51FB"
-    sDescribe: "\u9020\u62101\u70B9\u4F24\u5BB3"
+    sname: "\u0127\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD1\uFFFD\uFFFD\uFFFD\u02FA\uFFFD"
     type1: 0
     type2: 0
     limit: 0
@@ -30,8 +30,8 @@ MonoBehaviour:
     level: 1
     explain: 0
   - id: 2
-    sname: "\u9B54\u6CD5\u7CD6\u679C"
-    sDescribe: "\u62BD\u4E00\u5F20\u724C"
+    sname: "\u0127\uFFFD\uFFFD\uFFFD\u01F9\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\u04BB\uFFFD\uFFFD\uFFFD\uFFFD"
     type1: 0
     type2: 0
     limit: 0
@@ -46,8 +46,8 @@ MonoBehaviour:
     level: 1
     explain: 0
   - id: 3
-    sname: "\u9B54\u529B\u67AF\u7AED"
-    sDescribe: "\u7ED9\u5BF9\u624B\u548C\u81EA\u5DF1\u5404\u9020\u62102\u70B9\u4F24\u5BB3"
+    sname: "\u0127\uFFFD\uFFFD\uFFFD\u077D\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u05BA\uFFFD\uFFFD\u053C\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD2\uFFFD\uFFFD\uFFFD\u02FA\uFFFD"
     type1: 0
     type2: 9
     limit: 0
@@ -62,8 +62,8 @@ MonoBehaviour:
     level: 1
     explain: 9
   - id: 4
-    sname: "\u8702\u523A"
-    sDescribe: "\u5148\u5236\uFF0C\u9020\u62101\u70B9\u4F24\u5BB3"
+    sname: "\uFFFD\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD\u01A3\uFFFD\uFFFD\uFFFD\uFFFD1\uFFFD\uFFFD\uFFFD\u02FA\uFFFD"
     type1: 0
     type2: 0
     limit: 0
@@ -78,8 +78,8 @@ MonoBehaviour:
     level: 1
     explain: 2
   - id: 5
-    sname: "\u85E4\u8513\u62A4\u76FE"
-    sDescribe: "\u83B7\u5F973\u70B9\u9632\u5FA1"
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD3\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
     type1: 0
     type2: 0
     limit: 0
@@ -94,8 +94,8 @@ MonoBehaviour:
     level: 1
     explain: 0
   - id: 6
-    sname: "\u5FEB\u901F\u56DE\u907F"
-    sDescribe: "\u5148\u5236\uFF0C\u62BD1\u5F20\u724C"
+    sname: "\uFFFD\uFFFD\uFFFD\u067B\u0631\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD\u01A3\uFFFD\uFFFD\uFFFD1\uFFFD\uFFFD\uFFFD\uFFFD"
     type1: 0
     type2: 0
     limit: 0
@@ -110,8 +110,8 @@ MonoBehaviour:
     level: 1
     explain: 2
   - id: 7
-    sname: "\u9B54\u6CD5\u8BC5\u5492"
-    sDescribe: "\u8BC5\u5492\uFF0C\u53CD\u5236\u5BF9\u624B\u4E0B1\u5F20\u724C"
+    sname: "\u0127\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD\u48EC\uFFFD\uFFFD\uFFFD\u01B6\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD1\uFFFD\uFFFD\uFFFD\uFFFD"
     type1: 0
     type2: 0
     limit: 0
@@ -126,8 +126,8 @@ MonoBehaviour:
     level: 1
     explain: 7
   - id: 8
-    sname: "\u9B54\u6CD5\u8FDE\u643A"
-    sDescribe: "\u9020\u62101\u70B9\u4F24\u5BB3\uFF0C\u8FDE\u51FB\uFF0C\u989D\u5916\u9020\u62102\u70B9\u4F24\u5BB3"
+    sname: "\u0127\uFFFD\uFFFD\uFFFD\uFFFD\u042F"
+    sDescribe: "\uFFFD\uFFFD\uFFFD1\uFFFD\uFFFD\uFFFD\u02FA\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD2\uFFFD\uFFFD\uFFFD\u02FA\uFFFD"
     type1: 0
     type2: 3
     limit: 0
@@ -142,8 +142,8 @@ MonoBehaviour:
     level: 1
     explain: 3
   - id: 9
-    sname: "\u5F3A\u529B\u6C34\u70AE"
-    sDescribe: "\u9020\u62101\u70B9\u4F24\u5BB3\uFF0C\u91CD\u51FB\uFF0C\u989D\u5916\u9020\u62102\u70B9\u4F24\u5BB3"
+    sname: "\u01FF\uFFFD\uFFFD\u02EE\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD1\uFFFD\uFFFD\uFFFD\u02FA\uFFFD\uFFFD\uFFFD\uFFFD\u063B\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD2\uFFFD\uFFFD\uFFFD\u02FA\uFFFD"
     type1: 0
     type2: 4
     limit: 0
@@ -158,8 +158,8 @@ MonoBehaviour:
     level: 1
     explain: 4
   - id: 10
-    sname: "\u8574\u7075"
-    sDescribe: "\u6062\u590D3\u70B9\u751F\u547D"
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\u05B8\uFFFD3\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
     type1: 0
     type2: 0
     limit: 0
@@ -174,8 +174,8 @@ MonoBehaviour:
     level: 1
     explain: 0
   - id: 11
-    sname: "\u9B54\u6CD5\u7206\u5F39"
-    sDescribe: "\u9020\u62102\u70B9\u4F24\u5BB3"
+    sname: "\u0127\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD2\uFFFD\uFFFD\uFFFD\u02FA\uFFFD"
     type1: 0
     type2: 0
     limit: 0
@@ -190,8 +190,8 @@ MonoBehaviour:
     level: 1
     explain: 0
   - id: 12
-    sname: "\u75BE\u98CE\u672F"
-    sDescribe: "\u5148\u5236\uFF0C\u9020\u62102\u70B9\u4F24\u5BB3"
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD\u01A3\uFFFD\uFFFD\uFFFD\uFFFD2\uFFFD\uFFFD\uFFFD\u02FA\uFFFD"
     type1: 0
     type2: 0
     limit: 0
@@ -206,8 +206,8 @@ MonoBehaviour:
     level: 1
     explain: 2
   - id: 13
-    sname: "\u771F\u8A00\u672F\xB7\u89E3"
-    sDescribe: "\u771F\u8A00\uFF0C\u53CD\u5236\u5BF9\u65B9\u7684\u8BC5\u5492\uFF0C\u82E5\u6210\u529F\u53CD\u5236\u5219\u62BD1\u5F20\u724C"
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD\u0523\uFFFD\uFFFD\uFFFD\uFFFD\u01B6\u0537\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u48EC\uFFFD\uFFFD\u0279\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD1\uFFFD\uFFFD\uFFFD\uFFFD"
     type1: 0
     type2: 14
     limit: 0
@@ -222,8 +222,8 @@ MonoBehaviour:
     level: 1
     explain: 14
   - id: 14
-    sname: "\u521D\u7EA7\u5C4F\u969C"
-    sDescribe: "\u5C4F\u969C\uFF0C\u514D\u75AB\u4E0B\u4E00\u6B21\u7684\u4F24\u5BB3"
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD\u03E3\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u04BB\uFFFD\u03B5\uFFFD\uFFFD\u02FA\uFFFD"
     type1: 0
     type2: 0
     limit: 0
@@ -238,8 +238,8 @@ MonoBehaviour:
     level: 1
     explain: 12
   - id: 15
-    sname: "\u8BC5\u5492\u7B26\u7EB8"
-    sDescribe: "\u8BC5\u5492\uFF0C\u62BD1\u5F20\u724C"
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u05BD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD\u48EC\uFFFD\uFFFD1\uFFFD\uFFFD\uFFFD\uFFFD"
     type1: 0
     type2: 0
     limit: 0
@@ -254,8 +254,8 @@ MonoBehaviour:
     level: 1
     explain: 7
   - id: 16
-    sname: "\u9648\u65E7\u7684\u6728\u7BB1"
-    sDescribe: "\u968F\u673A\u83B7\u5F972\u5F20\u57FA\u7840\u724C"
+    sname: "\uFFFD\xBE\u0275\uFFFD\u013E\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD2\uFFFD\u017B\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
     type1: 0
     type2: 10
     limit: 0
@@ -270,8 +270,8 @@ MonoBehaviour:
     level: 1
     explain: 0
   - id: 17
-    sname: "\u820D\u8EAB\u649E\u51FB"
-    sDescribe: "\u5BF9\u81EA\u5DF1\u9020\u62103\u70B9\u4F24\u5BB3\uFF0C\u5BF9\u5BF9\u624B\u9020\u62105\u70B9\u4F24\u5BB3"
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\u05F2\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD\u053C\uFFFD\uFFFD\uFFFD\uFFFD3\uFFFD\uFFFD\uFFFD\u02FA\uFFFD\uFFFD\uFFFD\uFFFD\u0536\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD5\uFFFD\uFFFD\uFFFD\u02FA\uFFFD"
     type1: 0
     type2: 9
     limit: 0
@@ -286,8 +286,8 @@ MonoBehaviour:
     level: 1
     explain: 0
   - id: 18
-    sname: "\u79FB\u52A8\u65BD\u6CD5"
-    sDescribe: "\u9020\u62101\u70B9\u4F24\u5BB3\uFF0C\u8FDE\u51FB\uFF0C\u62BD\u4E00\u5F20\u724C"
+    sname: "\uFFFD\u01B6\uFFFD\u02A9\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD1\uFFFD\uFFFD\uFFFD\u02FA\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u04BB\uFFFD\uFFFD\uFFFD\uFFFD"
     type1: 0
     type2: 3
     limit: 0
@@ -302,8 +302,8 @@ MonoBehaviour:
     level: 1
     explain: 3
   - id: 19
-    sname: "\u53CD\u51FB"
-    sDescribe: "\u91CD\u51FB\uFF0C\u9020\u62102\u70B9\u4F24\u5BB3"
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\u063B\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD2\uFFFD\uFFFD\uFFFD\u02FA\uFFFD"
     type1: 0
     type2: 4
     limit: 0
@@ -318,8 +318,8 @@ MonoBehaviour:
     level: 1
     explain: 4
   - id: 20
-    sname: "\u8F85\u52A9\u653B\u51FB"
-    sDescribe: "\u8FDE\u51FB\uFF0C\u9020\u62102\u70B9\u4F24\u5BB3"
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD2\uFFFD\uFFFD\uFFFD\u02FA\uFFFD"
     type1: 0
     type2: 3
     limit: 0
@@ -334,8 +334,8 @@ MonoBehaviour:
     level: 1
     explain: 3
   - id: 21
-    sname: "\u7B80\u6613\u6CBB\u7597"
-    sDescribe: "\u6062\u590D2\u70B9\u751F\u547D"
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\u05B8\uFFFD2\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
     type1: 0
     type2: 0
     limit: 0
@@ -350,8 +350,8 @@ MonoBehaviour:
     level: 1
     explain: 0
   - id: 22
-    sname: "\u62A4\u76FE\u53CD\u51FB"
-    sDescribe: "\u83B7\u5F972\u70B9\u9632\u5FA1\uFF0C\u91CD\u51FB\uFF0C\u9020\u62102\u70B9\u4F24\u5BB3"
+    sname: "\uFFFD\uFFFD\uFFFD\u0737\uFFFD\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD2\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u063B\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD2\uFFFD\uFFFD\uFFFD\u02FA\uFFFD"
     type1: 0
     type2: 4
     limit: 0
@@ -366,9 +366,9 @@ MonoBehaviour:
     level: 1
     explain: 4
   - id: 23
-    sname: "\u771F\u7131\u672F"
-    sDescribe: "\u7834\u7532\uFF0C\u9020\u62103\u70B9\u706B\u7130\u4F24\u5BB3"
-    type1: 0
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\u01BC\u05E3\uFFFD\uFFFD\uFFFD\uFFFD3\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u02FA\uFFFD"
+    type1: 1
     type2: 0
     limit: 0
     conditionType1: 16
@@ -379,12 +379,12 @@ MonoBehaviour:
     damage3: 0
     cost: 2
     limitcount: 2
-    level: 3
+    level: 2
     explain: 0
   - id: 24
-    sname: "\u706B\u5C71\u672F"
-    sDescribe: "\u9020\u62103\u70B9\u706B\u7130\u4F24\u5BB3\uFF0C\u83B7\u5F971\u5F20\u706B\u7403\u672F"
-    type1: 0
+    sname: "\uFFFD\uFFFD\u027D\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD3\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u02FA\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD1\uFFFD\u017B\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    type1: 1
     type2: 0
     limit: 1
     conditionType1: 1
@@ -395,12 +395,12 @@ MonoBehaviour:
     damage3: 0
     cost: 2
     limitcount: 2
-    level: 3
+    level: 2
     explain: 0
   - id: 25
-    sname: "\u706B\u7403\u672F"
-    sDescribe: "\u9020\u62104\u70B9\u706B\u7130\u4F24\u5BB3"
-    type1: 0
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD4\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u02FA\uFFFD"
+    type1: 1
     type2: 0
     limit: 1
     conditionType1: 1
@@ -411,12 +411,12 @@ MonoBehaviour:
     damage3: 0
     cost: 2
     limitcount: 2
-    level: 3
+    level: 1
     explain: 0
   - id: 26
-    sname: "\u7126\u571F"
-    sDescribe: "\u8BC5\u5492\uFF0C\u9020\u62105\u70B9\u706B\u7130\u4F24\u5BB3"
-    type1: 0
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD\u48EC\uFFFD\uFFFD\uFFFD5\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u02FA\uFFFD"
+    type1: 1
     type2: 0
     limit: 1
     conditionType1: 1
@@ -430,9 +430,9 @@ MonoBehaviour:
     level: 3
     explain: 0
   - id: 27
-    sname: "\u706B\u7130\u7ED3\u754C"
-    sDescribe: "\u5C4F\u969C\uFF0C\u9020\u62102\u70B9\u706B\u7130\u4F24\u5BB3"
-    type1: 0
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD\u03E3\uFFFD\uFFFD\uFFFD\uFFFD2\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u02FA\uFFFD"
+    type1: 1
     type2: 0
     limit: 1
     conditionType1: 1
@@ -443,12 +443,12 @@ MonoBehaviour:
     damage3: 0
     cost: 1
     limitcount: 2
-    level: 3
+    level: 1
     explain: 0
   - id: 28
-    sname: "\u706B\u7130\u796D\u7940"
-    sDescribe: "\u9020\u62105\u70B9\u706B\u7130\u4F24\u5BB3\uFF0C\u771F\u8A00"
-    type1: 0
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD5\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u02FA\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    type1: 2
     type2: 14
     limit: 1
     conditionType1: 1
@@ -458,13 +458,13 @@ MonoBehaviour:
     damage2: 0
     damage3: 0
     cost: 2
-    limitcount: 1
+    limitcount: 2
     level: 3
     explain: 0
   - id: 29
-    sname: "\u6C89\u6CA1\u7684\u5B9D\u85CF"
-    sDescribe: "\u968F\u673A\u83B7\u5F973\u5F20\u6F6E\u6C50\u6CD5\u672F\u724C"
-    type1: 1
+    sname: "\uFFFD\uFFFD\xFB\uFFFD\u0131\uFFFD\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD3\uFFFD\u0173\uFFFD\u03EB\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    type1: 3
     type2: 10
     limit: 2
     conditionType1: 0
@@ -478,9 +478,9 @@ MonoBehaviour:
     level: 3
     explain: 0
   - id: 30
-    sname: "\u63A2\u7D22\u6C89\u8239"
-    sDescribe: "\u5C061\u5F20\u6C89\u6CA1\u7684\u5B9D\u85CF\u6D17\u5165\u724C\u5E93"
-    type1: 0
+    sname: "\u033D\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\uFFFD1\uFFFD\u0173\uFFFD\xFB\uFFFD\u0131\uFFFD\uFFFD\uFFFD\u03F4\uFFFD\uFFFD\uFFFD\u01BF\uFFFD"
+    type1: 2
     type2: 0
     limit: 2
     conditionType1: 11
@@ -494,9 +494,9 @@ MonoBehaviour:
     level: 3
     explain: 0
   - id: 31
-    sname: "\u5524\u6F6E"
-    sDescribe: "\u9020\u62101\u70B9\u6F6E\u6C50\u4F24\u5BB3\uFF0C\u6062\u590D4\u70B9\u751F\u547D"
-    type1: 0
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD1\uFFFD\u3CF1\u03EB\uFFFD\u02FA\uFFFD\uFFFD\uFFFD\uFFFD\u05B8\uFFFD4\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    type1: 1
     type2: 0
     limit: 2
     conditionType1: 5
@@ -507,12 +507,12 @@ MonoBehaviour:
     damage3: 0
     cost: 2
     limitcount: 2
-    level: 3
+    level: 1
     explain: 0
   - id: 32
-    sname: "\u6C34\u6D41\u653B\u51FB"
-    sDescribe: "\u9020\u62103\u70B9\u6F6E\u6C50\u4F24\u5BB3\uFF0C\u6062\u590D1\u70B9\u751F\u547D"
-    type1: 0
+    sname: "\u02EE\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD3\uFFFD\u3CF1\u03EB\uFFFD\u02FA\uFFFD\uFFFD\uFFFD\uFFFD\u05B8\uFFFD1\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    type1: 1
     type2: 0
     limit: 2
     conditionType1: 5
@@ -523,44 +523,44 @@ MonoBehaviour:
     damage3: 0
     cost: 2
     limitcount: 2
-    level: 3
+    level: 1
     explain: 0
   - id: 33
-    sname: "\u6CBB\u6108\u51B2\u51FB"
-    sDescribe: "\u9020\u62101\u70B9\u6F6E\u6C50\u4F24\u5BB3\uFF0C\u8FDE\u51FB\uFF0C\u6062\u590D3\u70B9\u751F\u547D"
-    type1: 0
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD2\uFFFD\u3CF1\u03EB\uFFFD\u02FA\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u05B8\uFFFD3\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    type1: 1
     type2: 3
     limit: 2
     conditionType1: 1
     conditionType2: 5
     conditionType3: 0
-    damage1: 1
+    damage1: 2
     damage2: 3
     damage3: 0
     cost: 1
     limitcount: 2
-    level: 3
+    level: 2
     explain: 0
   - id: 34
-    sname: "\u6DF1\u6D77\u51B2\u51FB"
-    sDescribe: "\u91CD\u51FB\uFF0C\u9020\u62105\u70B9\u6F6E\u6C50\u4F24\u5BB3"
-    type1: 0
+    sname: "\uFFFD\uEEA3\uFFFD\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\u063B\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD6\uFFFD\u3CF1\u03EB\uFFFD\u02FA\uFFFD"
+    type1: 1
     type2: 4
     limit: 2
     conditionType1: 0
     conditionType2: 1
     conditionType3: 0
     damage1: 0
-    damage2: 5
+    damage2: 6
     damage3: 0
     cost: 1
     limitcount: 2
-    level: 3
+    level: 2
     explain: 0
   - id: 35
-    sname: "\u9CDE\u7532"
-    sDescribe: "\u5C4F\u969C\uFF0C\u6062\u590D4\u70B9\u751F\u547D"
-    type1: 0
+    sname: "\uFFFD\u06FC\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD\u03E3\uFFFD\uFFFD\u05B8\uFFFD4\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    type1: 1
     type2: 0
     limit: 2
     conditionType1: 5
@@ -571,12 +571,12 @@ MonoBehaviour:
     damage3: 0
     cost: 2
     limitcount: 2
-    level: 3
+    level: 1
     explain: 0
   - id: 36
-    sname: "\u6697\u6F6E"
-    sDescribe: "\u6062\u590D4\u70B9\u751F\u547D\uFF0C\u79D8\u672F\uFF0C\u9020\u62106\u70B9\u6F6E\u6C50\u4F24\u5BB3"
-    type1: 0
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\u05B8\uFFFD4\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD6\uFFFD\u3CF1\u03EB\uFFFD\u02FA\uFFFD"
+    type1: 1
     type2: 13
     limit: 2
     conditionType1: 5
@@ -590,9 +590,9 @@ MonoBehaviour:
     level: 3
     explain: 0
   - id: 37
-    sname: "\u6C34\u67AA\u672F"
-    sDescribe: "\u9020\u62101\u70B9\u4F24\u5BB3\uFF0C\u6062\u590D1\u70B9\u751F\u547D"
-    type1: 0
+    sname: "\u02EE\u01F9\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD1\uFFFD\uFFFD\uFFFD\u02FA\uFFFD\uFFFD\uFFFD\uFFFD\u05B8\uFFFD1\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    type1: 1
     type2: 0
     limit: 2
     conditionType1: 5
@@ -603,12 +603,12 @@ MonoBehaviour:
     damage3: 0
     cost: 1
     limitcount: 2
-    level: 3
+    level: 1
     explain: 0
   - id: 38
-    sname: "\u6C34\u4E4B\u796D\u7940"
-    sDescribe: "\u6062\u590D8\u70B9\u751F\u547D\uFF0C\u771F\u8A00"
-    type1: 0
+    sname: "\u02EE\u05AE\uFFFD\uFFFD\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\u05B8\uFFFD8\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    type1: 2
     type2: 14
     limit: 2
     conditionType1: 5
@@ -618,13 +618,13 @@ MonoBehaviour:
     damage2: 0
     damage3: 0
     cost: 3
-    limitcount: 1
+    limitcount: 2
     level: 3
     explain: 0
   - id: 39
-    sname: "\u6D8C\u52A8"
-    sDescribe: "\u62BD1\u5F20\u724C\uFF0C\u6062\u590D3\u70B9\u751F\u547D"
-    type1: 0
+    sname: "\u04FF\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\uFFFD1\uFFFD\uFFFD\uFFFD\u01A3\uFFFD\uFFFD\u05B8\uFFFD3\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    type1: 1
     type2: 0
     limit: 2
     conditionType1: 5
@@ -635,12 +635,12 @@ MonoBehaviour:
     damage3: 0
     cost: 2
     limitcount: 2
-    level: 3
+    level: 1
     explain: 0
   - id: 40
-    sname: "\u6C34\u9F99\u5377"
-    sDescribe: "\u62BD1\u5F20\u724C\uFF0C\u91CD\u51FB\uFF0C\u9020\u62103\u70B9\u6F6E\u6C50\u4F24\u5BB3"
-    type1: 0
+    sname: "\u02EE\uFFFD\uFFFD\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\uFFFD1\uFFFD\uFFFD\uFFFD\u01A3\uFFFD\uFFFD\u063B\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD3\uFFFD\u3CF1\u03EB\uFFFD\u02FA\uFFFD"
+    type1: 1
     type2: 4
     limit: 2
     conditionType1: 8
@@ -651,12 +651,12 @@ MonoBehaviour:
     damage3: 0
     cost: 2
     limitcount: 2
-    level: 3
+    level: 2
     explain: 0
   - id: 41
-    sname: "\u730E\u6F6E"
-    sDescribe: "\u9020\u62105\u70B9\u6F6E\u6C50\u4F24\u5BB3\uFF0C\u91CD\u51FB\uFF0C\u9020\u62105\u70B9\u6F6E\u6C50\u4F24\u5BB3"
-    type1: 0
+    sname: "\uFFFD\u0533\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD5\uFFFD\u3CF1\u03EB\uFFFD\u02FA\uFFFD\uFFFD\uFFFD\uFFFD\u063B\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD5\uFFFD\u3CF1\u03EB\uFFFD\u02FA\uFFFD"
+    type1: 1
     type2: 4
     limit: 2
     conditionType1: 1
@@ -665,14 +665,14 @@ MonoBehaviour:
     damage1: 5
     damage2: 5
     damage3: 0
-    cost: 3
+    cost: 2
     limitcount: 2
     level: 3
     explain: 0
   - id: 42
-    sname: "\u96F7\u9706\u79D8\u672F"
-    sDescribe: "\u968F\u673A\u83B7\u5F971\u5F20\u96F7\u9706\u6CD5\u672F\u724C\uFF0C\u79D8\u672F\uFF0C\u518D\u968F\u673A\u83B7\u5F972\u5F20\u96F7\u9706\u6CD5\u672F\u724C"
-    type1: 0
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD1\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u01A3\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD2\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    type1: 2
     type2: 13
     limit: 0
     conditionType1: 10
@@ -686,9 +686,9 @@ MonoBehaviour:
     level: 3
     explain: 0
   - id: 43
-    sname: "\u96F7\u7BAD\u672F"
-    sDescribe: "\u5148\u5236\uFF0C\u9020\u62101\u70B9\u96F7\u9706\u4F24\u5BB3"
-    type1: 0
+    sname: "\uFFFD\u05FC\uFFFD\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD\u01A3\uFFFD\uFFFD\uFFFD\uFFFD1\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u02FA\uFFFD"
+    type1: 1
     type2: 0
     limit: 3
     conditionType1: 2
@@ -699,12 +699,12 @@ MonoBehaviour:
     damage3: 0
     cost: 0
     limitcount: 2
-    level: 3
+    level: 1
     explain: 0
   - id: 44
-    sname: "\u96F7\u9E23\u672F"
-    sDescribe: "\u5148\u5236\uFF0C\u9020\u62101\u70B9\u96F7\u9706\u4F24\u5BB3\uFF0C\u62BD1\u5F20\u724C"
-    type1: 0
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD\u01A3\uFFFD\uFFFD\uFFFD\uFFFD1\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u02FA\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD1\uFFFD\uFFFD\uFFFD\uFFFD"
+    type1: 1
     type2: 0
     limit: 3
     conditionType1: 2
@@ -715,12 +715,12 @@ MonoBehaviour:
     damage3: 0
     cost: 1
     limitcount: 2
-    level: 3
+    level: 1
     explain: 0
   - id: 45
-    sname: "\u94FE\u9501"
-    sDescribe: "\u9020\u62102\u70B9\u96F7\u9706\u4F24\u5BB3\uFF0C\u8FDE\u51FB\uFF0C\u83B7\u5F971\u5F20\u96F7\u7BAD\u672F"
-    type1: 0
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD2\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u02FA\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD1\uFFFD\uFFFD\uFFFD\u05FC\uFFFD\uFFFD\uFFFD"
+    type1: 1
     type2: 3
     limit: 3
     conditionType1: 1
@@ -731,12 +731,12 @@ MonoBehaviour:
     damage3: 0
     cost: 1
     limitcount: 2
-    level: 3
+    level: 2
     explain: 0
   - id: 46
-    sname: "\u96F7\u4E91\u672F"
-    sDescribe: "\u5148\u5236\uFF0C\u9020\u62102\u70B9\u96F7\u9706\u4F24\u5BB3\uFF0C\u8BC5\u5492"
-    type1: 0
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD\u01A3\uFFFD\uFFFD\uFFFD\uFFFD2\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u02FA\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    type1: 1
     type2: 0
     limit: 3
     conditionType1: 2
@@ -745,14 +745,14 @@ MonoBehaviour:
     damage1: 2
     damage2: 0
     damage3: 0
-    cost: 2
+    cost: 1
     limitcount: 2
     level: 3
     explain: 0
   - id: 47
-    sname: "\u7535\u80FD\u56DE\u6536"
-    sDescribe: "\u9020\u62103\u70B9\u96F7\u9706\u4F24\u5BB3\uFF0C\u8FDE\u51FB\uFF0C\u62BD1\u5F20\u724C"
-    type1: 0
+    sname: "\uFFFD\uFFFD\uFFFD\u073B\uFFFD\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD3\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u02FA\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD1\uFFFD\uFFFD\uFFFD\uFFFD"
+    type1: 1
     type2: 3
     limit: 3
     conditionType1: 1
@@ -763,28 +763,28 @@ MonoBehaviour:
     damage3: 0
     cost: 2
     limitcount: 2
-    level: 3
+    level: 2
     explain: 0
   - id: 48
-    sname: "\u96F7\u9706\u796D\u7940"
-    sDescribe: "\u8FDE\u51FB\uFF0C\u9020\u62104\u70B9\u96F7\u9706\u4F24\u5BB3\uFF0C\u771F\u8A00"
-    type1: 0
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD5\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u02FA\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    type1: 2
     type2: 14
     limit: 3
     conditionType1: 3
     conditionType2: 0
     conditionType3: 0
-    damage1: 4
+    damage1: 5
     damage2: 0
     damage3: 0
     cost: 1
-    limitcount: 1
+    limitcount: 2
     level: 3
     explain: 0
   - id: 49
-    sname: "\u96F7\u9706\u62A4\u76FE"
-    sDescribe: "\u5C4F\u969C\uFF0C\u8FDE\u51FB\uFF0C\u83B7\u5F974\u70B9\u9632\u5FA1"
-    type1: 0
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD\u03E3\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD4\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    type1: 1
     type2: 3
     limit: 3
     conditionType1: 12
@@ -795,12 +795,12 @@ MonoBehaviour:
     damage3: 0
     cost: 2
     limitcount: 2
-    level: 3
+    level: 2
     explain: 0
   - id: 50
-    sname: "\u96F7\u52A8"
-    sDescribe: "\u9020\u62101\u70B9\u96F7\u9706\u4F24\u5BB3\uFF0C\u62BD3\u5F20\u724C"
-    type1: 0
+    sname: "\uFFFD\u05F6\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD1\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u02FA\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD3\uFFFD\uFFFD\uFFFD\uFFFD"
+    type1: 1
     type2: 0
     limit: 3
     conditionType1: 1
@@ -811,12 +811,12 @@ MonoBehaviour:
     damage3: 0
     cost: 3
     limitcount: 2
-    level: 3
+    level: 2
     explain: 0
   - id: 51
-    sname: "\u9F99\u708E\u672F"
-    sDescribe: "\u9020\u62102\u70B9\u4F24\u5BB3\uFF0C\u79D8\u672F\uFF0C\u989D\u5916\u9020\u62107\u70B9\u706B\u7130\u4F24\u5BB3"
-    type1: 1
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD2\uFFFD\uFFFD\uFFFD\u02FA\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD7\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u02FA\uFFFD"
+    type1: 2
     type2: 13
     limit: 1
     conditionType1: 1
@@ -830,9 +830,9 @@ MonoBehaviour:
     level: 3
     explain: 0
   - id: 52
-    sname: "\u5965\u672F\u9B54\u5178"
-    sDescribe: "\u968F\u673A\u83B7\u5F975\u5F20\u5F3A\u5927\u7684\u5965\u672F\u6CD5\u672F\u724C"
-    type1: 1
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\u0127\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD5\uFFFD\uFFFD\u01FF\uFFFD\uFFFD\u0130\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    type1: 2
     type2: 10
     limit: 5
     conditionType1: 0
@@ -846,9 +846,9 @@ MonoBehaviour:
     level: 3
     explain: 0
   - id: 53
-    sname: "\u9668\u661F"
-    sDescribe: "\u79D8\u672F\uFF0C\u9020\u62108\u70B9\u5965\u672F\u4F24\u5BB3\uFF0C\u8BC5\u5492"
-    type1: 1
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD8\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u02FA\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    type1: 3
     type2: 13
     limit: 6
     conditionType1: 0
@@ -862,9 +862,9 @@ MonoBehaviour:
     level: 3
     explain: 0
   - id: 54
-    sname: "\u9AD8\u901F\u548F\u5531"
-    sDescribe: "\u5148\u5236\uFF0C\u9020\u62104\u70B9\u5965\u672F\u4F24\u5BB3\uFF0C\u771F\u8A00"
-    type1: 1
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\u04FD\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD\u01A3\uFFFD\uFFFD\uFFFD\uFFFD4\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u02FA\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    type1: 3
     type2: 14
     limit: 6
     conditionType1: 2
@@ -878,9 +878,9 @@ MonoBehaviour:
     level: 3
     explain: 0
   - id: 55
-    sname: "\u9B54\u529B\u589E\u5E45"
-    sDescribe: "\u8FDE\u51FB\uFF0C\u9020\u62103\u70B9\u5965\u672F\u4F24\u5BB3\uFF0C\u62BD2\u5F20\u724C"
-    type1: 1
+    sname: "\u0127\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD3\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u02FA\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD2\uFFFD\uFFFD\uFFFD\uFFFD"
+    type1: 3
     type2: 3
     limit: 6
     conditionType1: 1
@@ -894,9 +894,9 @@ MonoBehaviour:
     level: 3
     explain: 0
   - id: 56
-    sname: "\u7B26\u6587\u58C1\u5792"
-    sDescribe: "\u5C4F\u969C\uFF0C\u9020\u62105\u70B9\u5965\u672F\u4F24\u5BB3"
-    type1: 1
+    sname: "\uFFFD\uFFFD\uFFFD\u0131\uFFFD\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD\u03E3\uFFFD\uFFFD\uFFFD\uFFFD5\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u02FA\uFFFD"
+    type1: 3
     type2: 0
     limit: 6
     conditionType1: 1
@@ -910,9 +910,9 @@ MonoBehaviour:
     level: 3
     explain: 0
   - id: 57
-    sname: "\u7981\u5FCC\u7EB9\u7AE0\xB7\u4E00"
-    sDescribe: "\u9B54\u529B\u67AF\u7AED\uFF0C\u5BF9\u81EA\u5DF1\u9020\u62107\u70B9\u5965\u672F\u4F24\u5BB3\uFF0C\u7ED9\u5BF9\u624B\u9020\u621012\u70B9\u4F24\u5BB3"
-    type1: 1
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\xA1\uFFFD\u04BB"
+    sDescribe: "\u0127\uFFFD\uFFFD\uFFFD\u077D\u07E3\uFFFD\uFFFD\uFFFD\uFFFD\u053C\uFFFD\uFFFD\uFFFD\uFFFD7\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u02FA\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD12\uFFFD\uFFFD\uFFFD\u02FA\uFFFD"
+    type1: 3
     type2: 9
     limit: 6
     conditionType1: 0
@@ -926,9 +926,9 @@ MonoBehaviour:
     level: 3
     explain: 0
   - id: 58
-    sname: "\u771F\u8A00\u672F\xB7\u7834\u6CD5"
-    sDescribe: "\u771F\u8A00\uFF0C\u672C\u56DE\u5408\u4F24\u5BB3\u7FFB\u500D"
-    type1: 1
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u01B7\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD\u0523\uFFFD\uFFFD\uFFFD\uFFFD\u063A\uFFFD\uFFFD\u02FA\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    type1: 3
     type2: 13
     limit: 5
     conditionType1: 14
@@ -942,9 +942,9 @@ MonoBehaviour:
     level: 3
     explain: 0
   - id: 59
-    sname: "\u4ED9\u7075\u795D\u798F"
-    sDescribe: "\u80FD\u91CF\u5347\u7EA7\u81F3\u7B2C4\u683C\uFF0C\u82E5\u5DF2\u7ECF\u5347\u7EA7\uFF0C\u5219\u62BD\u4E00\u5F20\u724C"
-    type1: 2
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\u05E3\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD4\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u047E\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u04BB\uFFFD\uFFFD\uFFFD\uFFFD"
+    type1: 3
     type2: 19
     limit: 0
     conditionType1: 0
@@ -958,9 +958,9 @@ MonoBehaviour:
     level: 1
     explain: 0
   - id: 60
-    sname: "\u795E\u7075\u7948\u613F"
-    sDescribe: "\u80FD\u91CF\u5347\u7EA7\u81F3\u7B2C5\u683C\uFF0C\u82E5\u5DF2\u8FBE\u5230\u6700\u9AD85\u683C\uFF0C\u5219\u83B7\u5F97\u4E00\u5F20\u795E\u7075\u724C"
-    type1: 2
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u0538"
+    sDescribe: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD5\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u0474\uFD7D\uFFFD\uFFFD\uFFFD5\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u04BB\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    type1: 3
     type2: 19
     limit: 0
     conditionType1: 0
@@ -974,9 +974,9 @@ MonoBehaviour:
     level: 1
     explain: 0
   - id: 61
-    sname: "\u751F\u9508\u7684\u94DC\u7BB1"
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u036D\uFFFD\uFFFD"
     sDescribe: 0
-    type1: 0
+    type1: 1
     type2: 0
     limit: 0
     conditionType1: 0
@@ -990,9 +990,9 @@ MonoBehaviour:
     level: 3
     explain: 0
   - id: 62
-    sname: "\u4ED9\u7075\u9B54\u68D2"
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\u0127\uFFFD\uFFFD"
     sDescribe: 0
-    type1: 0
+    type1: 1
     type2: 0
     limit: 0
     conditionType1: 0
@@ -1006,9 +1006,9 @@ MonoBehaviour:
     level: 3
     explain: 0
   - id: 63
-    sname: "\u6A61\u6811\u624B\u6756"
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
     sDescribe: 0
-    type1: 0
+    type1: 1
     type2: 0
     limit: 0
     conditionType1: 0
@@ -1022,9 +1022,9 @@ MonoBehaviour:
     level: 3
     explain: 0
   - id: 64
-    sname: "\u5965\u672F\u6C34\u6676"
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\u02EE\uFFFD\uFFFD"
     sDescribe: 0
-    type1: 0
+    type1: 1
     type2: 0
     limit: 0
     conditionType1: 0
@@ -1038,9 +1038,9 @@ MonoBehaviour:
     level: 3
     explain: 0
   - id: 65
-    sname: "\u9B54\u529B\u77ED\u5251"
+    sname: "\u0127\uFFFD\uFFFD\uFFFD\u033D\uFFFD"
     sDescribe: 0
-    type1: 0
+    type1: 1
     type2: 0
     limit: 0
     conditionType1: 0
@@ -1054,9 +1054,9 @@ MonoBehaviour:
     level: 3
     explain: 0
   - id: 66
-    sname: "\u68EE\u6797\u5B88\u536B"
-    sDescribe: "\u5C4F\u969C\uFF0C\u9020\u62103\u70B9\u68EE\u6797\u4F24\u5BB3"
-    type1: 0
+    sname: "\u026D\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD\u03E3\uFFFD\uFFFD\uFFFD\uFFFD3\uFFFD\uFFFD\u026D\uFFFD\uFFFD\uFFFD\u02FA\uFFFD"
+    type1: 3
     type2: 0
     limit: 4
     conditionType1: 12
@@ -1067,12 +1067,12 @@ MonoBehaviour:
     damage3: 0
     cost: 2
     limitcount: 2
-    level: 3
+    level: 0
     explain: 0
   - id: 67
-    sname: "\u68EE\u4E4B\u796D\u7940"
-    sDescribe: "\u83B7\u5F974\u70B9\u9632\u5FA1\uFF0C\u83B7\u5F972\u5F20\u68EE\u6797\u5B88\u536B"
-    type1: 0
+    sname: "\u026D\u05AE\uFFFD\uFFFD\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD4\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD2\uFFFD\uFFFD\u026D\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    type1: 2
     type2: 0
     limit: 4
     conditionType1: 6
@@ -1082,12 +1082,12 @@ MonoBehaviour:
     damage2: 66
     damage3: 66
     cost: 2
-    limitcount: 1
+    limitcount: 2
     level: 3
     explain: 0
   - id: 68
-    sname: "\u85E4\u7532"
-    sDescribe: "\u83B7\u5F971\u70B9\u9632\u5FA1"
+    sname: "\uFFFD\u067C\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD1\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
     type1: 0
     type2: 0
     limit: 4
@@ -1099,11 +1099,11 @@ MonoBehaviour:
     damage3: 0
     cost: 0
     limitcount: 2
-    level: 3
+    level: 1
     explain: 0
   - id: 69
-    sname: "\u85E4\u8513\u653B\u51FB"
-    sDescribe: "\u9020\u62102\u70B9\u68EE\u6797\u4F24\u5BB3"
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD2\uFFFD\uFFFD\u026D\uFFFD\uFFFD\uFFFD\u02FA\uFFFD"
     type1: 0
     type2: 0
     limit: 4
@@ -1115,12 +1115,12 @@ MonoBehaviour:
     damage3: 0
     cost: 1
     limitcount: 2
-    level: 3
+    level: 1
     explain: 0
   - id: 70
-    sname: "\u68EE\u4E4B\u7ED3\u754C"
-    sDescribe: "\u9020\u62103\u70B9\u68EE\u6797\u4F24\u5BB3\uFF0C\u79D8\u672F\uFF0C\u83B7\u5F976\u70B9\u9632\u5FA1"
-    type1: 0
+    sname: "\u026D\u05AE\uFFFD\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD3\uFFFD\uFFFD\u026D\uFFFD\uFFFD\uFFFD\u02FA\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD6\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    type1: 1
     type2: 13
     limit: 4
     conditionType1: 1
@@ -1130,12 +1130,12 @@ MonoBehaviour:
     damage2: 7
     damage3: 0
     cost: 2
-    limitcount: 1
+    limitcount: 2
     level: 3
     explain: 0
   - id: 71
-    sname: "\u9690\u533F"
-    sDescribe: "\u83B7\u5F973\u70B9\u9632\u5FA1\uFF0C\u62BD1\u5F20\u724C"
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD3\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD1\uFFFD\uFFFD\uFFFD\uFFFD"
     type1: 0
     type2: 0
     limit: 4
@@ -1147,12 +1147,12 @@ MonoBehaviour:
     damage3: 0
     cost: 2
     limitcount: 2
-    level: 3
+    level: 1
     explain: 0
   - id: 72
-    sname: "\u5DE8\u6811\u91CD\u51FB"
-    sDescribe: "\u83B7\u5F972\u70B9\u9632\u5FA1\uFF0C\u91CD\u51FB\uFF0C\u9020\u62103\u70B9\u68EE\u6797\u4F24\u5BB3"
-    type1: 0
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u063B\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD2\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u063B\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD3\uFFFD\uFFFD\u026D\uFFFD\uFFFD\uFFFD\u02FA\uFFFD"
+    type1: 1
     type2: 4
     limit: 4
     conditionType1: 6
@@ -1163,12 +1163,12 @@ MonoBehaviour:
     damage3: 0
     cost: 1
     limitcount: 2
-    level: 3
+    level: 2
     explain: 0
   - id: 73
-    sname: "\u5524\u9192\u53E4\u6811"
-    sDescribe: "\u6062\u590D2\u70B9\u751F\u547D\uFF0C\u91CD\u51FB\uFF0C\u9020\u62105\u70B9\u68EE\u6797\u4F24\u5BB3\uFF0C\u83B7\u5F971\u5F20\u5DE8\u6811\u91CD\u51FB"
-    type1: 0
+    sname: "\uFFFD\uFFFD\uFFFD\u0479\uFFFD\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\u05B8\uFFFD2\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u063B\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD5\uFFFD\uFFFD\u026D\uFFFD\uFFFD\uFFFD\u02FA\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD1\uFFFD\u017E\uFFFD\uFFFD\uFFFD\uFFFD\u063B\uFFFD"
+    type1: 1
     type2: 4
     limit: 4
     conditionType1: 5
@@ -1182,8 +1182,8 @@ MonoBehaviour:
     level: 3
     explain: 0
   - id: 74
-    sname: "\u8346\u68D8\u53CD\u51FB"
-    sDescribe: "\u5C4F\u969C\uFF0C\u9020\u62102\u70B9\u68EE\u6797\u4F24\u5BB3"
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD\u03E3\uFFFD\uFFFD\uFFFD\uFFFD2\uFFFD\uFFFD\u026D\uFFFD\uFFFD\uFFFD\u02FA\uFFFD"
     type1: 0
     type2: 0
     limit: 4
@@ -1195,12 +1195,12 @@ MonoBehaviour:
     damage3: 0
     cost: 1
     limitcount: 2
-    level: 3
+    level: 1
     explain: 0
   - id: 75
-    sname: "\u57F9\u80B2\u6811\u79CD"
-    sDescribe: "\u83B7\u5F974\u70B9\u9632\u5FA1\uFF0C\u5C061\u5F20\u6811\u79CD\u6D17\u5165\u724C\u5E93"
-    type1: 0
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD4\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD1\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u03F4\uFFFD\uFFFD\uFFFD\u01BF\uFFFD"
+    type1: 1
     type2: 0
     limit: 4
     conditionType1: 6
@@ -1214,9 +1214,9 @@ MonoBehaviour:
     level: 3
     explain: 0
   - id: 76
-    sname: "\u6811\u79CD"
-    sDescribe: "\u6062\u590D4\u70B9\u751F\u547D\uFF0C\u5C061\u5F20\u795E\u6811\u7948\u7977\u6D17\u5165\u724C\u5E93"
-    type1: 0
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\u05B8\uFFFD4\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD1\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u03F4\uFFFD\uFFFD\uFFFD\u01BF\uFFFD"
+    type1: 3
     type2: 0
     limit: 4
     conditionType1: 5
@@ -1227,12 +1227,12 @@ MonoBehaviour:
     damage3: 0
     cost: 1
     limitcount: 99
-    level: 3
+    level: 0
     explain: 0
   - id: 77
-    sname: "\u795E\u6811\u7948\u7977"
-    sDescribe: "\u83B7\u5F979\u70B9\u9632\u5FA1\uFF0C\u83B7\u5F971\u5F20\u81EA\u7136\u4E4B\u6012\uFF0C\u771F\u8A00\uFF0C\u518D\u83B7\u5F971\u5F20\u81EA\u7136\u4E4B\u6012"
-    type1: 0
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD9\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD1\uFFFD\uFFFD\uFFFD\uFFFD\u023B\u05AE\u016D\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u0523\uFFFD\uFFFD\u067B\uFFFD\uFFFD1\uFFFD\uFFFD\uFFFD\uFFFD\u023B\u05AE\u016D"
+    type1: 3
     type2: 14
     limit: 4
     conditionType1: 6
@@ -1243,12 +1243,12 @@ MonoBehaviour:
     damage3: 78
     cost: 3
     limitcount: 99
-    level: 3
+    level: 0
     explain: 0
   - id: 78
-    sname: "\u81EA\u7136\u4E4B\u6012"
-    sDescribe: "\u9020\u62104\u70B9\u68EE\u6797\u4F24\u5BB3\uFF0C\u771F\u8A00"
-    type1: 0
+    sname: "\uFFFD\uFFFD\u023B\u05AE\u016D"
+    sDescribe: "\uFFFD\uFFFD\uFFFD4\uFFFD\uFFFD\u026D\uFFFD\uFFFD\uFFFD\u02FA\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    type1: 3
     type2: 14
     limit: 4
     conditionType1: 1
@@ -1259,12 +1259,12 @@ MonoBehaviour:
     damage3: 0
     cost: 2
     limitcount: 99
-    level: 3
+    level: 0
     explain: 0
   - id: 79
-    sname: "\u53D1\u82BD"
-    sDescribe: "\u62BD1\u5F20\u724C\uFF0C\u968F\u673A\u83B7\u5F971\u5F20\u68EE\u6797\u6CD5\u672F\u724C"
-    type1: 0
+    sname: "\uFFFD\uFFFD\u047F"
+    sDescribe: "\uFFFD\uFFFD1\uFFFD\uFFFD\uFFFD\u01A3\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD1\uFFFD\uFFFD\u026D\uFFFD\u05B7\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    type1: 3
     type2: 0
     limit: 4
     conditionType1: 8
@@ -1275,12 +1275,12 @@ MonoBehaviour:
     damage3: 0
     cost: 2
     limitcount: 2
-    level: 3
+    level: 0
     explain: 0
   - id: 80
-    sname: "\u704C\u6E89"
-    sDescribe: "\u83B7\u5F974\u70B9\u9632\u5FA1\uFF0C\u968F\u673A\u83B7\u5F971\u5F20\u6F6E\u6C50\u6CD5\u672F\u724C"
-    type1: 0
+    sname: "\uFFFD\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD4\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD1\uFFFD\u0173\uFFFD\u03EB\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    type1: 1
     type2: 0
     limit: 4
     conditionType1: 6
@@ -1291,12 +1291,12 @@ MonoBehaviour:
     damage3: 0
     cost: 2
     limitcount: 2
-    level: 3
+    level: 2
     explain: 0
   - id: 81
-    sname: "\u79CD\u5B50\u653B\u51FB"
-    sDescribe: "\u9020\u62104\u70B9\u68EE\u6797\u4F24\u5BB3\uFF0C\u83B7\u5F971\u5F20\u53D1\u82BD"
-    type1: 0
+    sname: "\uFFFD\uFFFD\uFFFD\u04F9\uFFFD\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD4\uFFFD\uFFFD\u026D\uFFFD\uFFFD\uFFFD\u02FA\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD1\uFFFD\u0177\uFFFD\u047F"
+    type1: 1
     type2: 0
     limit: 4
     conditionType1: 1
@@ -1310,9 +1310,9 @@ MonoBehaviour:
     level: 3
     explain: 0
   - id: 82
-    sname: "\u6811\u4EBA\u7A81\u88AD"
-    sDescribe: "\u5148\u5236\uFF0C\u9020\u62102\u70B9\u68EE\u6797\u4F24\u5BB3"
-    type1: 0
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\u037B\u03EE"
+    sDescribe: "\uFFFD\uFFFD\uFFFD\u01A3\uFFFD\uFFFD\uFFFD\uFFFD2\uFFFD\uFFFD\u026D\uFFFD\uFFFD\uFFFD\u02FA\uFFFD"
+    type1: 1
     type2: 0
     limit: 4
     conditionType1: 2
@@ -1323,12 +1323,12 @@ MonoBehaviour:
     damage3: 0
     cost: 1
     limitcount: 2
-    level: 3
+    level: 2
     explain: 0
   - id: 83
-    sname: "\u91CE\u86EE\u751F\u957F"
-    sDescribe: "\u62BD3\u5F20\u724C"
-    type1: 0
+    sname: "\u04B0\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\uFFFD3\uFFFD\uFFFD\uFFFD\uFFFD"
+    type1: 1
     type2: 0
     limit: 4
     conditionType1: 8
@@ -1342,9 +1342,9 @@ MonoBehaviour:
     level: 3
     explain: 0
   - id: 84
-    sname: "\u7F20\u7ED5"
-    sDescribe: "\u8BC5\u5492\uFF0C\u62BD1\u5F20\u724C"
-    type1: 0
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD\u48EC\uFFFD\uFFFD1\uFFFD\uFFFD\uFFFD\uFFFD"
+    type1: 1
     type2: 0
     limit: 4
     conditionType1: 7
@@ -1355,12 +1355,12 @@ MonoBehaviour:
     damage3: 0
     cost: 1
     limitcount: 2
-    level: 3
+    level: 2
     explain: 0
   - id: 85
-    sname: "\u5DEB\u86CA\u6811\u4EBA"
-    sDescribe: "\u8BC5\u5492\uFF0C\u771F\u8A00"
-    type1: 0
+    sname: "\uFFFD\u05F9\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD\u48EC\uFFFD\uFFFD\uFFFD\uFFFD"
+    type1: 1
     type2: 14
     limit: 4
     conditionType1: 7
@@ -1371,12 +1371,12 @@ MonoBehaviour:
     damage3: 0
     cost: 1
     limitcount: 2
-    level: 3
+    level: 2
     explain: 0
   - id: 86
-    sname: "\u6BD2\u523A\u8346\u68D8"
-    sDescribe: "\u8BC5\u5492\uFF0C\u9020\u62103\u70B9\u68EE\u6797\u4F24\u5BB3"
-    type1: 0
+    sname: "\uFFFD\uFFFD\uFFFD\u033E\uFFFD\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD\u48EC\uFFFD\uFFFD\uFFFD3\uFFFD\uFFFD\u026D\uFFFD\uFFFD\uFFFD\u02FA\uFFFD"
+    type1: 1
     type2: 0
     limit: 4
     conditionType1: 7
@@ -1387,12 +1387,12 @@ MonoBehaviour:
     damage3: 0
     cost: 2
     limitcount: 2
-    level: 3
+    level: 2
     explain: 0
   - id: 87
-    sname: "\u6ECB\u517B\u672F"
-    sDescribe: "\u6062\u590D4\u70B9\u751F\u547D\uFF0C\u62BD1\u5F20\u724C"
-    type1: 0
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\u05B8\uFFFD4\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD1\uFFFD\uFFFD\uFFFD\uFFFD"
+    type1: 1
     type2: 0
     limit: 4
     conditionType1: 5
@@ -1403,12 +1403,12 @@ MonoBehaviour:
     damage3: 0
     cost: 2
     limitcount: 2
-    level: 3
+    level: 2
     explain: 0
   - id: 88
-    sname: "\u5DE8\u6728\u649E\u51FB"
-    sDescribe: "\u83B7\u5F974\u70B9\u9632\u5FA1\uFF0C\u9020\u62104\u70B9\u68EE\u6797\u4F24\u5BB3"
-    type1: 0
+    sname: "\uFFFD\uFFFD\u013E\u05F2\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD4\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD4\uFFFD\uFFFD\u026D\uFFFD\uFFFD\uFFFD\u02FA\uFFFD"
+    type1: 1
     type2: 0
     limit: 4
     conditionType1: 6
@@ -1419,11 +1419,11 @@ MonoBehaviour:
     damage3: 0
     cost: 3
     limitcount: 2
-    level: 3
+    level: 2
     explain: 0
   - id: 89
-    sname: "\u6728\u69CC\u672F"
-    sDescribe: "\u83B7\u5F971\u70B9\u9632\u5FA1\uFF0C\u9020\u62103\u70B9\u68EE\u6797\u4F24\u5BB3"
+    sname: "\u013E\uFFFD\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD1\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD3\uFFFD\uFFFD\u026D\uFFFD\uFFFD\uFFFD\u02FA\uFFFD"
     type1: 0
     type2: 0
     limit: 4
@@ -1435,12 +1435,12 @@ MonoBehaviour:
     damage3: 0
     cost: 2
     limitcount: 2
-    level: 3
+    level: 1
     explain: 0
   - id: 90
-    sname: "\u8131\u58F3"
-    sDescribe: "\u5C4F\u969C\uFF0C\u83B7\u5F972\u5F20\u85E4\u7532"
-    type1: 0
+    sname: "\uFFFD\u047F\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD\u03E3\uFFFD\uFFFD\uFFFD\uFFFD2\uFFFD\uFFFD\uFFFD\u067C\uFFFD"
+    type1: 1
     type2: 0
     limit: 4
     conditionType1: 12
@@ -1451,11 +1451,11 @@ MonoBehaviour:
     damage3: 68
     cost: 2
     limitcount: 2
-    level: 3
+    level: 2
     explain: 0
   - id: 91
-    sname: "\u4ED9\u7075\u4FE1\u7269"
-    sDescribe: "\u83B7\u5F971\u5F20\u4ED9\u7075\u795D\u798F\uFF0C\u724C\u9996"
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD1\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u05E3\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
     type1: 2
     type2: 0
     limit: 0
@@ -1470,8 +1470,8 @@ MonoBehaviour:
     level: 1
     explain: 0
   - id: 92
-    sname: "\u5723\u5178"
-    sDescribe: "\u5C061\u5F20\u795E\u542F\u6D17\u5165\u724C\u5E93\uFF0C\u724C\u9996"
+    sname: "\u02A5\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\uFFFD1\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u03F4\uFFFD\uFFFD\uFFFD\u01BF\u28EC\uFFFD\uFFFD\uFFFD\uFFFD"
     type1: 2
     type2: 0
     limit: 0
@@ -1486,8 +1486,8 @@ MonoBehaviour:
     level: 1
     explain: 0
   - id: 93
-    sname: "\u795E\u542F"
-    sDescribe: "\u83B7\u5F971\u5F20\u795E\u7075\u7948\u613F\uFF0C\u771F\u8A00"
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD"
+    sDescribe: "\uFFFD\uFFFD\uFFFD1\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u0538\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
     type1: 2
     type2: 0
     limit: 0
@@ -1502,8 +1502,8 @@ MonoBehaviour:
     level: 1
     explain: 0
   - id: 94
-    sname: "\u6D4B\u8BD5\u5361\u724C"
-    sDescribe: "30\u4F24\u5BB3\uFF0C\u724C\u9996"
+    sname: "\uFFFD\uFFFD\uFFFD\u053F\uFFFD\uFFFD\uFFFD"
+    sDescribe: "30\uFFFD\u02FA\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
     type1: 2
     type2: 0
     limit: 0
@@ -1517,3 +1517,755 @@ MonoBehaviour:
     limitcount: 5
     level: 0
     explain: 0
+  - id: 95
+    sname: "\uFFFD\uFFFD2"
+    sDescribe: 0
+    type1: 0
+    type2: 0
+    limit: 0
+    conditionType1: 0
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 0
+    damage2: 0
+    damage3: 0
+    cost: 0
+    limitcount: 99
+    level: 2
+    explain: 
+  - id: 96
+    sname: "\uFFFD\uFFFD2"
+    sDescribe: 0
+    type1: 0
+    type2: 0
+    limit: 0
+    conditionType1: 0
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 0
+    damage2: 0
+    damage3: 0
+    cost: 0
+    limitcount: 99
+    level: 2
+    explain: 
+  - id: 97
+    sname: "\uFFFD\uFFFD2"
+    sDescribe: 0
+    type1: 0
+    type2: 0
+    limit: 0
+    conditionType1: 0
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 0
+    damage2: 0
+    damage3: 0
+    cost: 0
+    limitcount: 99
+    level: 2
+    explain: 
+  - id: 98
+    sname: "\uFFFD\uFFFD2"
+    sDescribe: 0
+    type1: 0
+    type2: 0
+    limit: 0
+    conditionType1: 0
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 0
+    damage2: 0
+    damage3: 0
+    cost: 0
+    limitcount: 99
+    level: 2
+    explain: 
+  - id: 99
+    sname: "\uFFFD\uFFFD2"
+    sDescribe: 0
+    type1: 0
+    type2: 0
+    limit: 0
+    conditionType1: 0
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 0
+    damage2: 0
+    damage3: 0
+    cost: 0
+    limitcount: 99
+    level: 2
+    explain: 
+  - id: 100
+    sname: "\uFFFD\uFFFD2"
+    sDescribe: 0
+    type1: 0
+    type2: 0
+    limit: 0
+    conditionType1: 0
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 0
+    damage2: 0
+    damage3: 0
+    cost: 0
+    limitcount: 99
+    level: 2
+    explain: 
+  - id: 101
+    sname: "\uFFFD\uFFFD2"
+    sDescribe: 0
+    type1: 0
+    type2: 0
+    limit: 0
+    conditionType1: 0
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 0
+    damage2: 0
+    damage3: 0
+    cost: 0
+    limitcount: 99
+    level: 2
+    explain: 
+  - id: 102
+    sname: "\uFFFD\uFFFD3"
+    sDescribe: 0
+    type1: 0
+    type2: 0
+    limit: 0
+    conditionType1: 0
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 0
+    damage2: 0
+    damage3: 0
+    cost: 0
+    limitcount: 99
+    level: 3
+    explain: 
+  - id: 103
+    sname: "\uFFFD\uFFFD3"
+    sDescribe: 0
+    type1: 0
+    type2: 0
+    limit: 0
+    conditionType1: 0
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 0
+    damage2: 0
+    damage3: 0
+    cost: 0
+    limitcount: 99
+    level: 3
+    explain: 
+  - id: 104
+    sname: "\uFFFD\uFFFD3"
+    sDescribe: 0
+    type1: 0
+    type2: 0
+    limit: 0
+    conditionType1: 0
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 0
+    damage2: 0
+    damage3: 0
+    cost: 0
+    limitcount: 99
+    level: 3
+    explain: 
+  - id: 105
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD"
+    sDescribe: 0
+    type1: 0
+    type2: 0
+    limit: 0
+    conditionType1: 0
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 0
+    damage2: 0
+    damage3: 0
+    cost: 0
+    limitcount: 99
+    level: 1
+    explain: 
+  - id: 106
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD"
+    sDescribe: 0
+    type1: 0
+    type2: 0
+    limit: 0
+    conditionType1: 0
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 0
+    damage2: 0
+    damage3: 0
+    cost: 0
+    limitcount: 99
+    level: 1
+    explain: 
+  - id: 107
+    sname: "\uFFFD\uFFFD"
+    sDescribe: 0
+    type1: 0
+    type2: 0
+    limit: 0
+    conditionType1: 0
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 0
+    damage2: 0
+    damage3: 0
+    cost: 0
+    limitcount: 99
+    level: 1
+    explain: 
+  - id: 108
+    sname: "\u02EE3"
+    sDescribe: 0
+    type1: 0
+    type2: 0
+    limit: 0
+    conditionType1: 0
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 0
+    damage2: 0
+    damage3: 0
+    cost: 0
+    limitcount: 99
+    level: 3
+    explain: 
+  - id: 109
+    sname: "\u02EE3"
+    sDescribe: 0
+    type1: 0
+    type2: 0
+    limit: 0
+    conditionType1: 0
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 0
+    damage2: 0
+    damage3: 0
+    cost: 0
+    limitcount: 99
+    level: 3
+    explain: 
+  - id: 110
+    sname: "\u02EE2"
+    sDescribe: 0
+    type1: 0
+    type2: 0
+    limit: 0
+    conditionType1: 0
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 0
+    damage2: 0
+    damage3: 0
+    cost: 0
+    limitcount: 99
+    level: 2
+    explain: 
+  - id: 111
+    sname: "\u02EE2"
+    sDescribe: 0
+    type1: 0
+    type2: 0
+    limit: 0
+    conditionType1: 0
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 0
+    damage2: 0
+    damage3: 0
+    cost: 0
+    limitcount: 99
+    level: 2
+    explain: 
+  - id: 112
+    sname: "\u02EE2"
+    sDescribe: 0
+    type1: 0
+    type2: 0
+    limit: 0
+    conditionType1: 0
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 0
+    damage2: 0
+    damage3: 0
+    cost: 0
+    limitcount: 99
+    level: 2
+    explain: 
+  - id: 113
+    sname: "\u02EE2"
+    sDescribe: 0
+    type1: 0
+    type2: 0
+    limit: 0
+    conditionType1: 0
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 0
+    damage2: 0
+    damage3: 0
+    cost: 0
+    limitcount: 99
+    level: 2
+    explain: 
+  - id: 114
+    sname: "\u02EE2"
+    sDescribe: 0
+    type1: 0
+    type2: 0
+    limit: 0
+    conditionType1: 0
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 0
+    damage2: 0
+    damage3: 0
+    cost: 0
+    limitcount: 99
+    level: 2
+    explain: 
+  - id: 115
+    sname: "\u02EE2"
+    sDescribe: 0
+    type1: 0
+    type2: 0
+    limit: 0
+    conditionType1: 0
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 0
+    damage2: 0
+    damage3: 0
+    cost: 0
+    limitcount: 99
+    level: 2
+    explain: 
+  - id: 116
+    sname: "\uFFFD\uFFFD1"
+    sDescribe: 0
+    type1: 0
+    type2: 0
+    limit: 0
+    conditionType1: 0
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 0
+    damage2: 0
+    damage3: 0
+    cost: 0
+    limitcount: 99
+    level: 1
+    explain: 
+  - id: 117
+    sname: "\uFFFD\uFFFD1"
+    sDescribe: 0
+    type1: 0
+    type2: 0
+    limit: 0
+    conditionType1: 0
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 0
+    damage2: 0
+    damage3: 0
+    cost: 0
+    limitcount: 99
+    level: 1
+    explain: 
+  - id: 118
+    sname: "\uFFFD\uFFFD1"
+    sDescribe: 0
+    type1: 0
+    type2: 0
+    limit: 0
+    conditionType1: 0
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 0
+    damage2: 0
+    damage3: 0
+    cost: 0
+    limitcount: 99
+    level: 1
+    explain: 
+  - id: 119
+    sname: "\uFFFD\uFFFD3"
+    sDescribe: 0
+    type1: 0
+    type2: 0
+    limit: 0
+    conditionType1: 0
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 0
+    damage2: 0
+    damage3: 0
+    cost: 0
+    limitcount: 99
+    level: 3
+    explain: 
+  - id: 120
+    sname: "\uFFFD\uFFFD3"
+    sDescribe: 0
+    type1: 0
+    type2: 0
+    limit: 0
+    conditionType1: 0
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 0
+    damage2: 0
+    damage3: 0
+    cost: 0
+    limitcount: 99
+    level: 3
+    explain: 
+  - id: 121
+    sname: "\uFFFD\uFFFD3"
+    sDescribe: 0
+    type1: 0
+    type2: 0
+    limit: 0
+    conditionType1: 0
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 0
+    damage2: 0
+    damage3: 0
+    cost: 0
+    limitcount: 99
+    level: 3
+    explain: 
+  - id: 122
+    sname: "\uFFFD\uFFFD2"
+    sDescribe: 0
+    type1: 0
+    type2: 0
+    limit: 0
+    conditionType1: 0
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 0
+    damage2: 0
+    damage3: 0
+    cost: 0
+    limitcount: 99
+    level: 2
+    explain: 
+  - id: 123
+    sname: "\uFFFD\uFFFD2"
+    sDescribe: 0
+    type1: 0
+    type2: 0
+    limit: 0
+    conditionType1: 0
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 0
+    damage2: 0
+    damage3: 0
+    cost: 0
+    limitcount: 99
+    level: 2
+    explain: 
+  - id: 124
+    sname: "\uFFFD\uFFFD2"
+    sDescribe: 0
+    type1: 0
+    type2: 0
+    limit: 0
+    conditionType1: 0
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 0
+    damage2: 0
+    damage3: 0
+    cost: 0
+    limitcount: 99
+    level: 2
+    explain: 
+  - id: 125
+    sname: "\uFFFD\uFFFD2"
+    sDescribe: 0
+    type1: 0
+    type2: 0
+    limit: 0
+    conditionType1: 0
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 0
+    damage2: 0
+    damage3: 0
+    cost: 0
+    limitcount: 99
+    level: 2
+    explain: 
+  - id: 126
+    sname: "\uFFFD\uFFFD2"
+    sDescribe: 0
+    type1: 0
+    type2: 0
+    limit: 0
+    conditionType1: 0
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 0
+    damage2: 0
+    damage3: 0
+    cost: 0
+    limitcount: 99
+    level: 2
+    explain: 
+  - id: 127
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD1"
+    sDescribe: 0
+    type1: 0
+    type2: 0
+    limit: 0
+    conditionType1: 0
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 0
+    damage2: 0
+    damage3: 0
+    cost: 0
+    limitcount: 99
+    level: 1
+    explain: 
+  - id: 128
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD1"
+    sDescribe: 0
+    type1: 0
+    type2: 0
+    limit: 0
+    conditionType1: 0
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 0
+    damage2: 0
+    damage3: 0
+    cost: 0
+    limitcount: 99
+    level: 1
+    explain: 
+  - id: 129
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD1"
+    sDescribe: 0
+    type1: 0
+    type2: 0
+    limit: 0
+    conditionType1: 0
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 0
+    damage2: 0
+    damage3: 0
+    cost: 0
+    limitcount: 99
+    level: 1
+    explain: 
+  - id: 130
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD1"
+    sDescribe: 0
+    type1: 0
+    type2: 0
+    limit: 0
+    conditionType1: 0
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 0
+    damage2: 0
+    damage3: 0
+    cost: 0
+    limitcount: 99
+    level: 1
+    explain: 
+  - id: 131
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD3"
+    sDescribe: 0
+    type1: 0
+    type2: 0
+    limit: 0
+    conditionType1: 0
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 0
+    damage2: 0
+    damage3: 0
+    cost: 0
+    limitcount: 99
+    level: 3
+    explain: 
+  - id: 132
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD3"
+    sDescribe: 0
+    type1: 0
+    type2: 0
+    limit: 0
+    conditionType1: 0
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 0
+    damage2: 0
+    damage3: 0
+    cost: 0
+    limitcount: 99
+    level: 3
+    explain: 
+  - id: 133
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD3"
+    sDescribe: 0
+    type1: 0
+    type2: 0
+    limit: 0
+    conditionType1: 0
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 0
+    damage2: 0
+    damage3: 0
+    cost: 0
+    limitcount: 99
+    level: 3
+    explain: 
+  - id: 134
+    sname: "\uFFFD\u03F9\u0177\uFFFD\uFFFD\uFFFD"
+    sDescribe: 0
+    type1: 0
+    type2: 0
+    limit: 0
+    conditionType1: 0
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 0
+    damage2: 0
+    damage3: 0
+    cost: 0
+    limitcount: 99
+    level: 3
+    explain: 
+  - id: 135
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD2"
+    sDescribe: 0
+    type1: 0
+    type2: 0
+    limit: 0
+    conditionType1: 0
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 0
+    damage2: 0
+    damage3: 0
+    cost: 0
+    limitcount: 99
+    level: 2
+    explain: 
+  - id: 136
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD2"
+    sDescribe: 0
+    type1: 0
+    type2: 0
+    limit: 0
+    conditionType1: 0
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 0
+    damage2: 0
+    damage3: 0
+    cost: 0
+    limitcount: 99
+    level: 2
+    explain: 
+  - id: 137
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD2"
+    sDescribe: 0
+    type1: 0
+    type2: 0
+    limit: 0
+    conditionType1: 0
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 0
+    damage2: 0
+    damage3: 0
+    cost: 0
+    limitcount: 99
+    level: 2
+    explain: 
+  - id: 138
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD2"
+    sDescribe: 0
+    type1: 0
+    type2: 0
+    limit: 0
+    conditionType1: 0
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 0
+    damage2: 0
+    damage3: 0
+    cost: 0
+    limitcount: 99
+    level: 2
+    explain: 
+  - id: 139
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD2"
+    sDescribe: 0
+    type1: 0
+    type2: 0
+    limit: 0
+    conditionType1: 0
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 0
+    damage2: 0
+    damage3: 0
+    cost: 0
+    limitcount: 99
+    level: 2
+    explain: 
+  - id: 140
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD2"
+    sDescribe: 0
+    type1: 0
+    type2: 0
+    limit: 0
+    conditionType1: 0
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 0
+    damage2: 0
+    damage3: 0
+    cost: 0
+    limitcount: 99
+    level: 2
+    explain: 
+  - id: 141
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD2"
+    sDescribe: 0
+    type1: 0
+    type2: 0
+    limit: 0
+    conditionType1: 0
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 0
+    damage2: 0
+    damage3: 0
+    cost: 0
+    limitcount: 99
+    level: 2
+    explain: 

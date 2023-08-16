@@ -27,15 +27,31 @@ public class NormalCalculate
         List<ItemData> list = new List<ItemData>();
         Dictionary<int, int> dic = new Dictionary<int, int>();
         var item = Config_t_Consumable.getOne(id);
-        string[] str = item.rewardPool.Split('|');
         System.Random random = new System.Random();
-        int index = 0;
-        for(int i = 0; i < item.rewardNum; i++)
+        if (item.rewardType == 1)
         {
-            index = int.Parse(str[random.Next(str.Length)]);
-            if (!dic.ContainsKey(index))
-                dic[index] = 0;
-            dic[index]++;
+            int index;
+            int nums;
+            string[] str = item.rewardPool.Split('|');
+            //随机抽取奖励，数量不一定固定
+            if (item.rewardNum > 0)                //固定数量奖励
+                nums = item.rewardNum;
+            else                //全随机
+                nums = random.Next(item.takenum, item.takenum2);
+            for (int i = 0; i < nums; i++)
+            {
+                index = int.Parse(str[random.Next(str.Length)]);
+                if (!dic.ContainsKey(index))
+                    dic[index] = 0;
+                dic[index]++;
+            }
+        }
+        if (item.rewardType == 2)
+        {
+            if (item.rewardNum > 0)          //固定奖励随机数量
+                dic[item.rewardGiven] = random.Next(item.takenum, item.takenum2);
+            else        //全固定
+                dic[item.rewardGiven] = item.rewardNum;
         }
         foreach(var i in dic)
             list.Add(new ItemData(i.Key, i.Value));

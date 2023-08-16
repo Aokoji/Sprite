@@ -205,6 +205,7 @@ public class LoadDataToCSharpTool :Editor
                         //数据赋值
                         try
                         {
+                            if (string.IsNullOrEmpty(context[k])) continue;
                             target.GetField(names[k]).SetValue(obj, asset.GetType().GetMethod("parse").Invoke(asset, new object[] { context[k], types[k] }));
                         }
                         catch

@@ -14,16 +14,629 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   asset:
   - id: 52
-    sname: "\u5C0F\u74F6\u5723\u6C34"
+    sname: "\u0421\u01BF\u022A\u02EE"
+    remark: "8\uFFFD\uFFFD\uFFFD\uFFFD"
     type: 2
-    rewardType: 2
+    rewardType: 0
     takeid: 1
     takenum: 8
-    rewardlist: 0
+    takenum2: 0
+    rewardGiven: 0
+    rewardNum: 0
+    rewardPool: 0
   - id: 53
-    sname: "\u4ED9\u7075\u4E4B\u4E66"
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\u05AE\uFFFD\uFFFD"
+    remark: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD10\uFFFD\uFFFD"
     type: 4
     rewardType: 0
     takeid: 0
     takenum: 0
-    rewardlist: 0
+    takenum2: 0
+    rewardGiven: 0
+    rewardNum: 0
+    rewardPool: 0
+  - id: 191
+    sname: "\uFFFD\uFFFD\uFFFD\u0438\uFFFD\uFFFD\uFFFD"
+    remark: "4\uFFFD\uFFFD\uFFFD\uFFFD"
+    type: 2
+    rewardType: 0
+    takeid: 1
+    takenum: 4
+    takenum2: 0
+    rewardGiven: 0
+    rewardNum: 0
+    rewardPool: 0
+  - id: 192
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD"
+    remark: "5\uFFFD\uFFFD\uFFFD\uFFFD5\uFFFD\uFFFD\uFFFD\uFFFD"
+    type: 2
+    rewardType: 0
+    takeid: 2
+    takenum: 5
+    takenum2: 5
+    rewardGiven: 0
+    rewardNum: 0
+    rewardPool: 0
+  - id: 193
+    sname: "\uFFFD\uFFFD\uFFFD\u06F8\uFFFD"
+    remark: "8\uFFFD\uFFFD\uFFFD\uFFFD"
+    type: 2
+    rewardType: 0
+    takeid: 0
+    takenum: 8
+    takenum2: 0
+    rewardGiven: 0
+    rewardNum: 0
+    rewardPool: 0
+  - id: 194
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    remark: "4\uFFFD\uFFFD\uFFFD\uFFFD"
+    type: 2
+    rewardType: 0
+    takeid: 0
+    takenum: 4
+    takenum2: 0
+    rewardGiven: 0
+    rewardNum: 0
+    rewardPool: 0
+  - id: 195
+    sname: "\u0421\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    remark: "5\uFFFD\uFFFD\uFFFD\uFFFD"
+    type: 2
+    rewardType: 0
+    takeid: 0
+    takenum: 5
+    takenum2: 0
+    rewardGiven: 0
+    rewardNum: 0
+    rewardPool: 0
+  - id: 196
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\u0273\uFFFD\uFFFD"
+    remark: "6\uFFFD\uFFFD\uFFFD\uFFFD16\uFFFD\uFFFD\uFFFD\uFFFD"
+    type: 2
+    rewardType: 0
+    takeid: 2
+    takenum: 6
+    takenum2: 16
+    rewardGiven: 0
+    rewardNum: 0
+    rewardPool: 0
+  - id: 197
+    sname: "\u013E\uFFFD\uFFFD\uFFFD\uFFFD"
+    remark: "10\uFFFD\uFFFD\uFFFD\uFFFD"
+    type: 2
+    rewardType: 0
+    takeid: 0
+    takenum: 10
+    takenum2: 0
+    rewardGiven: 0
+    rewardNum: 0
+    rewardPool: 0
+  - id: 198
+    sname: "\uFFFD\uFFFD\u013E\uFFFD\uFFFD"
+    remark: "8\uFFFD\uFFFD\uFFFD\uFFFD"
+    type: 2
+    rewardType: 0
+    takeid: 0
+    takenum: 8
+    takenum2: 0
+    rewardGiven: 0
+    rewardNum: 0
+    rewardPool: 0
+  - id: 199
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    remark: "8\uFFFD\uFFFD\uFFFD\uFFFD20\uFFFD\uFFFD\uFFFD\uFFFD"
+    type: 2
+    rewardType: 0
+    takeid: 2
+    takenum: 8
+    takenum2: 20
+    rewardGiven: 0
+    rewardNum: 0
+    rewardPool: 0
+  - id: 200
+    sname: "\uFFFD\u07F2\uFFFD\u0273\uFFFD\uFFFD"
+    remark: "15\uFFFD\uFFFD\uFFFD\uFFFD"
+    type: 2
+    rewardType: 0
+    takeid: 1
+    takenum: 15
+    takenum2: 0
+    rewardGiven: 0
+    rewardNum: 0
+    rewardPool: 0
+  - id: 201
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    remark: "\u026C\uFFFD\uFFFD\uFFFD\uFFFD15\uFFFD\uFFFD\uFFFD\uFFFD"
+    type: 2
+    rewardType: 0
+    takeid: 0
+    takenum: 15
+    takenum2: 0
+    rewardGiven: 0
+    rewardNum: 0
+    rewardPool: 0
+  - id: 202
+    sname: "\uFFFD\u02BB\uFFFD\uFFFD\uFFFD"
+    remark: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD12\uFFFD\uFFFD\uFFFD\uFFFD25\uFFFD\uFFFD\uFFFD\uFFFD"
+    type: 2
+    rewardType: 0
+    takeid: 2
+    takenum: 12
+    takenum2: 25
+    rewardGiven: 0
+    rewardNum: 0
+    rewardPool: 0
+  - id: 203
+    sname: "\uFFFD\u0732\uFFFD"
+    remark: "1\uFFFD\uFFFD\uFFFD\uFFFD"
+    type: 2
+    rewardType: 0
+    takeid: 1
+    takenum: 1
+    takenum2: 0
+    rewardGiven: 0
+    rewardNum: 0
+    rewardPool: 0
+  - id: 204
+    sname: "\u04B0\uFFFD\uFFFD"
+    remark: "1\uFFFD\uFFFD\uFFFD\uFFFD"
+    type: 2
+    rewardType: 0
+    takeid: 0
+    takenum: 1
+    takenum2: 0
+    rewardGiven: 0
+    rewardNum: 0
+    rewardPool: 0
+  - id: 62
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD"
+    remark: "1\uFFFD\uFFFD\uFFFD\uFFFD"
+    type: 2
+    rewardType: 0
+    takeid: 0
+    takenum: 1
+    takenum2: 0
+    rewardGiven: 0
+    rewardNum: 0
+    rewardPool: 0
+  - id: 63
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD"
+    remark: "2\uFFFD\uFFFD\uFFFD\uFFFD"
+    type: 2
+    rewardType: 0
+    takeid: 1
+    takenum: 2
+    takenum2: 0
+    rewardGiven: 0
+    rewardNum: 0
+    rewardPool: 0
+  - id: 64
+    sname: "\uFFFD\u05FD\uFFFD\uFFFD\uFFFD"
+    remark: "6\uFFFD\uFFFD\uFFFD\uFFFD"
+    type: 2
+    rewardType: 0
+    takeid: 1
+    takenum: 6
+    takenum2: 0
+    rewardGiven: 0
+    rewardNum: 0
+    rewardPool: 0
+  - id: 65
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    remark: "2\uFFFD\uFFFD\uFFFD\uFFFD"
+    type: 2
+    rewardType: 0
+    takeid: 1
+    takenum: 2
+    takenum2: 0
+    rewardGiven: 0
+    rewardNum: 0
+    rewardPool: 0
+  - id: 66
+    sname: "\uFFFD\uCF6C\uFFFD\uFFFD"
+    remark: "1\uFFFD\uFFFD\uFFFD\uFFFD"
+    type: 2
+    rewardType: 0
+    takeid: 0
+    takenum: 1
+    takenum2: 0
+    rewardGiven: 0
+    rewardNum: 0
+    rewardPool: 0
+  - id: 67
+    sname: "\uFFFD\u03FD\uFFFD\uFFFD\uFFFD"
+    remark: "2\uFFFD\uFFFD\uFFFD\uFFFD"
+    type: 2
+    rewardType: 0
+    takeid: 0
+    takenum: 2
+    takenum2: 0
+    rewardGiven: 0
+    rewardNum: 0
+    rewardPool: 0
+  - id: 205
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    remark: "30\uFFFD\uFFFD\uFFFD\uFFFD"
+    type: 2
+    rewardType: 0
+    takeid: 1
+    takenum: 30
+    takenum2: 0
+    rewardGiven: 0
+    rewardNum: 0
+    rewardPool: 0
+  - id: 206
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD"
+    remark: "6\uFFFD\uFFFD\uFFFD\uFFFD"
+    type: 2
+    rewardType: 0
+    takeid: 0
+    takenum: 6
+    takenum2: 0
+    rewardGiven: 0
+    rewardNum: 0
+    rewardPool: 0
+  - id: 207
+    sname: "\uFFFD\u0639\u03F8\uFFFD"
+    remark: "4\uFFFD\uFFFD\uFFFD\uFFFD"
+    type: 2
+    rewardType: 0
+    takeid: 0
+    takenum: 4
+    takenum2: 0
+    rewardGiven: 0
+    rewardNum: 0
+    rewardPool: 0
+  - id: 208
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    remark: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD30\uFFFD\uFFFD\uFFFD\uFFFD"
+    type: 2
+    rewardType: 0
+    takeid: 0
+    takenum: 30
+    takenum2: 0
+    rewardGiven: 0
+    rewardNum: 0
+    rewardPool: 0
+  - id: 209
+    sname: "\u0122\uFFFD\uFFFD\u0168\uFFFD\uFFFD"
+    remark: "15\uFFFD\uFFFD\uFFFD\uFFFD"
+    type: 2
+    rewardType: 0
+    takeid: 0
+    takenum: 15
+    takenum2: 0
+    rewardGiven: 0
+    rewardNum: 0
+    rewardPool: 0
+  - id: 210
+    sname: "\u0127\uFFFD\uFFFD\uFFFD\u07B8\uFFFD\u04A9"
+    remark: "\uFFFD\u05B8\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    type: 2
+    rewardType: 0
+    takeid: 3
+    takenum: 0
+    takenum2: 0
+    rewardGiven: 0
+    rewardNum: 0
+    rewardPool: 0
+  - id: 211
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u04A9"
+    remark: "30\uFFFD\uFFFD\uFFFD\uFFFD"
+    type: 2
+    rewardType: 0
+    takeid: 0
+    takenum: 30
+    takenum2: 0
+    rewardGiven: 0
+    rewardNum: 0
+    rewardPool: 0
+  - id: 212
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u04A9"
+    remark: "50\uFFFD\uFFFD\uFFFD\uFFFD"
+    type: 2
+    rewardType: 0
+    takeid: 1
+    takenum: 50
+    takenum2: 0
+    rewardGiven: 0
+    rewardNum: 0
+    rewardPool: 0
+  - id: 51
+    sname: "\u05F0\uFFFD\uFFFD\u02AF\uFFFD\u013A\uFFFD\uFFFD\uFFFD"
+    remark: "1\uFFFD\u0171\uFFFD\u02AF"
+    type: 2
+    rewardType: 1
+    takeid: 0
+    takenum: 1
+    takenum2: 0
+    rewardGiven: 0
+    rewardNum: 0
+    rewardPool: 182|183|184|185|186|187|188|189
+  - id: 213
+    sname: "\u04BB\u0421\uFFFD\uFFFD\uFFFD\uFFFD\u02AF"
+    remark: "3-5\uFFFD\uFFFD\u02AF"
+    type: 2
+    rewardType: 1
+    takeid: 0
+    takenum: 3
+    takenum2: 5
+    rewardGiven: 0
+    rewardNum: 0
+    rewardPool: 182|183|184|185|186|187|188|189
+  - id: 78
+    sname: "\uFFFD\uFFFD\u057E\uFFFD\u0133\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    remark: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u04BB\u0429\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u04B0\uFFFD\uFFFD\u02B3\uFFFD\u013B\uFFFD\uFFFD\uFFFD\uFFFD"
+    type: 2
+    rewardType: 1
+    takeid: 0
+    takenum: 3
+    takenum2: 6
+    rewardGiven: 0
+    rewardNum: 0
+    rewardPool: 75|203|204|65|66|62|92|93|224|225
+  - id: 224
+    sname: "\u04B0\uFFFD\uFFFD\uFFFD\uFFFD"
+    remark: "1\uFFFD\uFFFD\uFFFD\uFFFD"
+    type: 2
+    rewardType: 0
+    takeid: 1
+    takenum: 1
+    takenum2: 0
+    rewardGiven: 0
+    rewardNum: 0
+    rewardPool: 0
+  - id: 225
+    sname: "\uFFFD\uFFFD\uFFFD"
+    remark: "1\uFFFD\uFFFD\uFFFD\uFFFD1\uFFFD\uFFFD\uFFFD\uFFFD"
+    type: 2
+    rewardType: 0
+    takeid: 2
+    takenum: 1
+    takenum2: 1
+    rewardGiven: 0
+    rewardNum: 0
+    rewardPool: 0
+  - id: 220
+    sname: "\u0421\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    remark: "8-20\xF6\uFFFD\uFFFD\uFFFD\u04A1\uFFFD"
+    type: 2
+    rewardType: 2
+    takeid: 0
+    takenum: 8
+    takenum2: 20
+    rewardGiven: 1
+    rewardNum: 0
+    rewardPool: 0
+  - id: 221
+    sname: "\u0421\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    remark: "2-8\xF6\uFFFD\uFFFD\uFFFD\u04A1\uFFFD"
+    type: 2
+    rewardType: 2
+    takeid: 0
+    takenum: 2
+    takenum2: 8
+    rewardGiven: 1
+    rewardNum: 0
+    rewardPool: 0
+  - id: 222
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    remark: "20-40\xF6\uFFFD\uFFFD\uFFFD\uFFFD"
+    type: 2
+    rewardType: 2
+    takeid: 0
+    takenum: 20
+    takenum2: 40
+    rewardGiven: 1
+    rewardNum: 0
+    rewardPool: 0
+  - id: 223
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    remark: 40-80
+    type: 2
+    rewardType: 2
+    takeid: 0
+    takenum: 40
+    takenum2: 80
+    rewardGiven: 1
+    rewardNum: 0
+    rewardPool: 0
+  - id: 226
+    sname: "\u04BB\uFFFD\uFFFD\u04B0\uFFFD\uFFFD"
+    remark: 5
+    type: 2
+    rewardType: 2
+    takeid: 0
+    takenum: 0
+    takenum2: 0
+    rewardGiven: 204
+    rewardNum: 5
+    rewardPool: 0
+  - id: 227
+    sname: "\u04BB\uFFFD\uFFFD\u013E\uFFFD\uFFFD"
+    remark: 5
+    type: 2
+    rewardType: 2
+    takeid: 0
+    takenum: 0
+    takenum2: 0
+    rewardGiven: 93
+    rewardNum: 5
+    rewardPool: 0
+  - id: 228
+    sname: "\uFFFD\uFFFD\u057E\uFFFD\u0138\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    remark: 2
+    type: 2
+    rewardType: 2
+    takeid: 0
+    takenum: 0
+    takenum2: 0
+    rewardGiven: 191
+    rewardNum: 2
+    rewardPool: 0
+  - id: 229
+    sname: "\u04BB\uFFFD\uFFFD\uFFFD\uFFFD\u013E\uFFFD\uFFFD"
+    remark: 15
+    type: 2
+    rewardType: 2
+    takeid: 0
+    takenum: 0
+    takenum2: 0
+    rewardGiven: 93
+    rewardNum: 15
+    rewardPool: 0
+  - id: 230
+    sname: "\uFFFD\u027C\uFFFD\uFFFD\uFFFD\u0534\uFFFD\uFFFD"
+    remark: 5
+    type: 2
+    rewardType: 1
+    takeid: 0
+    takenum: 0
+    takenum2: 0
+    rewardGiven: 0
+    rewardNum: 5
+    rewardPool: 224|225|62|63|64|65|66|67|68|75|92|93|203|204|56|27|30|33|36|39|42|45
+  - id: 231
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u0534\uFFFD\uFFFD"
+    remark: 5
+    type: 2
+    rewardType: 1
+    takeid: 0
+    takenum: 0
+    takenum2: 0
+    rewardGiven: 0
+    rewardNum: 5
+    rewardPool: 8|15|18|21|24|27|30|33|36|39|42|45
+  - id: 214
+    sname: "\uFFFD\uFFFD\u057E\uFFFD\u013B\uFFFD\uFFFD\uFFFD\uFFFD\u0632\u0134\uFFFD"
+    remark: 0
+    type: 2
+    rewardType: 1
+    takeid: 0
+    takenum: 3
+    takenum2: 8
+    rewardGiven: 0
+    rewardNum: 0
+    rewardPool: 2|3|4|5|6|7|73|74|75|77|79|80|81|88|89|91|92|93|94|96|97|98|99|101|104|105|106|108|109|110
+  - id: 215
+    sname: "\uFFFD\uFFFD\u057E\uFFFD\u013B\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    remark: 0
+    type: 2
+    rewardType: 1
+    takeid: 0
+    takenum: 4
+    takenum2: 8
+    rewardGiven: 0
+    rewardNum: 0
+    rewardPool: 194|195|207|224|225|203|204|62|63|64|65|66|67|68|75|56|27|30|33|36|39|42|45|65|66|67|65|66|67|224|225|203|204|224|225|203|204
+  - id: 216
+    sname: "\uFFFD\uFFFD\u057E\uFFFD\u0138\u07FC\uFFFD\uFFFD\u0632\u0134\uFFFD"
+    remark: 0
+    type: 2
+    rewardType: 1
+    takeid: 0
+    takenum: 3
+    takenum2: 8
+    rewardGiven: 0
+    rewardNum: 0
+    rewardPool: 2|3|73|74|75|77|79|80|81|97|98|99|101|104|105|106|108|109|110|111|112|113|114|117|118|119|120|122|123|124|125|126|129|130|131|132|133|134|136|138|139|140|141|142
+  - id: 217
+    sname: "\uFFFD\uFFFD\u057E\uFFFD\u0138\u07FC\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    remark: 0
+    type: 2
+    rewardType: 1
+    takeid: 0
+    takenum: 4
+    takenum2: 8
+    rewardGiven: 0
+    rewardNum: 0
+    rewardPool: 62|63|64|65|66|67|68|192|195|224|225|203|204|27|30|33|36|39|42|45|199|206|207|67|66|65
+  - id: 218
+    sname: "\uFFFD\uFFFD\u057E\uFFFD\uFFFD\uFFFD\u063C\uFFFD\uFFFD\u0632\u0134\uFFFD"
+    remark: 0
+    type: 2
+    rewardType: 1
+    takeid: 0
+    takenum: 3
+    takenum2: 8
+    rewardGiven: 0
+    rewardNum: 0
+    rewardPool: 233|111|112|113|114|116|117|118|119|120|122|123|124|125|126|129|130|131|132|133|134|136|138|139|140|141|142|143|144|146|147|148|149|152|153|154|156|157|158
+  - id: 219
+    sname: "\uFFFD\uFFFD\u057E\uFFFD\uFFFD\uFFFD\u063C\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    remark: 0
+    type: 2
+    rewardType: 1
+    takeid: 0
+    takenum: 4
+    takenum2: 8
+    rewardGiven: 0
+    rewardNum: 0
+    rewardPool: 59|61|62|63|64|68|69|70|71|208|209|211|212|193|199|192|181|27|30|33|36|39|42|45
+  - id: 232
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u07F0\uFFFD"
+    remark: 5
+    type: 2
+    rewardType: 1
+    takeid: 0
+    takenum: 0
+    takenum2: 0
+    rewardGiven: 0
+    rewardNum: 5
+    rewardPool: 11|12|13|14
+  - id: 233
+    sname: "\uFFFD\uFFFD\u03E1\u0127\uFFFD\uFFFD\u0127\uFFFD\u02F2\uFFFD\uFFFD\u03F4\uFFFD"
+    remark: 1
+    type: 2
+    rewardType: 1
+    takeid: 0
+    takenum: 0
+    takenum2: 0
+    rewardGiven: 0
+    rewardNum: 1
+    rewardPool: 72|76|84|87|90|95|100|102|103|107|115|121|127|128|135|137
+  - id: 234
+    sname: "\u02B3\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u037C\uFFFD\uFFFD\uFFFD\uFFFD"
+    remark: 1
+    type: 2
+    rewardType: 1
+    takeid: 0
+    takenum: 0
+    takenum2: 0
+    rewardGiven: 0
+    rewardNum: 1
+    rewardPool: 
+  - id: 235
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u037C\uFFFD\uFFFD\uFFFD\uFFFD"
+    remark: 1
+    type: 2
+    rewardType: 1
+    takeid: 0
+    takenum: 0
+    takenum2: 0
+    rewardGiven: 0
+    rewardNum: 1
+    rewardPool: 
+  - id: 236
+    sname: "\uFFFD\u07FC\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u037C\uFFFD\uFFFD\uFFFD\uFFFD"
+    remark: 1
+    type: 2
+    rewardType: 1
+    takeid: 0
+    takenum: 0
+    takenum2: 0
+    rewardGiven: 0
+    rewardNum: 1
+    rewardPool: 
+  - id: 237
+    sname: "\u0127\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u037C\uFFFD\uFFFD\uFFFD\uFFFD"
+    remark: 1
+    type: 2
+    rewardType: 1
+    takeid: 0
+    takenum: 0
+    takenum2: 0
+    rewardGiven: 0
+    rewardNum: 1
+    rewardPool: 

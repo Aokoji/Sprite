@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   asset:
   - id: 1
-    sname: "1\u5730\u533A"
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\u01BD\u052D\uFFFD\uFFFD\uFFFD\uFFFD"
     describe: 111
     spendTime: 20
     spendPhy: 6
@@ -25,7 +25,7 @@ MonoBehaviour:
     questMain: 2
     randomGap: 1000
   - id: 2
-    sname: "2\u5730\u533A"
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u0137\u02AA\uFFFD\uFFFD"
     describe: 112
     spendTime: 180
     spendPhy: 28
@@ -36,7 +36,7 @@ MonoBehaviour:
     questMain: 3
     randomGap: 1000
   - id: 3
-    sname: "3\u5730\u533A"
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\u0469\u027D"
     describe: 113
     spendTime: 480
     spendPhy: 70
@@ -47,7 +47,7 @@ MonoBehaviour:
     questMain: 4
     randomGap: 1200
   - id: 4
-    sname: "4\u5730\u533A"
+    sname: "\uFFFD\uFFFD\uFFFD\u01FF\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u0175"
     describe: 114
     spendTime: 270
     spendPhy: 42
@@ -58,7 +58,7 @@ MonoBehaviour:
     questMain: 5
     randomGap: 900
   - id: 5
-    sname: "5\u5730\u533A"
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
     describe: 115
     spendTime: 90
     spendPhy: 15
@@ -69,7 +69,7 @@ MonoBehaviour:
     questMain: 5
     randomGap: 900
   - id: 6
-    sname: "\u78E8\u574A1"
+    sname: "\u0125\uFFFD\uFFFD1"
     describe: 111
     spendTime: 120
     spendPhy: 10
@@ -80,7 +80,7 @@ MonoBehaviour:
     questMain: 0
     randomGap: 6
   - id: 7
-    sname: "\u78E8\u574A2"
+    sname: "\u0125\uFFFD\uFFFD2"
     describe: 111
     spendTime: 240
     spendPhy: 20
@@ -91,7 +91,7 @@ MonoBehaviour:
     questMain: 0
     randomGap: 8
   - id: 8
-    sname: "\u519C\u573A"
+    sname: "\u0169\uFFFD\uFFFD"
     describe: 111
     spendTime: 480
     spendPhy: 40
