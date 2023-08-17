@@ -78,7 +78,7 @@ public enum CardType2
     e_giftone, //  17定向获得
     s_weapon,    //18 装备+++
     s_blessup,        //19祝福+++
-
+    s_etch,     //20腐蚀+++
 
     n_enemydeal,
     //标识最优先     真言  其次--    先制，诅咒，秘术，获得卡

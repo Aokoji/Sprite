@@ -90,8 +90,8 @@ MonoBehaviour:
     wholeIcon: 0
     phybase: 1
     hpbase: 14
-    costmax: 1
-    spritePower: 2
+    costmax: 3
+    spritePower: 1
     drop: 2|3
     dropRare: 72
     dropCommon: 73
@@ -104,8 +104,8 @@ MonoBehaviour:
     wholeIcon: 0
     phybase: 1
     hpbase: 18
-    costmax: 1
-    spritePower: 3
+    costmax: 3
+    spritePower: 1
     drop: 74|75|77
     dropRare: 76
     dropCommon: 0
@@ -118,8 +118,8 @@ MonoBehaviour:
     wholeIcon: 0
     phybase: 2
     hpbase: 32
-    costmax: 2
-    spritePower: 5
+    costmax: 3
+    spritePower: 2
     drop: 80|81|82|83
     dropRare: 84
     dropCommon: 79|80
@@ -132,9 +132,9 @@ MonoBehaviour:
     wholeIcon: 0
     phybase: 2
     hpbase: 26
-    costmax: 2
-    spritePower: 4
-    drop: 80|81|85|86
+    costmax: 3
+    spritePower: 2
+    drop: 80|81|82|83
     dropRare: 87
     dropCommon: 79|80
     volume: 5
@@ -146,8 +146,8 @@ MonoBehaviour:
     wholeIcon: 0
     phybase: 0
     hpbase: 7
-    costmax: 0
-    spritePower: 1
+    costmax: 3
+    spritePower: 0
     drop: 4|5
     dropRare: 0
     dropCommon: 0
@@ -160,8 +160,8 @@ MonoBehaviour:
     wholeIcon: 0
     phybase: 0
     hpbase: 9
-    costmax: 0
-    spritePower: 1
+    costmax: 3
+    spritePower: 0
     drop: 6|7
     dropRare: 0
     dropCommon: 0
@@ -174,7 +174,7 @@ MonoBehaviour:
     wholeIcon: 0
     phybase: 0
     hpbase: 8
-    costmax: 0
+    costmax: 3
     spritePower: 0
     drop: 68|88|89
     dropRare: 90
@@ -188,7 +188,7 @@ MonoBehaviour:
     wholeIcon: 0
     phybase: 0
     hpbase: 13
-    costmax: 0
+    costmax: 3
     spritePower: 0
     drop: 91|92
     dropRare: 0
@@ -202,7 +202,7 @@ MonoBehaviour:
     wholeIcon: 0
     phybase: 0
     hpbase: 9
-    costmax: 0
+    costmax: 3
     spritePower: 0
     drop: 93|94
     dropRare: 0
@@ -216,7 +216,7 @@ MonoBehaviour:
     wholeIcon: 0
     phybase: 0
     hpbase: 10
-    costmax: 0
+    costmax: 3
     spritePower: 0
     drop: 96
     dropRare: 95
@@ -230,8 +230,8 @@ MonoBehaviour:
     wholeIcon: 0
     phybase: 1
     hpbase: 19
-    costmax: 1
-    spritePower: 0
+    costmax: 3
+    spritePower: 1
     drop: 98|99
     dropRare: 100
     dropCommon: 97
@@ -244,8 +244,8 @@ MonoBehaviour:
     wholeIcon: 0
     phybase: 1
     hpbase: 16
-    costmax: 1
-    spritePower: 0
+    costmax: 3
+    spritePower: 1
     drop: 101|104
     dropRare: 102|103
     dropCommon: 0
@@ -258,8 +258,8 @@ MonoBehaviour:
     wholeIcon: 0
     phybase: 1
     hpbase: 16
-    costmax: 1
-    spritePower: 0
+    costmax: 3
+    spritePower: 1
     drop: 105|108
     dropRare: 107
     dropCommon: 106|106|105
@@ -272,8 +272,8 @@ MonoBehaviour:
     wholeIcon: 0
     phybase: 1
     hpbase: 12
-    costmax: 1
-    spritePower: 0
+    costmax: 3
+    spritePower: 1
     drop: 109|110
     dropRare: 0
     dropCommon: 139
@@ -286,8 +286,8 @@ MonoBehaviour:
     wholeIcon: 0
     phybase: 2
     hpbase: 20
-    costmax: 2
-    spritePower: 0
+    costmax: 3
+    spritePower: 2
     drop: 111|112|113
     dropRare: 115|116
     dropCommon: 114
@@ -300,8 +300,8 @@ MonoBehaviour:
     wholeIcon: 0
     phybase: 2
     hpbase: 24
-    costmax: 2
-    spritePower: 0
+    costmax: 3
+    spritePower: 2
     drop: 117|119|120|139
     dropRare: 121
     dropCommon: 118
@@ -314,8 +314,8 @@ MonoBehaviour:
     wholeIcon: 0
     phybase: 2
     hpbase: 24
-    costmax: 2
-    spritePower: 0
+    costmax: 3
+    spritePower: 2
     drop: 122
     dropRare: 0
     dropCommon: 0
@@ -328,8 +328,8 @@ MonoBehaviour:
     wholeIcon: 0
     phybase: 2
     hpbase: 28
-    costmax: 2
-    spritePower: 0
+    costmax: 3
+    spritePower: 2
     drop: 123|124|125
     dropRare: 127|128
     dropCommon: 126|123
@@ -342,8 +342,8 @@ MonoBehaviour:
     wholeIcon: 0
     phybase: 2
     hpbase: 22
-    costmax: 2
-    spritePower: 0
+    costmax: 3
+    spritePower: 2
     drop: 130|80
     dropRare: 0
     dropCommon: 129
@@ -356,8 +356,8 @@ MonoBehaviour:
     wholeIcon: 0
     phybase: 2
     hpbase: 35
-    costmax: 2
-    spritePower: 0
+    costmax: 3
+    spritePower: 2
     drop: 132|133|134
     dropRare: 135
     dropCommon: 131
@@ -370,8 +370,8 @@ MonoBehaviour:
     wholeIcon: 0
     phybase: 2
     hpbase: 23
-    costmax: 2
-    spritePower: 0
+    costmax: 3
+    spritePower: 2
     drop: 136|138
     dropRare: 137
     dropCommon: 139
@@ -384,8 +384,8 @@ MonoBehaviour:
     wholeIcon: 0
     phybase: 2
     hpbase: 30
-    costmax: 2
-    spritePower: 0
+    costmax: 3
+    spritePower: 2
     drop: 139|141
     dropRare: 0
     dropCommon: 140
@@ -398,8 +398,8 @@ MonoBehaviour:
     wholeIcon: 0
     phybase: 2
     hpbase: 21
-    costmax: 2
-    spritePower: 0
+    costmax: 3
+    spritePower: 2
     drop: 142
     dropRare: 0
     dropCommon: 139
@@ -412,8 +412,8 @@ MonoBehaviour:
     wholeIcon: 0
     phybase: 2
     hpbase: 30
-    costmax: 3
-    spritePower: 0
+    costmax: 4
+    spritePower: 3
     drop: 132|134|144
     dropRare: 135|145
     dropCommon: 143
@@ -426,8 +426,8 @@ MonoBehaviour:
     wholeIcon: 0
     phybase: 3
     hpbase: 65
-    costmax: 3
-    spritePower: 0
+    costmax: 4
+    spritePower: 3
     drop: 136|146|147|148|149
     dropRare: 150
     dropCommon: 0
@@ -440,8 +440,8 @@ MonoBehaviour:
     wholeIcon: 0
     phybase: 3
     hpbase: 50
-    costmax: 3
-    spritePower: 0
+    costmax: 4
+    spritePower: 3
     drop: 153|132|134
     dropRare: 150|151
     dropCommon: 152
@@ -454,8 +454,8 @@ MonoBehaviour:
     wholeIcon: 0
     phybase: 3
     hpbase: 87
-    costmax: 3
-    spritePower: 0
+    costmax: 4
+    spritePower: 3
     drop: 94|136|154
     dropRare: 155
     dropCommon: 154
@@ -468,8 +468,8 @@ MonoBehaviour:
     wholeIcon: 0
     phybase: 3
     hpbase: 56
-    costmax: 3
-    spritePower: 0
+    costmax: 4
+    spritePower: 3
     drop: 156|157|158
     dropRare: 159
     dropCommon: 0
@@ -482,8 +482,8 @@ MonoBehaviour:
     wholeIcon: 0
     phybase: 3
     hpbase: 105
-    costmax: 4
-    spritePower: 0
+    costmax: 5
+    spritePower: 4
     drop: 161|162|163|164
     dropRare: 160
     dropCommon: 0
@@ -496,8 +496,8 @@ MonoBehaviour:
     wholeIcon: 0
     phybase: 3
     hpbase: 70
-    costmax: 3
-    spritePower: 0
+    costmax: 4
+    spritePower: 3
     drop: 142|165
     dropRare: 167
     dropCommon: 166|166
@@ -511,7 +511,7 @@ MonoBehaviour:
     phybase: 4
     hpbase: 125
     costmax: 5
-    spritePower: 0
+    spritePower: 5
     drop: 132|134|168|171
     dropRare: 170|190
     dropCommon: 169|172
@@ -525,7 +525,7 @@ MonoBehaviour:
     phybase: 4
     hpbase: 140
     costmax: 5
-    spritePower: 0
+    spritePower: 5
     drop: 109|174|175|184
     dropRare: 173
     dropCommon: 0
@@ -539,7 +539,7 @@ MonoBehaviour:
     phybase: 4
     hpbase: 150
     costmax: 5
-    spritePower: 0
+    spritePower: 5
     drop: 156|176|178|179
     dropRare: 180
     dropCommon: 177

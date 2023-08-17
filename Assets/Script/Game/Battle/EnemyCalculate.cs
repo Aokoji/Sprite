@@ -81,6 +81,8 @@ public class EnemyCalculate:CSingel<EnemyCalculate>
         //while (true){ if (!onechoose()) break;}
         //第二套逻辑
         while (true) { if (!calcuCards()) break; }
+        //第三套逻辑
+        //while (true) { if (!calculateCard3()) break; }
 
         for (int i = 0; i < finalList.Count; i++)
         {
@@ -380,6 +382,16 @@ public class EnemyCalculate:CSingel<EnemyCalculate>
                 }
         }
         Debug.LogWarning("enemy有未用完能量点:  "+edata.cost_cur);
+        return false;
+    }
+    #endregion
+
+    #region 第三套逻辑
+    //判断自身状态，判断手牌，预测下一张，对手手牌，先后手
+    bool calculateCard3()
+    {
+        //finalList
+
         return false;
     }
     #endregion
