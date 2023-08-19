@@ -79,6 +79,7 @@ public enum CardType2
     s_weapon,    //18 装备+++
     s_blessup,        //19祝福+++
     s_etch,     //20腐蚀+++
+	s_boost,	//21增强下一张+++
 
     n_enemydeal,
     //标识最优先     真言  其次--    先制，诅咒，秘术，获得卡
