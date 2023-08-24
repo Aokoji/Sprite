@@ -79,8 +79,11 @@ public enum CardType2
     s_weapon,    //18 装备+++
     s_blessup,        //19祝福+++
     s_etch,     //20腐蚀+++
-    s_boost,	//21增强下一张+++
-    s_todefen,	//22对护甲+++
+    s_boost,	//21增强下一张
+    s_todefen,	//22对护甲
+
+    g_return,   //23神术 等额返还
+    g_umbra,    //24暗影治疗  治疗=伤害
 
     n_enemydeal,
     //标识最优先     真言  其次--    先制，诅咒，秘术，获得卡

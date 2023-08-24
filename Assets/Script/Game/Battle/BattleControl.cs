@@ -106,6 +106,8 @@ public class BattleControl :Object
     bool isdefendE;
     int isBoostP;      //增强
     int isBoostE;
+    int isReturnP;  //反伤   百分比
+    int isReturnE;
 
     bool firstplayer;//先后手
     bool iswin;
@@ -265,6 +267,20 @@ public class BattleControl :Object
                 conditionTypeCalculate(data, data._card.conditionType3, data._card.damage3);
                 break;
         }
+        //反伤 结算
+        if (data.hitnum > 0)
+        {
+            if(data.isplayer && isReturnE > 0)
+            {
+                data.returnHit = isReturnE / 100 * data.hitnum;
+                isReturnE = 0;
+            }
+            if (!data.isplayer && isReturnP > 0)
+            {
+                data.returnHit = isReturnP / 100 * data.hitnum;
+                isReturnP = 0;
+            }
+        }
         //屏障 特殊结算
         if (data.hitnum > 0)
         {
@@ -351,6 +367,28 @@ public class BattleControl :Object
             case CardType2.s_boost:
                 if (data.isplayer) isBoostP = damage;
                 else isBoostE = damage;
+                break;
+            case CardType2.g_return:
+                if (data.isplayer) isReturnP = damage;
+                else isReturnE = damage;
+                break;
+            case CardType2.g_umbra:
+                int hit;
+                SpriteData from = data.isplayer ? player : enemy;
+                if (damage >= 100 && damage < 200)
+                {
+                    //1类，损失的 百分比治疗
+                    hit = (damage - 100) / 100 * (from.hp_max - from.hp_cur);
+                }
+                if(damage>=200 && damage < 300)
+                {
+                    //2类，上限百分比治疗
+                    hit = (damage - 200) / 100 * from.hp_max;
+                }
+                else
+                    hit = damage;
+                data.hitnum += hit;
+                data.recovernum += hit;
                 break;
         }
     }

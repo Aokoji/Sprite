@@ -11,6 +11,7 @@ public class RoundData : BaseData
     //效果  造成伤害等计算一下
     public int hitnum;      //伤害
     public int hitselfnum;      //打自己
+    public int returnHit;   //反伤
     public int recovernum;      //恢复
     public int defnum;      //防御
     public int dealnum;     //抽
