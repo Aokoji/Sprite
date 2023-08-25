@@ -330,7 +330,8 @@ public class BattleControl :Object
                 data.recovernum += damage;
                 break;
             case CardType2.n_continuous:
-                if ((!data.isplayer && eContinuous >= 1) || (data.isplayer && pContinuous>=1)) data.hitnum+= damage+ getaddtionHit(data.isplayer);
+                if ((!data.isplayer && eContinuous >= 1) || (data.isplayer && pContinuous>=1)) 
+                    data.hitnum+= damage+ getaddtionHit(data.isplayer);
                 data.continuousnum = data.isplayer ? pContinuous : eContinuous;
                 break;
             case CardType2.n_thump:
