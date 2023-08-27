@@ -229,7 +229,7 @@ public class BattleControl :Object
                 }
                 break;
             case CardType2.e_deplete:
-                int addhit = data.isplayer ? isBoostP : isBoostE;
+                int addhit = getaddtionHit(data.isplayer);
                 data.hitnum = data._card.damage1+ addhit;
                 data.hitselfnum = data._card.damage2+ addhit;
                 conditionTypeCalculate(data, data._card.conditionType3, data._card.damage3);
@@ -311,12 +311,14 @@ public class BattleControl :Object
         playCardNext(data);
     }
 
-    //条件 check
+    //条件 check      后手词条
     private void conditionTypeCalculate(RoundData data,CardType2 type,int damage)
     {
         if (type == CardType2.none) return;
         switch (type)
         {
+            case CardType2.none:
+                break;
             case CardType2.n_hit:
                 data.hitnum += damage+ getaddtionHit(data.isplayer);
                 break;
@@ -340,6 +342,11 @@ public class BattleControl :Object
                 break;
             case CardType2.n_preempt:
                 data.hitnum += damage + getaddtionHit(data.isplayer);
+                break;
+            case CardType2.e_deplete:
+                int addhit = getaddtionHit(data.isplayer);
+                data.hitnum += damage + addhit;
+                data.hitselfnum += damage + addhit;
                 break;
             case CardType2.e_gift:
                 data.gift.Add(CardCalculate.getRandomTypeCardList((CardSelfType)damage));
