@@ -17,6 +17,8 @@ public class TableManager : CSingel<TableManager>
 
     //商店预备字典
     public Dictionary<int, List<int>> markDic { get; private set; }
+    //开放卡牌（全
+    public Dictionary<int,t_DataCard> allCardDic { get; private set; }
     //卡牌预备字典    根据属性类型分类
     public Dictionary<CardSelfType, List<int>> stallCardDic { get; private set; }
     public List<int> basicList { get; private set; }
@@ -33,18 +35,25 @@ public class TableManager : CSingel<TableManager>
     {
         stallCardDic = new Dictionary<CardSelfType, List<int>>();
         basicList = new List<int>();
+        allCardDic = new Dictionary<int, t_DataCard>();
         foreach (var i in Config_t_DataCard._data)
         {
-            if (i.Value.type1 != CardType1.take && i.Value.type1 != CardType1.untaken) continue;
+            if (i.Value.limitcount >= 99) continue;
             //录入基础卡牌（杂属性
             if (i.Value.type1 == CardType1.take)
                 basicList.Add(i.Value.id);
             //录入常用属性分类
-            if (!stallCardDic.ContainsKey(i.Value.limit))
+            if (i.Value.type1==CardType1.take || i.Value.type1 == CardType1.untaken || i.Value.type1==CardType1.condition)
             {
-                stallCardDic.Add(i.Value.limit, new List<int>());
+                if (!stallCardDic.ContainsKey(i.Value.limit))
+                {
+                    stallCardDic.Add(i.Value.limit, new List<int>());
+                }
+                stallCardDic[i.Value.limit].Add(i.Value.id);
             }
-            stallCardDic[i.Value.limit].Add(i.Value.id);
+
+            //全部列表
+            allCardDic.Add(i.Value.id, i.Value);
         }
     }
     //初始化任务分类

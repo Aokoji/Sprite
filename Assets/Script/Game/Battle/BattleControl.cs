@@ -315,6 +315,8 @@ public class BattleControl :Object
     private void conditionTypeCalculate(RoundData data,CardType2 type,int damage)
     {
         if (type == CardType2.none) return;
+        int count;
+        SpriteData from = data.isplayer ? player : enemy;
         switch (type)
         {
             case CardType2.none:
@@ -354,6 +356,15 @@ public class BattleControl :Object
             case CardType2.e_giftone:
                 data.gift.Add(damage);
                 break;
+            case CardType2.e_giftTwo:
+                data.gift.Add(damage);
+                data.gift.Add(damage);
+                break;
+            case CardType2.e_giftThree:
+                data.gift.Add(damage);
+                data.gift.Add(damage);
+                data.gift.Add(damage);
+                break;
             case CardType2.e_addition:
                 data.addition = damage;
                 break;
@@ -381,22 +392,33 @@ public class BattleControl :Object
                 else isReturnE = damage;
                 break;
             case CardType2.g_umbra:
-                int hit;
-                SpriteData from = data.isplayer ? player : enemy;
                 if (damage >= 100 && damage < 200)
                 {
                     //1类，损失的 百分比治疗
-                    hit = (damage - 100) / 100 * (from.hp_max - from.hp_cur);
+                    count = (damage - 100) / 100 * (from.hp_max - from.hp_cur);
                 }
                 if(damage>=200 && damage < 300)
                 {
                     //2类，上限百分比治疗
-                    hit = (damage - 200) / 100 * from.hp_max;
+                    count = (damage - 200) / 100 * from.hp_max;
                 }
                 else
-                    hit = damage;
-                data.hitnum += hit;
-                data.recovernum += hit;
+                    count = damage;
+                data.hitnum += count;
+                data.recovernum += count;
+                break;
+            case CardType2.g_overcrue:
+                if (damage >= 100 && damage < 200)                      //1类，上限的过量伤害
+                    count = (damage - 100) / 100 * from.hp_max;
+                else
+                    count = damage;
+                if (from.hp_cur + count > from.hp_max)
+                {
+                    data.hitnum += count + from.hp_cur - from.hp_max;
+                    data.recovernum += from.hp_max - from.hp_cur;
+                }
+                else
+                    data.recovernum += count;
                 break;
         }
     }

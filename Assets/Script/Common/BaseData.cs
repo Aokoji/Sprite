@@ -37,13 +37,13 @@ public class AssetData:ScriptableObject
 }
 public enum CardType1
 {
-    take,       //非集换   //默认卡      显示属性  
-    untaken,    //制作
-    condition,  //限定卡    //制作卡 全职业卡 mana点数卡
-    hidden,     //特殊卡 不显示(不进卡池
-    condition_two,  //培养
-    condition_special,  //消耗魔法书
-    condition_special1,  //普通魔法书不消耗
+    take,       //0非集换   //默认卡      显示属性  
+    untaken,    //1制作
+    condition,  //2限定卡    //制作卡 全职业卡 mana点数卡
+    hidden,     //3特殊卡 不显示(不进卡池
+    condition_hidden,  //4限定且不进抽卡池（很特殊
+    condition_magic,  //5消耗魔法书
+    condition_book,  //6普通魔法书不消耗
 }
 public enum CardSelfType
 {
@@ -83,7 +83,11 @@ public enum CardType2
     s_todefen,	//22对护甲
 
     g_return,   //23神术 等额返还
-    g_umbra,    //24暗影治疗  治疗=伤害
+    g_umbra,    //24暗影治疗  治疗=伤害     <100等额，100-200损失百分比，200-300上限百分比
+
+    e_giftTwo,      //25定向2  两张
+    e_giftThree,      //26定向3  三张
+    g_overcrue,     //27过量治疗    <100定额，100-200上限百分比
 
     n_enemydeal,
     //标识最优先     真言  其次--    先制，诅咒，秘术，获得卡
