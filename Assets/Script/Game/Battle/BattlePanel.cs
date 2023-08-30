@@ -160,7 +160,7 @@ public class BattlePanel : PanelBase
                 currank = rank.showcard;
                 refreshMana();
                 //回合开始
-                PanelManager.Instance.showTips1("回合开始", PanelManager.Instance.panelLock);
+                PanelManager.Instance.showTips1("回合开始", PanelManager.Instance.panelUnlock);
                 //addAction(() => { dealCard(1); });
                 //dealEnemyCard(1);
                 break;

@@ -44,6 +44,7 @@ public enum CardType1
     condition_hidden,  //4限定且不进抽卡池（很特殊
     condition_magic,  //5消耗魔法书
     condition_book,  //6普通魔法书不消耗
+    monster,        //7敌人特有卡
 }
 public enum CardSelfType
 {

@@ -408,7 +408,7 @@ public class BattleControl :Object
                 data.recovernum += count;
                 break;
             case CardType2.g_overcrue:
-                if (damage >= 100 && damage < 200)                      //1类，上限的过量伤害
+                if (damage >= 100 && damage < 200)                      //1类，恢复上限的过量伤害
                     count = (damage - 100) / 100 * from.hp_max;
                 else
                     count = damage;
@@ -419,6 +419,13 @@ public class BattleControl :Object
                 }
                 else
                     data.recovernum += count;
+                break;
+            case CardType2.s_etch:
+                //+++侵蚀
+                if (data._card.type1 != CardType1.take)
+                {
+
+                }
                 break;
         }
     }

@@ -85,7 +85,7 @@ MonoBehaviour:
     odds: 0
   - id: 6
     sname: "\u80E1\u8702"
-    defaultCard: 2
+    defaultCard: 4
     titleIcon: en_wasp
     wholeIcon: 0
     phybase: 1
@@ -99,7 +99,7 @@ MonoBehaviour:
     odds: 30
   - id: 7
     sname: "\u8611\u83C7\u602A"
-    defaultCard: 2
+    defaultCard: 5
     titleIcon: en_mush
     wholeIcon: 0
     phybase: 1
@@ -113,7 +113,7 @@ MonoBehaviour:
     odds: 18
   - id: 8
     sname: "\u68D5\u718A"
-    defaultCard: 2
+    defaultCard: 6
     titleIcon: en_bear
     wholeIcon: 0
     phybase: 2
@@ -127,7 +127,7 @@ MonoBehaviour:
     odds: 12
   - id: 9
     sname: "\u51F6\u6076\u7684\u8C7A\u72FC"
-    defaultCard: 2
+    defaultCard: 6
     titleIcon: en_wolves
     wholeIcon: 0
     phybase: 2
@@ -141,7 +141,7 @@ MonoBehaviour:
     odds: 0
   - id: 10
     sname: "\u6A58\u679C\u602A"
-    defaultCard: 2
+    defaultCard: 5
     titleIcon: en_citrus
     wholeIcon: 0
     phybase: 0
@@ -155,7 +155,7 @@ MonoBehaviour:
     odds: 0
   - id: 11
     sname: "\u6A61\u679C\u602A"
-    defaultCard: 2
+    defaultCard: 4
     titleIcon: en_acorn
     wholeIcon: 0
     phybase: 0
@@ -169,7 +169,7 @@ MonoBehaviour:
     odds: 0
   - id: 12
     sname: "\u8D2A\u73A9\u7684\u82B1\u5996"
-    defaultCard: 2
+    defaultCard: 5
     titleIcon: en
     wholeIcon: 0
     phybase: 0
@@ -183,7 +183,7 @@ MonoBehaviour:
     odds: 12
   - id: 13
     sname: "\u62E6\u8DEF\u77F3\u5934\u602A"
-    defaultCard: 2
+    defaultCard: 4
     titleIcon: en
     wholeIcon: 0
     phybase: 0
@@ -197,7 +197,7 @@ MonoBehaviour:
     odds: 0
   - id: 14
     sname: "\u5C0F\u6811\u5996"
-    defaultCard: 2
+    defaultCard: 5
     titleIcon: en
     wholeIcon: 0
     phybase: 0
@@ -211,7 +211,7 @@ MonoBehaviour:
     odds: 0
   - id: 15
     sname: "\u6DF7\u4E71\u7684\u72EC\u89D2\u4ED9"
-    defaultCard: 2
+    defaultCard: 4
     titleIcon: en
     wholeIcon: 0
     phybase: 0
@@ -225,7 +225,7 @@ MonoBehaviour:
     odds: 25
   - id: 16
     sname: "\u9ED1\u6BDB\u9F20"
-    defaultCard: 2
+    defaultCard: 4
     titleIcon: en
     wholeIcon: 0
     phybase: 1
@@ -239,7 +239,7 @@ MonoBehaviour:
     odds: 15
   - id: 17
     sname: "\u7C98\u7C98\u866B"
-    defaultCard: 2
+    defaultCard: 5
     titleIcon: en
     wholeIcon: 0
     phybase: 1
@@ -253,7 +253,7 @@ MonoBehaviour:
     odds: 20
   - id: 18
     sname: "\u82B1\u6591\u87B3\u8782"
-    defaultCard: 2
+    defaultCard: 10
     titleIcon: en
     wholeIcon: 0
     phybase: 1
@@ -267,7 +267,7 @@ MonoBehaviour:
     odds: 35
   - id: 19
     sname: "\u9B54\u6CD5\u7130"
-    defaultCard: 2
+    defaultCard: 5
     titleIcon: en
     wholeIcon: 0
     phybase: 1
@@ -281,7 +281,7 @@ MonoBehaviour:
     odds: 0
   - id: 20
     sname: "\u7ED3\u7F51\u6BD2\u86DB"
-    defaultCard: 2
+    defaultCard: 11
     titleIcon: en
     wholeIcon: 0
     phybase: 2
@@ -295,7 +295,7 @@ MonoBehaviour:
     odds: 24
   - id: 21
     sname: "\u98DF\u9B54\u82B1"
-    defaultCard: 2
+    defaultCard: 8
     titleIcon: en
     wholeIcon: 0
     phybase: 2
@@ -309,7 +309,7 @@ MonoBehaviour:
     odds: 15
   - id: 22
     sname: "\u6BD2\u523A\u8346\u68D8"
-    defaultCard: 2
+    defaultCard: 9
     titleIcon: en
     wholeIcon: 0
     phybase: 2
@@ -323,7 +323,7 @@ MonoBehaviour:
     odds: 0
   - id: 23
     sname: "\u5B9D\u77F3\u9CDE\u86C7"
-    defaultCard: 2
+    defaultCard: 8
     titleIcon: en
     wholeIcon: 0
     phybase: 2
@@ -337,7 +337,7 @@ MonoBehaviour:
     odds: 7
   - id: 24
     sname: "\u79C3\u9E6B"
-    defaultCard: 2
+    defaultCard: 7
     titleIcon: en
     wholeIcon: 0
     phybase: 2
@@ -351,7 +351,7 @@ MonoBehaviour:
     odds: 0
   - id: 25
     sname: "\u51F6\u6076\u7684\u4E0B\u7EA7\u9B54\u65CF"
-    defaultCard: 2
+    defaultCard: 8
     titleIcon: en
     wholeIcon: 0
     phybase: 2
@@ -365,7 +365,7 @@ MonoBehaviour:
     odds: 15
   - id: 26
     sname: "\u8150\u5316\u7684\u9B54\u6CD5\u9E7F"
-    defaultCard: 2
+    defaultCard: 8
     titleIcon: en
     wholeIcon: 0
     phybase: 2
@@ -379,7 +379,7 @@ MonoBehaviour:
     odds: 7
   - id: 27
     sname: "\u590D\u6D3B\u7684\u4E27\u5C38"
-    defaultCard: 2
+    defaultCard: 7
     titleIcon: en
     wholeIcon: 0
     phybase: 2
@@ -393,7 +393,7 @@ MonoBehaviour:
     odds: 0
   - id: 28
     sname: "\u5893\u5730\u9AB7\u9AC5"
-    defaultCard: 2
+    defaultCard: 7
     titleIcon: en
     wholeIcon: 0
     phybase: 2
@@ -411,7 +411,7 @@ MonoBehaviour:
     titleIcon: en
     wholeIcon: 0
     phybase: 2
-    hpbase: 30
+    hpbase: 35
     costmax: 4
     spritePower: 3
     drop: 132|134|144
@@ -435,7 +435,7 @@ MonoBehaviour:
     odds: 25
   - id: 31
     sname: "\u88AB\u4FB5\u8680\u7684\u9B54\u65CF"
-    defaultCard: 2
+    defaultCard: 12
     titleIcon: en
     wholeIcon: 0
     phybase: 3
@@ -481,7 +481,7 @@ MonoBehaviour:
     titleIcon: en
     wholeIcon: 0
     phybase: 3
-    hpbase: 105
+    hpbase: 155
     costmax: 5
     spritePower: 4
     drop: 161|162|163|164
