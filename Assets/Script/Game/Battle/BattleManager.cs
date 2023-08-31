@@ -41,11 +41,13 @@ public class BattleManager : CSingel<BattleManager>
         //稀有奖励
         if (random.Next(1000) <= data.odds)
         {
-            num--;
-            string[] rare = data.dropRare.Split('|');
-            var item = new ItemData(int.Parse(rare[random.Next(rare.Length)]), random.Next(10)<=2?2:1);
-            item.rare = 1;
-            result.Add(item);
+            if (!data.dropRare.Equals("0") && !string.IsNullOrEmpty(data.dropRare))
+            {
+                string[] rare = data.dropRare.Split('|');
+                var item = new ItemData(int.Parse(rare[random.Next(rare.Length)]), random.Next(10) <= 2 ? 2 : 1);
+                item.rare = 1;
+                result.Add(item);
+            }
         }
         string[] str = data.drop.Split('|');
         Dictionary<int, int> list = new Dictionary<int, int>();
@@ -58,14 +60,17 @@ public class BattleManager : CSingel<BattleManager>
                 list[index] = 0;
             list[index]++;
         }
-        //+++固定奖励
-        str = data.dropCommon.Split('|');
-        foreach(var i in str)
+        //固定奖励
+        if (!data.dropCommon.Equals("0") && !string.IsNullOrEmpty(data.dropCommon))
         {
-            index = int.Parse(i);
-            if (!list.ContainsKey(index))
-                list[index] = 0;
-            list[index]++;
+            str = data.dropCommon.Split('|');
+            foreach (var i in str)
+            {
+                index = int.Parse(i);
+                if (!list.ContainsKey(index))
+                    list[index] = 0;
+                list[index]++;
+            }
         }
         //整合dic
         foreach (var i in list)

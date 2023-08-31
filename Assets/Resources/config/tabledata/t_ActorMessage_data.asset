@@ -141,7 +141,7 @@ MonoBehaviour:
     odds: 0
   - id: 10
     sname: "\u6A58\u679C\u602A"
-    defaultCard: 5
+    defaultCard: 4
     titleIcon: en_citrus
     wholeIcon: 0
     phybase: 0
@@ -169,7 +169,7 @@ MonoBehaviour:
     odds: 0
   - id: 12
     sname: "\u8D2A\u73A9\u7684\u82B1\u5996"
-    defaultCard: 5
+    defaultCard: 4
     titleIcon: en
     wholeIcon: 0
     phybase: 0
@@ -197,7 +197,7 @@ MonoBehaviour:
     odds: 0
   - id: 14
     sname: "\u5C0F\u6811\u5996"
-    defaultCard: 5
+    defaultCard: 4
     titleIcon: en
     wholeIcon: 0
     phybase: 0

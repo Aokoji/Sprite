@@ -16,17 +16,21 @@ public class EnemyCalculate:CSingel<EnemyCalculate>
     internal class calcuData
     {
         public int id;
-        public bool ishit;
-        public bool isrecover;
+        public int ishit;
+        public int isrecover;
         public bool isdefence;
         public bool isdefend;
         public bool iscounter;
         public bool isdecounter;
         public bool ispreem;
         public bool isthump;
-        public bool isdeal;
+        public int isdeal;
         public bool isgift;
+        public bool isaddtion;
         public bool ispower;
+        public int isbroken;
+        public int istodef;
+        public bool isetch;
         public int cost;
         public bool ischoose;
     }
@@ -50,39 +54,20 @@ public class EnemyCalculate:CSingel<EnemyCalculate>
             calcu.id = list[i]._data.id;
             calcu.cost = list[i]._data.cost;
             str.Append(list[i]._data.sname + "     ");
-            if (list[i]._data.type2 == CardType2.n_counter|| list[i]._data.conditionType1 == CardType2.n_counter|| list[i]._data.conditionType2 == CardType2.n_counter || list[i]._data.conditionType3 == CardType2.n_counter)
-                calcu.iscounter = true;
-            if (list[i]._data.type2 == CardType2.e_defend || list[i]._data.conditionType1 == CardType2.e_defend || list[i]._data.conditionType2 == CardType2.e_defend || list[i]._data.conditionType3 == CardType2.e_defend)
-                calcu.isdefend = true;
-            if (list[i]._data.type2 == CardType2.e_gift || list[i]._data.type2 == CardType2.e_giftone || list[i]._data.type2 == CardType2.e_addition || list[i]._data.conditionType1 == CardType2.e_giftone || list[i]._data.conditionType2 == CardType2.e_giftone || list[i]._data.conditionType3 == CardType2.e_giftone)
-                calcu.isgift = true;
-            if (list[i]._data.type2 == CardType2.n_deal || list[i]._data.conditionType1 == CardType2.n_deal || list[i]._data.conditionType2 == CardType2.n_deal || list[i]._data.conditionType3 == CardType2.n_deal)
-                calcu.isdeal = true;
-            if (list[i]._data.conditionType1 == CardType2.n_recover || list[i]._data.conditionType2 == CardType2.n_recover || list[i]._data.conditionType3 == CardType2.n_recover)
-                calcu.isrecover = true;
-            if(list[i]._data.conditionType1 == CardType2.n_defence || list[i]._data.conditionType2 == CardType2.n_defence || list[i]._data.conditionType3 == CardType2.n_defence)
-                calcu.isdefence = true;
-            if (list[i]._data.type2 == CardType2.d_decounter)
-                calcu.isdecounter = true;
-            if (list[i]._data.type2 == CardType2.d_power)
-                calcu.ispower = true;
-            if (list[i]._data.type2 == CardType2.e_deplete)
-                calcu.ishit = true;
-            if (list[i]._data.conditionType1 == CardType2.n_hit || list[i]._data.conditionType2 == CardType2.n_hit || list[i]._data.conditionType3 == CardType2.n_hit)
-                calcu.ishit = true;
-            if (list[i]._data.conditionType1 == CardType2.n_preempt || list[i]._data.conditionType2 == CardType2.n_preempt || list[i]._data.conditionType3 == CardType2.n_preempt)
-                calcu.ispreem = true;
-            if (list[i]._data.type2 == CardType2.n_thump || list[i]._data.conditionType1 == CardType2.n_thump || list[i]._data.conditionType2 == CardType2.n_thump || list[i]._data.conditionType3 == CardType2.n_thump)
-                calcu.isthump = true;
+
+            calcuAllTypeSwitch(calcu, list[i]._data.type2,0);
+            calcuAllTypeSwitch(calcu, list[i]._data.conditionType1, list[i]._data.damage1);
+            calcuAllTypeSwitch(calcu, list[i]._data.conditionType2, list[i]._data.damage2);
+            calcuAllTypeSwitch(calcu, list[i]._data.conditionType3, list[i]._data.damage3);
             cards.Add(calcu);
         }
         Debug.Log("===" + str.ToString());
         //第一套逻辑
         //while (true){ if (!onechoose()) break;}
         //第二套逻辑
-        while (true) { if (!calcuCards()) break; }
+        //while (true) { if (!calcuCards()) break; }
         //第三套逻辑
-        //while (true) { if (!calculateCard3()) break; }
+        while (true) { if (!calculateCard3()) break; }
 
         for (int i = 0; i < finalList.Count; i++)
         {
@@ -105,16 +90,44 @@ public class EnemyCalculate:CSingel<EnemyCalculate>
         weight.Clear();
         finalList.Clear();
         cards.Clear();
-        precedence.Clear();
+        //precedence.Clear();
         edata = null;
         return result;
     }
+
+    #region 辅助计算
+    void calcuAllTypeSwitch(calcuData _dat,CardType2 stype,int num)
+    {
+        switch (stype)
+        {
+            case CardType2.n_hit:_dat.ishit = num;break;
+            case CardType2.n_preempt: _dat.ishit = num; _dat.ispreem = true;break;
+            case CardType2.n_thump: _dat.ishit = num; _dat.isthump = true; break;
+            case CardType2.n_recover: _dat.isrecover = num; break;
+            case CardType2.n_defence:_dat.isdefence = true;break;
+            case CardType2.n_counter:_dat.iscounter = true;break;
+            case CardType2.e_defend:_dat.isdefend = true;break;
+            case CardType2.n_deal:_dat.isdeal = num; break;
+            case CardType2.e_deplete:_dat.ishit = num; break;
+            case CardType2.e_gift:_dat.isgift = true;break;
+            case CardType2.e_giftone:_dat.isgift = true;break;
+            case CardType2.e_giftTwo: _dat.isgift = true;break;
+            case CardType2.e_addition:_dat.isaddtion = true;break;
+            case CardType2.d_power:_dat.ispower = true;break;
+            case CardType2.d_decounter:_dat.isdecounter = true;break;
+            case CardType2.n_broke:_dat.isbroken = num; break;
+            case CardType2.s_etch:_dat.isetch = true;break;
+            case CardType2.s_todefen:_dat.istodef = num; break;
+        }
+    }
+    #endregion
     List<int> finalList = new List<int>();
     Dictionary<CardType2, int> weight = new Dictionary<CardType2, int>();
     List<calcuData> cards = new List<calcuData>();
     SpriteData edata;
     int pcount;
     int phealth;
+    /*
     #region 第一套逻辑
     bool onechoose()
     {
@@ -385,12 +398,39 @@ public class EnemyCalculate:CSingel<EnemyCalculate>
         return false;
     }
     #endregion
-
+    */
     #region 第三套逻辑
     //判断自身状态，判断手牌，预测下一张，对手手牌，先后手
     bool calculateCard3()
     {
         //finalList
+        Dictionary<int, int> levelset = new Dictionary<int, int>();
+        foreach(var i in cards)
+        {
+            //分析卡片重要程度
+            int level = 0;
+            //攻击优先，治疗优先，补给优先  相对程度-
+            if (i.isrecover>0)
+            {
+                if (edata.hp_cur <= 4)
+                {
+
+                }
+                else if (edata.hp_cur <= 10)
+                {
+
+                }
+                else if (edata.hp_max == edata.hp_cur)
+                {//不需要
+
+                }
+            }
+
+            if (phealth < 10)
+            {
+
+            }
+        }
 
         return false;
     }
