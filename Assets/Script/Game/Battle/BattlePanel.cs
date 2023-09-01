@@ -243,7 +243,7 @@ public class BattlePanel : PanelBase
 
     public List<CardEntity> getEnemyround(SpriteData data)
     {
-        takeEnemylist = EnemyCalculate.Instance.calculateEnemyAction(handEnemylist, data, player.hp_cur + player.def_cur, handCardlist.Count, dealEnemyCard);
+        takeEnemylist = EnemyCalculate.Instance.calculateEnemyAction(handEnemylist, data, player, handCardlist.Count, dealEnemyCard);
         return takeEnemylist;
     }
     private CardEntity dealEnemyCard()

@@ -33,18 +33,19 @@ public class EnemyCalculate:CSingel<EnemyCalculate>
         public bool isetch;
         public int cost;
         public bool ischoose;
+        public float weight;
     }
     /// <summary>
     /// 旧的引用被删除，传出的参数为待处理的cardEntity
     /// </summary>
-    public List<CardEntity> calculateEnemyAction(List<CardEntity> list,SpriteData data,int pHealth,int pCount,Func<CardEntity> dealaction)
+    public List<CardEntity> calculateEnemyAction(List<CardEntity> list,SpriteData data,SpriteData _pdata,int pCount,Func<CardEntity> dealaction)
     {
         List<CardEntity> result = new List<CardEntity>();
         finalList.Clear();
         cards.Clear();
         edata = data.Copy();
         pcount = pCount;
-        phealth = pHealth;
+        pdata = _pdata;
 
         calcuData calcu;
         StringBuilder str=new StringBuilder();
@@ -125,8 +126,8 @@ public class EnemyCalculate:CSingel<EnemyCalculate>
     Dictionary<CardType2, int> weight = new Dictionary<CardType2, int>();
     List<calcuData> cards = new List<calcuData>();
     SpriteData edata;
+    SpriteData pdata;
     int pcount;
-    int phealth;
     /*
     #region 第一套逻辑
     bool onechoose()
@@ -400,38 +401,86 @@ public class EnemyCalculate:CSingel<EnemyCalculate>
     #endregion
     */
     #region 第三套逻辑
+    struct cardweight
+    {
+        public int id;
+
+        public int cost;
+    }
     //判断自身状态，判断手牌，预测下一张，对手手牌，先后手
     bool calculateCard3()
     {
+        List<calcuData> sortlist = new List<calcuData>();
         //finalList
-        Dictionary<int, int> levelset = new Dictionary<int, int>();
+        calcuData dealone = new calcuData();
+        dealone.isdeal = 1;
+        dealone.id = ConfigConst.dealcard_constID;
+        dealone.cost = 2;
+        cards.Add(dealone);
         foreach(var i in cards)
         {
             //分析卡片重要程度
-            int level = 0;
-            //攻击优先，治疗优先，补给优先  相对程度-
+            float level = 0;
+            //攻击优先，治疗优先，补给优先  相对程度
+            float hpcalcu = 7 - edata.hp_cur * 7 / edata.hp_max;        //0-7
+            float pcalcu = 8 - pdata.hp_cur * 5 / pdata.hp_max;      //3-8
+            float dealcalcu = 6 - cards.Count * 6 / 6;
+            if (i.ishit > 0)
+                level = pcalcu + i.ishit / 2;
+            if (i.isbroken > 0)
+                level = pcalcu + i.isbroken / 1.5f;
+            if (i.istodef > 0)
+                level = pcalcu + i.istodef / 1.5f;
             if (i.isrecover>0)
             {
-                if (edata.hp_cur <= 4)
+                if (i.ishit > 0 || i.isbroken > 0 || i.istodef > 0)
+                    level = (hpcalcu + level) / 2 + i.isrecover / 4;
+                else
+                    level = hpcalcu + i.isrecover / 4;
+            }
+            if (i.isdefence)
+                if (level > 0)
+                    level = (level + hpcalcu * 3 / 7 + 1) / 2;
+                else
+                    level = hpcalcu * 3 / 7 + 1;
+            if (i.isdefend)
+                if (level > 0)
+                    level = (level + hpcalcu * 5 / 7 + 1) / 2;
+                else
+                    level = hpcalcu * 5 / 7 + 1;
+            if (i.isdeal > 0 || i.isgift)
+                if (level > 0)
+                    level = (level + dealcalcu) / 2;
+                else
+                    level = dealcalcu;
+            if (i.isaddtion)
+                if (level > 0)
+                    level = (level + 6) / 2;
+                else
+                    level = 6;
+            if (i.isetch)
+                if (level > 0)
+                    level = (level + 12) / 2;
+                else
+                    level = 10;
+            i.weight = level;
+            //排序weight  +++
+            for (int k = 0; k < cards.Count; k++)
+            {
+                if(level > sortlist[k].weight)
                 {
-
-                }
-                else if (edata.hp_cur <= 10)
-                {
-
-                }
-                else if (edata.hp_max == edata.hp_cur)
-                {//不需要
-
+                    sortlist.Insert(k, i);
+                    break;
                 }
             }
-
-            if (phealth < 10)
+        }
+        for(int i = 0; i < sortlist.Count; i++)
+        {
+            if (edata.cost_cur >= sortlist[i].cost)
             {
 
             }
         }
-
         return false;
     }
     #endregion
