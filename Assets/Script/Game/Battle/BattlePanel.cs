@@ -278,6 +278,7 @@ public class BattlePanel : PanelBase
             if (handEnemylist[i].transform.position != enemyCardPos[i].transform.position)
             {
                 int index = i;
+                handEnemylist[i].backCard();
                 RunSingel.Instance.moveToAll(handEnemylist[i].gameObject, enemyCardPos[i].transform.position, MoveType.moveAll_FTS, ConfigConst.cardtime_refshMove, Vector3.one, Vector3.zero);
             }
         }
@@ -569,7 +570,7 @@ public class BattlePanel : PanelBase
                         {
                             if (index == dataround.gift.Count-1)
                             {
-                                RunSingel.Instance.laterDo(1.5f, () => {
+                                RunSingel.Instance.laterDo(1.2f, () => {
                                     if (dataround.isplayer)
                                         refreshCard();
                                     else

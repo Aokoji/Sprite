@@ -70,6 +70,12 @@ public class CardEntity : UIBase
         backBG.SetActive(isback);
         bg.gameObject.SetActive(!isback);
     }
+    public void backCard()
+    {
+        isback = true;
+        backBG.SetActive(true);
+        bg.gameObject.SetActive(false);
+    }
 
     public void playJustShowAnim(Action callback)
     {

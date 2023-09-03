@@ -1029,6 +1029,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isClearData: 1
   dayMapID: 3
+  allCardOpen: 1
 --- !u!4 &2029506039
 Transform:
   m_ObjectHideFlags: 0

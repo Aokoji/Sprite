@@ -16,6 +16,7 @@ public class EnemyCalculate:CSingel<EnemyCalculate>
     internal class calcuData
     {
         public int id;
+        public string sname;
         public int ishit;
         public int isrecover;
         public bool isdefence;
@@ -48,13 +49,14 @@ public class EnemyCalculate:CSingel<EnemyCalculate>
         pdata = _pdata;
 
         calcuData calcu;
-        StringBuilder str=new StringBuilder();
+        //StringBuilder str=new StringBuilder();
         for (int i = 0; i < list.Count; i++)
         {
             calcu = new calcuData();
             calcu.id = list[i]._data.id;
             calcu.cost = list[i]._data.cost;
-            str.Append(list[i]._data.sname + "     ");
+            calcu.sname = list[i]._data.sname;
+            //str.Append(list[i]._data.sname + "     ");
 
             calcuAllTypeSwitch(calcu, list[i]._data.type2,0);
             calcuAllTypeSwitch(calcu, list[i]._data.conditionType1, list[i]._data.damage1);
@@ -62,13 +64,13 @@ public class EnemyCalculate:CSingel<EnemyCalculate>
             calcuAllTypeSwitch(calcu, list[i]._data.conditionType3, list[i]._data.damage3);
             cards.Add(calcu);
         }
-        Debug.Log("===" + str.ToString());
+        //Debug.Log("===" + str.ToString());
         //第一套逻辑
         //while (true){ if (!onechoose()) break;}
         //第二套逻辑
         //while (true) { if (!calcuCards()) break; }
         //第三套逻辑
-        while (true) { if (!calculateCard3()) break; }
+        calculateCard3();
 
         for (int i = 0; i < finalList.Count; i++)
         {
@@ -128,7 +130,6 @@ public class EnemyCalculate:CSingel<EnemyCalculate>
     SpriteData edata;
     SpriteData pdata;
     int pcount;
-    /*
     #region 第一套逻辑
     bool onechoose()
     {
@@ -150,10 +151,10 @@ public class EnemyCalculate:CSingel<EnemyCalculate>
         {
             var cad = cards[i];
             if (cad.ischoose) continue;
-            if ((typ == CardType2.n_hit && cad.ishit) ||
-                (typ == CardType2.n_deal && cad.isdeal) ||
+            if ((typ == CardType2.n_hit && cad.ishit > 0) ||
+                (typ == CardType2.n_deal && cad.isdeal > 0) ||
                 (typ == CardType2.e_defend && cad.isdefend) ||
-                (typ == CardType2.n_recover && cad.isrecover) ||
+                (typ == CardType2.n_recover && cad.isrecover > 0) ||
                 (typ == CardType2.n_defence && cad.isdefence) ||
                 (typ == CardType2.n_counter && cad.iscounter) ||
                 (typ == CardType2.e_gift && cad.isgift))
@@ -188,18 +189,18 @@ public class EnemyCalculate:CSingel<EnemyCalculate>
         int hitcount=0;
         cards.ForEach(card =>
         {
-            if (card.isrecover) recovercount++;
+            if (card.isrecover > 0) recovercount++;
             if (card.isdefence) defencecount++;
             if (card.iscounter) countercount++;
             if (card.isdefend) defcount++;
-            if (card.isdeal) dealcount++;
+            if (card.isdeal > 0) dealcount++;
             if (card.isgift) giftcount++;
-            if (card.ishit) hitcount++;
+            if (card.ishit>0) hitcount++;
         });
         //计算权重
         if (hitcount > 0)
         {
-            if (phealth < 10)
+            if (pdata.hp_cur < 10)
                 weight.Add(CardType2.n_hit, 6);
             else
                 weight.Add(CardType2.n_hit, 2);
@@ -274,9 +275,9 @@ public class EnemyCalculate:CSingel<EnemyCalculate>
         //计算优先遍历
         //hit
         precedence.Add(CardType2.n_hit, 0);
-        if (phealth < 10)
+        if (pdata.hp_cur < 10)
             precedence[CardType2.n_hit] += 9;
-        else if (phealth <= 20)
+        else if (pdata.hp_cur <= 20)
             precedence[CardType2.n_hit] += 5;
         else
             precedence[CardType2.n_hit] += 3;
@@ -360,10 +361,10 @@ public class EnemyCalculate:CSingel<EnemyCalculate>
             {
                 var cad = cards[i];
                 if (cad.ischoose) continue;
-                if ((typ == CardType2.n_hit && !cad.ishit) ||
-                    (typ == CardType2.n_recover && !cad.isrecover) ||
+                if ((typ == CardType2.n_hit && cad.ishit==0) ||
+                    (typ == CardType2.n_recover && cad.isrecover==0) ||
                     (typ == CardType2.n_defence && !cad.isdefence) ||
-                    (typ == CardType2.n_deal && !cad.isdeal) ||
+                    (typ == CardType2.n_deal && cad.isdeal==0) ||
                     (typ == CardType2.e_defend && !cad.isdefend) ||
                     (typ == CardType2.n_counter && !cad.iscounter) ||
                     (typ == CardType2.e_giftone && !cad.isgift)
@@ -399,7 +400,6 @@ public class EnemyCalculate:CSingel<EnemyCalculate>
         return false;
     }
     #endregion
-    */
     #region 第三套逻辑
     struct cardweight
     {
@@ -408,9 +408,10 @@ public class EnemyCalculate:CSingel<EnemyCalculate>
         public int cost;
     }
     //判断自身状态，判断手牌，预测下一张，对手手牌，先后手
-    bool calculateCard3()
+    void calculateCard3()
     {
         List<calcuData> sortlist = new List<calcuData>();
+        StringBuilder str = new StringBuilder();
         //finalList
         calcuData dealone = new calcuData();
         dealone.isdeal = 1;
@@ -424,7 +425,7 @@ public class EnemyCalculate:CSingel<EnemyCalculate>
             //攻击优先，治疗优先，补给优先  相对程度
             float hpcalcu = 7 - edata.hp_cur * 7 / edata.hp_max;        //0-7
             float pcalcu = 8 - pdata.hp_cur * 5 / pdata.hp_max;      //3-8
-            float dealcalcu = 6 - cards.Count * 6 / 6;
+            float dealcalcu = 8 - (cards.Count-1) * 8 / 6;
             if (i.ishit > 0)
                 level = pcalcu + i.ishit / 2;
             if (i.isbroken > 0)
@@ -458,30 +459,53 @@ public class EnemyCalculate:CSingel<EnemyCalculate>
                     level = (level + 6) / 2;
                 else
                     level = 6;
+            if (i.iscounter)
+                if (level > 0)
+                    level = (level + 7) / 2;
+                else
+                    level = 7;
             if (i.isetch)
                 if (level > 0)
                     level = (level + 12) / 2;
                 else
                     level = 10;
             i.weight = level;
-            //排序weight  +++
-            for (int k = 0; k < cards.Count; k++)
-            {
-                if(level > sortlist[k].weight)
+            //排序weight
+            if(sortlist.Count>0)
+                for (int k = 0; k < sortlist.Count; k++)
                 {
-                    sortlist.Insert(k, i);
-                    break;
+                    if(level > sortlist[k].weight)
+                    {
+                        sortlist.Insert(k, i);
+                        break;
+                    }
                 }
-            }
+            else
+                sortlist.Add(i);
+            str.Append(i.sname + level + "     ");
         }
+        //出牌
         for(int i = 0; i < sortlist.Count; i++)
         {
-            if (edata.cost_cur >= sortlist[i].cost)
+            var dat = sortlist[i];
+            if (dat.weight <= 0) continue;
+            if (edata.cost_cur >= dat.cost)
             {
-
+                //检测power
+                if (dat.ispower)
+                    if (finalList.Count > 0)
+                        continue;
+                    else
+                    {
+                        finalList.Add(sortlist[i].id);
+                        edata.cost_cur-=dat.cost;
+                        break;
+                    }
+                finalList.Add(sortlist[i].id);
+                edata.cost_cur -= dat.cost;
             }
         }
-        return false;
+        Debug.Log("===" + str.ToString());
     }
     #endregion
 }

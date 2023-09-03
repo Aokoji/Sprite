@@ -68,16 +68,35 @@ public class CardsetPanel : PanelBase
             card.initData(item,2, chooseCard);
             allcards.Add(item, card);
         }
-        var makenlist = PlayerManager.Instance.playerMakenDic;
-        foreach(var item in makenlist)
+        if (Main.AllCardOpen)
         {
-            var config = Config_t_DataCard.getOne(item.Key);
-            if (config.level > carddic[config.limit]) continue;
-            //添卡
-            var card = scrollsp.addItemDefault().GetComponent<CardSetEntity>();
-            card.initData(item.Key, item.Value, chooseCard);
-            allcards.Add(card._data.id, card);
+            var makenlist = TableManager.Instance.allCardDic;
+            foreach (var item in makenlist)
+            {
+                var config = item.Value;
+                if (normallist.Contains(config.id) || config.type1 == CardType1.hidden || (int)config.type1>4) continue;
+                if (!carddic.ContainsKey(config.limit) || config.level > carddic[config.limit]) continue;
+                //添卡
+                var card = scrollsp.addItemDefault().GetComponent<CardSetEntity>();
+                card.initData(item.Key, 2, chooseCard);
+                if(!allcards.ContainsKey(card._data.id))
+                    allcards.Add(card._data.id, card);
+            }
         }
+        else
+        {
+            var makenlist = PlayerManager.Instance.playerMakenDic;
+            foreach (var item in makenlist)
+            {
+                var config = Config_t_DataCard.getOne(item.Key);
+                if (config.level > carddic[config.limit]) continue;
+                //添卡
+                var card = scrollsp.addItemDefault().GetComponent<CardSetEntity>();
+                card.initData(item.Key, item.Value, chooseCard);
+                allcards.Add(card._data.id, card);
+            }
+        }
+        
         /*
         foreach (var item in Config_t_DataCard._data)
         {
