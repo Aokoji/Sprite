@@ -401,12 +401,6 @@ public class EnemyCalculate:CSingel<EnemyCalculate>
     }
     #endregion
     #region 第三套逻辑
-    struct cardweight
-    {
-        public int id;
-
-        public int cost;
-    }
     //判断自身状态，判断手牌，预测下一张，对手手牌，先后手
     void calculateCard3()
     {

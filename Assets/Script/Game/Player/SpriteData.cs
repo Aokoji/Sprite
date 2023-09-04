@@ -31,6 +31,7 @@ public class SpriteData
     public int lucky;   //幸运值，影响旅行
     public bool istraveling;
     public bool isworking;
+    public List<int> curCardGroup = new List<int>();
 
     public void refreshData()
     {
@@ -62,6 +63,7 @@ public class SpriteData
         copy.lucky = lucky;
         copy.istraveling = istraveling;
         copy.isworking = isworking;
+        copy.curCardGroup = curCardGroup;
         return copy;
     }
 

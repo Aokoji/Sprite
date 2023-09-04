@@ -76,6 +76,7 @@ public class PlayerManager : CSingel<PlayerManager>
     {
         playerdata.curSprite = id;
         cursprite = spriteList[id];
+        
         calculateCardLevel();
     }
     void calculateCardLevel()
@@ -91,7 +92,7 @@ public class PlayerManager : CSingel<PlayerManager>
     }
     public List<int> getPlayerCards()
     {
-        return playerdata.playerCards;
+        return cursprite.curCardGroup;
     }
     public int getOneCardNum(int id)
     {
@@ -112,7 +113,7 @@ public class PlayerManager : CSingel<PlayerManager>
     }
     public void setPlayerCards(List<int> cards)
     {
-        playerdata.playerCards= cards;
+        cursprite.curCardGroup = cards;
         savePlayerData();
     }
     #region 旅行
@@ -187,20 +188,8 @@ public class PlayerManager : CSingel<PlayerManager>
         playerdata.mark.savetime = DateTime.Parse(time.ToString()).ToString();
         playerdata.mark.saleID.Clear();
         System.Random random = new System.Random();
-        if (random.Next(10) < 3)
-            playerdata.mark.saleID.Add(TableManager.Instance.markDic[1][random.Next(TableManager.Instance.markDic[1].Count)]);
-        if(random.Next(10)<4)
-            playerdata.mark.saleID.Add(TableManager.Instance.markDic[2][random.Next(TableManager.Instance.markDic[2].Count)]);
-        if (random.Next(10) < 5)
-            playerdata.mark.saleID.Add(TableManager.Instance.markDic[3][random.Next(TableManager.Instance.markDic[3].Count)]);
-        playerdata.mark.saleID.Add(TableManager.Instance.markDic[4][random.Next(TableManager.Instance.markDic[4].Count)]);
-        if(playerdata.mark.saleID.Count<=3)
-            playerdata.mark.saleID.Add(TableManager.Instance.markDic[4][random.Next(TableManager.Instance.markDic[4].Count)]);
-        int num = 6 - playerdata.mark.saleID.Count;
-        for(int i = 0; i < num; i++)
-        {
-            playerdata.mark.saleID.Add(TableManager.Instance.markDic[5][random.Next(TableManager.Instance.markDic[5].Count)]);
-        }
+        for(int i=1;i<=6;i++)
+            playerdata.mark.saleID.Add(TableManager.Instance.markDic[i][random.Next(TableManager.Instance.markDic[i].Count)]);
         playerdata.mark.saledcount = 0;
         savePlayerData();
     }
@@ -359,12 +348,26 @@ public class PlayerManager : CSingel<PlayerManager>
         System.Random random = new System.Random();
         int rand = random.Next(40);
         if (rand < 1) rand = 0;
-        else if (rand <= 8) rand = 1;
-        else if (rand <= 22) rand = 2;
-        else if (rand <= 32) rand = 3;
+        else if (rand <= 6) rand = 1;
+        else if (rand <= 14) rand = 2;
+        else if (rand <= 24) rand = 3;
         else rand = 4;
+        List<int> ids0 = new List<int>();
+        List<int> ids1 = new List<int>();
+        foreach(var i in Config_t_Offer._data)
+        {
+            if (i.Value.stype == 0)
+                ids0.Add(i.Value.id);
+            else
+                ids1.Add(i.Value.id);
+        }
         for(int i = 0; i < rand; i++)
-            playerdata.explor.offer.Add(new OfferData(random.Next(1,Config_t_Offer._data.Count)));
+        {
+            if (random.Next(3) == 0)
+                playerdata.explor.offer.Add(new OfferData(ids0[random.Next(0, ids0.Count)]));
+            else
+                playerdata.explor.offer.Add(new OfferData(ids1[random.Next(0, ids1.Count)]));
+        }
         //随机一个天气    1-9
         //  2   5   321
         rand = random.Next(33);

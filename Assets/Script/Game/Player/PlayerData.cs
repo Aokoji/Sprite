@@ -9,7 +9,6 @@ public class PlayerData
     public int id;
     public string sname;
 
-    public List<int> playerCards;
     public List<ItemData> playerAllCards;        //拥有的制作卡
 
     public List<ItemData> items;    //物品
@@ -27,7 +26,6 @@ public class PlayerData
     public void initdata()
     {
         playerAllCards = new List<ItemData>();
-        playerCards = new List<int>();
         sprites = new List<SpriteData>();
         items = new List<ItemData>();
         works = new List<WorkData>();
