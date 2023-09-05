@@ -116,6 +116,14 @@ public class PlayerManager : CSingel<PlayerManager>
         cursprite.curCardGroup = cards;
         savePlayerData();
     }
+    public void etchCards(int id)
+    {
+        if (cursprite.curCardGroup.Contains(id))
+        {
+            cursprite.curCardGroup.Remove(id);
+            savePlayerData();
+        }
+    }
     #region 旅行
     public void travel_sprite(int id,int spend)
     {

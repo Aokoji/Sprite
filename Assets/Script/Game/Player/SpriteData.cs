@@ -32,6 +32,8 @@ public class SpriteData
     public bool istraveling;
     public bool isworking;
     public List<int> curCardGroup = new List<int>();
+    public int underCard;
+    public int dealCard;
 
     public void refreshData()
     {
@@ -64,6 +66,8 @@ public class SpriteData
         copy.istraveling = istraveling;
         copy.isworking = isworking;
         copy.curCardGroup = curCardGroup;
+        copy.underCard = underCard;
+        copy.dealCard = dealCard;
         return copy;
     }
 
@@ -78,5 +82,7 @@ public class SpriteData
         cost_cur = cost_max = data.costmax;
         takeDefaultCardsID = data.defaultCard;
         icon = data.titleIcon;
+        underCard = data.underCard;
+        dealCard = data.dealCard;
     }
 }

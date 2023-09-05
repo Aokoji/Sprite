@@ -109,6 +109,9 @@ public class BattleControl :Object
     int isReturnP;  //反伤   百分比
     int isReturnE;
 
+    bool isArcaneOn;    //奥术强化  仅玩家
+    bool isEtch;    //仅enemy
+
     bool firstplayer;//先后手
     bool iswin;
 
@@ -130,6 +133,7 @@ public class BattleControl :Object
         datas.ForEach(item=>{
             rounddata = new RoundData();
             rounddata.entity = item;
+            rounddata.isBasic = !item.isextra;
             rounddata._card = rounddata.entity._data;
             rounddata.isplayer = true;
             willTakeplayerque.Enqueue(rounddata);
@@ -148,6 +152,9 @@ public class BattleControl :Object
         iscounterE = false;
         isdefendE = false;
         isdefendP = false;
+        isEtch = false;
+        isReturnP = 0;
+        isReturnE = 0;
         ispowerE = willTakeenemyque.Count == 1;
         ispowerP = willTakeplayerque.Count == 1;
         if (willTakeenemyque.Count+ willTakeplayerque.Count > 0)
@@ -188,7 +195,7 @@ public class BattleControl :Object
             //还原值
             if (isplayerround) iscounterP = false;
             else iscounterE = false;
-            if (data._card.type2 == CardType2.d_decounter )
+            if (data._card.type2 == CardType2.d_decounter || data._card.conditionType1==CardType2.d_decounter || data._card.conditionType2 == CardType2.d_decounter || data._card.conditionType3 == CardType2.d_decounter)
             {
                 data.isdecounter = true;
                 data.isCounter = false;
@@ -201,6 +208,11 @@ public class BattleControl :Object
                 playCardNext(data);
                 return;
             }
+        }
+        if(isplayerround && isEtch)
+        {
+            data.etch = true;
+            return;
         }
         //计算伤害
         data.hitnum = 0;
@@ -261,6 +273,12 @@ public class BattleControl :Object
                 else
                     data.extraLimit = data._card.damage1;
                 break;
+            case CardType2.s_arcaneOff:
+                conditionTypeCalculate(data, data._card.conditionType1, data._card.damage1);
+                conditionTypeCalculate(data, data._card.conditionType2, data._card.damage2);
+                if(isArcaneOn)
+                    conditionTypeCalculate(data, data._card.conditionType3, data._card.damage3);
+                break;
             default:
                 conditionTypeCalculate(data, data._card.conditionType1, data._card.damage1);
                 conditionTypeCalculate(data, data._card.conditionType2, data._card.damage2);
@@ -272,12 +290,12 @@ public class BattleControl :Object
         {
             if(data.isplayer && isReturnE > 0)
             {
-                data.returnHit = isReturnE / 100 * data.hitnum;
+                data.hitselfnum += isReturnE / 100 * data.hitnum;
                 isReturnE = 0;
             }
             if (!data.isplayer && isReturnP > 0)
             {
-                data.returnHit = isReturnP / 100 * data.hitnum;
+                data.hitselfnum += isReturnP / 100 * data.hitnum;
                 isReturnP = 0;
             }
         }
@@ -421,11 +439,11 @@ public class BattleControl :Object
                     data.recovernum += count;
                 break;
             case CardType2.s_etch:
-                //+++侵蚀
-                if (data._card.type1 != CardType1.take)
-                {
-
-                }
+                //侵蚀
+                isEtch = true;
+                break;
+            case CardType2.s_arcaneOn:
+                isArcaneOn = true;
                 break;
         }
     }
@@ -446,21 +464,25 @@ public class BattleControl :Object
     }
     private void playCardNext(RoundData data)
     {
-        //结算这回合的 ***数据***
-        if (data.isCounter)
+        //结算这回合的 数据
+        if (!data.isCounter)
         {
-            ui.playThisCard(data);
-            return;
+            if (data.isplayer)
+                calculateYouTwoWTF(player, enemy, data);
+            else
+                calculateYouTwoWTF(enemy, player, data);
         }
-        if (data.isplayer)
-            calculateYouTwoWTF(player, enemy, data);
-        else
-            calculateYouTwoWTF(enemy, player, data);
         //播放这张的效果
         ui.playThisCard(data);
     }
     private void calculateYouTwoWTF(SpriteData take,SpriteData pass,RoundData data)
     {
+        if(data.isplayer && data.etch)
+        {
+            if(data.isBasic)
+                PlayerManager.Instance.etchCards(data._card.id);
+            return;
+        }
         if (pass.hp_cur + pass.def_cur <= data.hitnum)
             pass.hp_cur = 0;
         else if(data.hitnum>0)

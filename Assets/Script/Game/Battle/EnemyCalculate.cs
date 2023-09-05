@@ -74,7 +74,7 @@ public class EnemyCalculate:CSingel<EnemyCalculate>
 
         for (int i = 0; i < finalList.Count; i++)
         {
-            if (finalList[i] == ConfigConst.dealcard_constID)
+            if (finalList[i] == data.dealCard)
             {
                 result.Add(dealaction());
                 continue;
@@ -139,7 +139,7 @@ public class EnemyCalculate:CSingel<EnemyCalculate>
         {
             if(edata.cost_cur >= 2)
             {
-                finalList.Add(ConfigConst.dealcard_constID);
+                finalList.Add(edata.dealCard);
                 edata.cost_cur -= 2;
                 if (edata.cost_cur == 0) return false;
                 else return true;
@@ -390,7 +390,7 @@ public class EnemyCalculate:CSingel<EnemyCalculate>
             if(typ==CardType2.n_deal)
                 if (edata.cost_cur >= 2)
                 {
-                    finalList.Add(ConfigConst.dealcard_constID);
+                    finalList.Add(edata.dealCard);
                     edata.cost_cur -= 2;
                     if (edata.cost_cur == 0) return false;
                     else return true;
@@ -409,7 +409,7 @@ public class EnemyCalculate:CSingel<EnemyCalculate>
         //finalList
         calcuData dealone = new calcuData();
         dealone.isdeal = 1;
-        dealone.id = ConfigConst.dealcard_constID;
+        dealone.id = edata.dealCard;
         dealone.cost = 2;
         cards.Add(dealone);
         foreach(var i in cards)

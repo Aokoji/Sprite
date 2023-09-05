@@ -89,6 +89,8 @@ public enum CardType2
     e_giftTwo,      //25定向2  两张
     e_giftThree,      //26定向3  三张
     g_overcrue,     //27过量治疗    <100定额，100-200上限百分比
+    s_arcaneOn,       //28奥术强化    充能
+    s_arcaneOff,       //29奥术强化    消耗掉
 
     n_enemydeal,
     //标识最优先     真言  其次--    先制，诅咒，秘术，获得卡

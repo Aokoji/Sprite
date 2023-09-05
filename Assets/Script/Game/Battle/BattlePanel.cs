@@ -199,7 +199,7 @@ public class BattlePanel : PanelBase
         for(int i = 0; i < num; i++)
         {
             //判断没牌
-            var data = Config_t_DataCard.getOne(playerque.Count <= 0? ConfigConst.dealcard_useUp:playerque.Dequeue());
+            var data = Config_t_DataCard.getOne(playerque.Count <= 0? player.underCard:playerque.Dequeue());
             var item = newcard(data);
             item.transform.position = createCardPos.position;
             item.transform.eulerAngles = createCardPosIn.eulerAngles;
@@ -223,7 +223,11 @@ public class BattlePanel : PanelBase
     {
         for (int i = 0; i < num; i++)
         {
-            var data = Config_t_DataCard.getOne(enemyque.Count <= 0 ? ConfigConst.dealcard_useUp : enemyque.Dequeue());
+            t_DataCard data;
+            if (enemyque.Count > 0)
+                data = Config_t_DataCard.getOne(enemyque.Dequeue());
+            else
+                data= Config_t_DataCard.getOne(enemy.underCard);
             var item = newcard(data, true);
             item.transform.position = createEnemyCardPos.position;
             item.transform.eulerAngles = Vector3.zero;
@@ -248,7 +252,7 @@ public class BattlePanel : PanelBase
     }
     private CardEntity dealEnemyCard()
     {
-        var data = Config_t_DataCard.getOne(ConfigConst.dealcard_constID);
+        var data = Config_t_DataCard.getOne(enemy.dealCard);
         var item = newcard(data, true);
         item.transform.position = enemyCardPos[2].transform.position;
         item.transform.eulerAngles = Vector3.zero;
@@ -350,8 +354,8 @@ public class BattlePanel : PanelBase
         refreshTakeCard();
         refreshCard();
     }
-    
-    private CardEntity newcard(t_DataCard data,bool isback=false)
+
+    private CardEntity newcard(t_DataCard data, bool isback = false, bool isextra = false)
     {
         CardEntity item;
         if (discardCard.Count > 0)
@@ -362,7 +366,7 @@ public class BattlePanel : PanelBase
         else
             item = PanelManager.Instance.LoadUI(E_UIPrefab.cardHand, CARDPATH, cardParent).GetComponent<CardEntity>();
         item.isback = isback;
-        item.initData(data);
+        item.initData(data, isextra);
         item.onChoose = chooseCard;
         return item;
     }
@@ -398,7 +402,7 @@ public class BattlePanel : PanelBase
         dealbtnAllow = false;
         player.cost_cur -= 2;
         refreshMana();
-        var item = newcard(Config_t_DataCard.getOne(ConfigConst.dealcard_constID));
+        var item = newcard(Config_t_DataCard.getOne(player.dealCard));
         takeCardlist.Add(item);
         item.clickAllow = false;
         item.transform.position = takeCardPos[takeCardlist.Count - 1].transform.position;
@@ -553,7 +557,7 @@ public class BattlePanel : PanelBase
                     }
                     for (int i = 0; i < dataround.gift.Count; i++)
                     {
-                        var item = newcard(Config_t_DataCard.getOne(dataround.gift[i]));
+                        var item = newcard(Config_t_DataCard.getOne(dataround.gift[i]), false, true);
                         item.transform.position = giftsCardPos[str[i]].transform.position;
                         if (dataround.isplayer)
                             if (handCardlist.Count >= ConfigConst.maxCardHand)

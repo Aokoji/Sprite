@@ -23,8 +23,9 @@ public class CardEntity : UIBase
     public bool isback;//卡背
     public bool isdealcreate;   //抽卡创建出来的
     public bool clickAllow;
+    public bool isextra;    //腐蚀用
 
-    public void initData(t_DataCard data)
+    public void initData(t_DataCard data,bool extra=false)
     {
         transform.position = Vector3.zero;
         transform.eulerAngles = Vector3.zero;
@@ -32,6 +33,7 @@ public class CardEntity : UIBase
         body.transform.localScale = Vector3.one;
         GetComponent<CanvasGroup>().alpha=1;
         _data = data;
+        isextra = extra;
         refreshCard();
         GetComponent<Button>().onClick.AddListener(onchoose);
         clickAllow = true;
