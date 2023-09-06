@@ -59,7 +59,7 @@ public static class ConfigConst
             case "4":return "重击\n若生效时对方没有待生效牌，则出发重击词条效果。";
             case "7":return "诅咒\n反制对方下一张待生效的牌。";
             case "9":return "魔力枯竭\n在对对手造成高额伤害的同时自身也收到少量伤害。";
-            case "12":return "屏障\n防止对手下一张牌造成的伤害。";
+            case "12":return "屏障\n免疫对手下一张牌造成的伤害。";
             case "13":return "秘术\n若本回合只有这一张牌存在，则触发秘术词条效果。";
             case "14":return "真言\n该牌生效时免疫对方的诅咒效果，若成功免疫则触发真言后续词条效果。";
             case "16":return "破甲\n该牌生效时不对护甲造成伤害，直接伤害生命值。";

@@ -147,13 +147,14 @@ public class BattlePanel : PanelBase
     {
         switch (currank)
         {
-            case rank.showcard:
+            case rank.showcard: //计算take牌
                 currank = rank.roundCalcu;
                 PanelManager.Instance.panelLock();
                 EventAction.Instance.TriggerAction(eventType.roundEnd_C, takeCardlist);
                 break;
             case rank.roundCalcu:
-                currank = rank.takecard;
+                currank = rank.takecard;    //回合结算
+                refreshState();
                 EventAction.Instance.TriggerAction(eventType.playRoundNext);
                 break;
             case rank.takecard:
@@ -442,6 +443,11 @@ public class BattlePanel : PanelBase
         manaExtra.SetActive(player.extraLimit >= 1);
         manaExtra2.SetActive(player.extraLimit >= 2);
     }
+    //更新一下buff
+    public void refreshState()
+    {
+        //回合结束也会刷新一下
+    }
     //腾一下展示桌面  准备回合生效
     public void playRoundWillShow()
     {
@@ -623,7 +629,11 @@ public class BattlePanel : PanelBase
             }
         }
         //下一张
-        addAction(() => { cardAlign(dataround); });     //对齐
+        addAction(() => { 
+            cardAlign(dataround);      //对齐
+            //刷新状态
+            refreshState();
+        });
         addAction(() => { EventAction.Instance.TriggerAction(eventType.playRoundNext); });
         playerNextQue();
     }

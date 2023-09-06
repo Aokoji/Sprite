@@ -106,6 +106,8 @@ public class BattleControl :Object
     bool isdefendE;
     int isBoostP;      //增强
     int isBoostE;
+    int reduceP;        //p被减攻
+    int reduceE;        //e被减攻
     int isReturnP;  //反伤   百分比
     int isReturnE;
 
@@ -163,7 +165,7 @@ public class BattleControl :Object
             ui.playRoundWillShow();
         }
         else
-            Debug.LogError("无人出牌 处理一下逻辑问题。");
+            PubTool.LogError("无人出牌 处理一下逻辑问题。");
     }
     //      ----------------------------        *******循环体*******       --------------------------------------------
     private bool isplayerround;
@@ -285,10 +287,57 @@ public class BattleControl :Object
                 conditionTypeCalculate(data, data._card.conditionType3, data._card.damage3);
                 break;
         }
+        if (data.isplayer)
+        {
+            if (isdefendE)
+            {
+                data.hitnum = 0;
+                data.isdefend = true;
+            }
+            else if(reduceP>0)
+            {
+                data.hitnum = Mathf.Max(0, data.hitnum - reduceP);
+                reduceP = 0;
+            }
+            isdefendE = false;
+        }
+        else
+        {
+            if (isdefendP)
+            {
+                data.hitnum = 0;
+                data.isdefend = true;
+            }
+            else if (reduceE > 0)
+            {
+                data.hitnum = Mathf.Max(0, data.hitnum - reduceE);
+                reduceE = 0;
+            }
+            isdefendP = false;
+        }
+        //屏障 特殊结算
+        if (data.hitnum > 0)
+        {
+            if(data.isplayer && isdefendE)
+            {
+                if (isdefendE)
+                {
+                    isdefendE = false;
+                    data.hitnum = 0;
+                    data.isdefend = true;
+                }
+            }
+            if (!data.isplayer && isdefendP)
+            {
+                isdefendP = false;
+                data.hitnum = 0;
+                data.isdefend = true;
+            }
+        }
         //反伤 结算
         if (data.hitnum > 0)
         {
-            if(data.isplayer && isReturnE > 0)
+            if (data.isplayer && isReturnE > 0)
             {
                 data.hitselfnum += isReturnE / 100 * data.hitnum;
                 isReturnE = 0;
@@ -297,22 +346,6 @@ public class BattleControl :Object
             {
                 data.hitselfnum += isReturnP / 100 * data.hitnum;
                 isReturnP = 0;
-            }
-        }
-        //屏障 特殊结算
-        if (data.hitnum > 0)
-        {
-            if(data.isplayer && isdefendE)
-            {
-                isdefendE = false;
-                data.hitnum = 0;
-                data.isdefend = true;
-            }
-            if (!data.isplayer && isdefendP)
-            {
-                isdefendP = false;
-                data.hitnum = 0;
-                data.isdefend = true;
             }
         }
         //连击计算
@@ -444,6 +477,10 @@ public class BattleControl :Object
                 break;
             case CardType2.s_arcaneOn:
                 isArcaneOn = true;
+                break;
+            case CardType2.s_reduce:
+                if (data.isplayer) reduceE += damage;
+                else reduceP += damage;
                 break;
         }
     }
