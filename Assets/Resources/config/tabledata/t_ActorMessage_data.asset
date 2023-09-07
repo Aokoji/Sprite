@@ -27,6 +27,8 @@ MonoBehaviour:
     dropCommon: 0
     volume: 0
     odds: 0
+    underCard: 3
+    dealCard: 2
   - id: 2
     sname: "\u9E1F\u5996\u7CBE"
     defaultCard: 1
@@ -41,6 +43,8 @@ MonoBehaviour:
     dropCommon: 0
     volume: 0
     odds: 0
+    underCard: 3
+    dealCard: 2
   - id: 3
     sname: "\u53F6\u5996\u7CBE"
     defaultCard: 1
@@ -55,6 +59,8 @@ MonoBehaviour:
     dropCommon: 0
     volume: 0
     odds: 0
+    underCard: 3
+    dealCard: 2
   - id: 4
     sname: "\u6708\u5996\u7CBE"
     defaultCard: 1
@@ -69,6 +75,8 @@ MonoBehaviour:
     dropCommon: 0
     volume: 0
     odds: 0
+    underCard: 3
+    dealCard: 2
   - id: 5
     sname: "\u5149\u5996\u7CBE"
     defaultCard: 1
@@ -83,6 +91,8 @@ MonoBehaviour:
     dropCommon: 0
     volume: 0
     odds: 0
+    underCard: 3
+    dealCard: 2
   - id: 6
     sname: "\u80E1\u8702"
     defaultCard: 4
@@ -97,6 +107,8 @@ MonoBehaviour:
     dropCommon: 73
     volume: 1
     odds: 30
+    underCard: 3
+    dealCard: 2
   - id: 7
     sname: "\u8611\u83C7\u602A"
     defaultCard: 5
@@ -111,6 +123,8 @@ MonoBehaviour:
     dropCommon: 0
     volume: 3
     odds: 18
+    underCard: 3
+    dealCard: 2
   - id: 8
     sname: "\u68D5\u718A"
     defaultCard: 6
@@ -125,6 +139,8 @@ MonoBehaviour:
     dropCommon: 79|80
     volume: 6
     odds: 12
+    underCard: 3
+    dealCard: 2
   - id: 9
     sname: "\u51F6\u6076\u7684\u8C7A\u72FC"
     defaultCard: 6
@@ -139,9 +155,11 @@ MonoBehaviour:
     dropCommon: 79|80
     volume: 5
     odds: 0
+    underCard: 3
+    dealCard: 2
   - id: 10
     sname: "\u6A58\u679C\u602A"
-    defaultCard: 4
+    defaultCard: 14
     titleIcon: en_citrus
     wholeIcon: 0
     phybase: 0
@@ -153,9 +171,11 @@ MonoBehaviour:
     dropCommon: 0
     volume: 1
     odds: 0
+    underCard: 3
+    dealCard: 2
   - id: 11
     sname: "\u6A61\u679C\u602A"
-    defaultCard: 4
+    defaultCard: 13
     titleIcon: en_acorn
     wholeIcon: 0
     phybase: 0
@@ -167,9 +187,11 @@ MonoBehaviour:
     dropCommon: 0
     volume: 1
     odds: 0
+    underCard: 3
+    dealCard: 2
   - id: 12
     sname: "\u8D2A\u73A9\u7684\u82B1\u5996"
-    defaultCard: 4
+    defaultCard: 14
     titleIcon: en
     wholeIcon: 0
     phybase: 0
@@ -181,9 +203,11 @@ MonoBehaviour:
     dropCommon: 0
     volume: 2
     odds: 12
+    underCard: 3
+    dealCard: 2
   - id: 13
     sname: "\u62E6\u8DEF\u77F3\u5934\u602A"
-    defaultCard: 4
+    defaultCard: 13
     titleIcon: en
     wholeIcon: 0
     phybase: 0
@@ -195,9 +219,11 @@ MonoBehaviour:
     dropCommon: 0
     volume: 1
     odds: 0
+    underCard: 3
+    dealCard: 2
   - id: 14
     sname: "\u5C0F\u6811\u5996"
-    defaultCard: 4
+    defaultCard: 14
     titleIcon: en
     wholeIcon: 0
     phybase: 0
@@ -209,9 +235,11 @@ MonoBehaviour:
     dropCommon: 93
     volume: 2
     odds: 0
+    underCard: 3
+    dealCard: 2
   - id: 15
     sname: "\u6DF7\u4E71\u7684\u72EC\u89D2\u4ED9"
-    defaultCard: 4
+    defaultCard: 13
     titleIcon: en
     wholeIcon: 0
     phybase: 0
@@ -223,6 +251,8 @@ MonoBehaviour:
     dropCommon: 0
     volume: 1
     odds: 25
+    underCard: 3
+    dealCard: 2
   - id: 16
     sname: "\u9ED1\u6BDB\u9F20"
     defaultCard: 4
@@ -237,6 +267,8 @@ MonoBehaviour:
     dropCommon: 97
     volume: 2
     odds: 15
+    underCard: 3
+    dealCard: 2
   - id: 17
     sname: "\u7C98\u7C98\u866B"
     defaultCard: 5
@@ -251,6 +283,8 @@ MonoBehaviour:
     dropCommon: 0
     volume: 3
     odds: 20
+    underCard: 3
+    dealCard: 2
   - id: 18
     sname: "\u82B1\u6591\u87B3\u8782"
     defaultCard: 10
@@ -265,6 +299,8 @@ MonoBehaviour:
     dropCommon: 106|106|105
     volume: 2
     odds: 35
+    underCard: 3
+    dealCard: 2
   - id: 19
     sname: "\u9B54\u6CD5\u7130"
     defaultCard: 5
@@ -279,6 +315,8 @@ MonoBehaviour:
     dropCommon: 139
     volume: 3
     odds: 0
+    underCard: 3
+    dealCard: 2
   - id: 20
     sname: "\u7ED3\u7F51\u6BD2\u86DB"
     defaultCard: 11
@@ -293,6 +331,8 @@ MonoBehaviour:
     dropCommon: 114
     volume: 3
     odds: 24
+    underCard: 3
+    dealCard: 2
   - id: 21
     sname: "\u98DF\u9B54\u82B1"
     defaultCard: 8
@@ -307,6 +347,8 @@ MonoBehaviour:
     dropCommon: 118
     volume: 4
     odds: 15
+    underCard: 3
+    dealCard: 2
   - id: 22
     sname: "\u6BD2\u523A\u8346\u68D8"
     defaultCard: 9
@@ -321,6 +363,8 @@ MonoBehaviour:
     dropCommon: 0
     volume: 3
     odds: 0
+    underCard: 3
+    dealCard: 2
   - id: 23
     sname: "\u5B9D\u77F3\u9CDE\u86C7"
     defaultCard: 8
@@ -335,6 +379,8 @@ MonoBehaviour:
     dropCommon: 126|123
     volume: 3
     odds: 7
+    underCard: 3
+    dealCard: 2
   - id: 24
     sname: "\u79C3\u9E6B"
     defaultCard: 7
@@ -349,6 +395,8 @@ MonoBehaviour:
     dropCommon: 129
     volume: 4
     odds: 0
+    underCard: 3
+    dealCard: 2
   - id: 25
     sname: "\u51F6\u6076\u7684\u4E0B\u7EA7\u9B54\u65CF"
     defaultCard: 8
@@ -363,6 +411,8 @@ MonoBehaviour:
     dropCommon: 131
     volume: 4
     odds: 15
+    underCard: 3
+    dealCard: 2
   - id: 26
     sname: "\u8150\u5316\u7684\u9B54\u6CD5\u9E7F"
     defaultCard: 8
@@ -377,6 +427,8 @@ MonoBehaviour:
     dropCommon: 139
     volume: 2
     odds: 7
+    underCard: 1
+    dealCard: 2
   - id: 27
     sname: "\u590D\u6D3B\u7684\u4E27\u5C38"
     defaultCard: 7
@@ -391,6 +443,8 @@ MonoBehaviour:
     dropCommon: 140
     volume: 4
     odds: 0
+    underCard: 3
+    dealCard: 2
   - id: 28
     sname: "\u5893\u5730\u9AB7\u9AC5"
     defaultCard: 7
@@ -405,9 +459,11 @@ MonoBehaviour:
     dropCommon: 139
     volume: 3
     odds: 0
+    underCard: 3
+    dealCard: 2
   - id: 29
     sname: "\u7070\u7FFC\u9B54\u65CF\u65A5\u5019"
-    defaultCard: 2
+    defaultCard: 16
     titleIcon: en
     wholeIcon: 0
     phybase: 2
@@ -419,9 +475,11 @@ MonoBehaviour:
     dropCommon: 143
     volume: 6
     odds: 30
+    underCard: 199
+    dealCard: 2
   - id: 30
     sname: "\u72C2\u66B4\u7684\u8150\u5316\u5DE8\u718A"
-    defaultCard: 2
+    defaultCard: 17
     titleIcon: en
     wholeIcon: 0
     phybase: 3
@@ -433,6 +491,8 @@ MonoBehaviour:
     dropCommon: 0
     volume: 8
     odds: 25
+    underCard: 200
+    dealCard: 2
   - id: 31
     sname: "\u88AB\u4FB5\u8680\u7684\u9B54\u65CF"
     defaultCard: 12
@@ -447,9 +507,11 @@ MonoBehaviour:
     dropCommon: 152
     volume: 6
     odds: 25
+    underCard: 3
+    dealCard: 2
   - id: 32
     sname: "\u67AF\u85E4\u6811\u5996"
-    defaultCard: 2
+    defaultCard: 18
     titleIcon: en
     wholeIcon: 0
     phybase: 3
@@ -461,9 +523,11 @@ MonoBehaviour:
     dropCommon: 154
     volume: 11
     odds: 30
+    underCard: 198
+    dealCard: 2
   - id: 33
     sname: "\u91D1\u9CDE\u6D77\u5996\u6218\u58EB"
-    defaultCard: 2
+    defaultCard: 19
     titleIcon: en
     wholeIcon: 0
     phybase: 3
@@ -475,9 +539,11 @@ MonoBehaviour:
     dropCommon: 0
     volume: 9
     odds: 25
+    underCard: 3
+    dealCard: 2
   - id: 34
     sname: "\u4FB5\u8680\u7684\u6676\u5316\u5DE8\u578B\u5343\u8DB3\u866B"
-    defaultCard: 2
+    defaultCard: 20
     titleIcon: en
     wholeIcon: 0
     phybase: 3
@@ -489,9 +555,11 @@ MonoBehaviour:
     dropCommon: 0
     volume: 25
     odds: 25
+    underCard: 3
+    dealCard: 2
   - id: 35
     sname: "\u9AB7\u9AC5\u9886\u519B"
-    defaultCard: 2
+    defaultCard: 21
     titleIcon: en
     wholeIcon: 0
     phybase: 3
@@ -503,9 +571,11 @@ MonoBehaviour:
     dropCommon: 166|166
     volume: 10
     odds: 25
+    underCard: 3
+    dealCard: 2
   - id: 36
     sname: "\u53D7\u4F24\u7684\u9ED1\u7FFC\u9B54\u65CF\u7EDF\u9886"
-    defaultCard: 2
+    defaultCard: 22
     titleIcon: en
     wholeIcon: 0
     phybase: 4
@@ -517,9 +587,11 @@ MonoBehaviour:
     dropCommon: 169|172
     volume: 13
     odds: 20
+    underCard: 3
+    dealCard: 2
   - id: 37
     sname: "\u5C01\u5370\u7684\u706B\u7130\u9886\u4E3B"
-    defaultCard: 2
+    defaultCard: 23
     titleIcon: en
     wholeIcon: 0
     phybase: 4
@@ -531,9 +603,11 @@ MonoBehaviour:
     dropCommon: 0
     volume: 14
     odds: 20
+    underCard: 3
+    dealCard: 2
   - id: 38
     sname: "\u6D77\u5996\u5DE8\u9CB6\u9886\u519B"
-    defaultCard: 2
+    defaultCard: 24
     titleIcon: en
     wholeIcon: 0
     phybase: 4
@@ -545,3 +619,21 @@ MonoBehaviour:
     dropCommon: 177
     volume: 15
     odds: 20
+    underCard: 3
+    dealCard: 2
+  - id: 39
+    sname: "\u5D29\u574F\u7684\u8FC7\u5EA6\u8150\u5316\u5DE8\u517D"
+    defaultCard: 15
+    titleIcon: en
+    wholeIcon: 0
+    phybase: 3
+    hpbase: 150
+    costmax: 3
+    spritePower: 4
+    drop: 306|308
+    dropRare: 0
+    dropCommon: 307
+    volume: 20
+    odds: 0
+    underCard: 190
+    dealCard: 2

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -162,6 +163,10 @@ public class BattlePanel : PanelBase
                 refreshMana();
                 //回合开始
                 PanelManager.Instance.showTips1("回合开始", PanelManager.Instance.panelUnlock);
+                StringBuilder str = new StringBuilder();
+                foreach (var i in handEnemylist)
+                    str.Append(i._data.sname);
+                PubTool.Log(str.ToString());
                 //addAction(() => { dealCard(1); });
                 //dealEnemyCard(1);
                 break;
@@ -506,6 +511,24 @@ public class BattlePanel : PanelBase
                     RunSingel.Instance.laterDo(0.5f, playerNextQue);
                 });
             }
+            if (dataround.brokenum > 0)
+            {
+                addAction(() =>
+                {
+                    var par = ParticleManager.Instance.getPlayEffect(E_Particle.particle_movefire, dataround.entity.transform.position);
+                    RunSingel.Instance.laterDo(0.8f, () =>
+                    {
+                        RunSingel.Instance.moveTo(par, isplayer ? enemyhealth.transform.position : health.transform.position, ConfigConst.cardtime_effectMoveSlow, () =>
+                        {
+                            par.SetActive(false);
+                            ParticleManager.Instance.playEffect_special(E_Particle.particle_hit, isplayer ? enemyhealth.transform.position : health.transform.position, "-" + dataround.brokenum);
+                            refreshPlayerData();
+                            refreshEnemyData();
+                            RunSingel.Instance.laterDo(1, playerNextQue);
+                        });
+                    });
+                });
+            }
             //攻击
             if (dataround.hitnum > 0)
             {
@@ -626,6 +649,10 @@ public class BattlePanel : PanelBase
                         playerNextQue();
                     }
 				});
+            }
+            if (dataround.etch)
+            {
+                dataround.entity.playCounterAnim(playerNextQue);
             }
         }
         //下一张

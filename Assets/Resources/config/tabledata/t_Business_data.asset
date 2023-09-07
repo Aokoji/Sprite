@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   asset:
   - id: 1
-    itemid: 8
-    postype: 5
-    salenum: 8
+    itemid: 235
+    postype: 3
+    salenum: 1
   - id: 2
     itemid: 9
     postype: 3

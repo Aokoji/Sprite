@@ -63,6 +63,7 @@ public static class ConfigConst
             case "13":return "秘术\n若本回合只有这一张牌存在，则触发秘术词条效果。";
             case "14":return "真言\n该牌生效时免疫对方的诅咒效果，若成功免疫则触发真言后续词条效果。";
             case "16":return "破甲\n该牌生效时不对护甲造成伤害，直接伤害生命值。";
+            case "19":return "祝福\n该类卡牌会有更加强大的效果。";
             case "28":return "奥术强化\n奥术强化作为一种常驻状态，当使用含有奥术强化词条的卡时消耗该状态获得强化效果。";
             default:return "";
         }

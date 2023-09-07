@@ -286,7 +286,10 @@ public class ExplorMovingPanel : PanelBase
             {
                 case explorIcon.battle:
                     ems = mapconfig.enemyPool.Split('|');
-                    currank.enemyID = int.Parse(ems[Random.Range(0, ems.Length)]);
+                    if (Main.NextEnemy > 0)
+                        currank.enemyID = Main.NextEnemy;
+                    else
+                        currank.enemyID = int.Parse(ems[Random.Range(0, ems.Length)]);
                     break;
                 case explorIcon.gather:
                     ems = mapconfig.gatherPool.Split('|');

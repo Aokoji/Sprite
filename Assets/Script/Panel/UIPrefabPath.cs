@@ -39,7 +39,7 @@ public enum E_UIPrefab
     SpriteCheckPanel,       //选择妖精小界面（上阵，使用物品
     FarmPanel,
     SpringPanel,        //魔力之泉
-    CardMessageBar,     //卡牌详情
+    CardMessageBar,     //卡牌详情  int 卡id
 
     //ui
     cardHand,

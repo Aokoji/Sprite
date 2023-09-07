@@ -106,6 +106,7 @@ public class BattleControl :Object
     bool isdefendE;
     int isBoostP;      //增强
     int isBoostE;
+    int boostSave;
     int reduceP;        //p被减攻
     int reduceE;        //e被减攻
     int isReturnP;  //反伤   百分比
@@ -184,6 +185,7 @@ public class BattleControl :Object
         }
         //获取数据
         round++;
+        boostSave = 0;
         RoundData data;
         if(willTakeplayerque.Count<=0) isplayerround=false;
         if(willTakeenemyque.Count<=0) isplayerround=true;
@@ -214,6 +216,8 @@ public class BattleControl :Object
         if(isplayerround && isEtch)
         {
             data.etch = true;
+            continuousShut(data.isplayer);
+            playCardNext(data);
             return;
         }
         //计算伤害
@@ -287,6 +291,7 @@ public class BattleControl :Object
                 conditionTypeCalculate(data, data._card.conditionType3, data._card.damage3);
                 break;
         }
+        //减攻加攻和屏障
         if (data.isplayer)
         {
             if (isdefendE)
@@ -300,6 +305,8 @@ public class BattleControl :Object
                 reduceP = 0;
             }
             isdefendE = false;
+            if(boostSave>0)
+                isBoostP+= boostSave;
         }
         else
         {
@@ -314,25 +321,8 @@ public class BattleControl :Object
                 reduceE = 0;
             }
             isdefendP = false;
-        }
-        //屏障 特殊结算
-        if (data.hitnum > 0)
-        {
-            if(data.isplayer && isdefendE)
-            {
-                if (isdefendE)
-                {
-                    isdefendE = false;
-                    data.hitnum = 0;
-                    data.isdefend = true;
-                }
-            }
-            if (!data.isplayer && isdefendP)
-            {
-                isdefendP = false;
-                data.hitnum = 0;
-                data.isdefend = true;
-            }
+            if (boostSave > 0)
+                isBoostE += boostSave;
         }
         //反伤 结算
         if (data.hitnum > 0)
@@ -435,8 +425,7 @@ public class BattleControl :Object
                 data.toDefen += damage;
                 break;
             case CardType2.s_boost:
-                if (data.isplayer) isBoostP = damage;
-                else isBoostE = damage;
+                boostSave = damage;
                 break;
             case CardType2.g_return:
                 if (data.isplayer) isReturnP = damage;

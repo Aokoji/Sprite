@@ -10,7 +10,9 @@ public class Main : MonoBehaviour
     public bool isClearData;
     public int dayMapID;
     public bool allCardOpen;
+    public int nextEnemy;
 
+    public static int NextEnemy;
     public static bool AllCardOpen;
     public static int DayMapID;
     void Start()
@@ -20,6 +22,7 @@ public class Main : MonoBehaviour
             File.Delete(Application.persistentDataPath + "/" + S_SaverNames.pdata.ToString());
         DayMapID = dayMapID;
         AllCardOpen = allCardOpen;
+        NextEnemy = nextEnemy;
 #endif
         GameManager.Instance.initManager();
         PanelManager.Instance.OpenPanel(E_UIPrefab.StartPanel);

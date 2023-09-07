@@ -2,9 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class CardSetEntity : UIBase
+public class CardSetEntity : UIBase, IPointerDownHandler, IPointerUpHandler
 {
     public Image bg;
     public Image desbg;
@@ -25,6 +26,9 @@ public class CardSetEntity : UIBase
 
     private int count;  //拥有数量
     private int chooseNum;  //选择数量
+
+    float gaprun;
+    bool isdown;
 
     Action<CardSetEntity> clickAction;
     public void initData(int id, int num,Action<CardSetEntity> clickaction)
@@ -109,5 +113,32 @@ public class CardSetEntity : UIBase
         }
         setOpen(true);
         refreshCard();
+    }
+
+
+    private void Update()
+    {
+        if (isdown)
+        {
+            gaprun += Time.deltaTime;
+            if (gaprun >= 1.2f)
+            {
+                //展示详情
+                isdown = false;
+                gaprun = 0;
+                PanelManager.Instance.OpenPanel(E_UIPrefab.CardMessageBar, new object[] { _data.id });
+            }
+        }
+    }
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        isdown = true;
+        gaprun = 0;
+    }
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        isdown = false;
+        gaprun = 0;
     }
 }

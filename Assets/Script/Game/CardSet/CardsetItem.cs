@@ -12,6 +12,7 @@ public class CardsetItem:UIBase
 
     public int id;
     public Action<int> onchoose;
+
     public void init()
     {
         GetComponent<Button>().onClick.AddListener(onclick);

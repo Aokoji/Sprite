@@ -421,7 +421,7 @@ public class EnemyCalculate:CSingel<EnemyCalculate>
             float pcalcu = 8 - pdata.hp_cur * 5 / pdata.hp_max;      //3-8
             float dealcalcu = 8 - (cards.Count-1) * 8 / 6;
             if (i.ishit > 0)
-                level = pcalcu + i.ishit / 2;
+                level = pcalcu + i.ishit / 3 * 2;
             if (i.isbroken > 0)
                 level = pcalcu + i.isbroken / 1.5f;
             if (i.istodef > 0)
