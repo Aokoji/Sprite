@@ -41,6 +41,19 @@ public class SpriteData
         cost_cur = cost_max;
         def_cur = 0;
     }
+    public void expadd(int num)
+    {
+        if (level >= 50) return;
+        exp_cur += num;
+        if (exp_cur >= exp_max)
+        {
+            level++;
+            if (level >= 50)
+            {
+                exp_cur = exp_max;
+            }
+        }
+    }
 
     public SpriteData Copy()
     {
