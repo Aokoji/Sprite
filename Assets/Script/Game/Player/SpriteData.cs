@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using customEvent;
 [Serializable]
 public class SpriteData
 {
@@ -52,6 +53,12 @@ public class SpriteData
             {
                 exp_cur = exp_max;
             }
+            else
+            {
+                exp_cur -= exp_max;
+                exp_max = NormalCalculate.expNextCalculate(level - 1);
+            }
+            EventAction.Instance.TriggerAction(eventType.levelUp_II, id, level);
         }
     }
 

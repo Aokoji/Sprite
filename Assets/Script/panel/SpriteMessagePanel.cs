@@ -15,6 +15,9 @@ public class SpriteMessagePanel : PanelTopBase
     public Text _health;
     public Text _phy;
     public Text _powerPoint;
+    public Text _level;
+    public Text _exp;
+    public Image _imgexp;
 
     public Text _messFire;
     public Text _messWater;

@@ -23,6 +23,7 @@ namespace customEvent
 
         roundEnd_C,
         playRoundNext,
+        levelUp_II,  //精灵升级到 int int
 
         jumpMainExplor, //跳转主页探索
     }
