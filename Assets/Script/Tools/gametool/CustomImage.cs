@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-
+//自定义多边形交互（碎片）图片
 public class CustomImage : Image
 {
     private PolygonCollider2D _polygon;

@@ -44,6 +44,11 @@ public class BattlePanel : PanelBase
 
     public GameObject battleSettle;
 
+    public GameObject stateclone;    //状态小图标    image
+    public GameObject stateStartPos;    //起始位置
+
+    //===================   obj    ==========
+
     private Queue<int> playerque;
     private Queue<int> enemyque;
 
@@ -161,14 +166,14 @@ public class BattlePanel : PanelBase
             case rank.takecard:
                 currank = rank.showcard;
                 refreshMana();
-                //回合开始
-                PanelManager.Instance.showTips1("回合开始", PanelManager.Instance.panelUnlock);
                 StringBuilder str = new StringBuilder();
                 foreach (var i in handEnemylist)
                     str.Append(i._data.sname);
                 PubTool.Log(str.ToString());
-                //addAction(() => { dealCard(1); });
-                //dealEnemyCard(1);
+                addAction(() => { dealCard(1); });
+                dealEnemyCard(1);
+                //回合开始
+                PanelManager.Instance.showTips1("回合开始", PanelManager.Instance.panelUnlock);
                 break;
         }
     }
@@ -452,6 +457,7 @@ public class BattlePanel : PanelBase
     public void refreshState()
     {
         //回合结束也会刷新一下
+        var obj = Instantiate(stateclone);
     }
     //腾一下展示桌面  准备回合生效
     public void playRoundWillShow()

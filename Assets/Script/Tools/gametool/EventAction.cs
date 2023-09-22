@@ -25,6 +25,7 @@ namespace customEvent
         playRoundNext,
         levelUp_II,  //精灵升级到 int int
 
+        popRelease,     //释放弹窗栈
         jumpMainExplor, //跳转主页探索
     }
     public class EventAction:CSingel<EventAction>
