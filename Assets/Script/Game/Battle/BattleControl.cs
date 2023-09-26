@@ -102,13 +102,6 @@ public class BattleControl :Object
     bool iscounterE;
     bool ispowerP;  //秘术
     bool ispowerE;
-    bool isdefendP;     //防护
-    bool isdefendE;
-    int isBoostP;      //增强
-    int isBoostE;
-    int boostSave;
-    int reduceP;        //p被减攻
-    int reduceE;        //e被减攻
     int isReturnP;  //反伤   百分比
     int isReturnE;
 
@@ -153,8 +146,8 @@ public class BattleControl :Object
         eContinuous = 0;
         iscounterP = false;
         iscounterE = false;
-        isdefendE = false;
-        isdefendP = false;
+        ui.removeBuff(5);
+        ui.removeBuff(5, true);
         isEtch = false;
         isReturnP = 0;
         isReturnE = 0;
@@ -185,7 +178,6 @@ public class BattleControl :Object
         }
         //获取数据
         round++;
-        boostSave = 0;
         RoundData data;
         if(willTakeplayerque.Count<=0) isplayerround=false;
         if(willTakeenemyque.Count<=0) isplayerround=true;
@@ -247,9 +239,8 @@ public class BattleControl :Object
                 }
                 break;
             case CardType2.e_deplete:
-                int addhit = getaddtionHit(data.isplayer);
-                data.hitnum = data._card.damage1+ addhit;
-                data.hitselfnum = data._card.damage2+ addhit;
+                data.hitnum = data._card.damage1;
+                data.hitselfnum = data._card.damage2;
                 conditionTypeCalculate(data, data._card.conditionType3, data._card.damage3);
                 break;
             case CardType2.e_gift:
@@ -291,6 +282,8 @@ public class BattleControl :Object
                 conditionTypeCalculate(data, data._card.conditionType3, data._card.damage3);
                 break;
         }
+        //****  增减伤计算   双方都要算
+        buffCalculater(data);
         //减攻加攻和屏障
         if (data.isplayer)
         {
@@ -344,6 +337,7 @@ public class BattleControl :Object
         else
             continuousAdd(data.isplayer);
         firstplayer = !data.isplayer;
+
         //回合计算
         if(data._card.type2!=CardType2.n_preempt&&data._card.conditionType1!=CardType2.n_preempt&&data._card.conditionType2!=CardType2.n_preempt)
             isplayerround = !isplayerround;
@@ -363,7 +357,19 @@ public class BattleControl :Object
             case CardType2.none:
                 break;
             case CardType2.n_hit:
-                data.hitnum += damage+ getaddtionHit(data.isplayer);
+                data.hitnum += damage;
+                break;
+            case CardType2.n_fire:
+                data.firenum += damage;
+                break;
+            case CardType2.n_water:
+                data.waternum += damage;
+                break;
+            case CardType2.n_thunder:
+                data.thundernum += damage;
+                break;
+            case CardType2.n_forest:
+                data.forestnum += damage;
                 break;
             case CardType2.n_deal:
                 data.dealnum += damage;
@@ -376,20 +382,19 @@ public class BattleControl :Object
                 break;
             case CardType2.n_continuous:
                 if ((!data.isplayer && eContinuous >= 1) || (data.isplayer && pContinuous>=1)) 
-                    data.hitnum+= damage+ getaddtionHit(data.isplayer);
+                    data.hitnum+= damage;
                 data.continuousnum = data.isplayer ? pContinuous : eContinuous;
                 break;
             case CardType2.n_thump:
                 if ((data.isplayer && willTakeenemyque.Count <= 0) || (!data.isplayer && willTakeplayerque.Count <= 0))
-                    data.hitnum += damage+ getaddtionHit(data.isplayer);
+                    data.hitnum += damage;
                 break;
             case CardType2.n_preempt:
-                data.hitnum += damage + getaddtionHit(data.isplayer);
+                data.hitnum += damage;
                 break;
             case CardType2.e_deplete:
-                int addhit = getaddtionHit(data.isplayer);
-                data.hitnum += damage + addhit;
-                data.hitselfnum += damage + addhit;
+                data.hitnum += damage;
+                data.hitselfnum += damage;
                 break;
             case CardType2.e_gift:
                 data.gift.Add(CardCalculate.getRandomTypeCardList((CardSelfType)damage));
@@ -410,22 +415,23 @@ public class BattleControl :Object
                 data.addition = damage;
                 break;
             case CardType2.e_defend:
-                if (data.isplayer) isdefendP = true;
-                else isdefendE = true;
+                if (data.isplayer) ui.AddBuff(5);
+                else ui.AddBuff(5, true);
                 break;
             case CardType2.n_counter:
                 if (data.isplayer) iscounterE = true;
                 else iscounterP = true;
                 break;
             case CardType2.n_broke:
-                data.brokenum += damage+ getaddtionHit(data.isplayer);
+                data.brokenum += damage;
                 break;
             case CardType2.s_todefen:
                 //处理一下+++
                 data.toDefen += damage;
                 break;
             case CardType2.s_boost:
-                boostSave = damage;
+                if (data.isplayer) ui.AddBuff(2, false, damage);
+                else ui.AddBuff(2, true, damage);
                 break;
             case CardType2.g_return:
                 if (data.isplayer) isReturnP = damage;
@@ -466,27 +472,59 @@ public class BattleControl :Object
                 break;
             case CardType2.s_arcaneOn:
                 isArcaneOn = true;
+                if (data.isplayer) ui.AddBuff(1);
+                else ui.AddBuff(1, true);
                 break;
             case CardType2.s_reduce:
-                if (data.isplayer) reduceE += damage;
-                else reduceP += damage;
+                if (data.isplayer)
+                    ui.AddBuff(3, true, damage);
+                else
+                    ui.AddBuff(3, false, damage);
                 break;
         }
     }
-    int getaddtionHit(bool isplayer)
+    void buffCalculater(RoundData data)
     {
-        int result;
-        if (isplayer)
+        foreach(var i in ui.bufflistP)
         {
-            result = isBoostP;
-            isBoostP = 0;
+
+        }
+        foreach (var i in ui.bufflistE)
+        {
+
+        }
+        if (data.isplayer)
+        {
+            if (isdefendE)
+            {
+                data.hitnum = 0;
+                data.isdefend = true;
+            }
+            else if (reduceP > 0)
+            {
+                data.hitnum = Mathf.Max(0, data.hitnum - reduceP);
+                reduceP = 0;
+            }
+            isdefendE = false;
+            if (boostSave > 0)
+                isBoostP += boostSave;
         }
         else
         {
-            result = isBoostE;
-            isBoostE = 0;
+            if (isdefendP)
+            {
+                data.hitnum = 0;
+                data.isdefend = true;
+            }
+            else if (reduceE > 0)
+            {
+                data.hitnum = Mathf.Max(0, data.hitnum - reduceE);
+                reduceE = 0;
+            }
+            isdefendP = false;
+            if (boostSave > 0)
+                isBoostE += boostSave;
         }
-        return result;
     }
     private void playCardNext(RoundData data)
     {

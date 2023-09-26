@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69b38bb1b0bb2644ea3d4d92fad9b5f7, type: 3}
-  m_Name: t_ActorMessage_data
+  m_Script: {fileID: 11500000, guid: e9b0df24665ada947b1830f41916e763, type: 3}
+  m_Name: t_ActorMessage_old_data
   m_EditorClassIdentifier: 
   asset:
   - id: 1
@@ -22,7 +22,6 @@ MonoBehaviour:
     hpbase: 20
     costmax: 3
     spritePower: 7
-    exp: 2
     drop: "\uFFFD\uFFFD\uFFFD\uFFFD\u02FF"
     dropRare: 0
     dropCommon: 0
@@ -39,7 +38,6 @@ MonoBehaviour:
     hpbase: 16
     costmax: 3
     spritePower: 10
-    exp: 3
     drop: "\uFFFD\uFFFD\uFFFD\uFFFD"
     dropRare: 0
     dropCommon: 0
@@ -56,7 +54,6 @@ MonoBehaviour:
     hpbase: 25
     costmax: 3
     spritePower: 8
-    exp: 4
     drop: "\uFFFD\uFFFD"
     dropRare: 0
     dropCommon: 0
@@ -73,7 +70,6 @@ MonoBehaviour:
     hpbase: 22
     costmax: 3
     spritePower: 14
-    exp: 5
     drop: "\u023D"
     dropRare: 0
     dropCommon: 0
@@ -90,7 +86,6 @@ MonoBehaviour:
     hpbase: 30
     costmax: 3
     spritePower: 5
-    exp: 1
     drop: "\uFFFD\uFFFD\uFFFD\uFFFD"
     dropRare: 0
     dropCommon: 0
@@ -107,10 +102,9 @@ MonoBehaviour:
     hpbase: 14
     costmax: 3
     spritePower: 1
-    exp: 3
-    drop: 363|73
+    drop: 2
     dropRare: 72
-    dropCommon: 356|2
+    dropCommon: 73
     volume: 1
     odds: 30
     underCard: 3
@@ -124,10 +118,9 @@ MonoBehaviour:
     hpbase: 18
     costmax: 3
     spritePower: 1
-    exp: 4
-    drop: 362|74|75
+    drop: 74|75|77
     dropRare: 76
-    dropCommon: 356
+    dropCommon: 0
     volume: 3
     odds: 18
     underCard: 3
@@ -141,33 +134,31 @@ MonoBehaviour:
     hpbase: 32
     costmax: 3
     spritePower: 2
-    exp: 0
-    drop: 376|81|82|80
+    drop: 80|81|82|83
     dropRare: 84
-    dropCommon: 357
+    dropCommon: 79|80
     volume: 6
     odds: 12
     underCard: 3
     dealCard: 2
   - id: 9
-    sname: 
-    defaultCard: 0
-    titleIcon: 
-    wholeIcon: 
-    phybase: 0
-    hpbase: 0
-    costmax: 0
-    spritePower: 0
-    exp: 0
-    drop: 
-    dropRare: 
-    dropCommon: 
-    volume: 0
+    sname: "\uFFFD\u05F6\uFFFD\u0132\uFFFD\uFFFD\uFFFD"
+    defaultCard: 6
+    titleIcon: en_wolves
+    wholeIcon: 0
+    phybase: 2
+    hpbase: 26
+    costmax: 3
+    spritePower: 2
+    drop: 80|81|82|83
+    dropRare: 87
+    dropCommon: 79|80
+    volume: 5
     odds: 0
-    underCard: 0
-    dealCard: 0
+    underCard: 3
+    dealCard: 2
   - id: 10
-    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    sname: "\uFFFD\u0679\uFFFD\uFFFD\uFFFD"
     defaultCard: 14
     titleIcon: en_citrus
     wholeIcon: 0
@@ -175,16 +166,15 @@ MonoBehaviour:
     hpbase: 7
     costmax: 3
     spritePower: 0
-    exp: 1
-    drop: 360|285
+    drop: 4|5
     dropRare: 0
-    dropCommon: 356
+    dropCommon: 0
     volume: 1
     odds: 0
     underCard: 3
     dealCard: 2
   - id: 11
-    sname: "\u04B9\uFFFD\uFFFD\uFFFD"
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
     defaultCard: 13
     titleIcon: en_acorn
     wholeIcon: 0
@@ -192,16 +182,15 @@ MonoBehaviour:
     hpbase: 9
     costmax: 3
     spritePower: 0
-    exp: 3
-    drop: 363|286
+    drop: 6|7
     dropRare: 0
-    dropCommon: 356
+    dropCommon: 0
     volume: 1
     odds: 0
     underCard: 3
     dealCard: 2
   - id: 12
-    sname: "\uFFFD\uFFFD\uFFFD\u03FB\uFFFD\uFFFD\uFFFD"
+    sname: "\u0330\uFFFD\uFFFD\u013B\uFFFD\uFFFD\uFFFD"
     defaultCard: 14
     titleIcon: en
     wholeIcon: 0
@@ -209,16 +198,15 @@ MonoBehaviour:
     hpbase: 8
     costmax: 3
     spritePower: 0
-    exp: 2
-    drop: 361|88
+    drop: 68|88|89
     dropRare: 90
-    dropCommon: 356
+    dropCommon: 0
     volume: 2
     odds: 12
     underCard: 3
     dealCard: 2
   - id: 13
-    sname: "\u02AF\u0377\uFFFD\uFFFD"
+    sname: "\uFFFD\uFFFD\xB7\u02AF\u0377\uFFFD\uFFFD"
     defaultCard: 13
     titleIcon: en
     wholeIcon: 0
@@ -226,10 +214,9 @@ MonoBehaviour:
     hpbase: 13
     costmax: 3
     spritePower: 0
-    exp: 0
-    drop: 375|91|92
+    drop: 91|92
     dropRare: 0
-    dropCommon: 356
+    dropCommon: 0
     volume: 1
     odds: 0
     underCard: 3
@@ -243,31 +230,29 @@ MonoBehaviour:
     hpbase: 9
     costmax: 3
     spritePower: 0
-    exp: 4
-    drop: 362|93|94
+    drop: 93|94
     dropRare: 0
-    dropCommon: 356
+    dropCommon: 93
     volume: 2
     odds: 0
     underCard: 3
     dealCard: 2
   - id: 15
-    sname: 
-    defaultCard: 0
-    titleIcon: 
-    wholeIcon: 
+    sname: "\uFFFD\uFFFD\uFFFD\u04B5\u0136\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    defaultCard: 13
+    titleIcon: en
+    wholeIcon: 0
     phybase: 0
-    hpbase: 0
-    costmax: 0
+    hpbase: 10
+    costmax: 3
     spritePower: 0
-    exp: 0
-    drop: 
-    dropRare: 
-    dropCommon: 
-    volume: 0
-    odds: 0
-    underCard: 0
-    dealCard: 0
+    drop: 96
+    dropRare: 95
+    dropCommon: 0
+    volume: 1
+    odds: 25
+    underCard: 3
+    dealCard: 2
   - id: 16
     sname: "\uFFFD\uFFFD\xEB\uFFFD\uFFFD"
     defaultCard: 4
@@ -277,10 +262,9 @@ MonoBehaviour:
     hpbase: 19
     costmax: 3
     spritePower: 1
-    exp: 1
-    drop: 360|99
+    drop: 98|99
     dropRare: 100
-    dropCommon: 356
+    dropCommon: 97
     volume: 2
     odds: 15
     underCard: 3
@@ -294,10 +278,9 @@ MonoBehaviour:
     hpbase: 16
     costmax: 3
     spritePower: 1
-    exp: 2
-    drop: 361|101
+    drop: 101|104
     dropRare: 102|103
-    dropCommon: 356
+    dropCommon: 0
     volume: 3
     odds: 20
     underCard: 3
@@ -311,10 +294,9 @@ MonoBehaviour:
     hpbase: 16
     costmax: 3
     spritePower: 1
-    exp: 0
-    drop: 375|108
+    drop: 105|108
     dropRare: 107
-    dropCommon: 356|106
+    dropCommon: 106|106|105
     volume: 2
     odds: 35
     underCard: 3
@@ -328,10 +310,9 @@ MonoBehaviour:
     hpbase: 12
     costmax: 3
     spritePower: 1
-    exp: 1
-    drop: 360|109
+    drop: 109|110
     dropRare: 0
-    dropCommon: 356
+    dropCommon: 139
     volume: 3
     odds: 0
     underCard: 3
@@ -345,10 +326,9 @@ MonoBehaviour:
     hpbase: 20
     costmax: 3
     spritePower: 2
-    exp: 0
-    drop: 376|111|112
+    drop: 111|112|113
     dropRare: 115|116
-    dropCommon: 357|114
+    dropCommon: 114
     volume: 3
     odds: 24
     underCard: 3
@@ -362,10 +342,9 @@ MonoBehaviour:
     hpbase: 24
     costmax: 3
     spritePower: 2
-    exp: 4
-    drop: 367
+    drop: 117|119|120|139
     dropRare: 121
-    dropCommon: 357
+    dropCommon: 118
     volume: 4
     odds: 15
     underCard: 3
@@ -379,10 +358,9 @@ MonoBehaviour:
     hpbase: 24
     costmax: 3
     spritePower: 2
-    exp: 4
-    drop: 367
+    drop: 122
     dropRare: 0
-    dropCommon: 357
+    dropCommon: 0
     volume: 3
     odds: 0
     underCard: 3
@@ -396,10 +374,9 @@ MonoBehaviour:
     hpbase: 28
     costmax: 3
     spritePower: 2
-    exp: 1
-    drop: 365
+    drop: 123|124|125
     dropRare: 127|128
-    dropCommon: 357
+    dropCommon: 126|123
     volume: 3
     odds: 7
     underCard: 3
@@ -413,10 +390,9 @@ MonoBehaviour:
     hpbase: 22
     costmax: 3
     spritePower: 2
-    exp: 3
-    drop: 368
+    drop: 130|80
     dropRare: 0
-    dropCommon: 357
+    dropCommon: 129
     volume: 4
     odds: 0
     underCard: 3
@@ -430,10 +406,9 @@ MonoBehaviour:
     hpbase: 35
     costmax: 3
     spritePower: 2
-    exp: 1
-    drop: 365
+    drop: 132|133|134
     dropRare: 135
-    dropCommon: 357
+    dropCommon: 131
     volume: 4
     odds: 15
     underCard: 3
@@ -447,10 +422,9 @@ MonoBehaviour:
     hpbase: 23
     costmax: 3
     spritePower: 2
-    exp: 2
-    drop: 366
+    drop: 136|138
     dropRare: 137
-    dropCommon: 357
+    dropCommon: 139
     volume: 2
     odds: 7
     underCard: 1
@@ -464,10 +438,9 @@ MonoBehaviour:
     hpbase: 30
     costmax: 3
     spritePower: 2
-    exp: 0
-    drop: 376
+    drop: 139|141
     dropRare: 0
-    dropCommon: 357
+    dropCommon: 140
     volume: 4
     odds: 0
     underCard: 3
@@ -481,10 +454,9 @@ MonoBehaviour:
     hpbase: 21
     costmax: 3
     spritePower: 2
-    exp: 0
-    drop: 376
+    drop: 142
     dropRare: 0
-    dropCommon: 357
+    dropCommon: 139
     volume: 3
     odds: 0
     underCard: 3
@@ -498,10 +470,9 @@ MonoBehaviour:
     hpbase: 35
     costmax: 4
     spritePower: 3
-    exp: 3
-    drop: 373
+    drop: 132|134|144
     dropRare: 135|145
-    dropCommon: 358
+    dropCommon: 143
     volume: 6
     odds: 30
     underCard: 199
@@ -515,10 +486,9 @@ MonoBehaviour:
     hpbase: 65
     costmax: 4
     spritePower: 3
-    exp: 0
-    drop: 377
+    drop: 136|146|147|148|149
     dropRare: 150
-    dropCommon: 358
+    dropCommon: 0
     volume: 8
     odds: 25
     underCard: 200
@@ -532,10 +502,9 @@ MonoBehaviour:
     hpbase: 50
     costmax: 4
     spritePower: 3
-    exp: 1
-    drop: 370
+    drop: 153|132|134
     dropRare: 150|151
-    dropCommon: 358
+    dropCommon: 152
     volume: 6
     odds: 25
     underCard: 3
@@ -549,10 +518,9 @@ MonoBehaviour:
     hpbase: 87
     costmax: 4
     spritePower: 3
-    exp: 4
-    drop: 372
+    drop: 94|136|154
     dropRare: 155
-    dropCommon: 358
+    dropCommon: 154
     volume: 11
     odds: 30
     underCard: 198
@@ -566,10 +534,9 @@ MonoBehaviour:
     hpbase: 56
     costmax: 4
     spritePower: 3
-    exp: 2
-    drop: 371
+    drop: 156|157|158
     dropRare: 159
-    dropCommon: 358
+    dropCommon: 0
     volume: 9
     odds: 25
     underCard: 3
@@ -583,10 +550,9 @@ MonoBehaviour:
     hpbase: 155
     costmax: 5
     spritePower: 4
-    exp: 0
-    drop: 377
+    drop: 161|162|163|164
     dropRare: 160
-    dropCommon: 359
+    dropCommon: 0
     volume: 25
     odds: 25
     underCard: 3
@@ -600,10 +566,9 @@ MonoBehaviour:
     hpbase: 70
     costmax: 4
     spritePower: 3
-    exp: 0
-    drop: 377
+    drop: 142|165
     dropRare: 167
-    dropCommon: 358
+    dropCommon: 166|166
     volume: 10
     odds: 25
     underCard: 210
@@ -617,10 +582,9 @@ MonoBehaviour:
     hpbase: 125
     costmax: 5
     spritePower: 5
-    exp: 0
-    drop: 377
+    drop: 132|134|168|171
     dropRare: 170|190
-    dropCommon: 359
+    dropCommon: 169|172
     volume: 13
     odds: 20
     underCard: 3
@@ -634,10 +598,9 @@ MonoBehaviour:
     hpbase: 140
     costmax: 5
     spritePower: 5
-    exp: 1
-    drop: 370
+    drop: 109|174|175|184
     dropRare: 173
-    dropCommon: 359
+    dropCommon: 0
     volume: 14
     odds: 20
     underCard: 3
@@ -651,10 +614,9 @@ MonoBehaviour:
     hpbase: 150
     costmax: 5
     spritePower: 5
-    exp: 2
-    drop: 371
+    drop: 156|176|178|179
     dropRare: 180
-    dropCommon: 359
+    dropCommon: 177
     volume: 15
     odds: 20
     underCard: 3
@@ -668,10 +630,9 @@ MonoBehaviour:
     hpbase: 150
     costmax: 3
     spritePower: 4
-    exp: 0
-    drop: 377
+    drop: 306|308
     dropRare: 0
-    dropCommon: 359
+    dropCommon: 307
     volume: 20
     odds: 0
     underCard: 190

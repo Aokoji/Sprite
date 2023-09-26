@@ -35,12 +35,22 @@ public class SpriteData
     public List<int> curCardGroup = new List<int>();
     public int underCard;
     public int dealCard;
+    public List<int> stateList = new List<int>();   //状态列表
 
     public void refreshData()
     {
         hp_cur = hp_max;
         cost_cur = cost_max;
         def_cur = 0;
+        //计算state
+        if (id <= 5)
+        {
+            //妖精        读表等级表刷新buff
+        }
+        else
+        {
+
+        }
     }
     public void expadd(int num)
     {
@@ -88,6 +98,7 @@ public class SpriteData
         copy.curCardGroup = curCardGroup;
         copy.underCard = underCard;
         copy.dealCard = dealCard;
+        copy.stateList = stateList;
         return copy;
     }
 

@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89f4dcab2ea0aba4cb56c4548ba65cb0, type: 3}
+  m_Name: t_Buff_data
+  m_EditorClassIdentifier: 
+  asset:
+  - id: 1
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    sdes: "\uFFFD\xB4\u03B0\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u0427\uFFFD\uFFFD\uFFFD\uFFFD\u0427"
+    taketype: 0
+    hittype: 0
+    takenum: 0
+  - id: 2
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\u01FF\uFFFD\uFFFD"
+    sdes: "\uFFFD\xB4\uFFFD\uFFFD\u02FA\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u01FF"
+    taketype: 0
+    hittype: 0
+    takenum: 0
+  - id: 3
+    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    sdes: "\uFFFD\xB4\uFFFD\uFFFD\u02FA\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    taketype: 0
+    hittype: 0
+    takenum: 0
+  - id: 4
+    sname: "\u04F2\uFFFD\uFFFD"
+    sdes: "\uFFFD\u0735\uFFFD\uFFFD\u0137\uFFFD\u052A\uFFFD\uFFFD\uFFFD\u02FA\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD1\uFFFD\uFFFD"
+    taketype: 1
+    hittype: 0
+    takenum: 1

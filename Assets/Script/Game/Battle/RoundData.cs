@@ -10,6 +10,12 @@ public class RoundData : BaseData
     public bool isplayer;
     //效果  造成伤害等计算一下
     public int hitnum;      //伤害
+    public int firenum;
+    public int waternum;
+    public int thundernum;
+    public int forestnum;
+
+
     public int hitselfnum;      //打自己
     public int recovernum;      //恢复
     public int defnum;      //防御

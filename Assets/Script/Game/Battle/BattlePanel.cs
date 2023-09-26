@@ -123,6 +123,63 @@ public class BattlePanel : PanelBase
             list.Add(int.Parse(ids[i]));
         enemyque = CardCalculate.getRandomList(list);
     }
+
+    #region buff
+    public Dictionary<int, int> bufflistP = new Dictionary<int, int>();
+    public Dictionary<int, int> bufflistE = new Dictionary<int, int>();
+    private List<BuffItem> buffpool = new List<BuffItem>();
+    int bufficonLength = 20;
+    public void AddBuff(int id, bool isenemy = false, int num = 0)
+    {
+        if (isenemy)
+            if (bufflistE.ContainsKey(id))
+                bufflistE[id] += num;
+            else
+                bufflistE.Add(id, num);
+        else
+        {
+            if (bufflistP.ContainsKey(id))
+                bufflistP[id] += num;
+            else
+                bufflistP.Add(id, num);
+        }
+    }
+    public void removeBuff(int id, bool isenemy = false)
+    {
+        if (isenemy)
+        {
+            if (bufflistE.ContainsKey(id))
+                bufflistE.Remove(id);
+        }
+        else
+        {
+            if (bufflistP.ContainsKey(id))
+                bufflistP.Remove(id);
+        }
+    }
+    //更新一下buff
+    public void refreshState()
+    {
+        //回合结束也会刷新一下
+        foreach (var i in buffpool)
+            i.gameObject.SetActive(false);
+        int index = 0;
+        foreach(var i in bufflistP)
+        {
+            if(index>= buffpool.Count)
+            {
+                var obj = Instantiate(stateclone);
+                obj.transform.SetParent(stateStartPos.transform.parent);
+                obj.transform.localScale = Vector3.one;
+                buffpool.Add(obj.GetComponent<BuffItem>());
+            }
+            buffpool[index].transform.position = stateStartPos.transform.position + new Vector3(bufficonLength * index, 0);
+            buffpool[index].setData(i.Key, i.Value);
+        }
+    }
+    #endregion
+
+
     #region     阶段控制
     //开始阶段
     public void startGame()
@@ -452,12 +509,6 @@ public class BattlePanel : PanelBase
         }
         manaExtra.SetActive(player.extraLimit >= 1);
         manaExtra2.SetActive(player.extraLimit >= 2);
-    }
-    //更新一下buff
-    public void refreshState()
-    {
-        //回合结束也会刷新一下
-        var obj = Instantiate(stateclone);
     }
     //腾一下展示桌面  准备回合生效
     public void playRoundWillShow()

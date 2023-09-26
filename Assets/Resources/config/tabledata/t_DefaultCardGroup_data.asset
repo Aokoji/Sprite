@@ -14,74 +14,74 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   asset:
   - id: 1
-    cardsname: "\u57FA\u7840\u5361\u7EC4A\u68EE\u6797"
+    cardsname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDA\u026D\uFFFD\uFFFD"
     cardlist: 1|1|4|4|5|5|6|6|7|7|8|8|9|9|10|10|11|11|12|12
   - id: 2
-    cardsname: "\u6D4B\u8BD5\u589E\u5F3A\u5361\u7EC4"
+    cardsname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u01FF\uFFFD\uFFFD\uFFFD\uFFFD"
     cardlist: 31|31|32|32|35|35|39|39|41|41|15|15|7|7|38|28|5|25|17|48
   - id: 3
-    cardsname: "\u5927\u9B54\u6CD5\u5E08"
+    cardsname: "\uFFFD\uFFFD\u0127\uFFFD\uFFFD\u02A6"
     cardlist: 28|26|24|15|34|35|38|39|51|81|41|41|85|85|88|89|80|70|36|77
   - id: 4
-    cardsname: "\u7269\u7406\u5C0F\u5996"
+    cardsname: "\uFFFD\uFFFD\uFFFD\uFFFD\u0421\uFFFD\uFFFD"
     cardlist: 4|4|6|17|158|159|160|160|156|156|157|184|183|161|162|162|154|162|162
   - id: 5
-    cardsname: "\u9B54\u6CD5\u5C0F\u5996"
+    cardsname: "\u0127\uFFFD\uFFFD\u0421\uFFFD\uFFFD"
     cardlist: 186|185|5|5|186|7|10|11|185|15|17|158|159|184|160|163|163|163|164|156
   - id: 6
-    cardsname: "\u68EE\u6797\u91CE\u517D"
+    cardsname: "\u026D\uFFFD\uFFFD\u04B0\uFFFD\uFFFD"
     cardlist: 153|154|154|155|155|156|165|165|162|162|158|162|166|166|160|160|161|162|167|167
   - id: 7
-    cardsname: "\u8150\u5316\u751F\u7269"
+    cardsname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
     cardlist: 150|150|169|169|169|169|169|169|169|186|186|160|160|156|168|168|157|172|162|162
   - id: 8
-    cardsname: "\u9B54\u6CD5\u751F\u7269"
+    cardsname: "\u0127\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
     cardlist: 150|5|186|186|186|185|169|169|168|168|163|164|164|164|172|185|154|160|160|160
   - id: 9
-    cardsname: "\u8346\u68D8"
+    cardsname: "\uFFFD\uFFFD\uFFFD\uFFFD"
     cardlist: 156|156|156|156|156|156|156|156|170|170|170|170|171|171|162|162|183|183|184|184
   - id: 10
-    cardsname: "\u87B3\u8782"
+    cardsname: "\uFFFD\uFFFD\uFFFD"
     cardlist: 173|173|173|174|174|183|158|183|159|160|186|184|161|162|162|157|157|154|183|183
   - id: 11
-    cardsname: "\u6BD2\u86DB"
+    cardsname: "\uFFFD\uFFFD\uFFFD\uFFFD"
     cardlist: 175|175|175|176|176|176|156|156|154|183|158|162|162|162|157|186|160|160|150|177
   - id: 12
-    cardsname: "\u4FB5\u8680\u9B54\u65CF"
+    cardsname: "\uFFFD\uFFFD\u02B4\u0127\uFFFD\uFFFD"
     cardlist: 178|172|172|169|169|168|179|179|155|155|155|180|180|181|181|162|162|156|186|160
   - id: 13
-    cardsname: "\u521D\u7EA7\u7269\u7406"
+    cardsname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
     cardlist: 182|182|4|4|6|14|17|159|160|160|156|184|157|161|161|162|162|154|183|183
   - id: 14
-    cardsname: "\u521D\u7EA7\u9B54\u6CD5"
+    cardsname: "\uFFFD\uFFFD\uFFFD\uFFFD\u0127\uFFFD\uFFFD"
     cardlist: 1|1|5|5|7|186|10|11|15|10|159|186|160|163|163|163|164|184|185|185
   - id: 15
-    cardsname: "\u5D29\u574F"
+    cardsname: "\uFFFD\uFFFD\uFFFD\uFFFD"
     cardlist: 187|187|187|187|187|187|187|187|187|187|187|187|187|187|187|189|189|189|189|153
   - id: 16
-    cardsname: "\u7070\u7FFC"
+    cardsname: "\uFFFD\uFFFD\uFFFD\uFFFD"
     cardlist: 180|181|179|154|186|186|150|151|196|196|196|197|197|202|202|204|204|155|155|160
   - id: 17
-    cardsname: "\u5DE8\u718A"
+    cardsname: "\uFFFD\uFFFD\uFFFD\uFFFD"
     cardlist: 151|151|155|155|165|165|154|166|166|167|167|172|172|179|205|184|184|160|160|169
   - id: 18
-    cardsname: "\u8001\u6811"
+    cardsname: "\uFFFD\uFFFD\uFFFD\uFFFD"
     cardlist: 151|150|206|171|169|169|169|85|85|186|207|207|208|208|160|209|156|156|195|195
   - id: 19
-    cardsname: "\u91D1\u9CDE"
+    cardsname: "\uFFFD\uFFFD\uFFFD\uFFFD"
     cardlist: 153|151
   - id: 20
-    cardsname: "\u5343\u8DB3"
+    cardsname: "\u01E7\uFFFD\uFFFD"
     cardlist: 153|153|153
   - id: 21
-    cardsname: "\u9886\u519B"
-    cardlist: 153|153
+    cardsname: "\uFFFD\uFFFD\uFFFD"
+    cardlist: 153|153|211
   - id: 22
-    cardsname: "\u9ED1\u7FFC"
+    cardsname: "\uFFFD\uFFFD\uFFFD\uFFFD"
     cardlist: 151|151
   - id: 23
-    cardsname: "\u706B\u9886\u4E3B"
+    cardsname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
     cardlist: 152|152|151
   - id: 24
-    cardsname: "\u5927\u6D77\u5996"
+    cardsname: "\uFFFD\uFFFD\uFFFD\uFFFD"
     cardlist: 153|153|151

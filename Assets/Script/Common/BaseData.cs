@@ -93,6 +93,11 @@ public enum CardType2
     s_arcaneOff,       //29奥术强化    消耗掉
     s_reduce,       //30减攻
 
+    n_fire,     //31-34 火水雷木
+    n_water,
+    n_thunder,
+    n_forest,
+
     n_enemydeal,
     //标识最优先     真言  其次--    先制，诅咒，秘术，获得卡
 
