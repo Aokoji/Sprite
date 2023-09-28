@@ -112,6 +112,8 @@ public class BattlePanel : PanelBase
                 list.Add(int.Parse(ids[i]));
         }
         playerque = CardCalculate.getRandomList(list);
+        //buff
+        initAddBuff(player.id, false);
         refreshCardGroups();
     }
     private void getEnemyNewCardQue()
@@ -122,6 +124,32 @@ public class BattlePanel : PanelBase
         for (int i = 0; i < ids.Length; i++)
             list.Add(int.Parse(ids[i]));
         enemyque = CardCalculate.getRandomList(list);
+        //buff
+        initAddBuff(enemy.id, true);
+    }
+    void initAddBuff(int id,bool isenemy)
+    {
+        if (isenemy)
+        {
+            var emy = Config_t_ActorMessage.getOne(enemy.id);
+            if (!emy.buff.Equals("0"))
+            {
+                string[] str =emy.buff.Split('|');
+                foreach (var i in str)
+                    bufflistE.Add(int.Parse(i), 0);
+            }
+        }
+        else
+        {
+            string[] levelstr = Config_t_TakeCardLevel.getOne(player.id).stateLevel.Split('|');
+            string[] bufstr = Config_t_TakeCardLevel.getOne(player.id).stateid.Split('|');
+            for (int i = 0; i < levelstr.Length; i++)
+            {
+                if (player.level < int.Parse(levelstr[i])) continue;
+                if (!bufstr.Equals("0"))
+                    bufflistP.Add(int.Parse(bufstr[i]), 0);
+            }
+        }
     }
 
     #region buff

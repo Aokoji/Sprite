@@ -284,39 +284,6 @@ public class BattleControl :Object
         }
         //****  增减伤计算   双方都要算
         buffCalculater(data);
-        //减攻加攻和屏障
-        if (data.isplayer)
-        {
-            if (isdefendE)
-            {
-                data.hitnum = 0;
-                data.isdefend = true;
-            }
-            else if(reduceP>0)
-            {
-                data.hitnum = Mathf.Max(0, data.hitnum - reduceP);
-                reduceP = 0;
-            }
-            isdefendE = false;
-            if(boostSave>0)
-                isBoostP+= boostSave;
-        }
-        else
-        {
-            if (isdefendP)
-            {
-                data.hitnum = 0;
-                data.isdefend = true;
-            }
-            else if (reduceE > 0)
-            {
-                data.hitnum = Mathf.Max(0, data.hitnum - reduceE);
-                reduceE = 0;
-            }
-            isdefendP = false;
-            if (boostSave > 0)
-                isBoostE += boostSave;
-        }
         //反伤 结算
         if (data.hitnum > 0)
         {
@@ -358,18 +325,6 @@ public class BattleControl :Object
                 break;
             case CardType2.n_hit:
                 data.hitnum += damage;
-                break;
-            case CardType2.n_fire:
-                data.firenum += damage;
-                break;
-            case CardType2.n_water:
-                data.waternum += damage;
-                break;
-            case CardType2.n_thunder:
-                data.thundernum += damage;
-                break;
-            case CardType2.n_forest:
-                data.forestnum += damage;
                 break;
             case CardType2.n_deal:
                 data.dealnum += damage;
@@ -481,49 +436,104 @@ public class BattleControl :Object
                 else
                     ui.AddBuff(3, false, damage);
                 break;
+            case CardType2.n_hittwo:
+                data.morehit.Add(damage);
+                data.morehit.Add(damage);
+                break;
+            case CardType2.n_hitthree:
+                data.morehit.Add(damage);
+                data.morehit.Add(damage);
+                data.morehit.Add(damage);
+                break;
         }
     }
+    void effectBuff(t_Buff config, RoundData data, int num = 0)
+    {
+        switch (config.hittype)
+        {
+            
+            case 1://非元素
+                if(data.hitType==0)
+                {
+                    data.addition += num;
+                    if (config.sustainType == 2 || config.sustainType == 3)
+                        ui.removeBuff(config.id, !data.isplayer);
+                }
+                break;
+            case 12:
+                if (data.hitnum > 0 || data.hitselfnum > 0 || data.morehit.Count > 0)
+                {
+                    data.hitnum = 0;
+                    data.morehit.Clear();
+                    if (config.sustainType == 2 || config.sustainType == 3)
+                        ui.removeBuff(config.id, !data.isplayer);
+                }
+                break;
+            case 21://增强（全伤害
+                if (data.hitnum > 0 || data.hitselfnum > 0 || data.morehit.Count>0)
+                {
+                    data.addition += num;
+                    if (config.sustainType == 2 || config.sustainType == 3)
+                        ui.removeBuff(config.id, !data.isplayer);
+                }
+                break;
+            case 30:
+                if (data.hitnum > 0 || data.hitselfnum > 0 || data.morehit.Count > 0)
+                {
+                    data.addition -= num;
+                    if (config.sustainType == 2 || config.sustainType == 3)
+                        ui.removeBuff(config.id, !data.isplayer);
+                }
+                break;
+            case 31:
+                if (data.hitType == 1)
+                {
+                    data.addition += num;
+                    if (config.sustainType == 2 || config.sustainType == 3)
+                        ui.removeBuff(config.id, !data.isplayer);
+                }
+                break;
+            case 32:
+                if (data.hitType == 2)
+                {
+                    data.addition += num;
+                    if (config.sustainType == 2 || config.sustainType == 3)
+                        ui.removeBuff(config.id, !data.isplayer);
+                }
+                break;
+            case 33:
+                if (data.hitType == 3)
+                {
+                    data.addition += num;
+                    if (config.sustainType == 2 || config.sustainType == 3)
+                        ui.removeBuff(config.id, !data.isplayer);
+                }
+                break;
+            case 34:
+                if (data.hitType == 4)
+                {
+                    data.addition += num;
+                    if (config.sustainType == 2 || config.sustainType == 3)
+                        ui.removeBuff(config.id, !data.isplayer);
+                }
+                break;
+        }
+    }
+    
     void buffCalculater(RoundData data)
     {
+        t_Buff config;
         foreach(var i in ui.bufflistP)
         {
-
+            config = Config_t_Buff.getOne(i.Key);
+            if ((data.isplayer && config.taketype == 0) || (!data.isplayer && config.taketype == 1))
+                effectBuff(config, data, i.Value);
         }
         foreach (var i in ui.bufflistE)
         {
-
-        }
-        if (data.isplayer)
-        {
-            if (isdefendE)
-            {
-                data.hitnum = 0;
-                data.isdefend = true;
-            }
-            else if (reduceP > 0)
-            {
-                data.hitnum = Mathf.Max(0, data.hitnum - reduceP);
-                reduceP = 0;
-            }
-            isdefendE = false;
-            if (boostSave > 0)
-                isBoostP += boostSave;
-        }
-        else
-        {
-            if (isdefendP)
-            {
-                data.hitnum = 0;
-                data.isdefend = true;
-            }
-            else if (reduceE > 0)
-            {
-                data.hitnum = Mathf.Max(0, data.hitnum - reduceE);
-                reduceE = 0;
-            }
-            isdefendP = false;
-            if (boostSave > 0)
-                isBoostE += boostSave;
+            config = Config_t_Buff.getOne(i.Key);
+            if ((!data.isplayer && config.taketype == 0) || (data.isplayer && config.taketype == 1))
+                effectBuff(config, data, i.Value);
         }
     }
     private void playCardNext(RoundData data)
@@ -549,9 +559,27 @@ public class BattleControl :Object
         }
         if (pass.hp_cur + pass.def_cur <= data.hitnum)
             pass.hp_cur = 0;
-        else if(data.hitnum>0)
+        if (data.toDefen > 0)
         {
-            int hit = data.hitnum;
+            data.toDefen += data.hit_addition;
+            data.toDefen = Mathf.Max(0, data.toDefen);
+            if (pass.def_cur > 0)
+            {
+                pass.def_cur -= data.toDefen;
+                pass.def_cur = Mathf.Max(0, pass.def_cur);
+            }
+        }
+        else if (data.hitnum > 0 || data.morehit.Count > 0)
+        {
+            int hit = 0;
+            if (data.hitnum > 0)
+            {
+                data.hitnum += data.hit_addition;
+                data.hitnum = Mathf.Max(0, data.hitnum);
+            }
+            hit = data.hitnum;
+            foreach (var i in data.morehit)
+                hit += i + data.hit_addition;
             if (pass.def_cur > 0)
             {
                 if (hit > pass.def_cur)
@@ -568,31 +596,28 @@ public class BattleControl :Object
         }
         else if (data.brokenum > 0)
         {
+            data.brokenum += data.hit_addition;
+            data.brokenum = Mathf.Max(0, data.brokenum);
             pass.hp_cur -= data.brokenum;
-        }
-        else if(data.toDefen > 0)
-        {
-            if (pass.def_cur > 0)
-            {
-                pass.def_cur -= data.toDefen;
-                pass.def_cur = Mathf.Max(0, pass.def_cur);
-            }
         }
         if (data.hitselfnum > 0)
         {
+            data.hitselfnum += data.hit_addition;
+            data.hitselfnum = Mathf.Max(0, data.hitselfnum);
+            int hit = data.hitselfnum + data.hit_addition;
             if (take.def_cur > 0)
             {
-                if (take.def_cur > data.hitselfnum)
-                    take.def_cur -= data.hitselfnum;
+                if (take.def_cur >= hit)
+                    take.def_cur -= hit;
                 else
                 {
-                    int num = data.hitselfnum - take.def_cur;
+                    hit -= take.def_cur;
                     take.def_cur = 0;
-                    take.hp_cur -= num;
+                    take.hp_cur -= hit;
                 }
             }
             else
-                take.hp_cur -= data.hitselfnum;
+                take.hp_cur -= hit;
         }
         if (data.recovernum > 0)
         {

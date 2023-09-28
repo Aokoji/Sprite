@@ -98,6 +98,9 @@ public enum CardType2
     n_thunder,
     n_forest,
 
+    n_hittwo,   //35    连续2
+    n_hitthree,     //36 连续3
+
     n_enemydeal,
     //标识最优先     真言  其次--    先制，诅咒，秘术，获得卡
 

@@ -14,26 +14,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   asset:
   - id: 1
-    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
-    sdes: "\uFFFD\xB4\u03B0\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u0427\uFFFD\uFFFD\uFFFD\uFFFD\u0427"
+    sname: "\u5965\u672F\u5145\u80FD"
+    sdes: "\u4E0B\u6B21\u5965\u672F\u5145\u80FD\u6548\u679C\u751F\u6548"
+    imgname: test1
     taketype: 0
     hittype: 0
     takenum: 0
+    sustainType: 2
   - id: 2
-    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\u01FF\uFFFD\uFFFD"
-    sdes: "\uFFFD\xB4\uFFFD\uFFFD\u02FA\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u01FF"
+    sname: "\u653B\u51FB\u5F3A\u5316"
+    sdes: "\u4E0B\u6B21\u4F24\u5BB3\u83B7\u5F97\u589E\u5F3A"
+    imgname: test1
     taketype: 0
     hittype: 0
     takenum: 0
+    sustainType: 2
   - id: 3
-    sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
-    sdes: "\uFFFD\xB4\uFFFD\uFFFD\u02FA\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+    sname: "\u653B\u51FB\u51CF\u5F31"
+    sdes: "\u4E0B\u6B21\u4F24\u5BB3\u51CF\u5F31"
+    imgname: test1
     taketype: 0
     hittype: 0
     takenum: 0
+    sustainType: 2
   - id: 4
-    sname: "\u04F2\uFFFD\uFFFD"
-    sdes: "\uFFFD\u0735\uFFFD\uFFFD\u0137\uFFFD\u052A\uFFFD\uFFFD\uFFFD\u02FA\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD1\uFFFD\uFFFD"
+    sname: "\u786C\u58F3"
+    sdes: "\u53D7\u5230\u7684\u975E\u5143\u7D20\u4F24\u5BB3\u51CF\u5C111\u70B9"
+    imgname: test1
+    taketype: 1
+    hittype: 1
+    takenum: 1
+    sustainType: 1
+  - id: 5
+    sname: "\u5C4F\u969C"
+    sdes: "\u514D\u75AB\u672C\u56DE\u5408\u4E0B\u6B21\u6536\u5230\u7684\u4F24\u5BB3"
+    imgname: test1
     taketype: 1
     hittype: 0
-    takenum: 1
+    takenum: 0
+    sustainType: 3

@@ -22,8 +22,8 @@ MonoBehaviour:
     forest: 2
     arcane: 0
     goden: 1
-    stateid: 
-    stateLevel: 
+    stateid: 4
+    stateLevel: 0
   - id: 2
     sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
     normal: 1
@@ -33,8 +33,8 @@ MonoBehaviour:
     forest: 1
     arcane: 0
     goden: 1
-    stateid: 
-    stateLevel: 
+    stateid: 0
+    stateLevel: 0
   - id: 3
     sname: "\u04B6\uFFFD\uFFFD\uFFFD\uFFFD"
     normal: 1
@@ -44,8 +44,8 @@ MonoBehaviour:
     forest: 3
     arcane: 1
     goden: 1
-    stateid: 
-    stateLevel: 
+    stateid: 0
+    stateLevel: 0
   - id: 4
     sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
     normal: 1
@@ -55,8 +55,8 @@ MonoBehaviour:
     forest: 0
     arcane: 3
     goden: 1
-    stateid: 
-    stateLevel: 
+    stateid: 0
+    stateLevel: 0
   - id: 5
     sname: "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
     normal: 1
@@ -66,5 +66,5 @@ MonoBehaviour:
     forest: 0
     arcane: 0
     goden: 1
-    stateid: 
-    stateLevel: 
+    stateid: 0
+    stateLevel: 0

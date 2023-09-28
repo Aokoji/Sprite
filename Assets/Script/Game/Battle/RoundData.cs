@@ -9,12 +9,10 @@ public class RoundData : BaseData
     public SpriteData sprite;
     public bool isplayer;
     //效果  造成伤害等计算一下
-    public int hitnum;      //伤害
-    public int firenum;
-    public int waternum;
-    public int thundernum;
-    public int forestnum;
-
+    public int hitnum;      //伤害mix
+    public int hitType;     //01234伤害属性
+    public List<int> morehit = new List<int>();
+    public int hit_addition;    //伤害补正
 
     public int hitselfnum;      //打自己
     public int recovernum;      //恢复
