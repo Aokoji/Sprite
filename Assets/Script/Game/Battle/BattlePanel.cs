@@ -67,7 +67,7 @@ public class BattlePanel : PanelBase
     enum rank
     {
         none,
-        //dealcard,
+        dealcard,
         takecard,
         roundCalcu,
         showcard,
@@ -129,6 +129,7 @@ public class BattlePanel : PanelBase
     }
     void initAddBuff(int id,bool isenemy)
     {
+        stateclone.SetActive(false);
         if (isenemy)
         {
             var emy = Config_t_ActorMessage.getOne(enemy.id);
@@ -146,7 +147,7 @@ public class BattlePanel : PanelBase
             for (int i = 0; i < levelstr.Length; i++)
             {
                 if (player.level < int.Parse(levelstr[i])) continue;
-                if (!bufstr.Equals("0"))
+                if (!bufstr[i].Equals("0"))
                     bufflistP.Add(int.Parse(bufstr[i]), 0);
             }
         }
@@ -205,6 +206,20 @@ public class BattlePanel : PanelBase
             buffpool[index].setData(i.Key, i.Value);
         }
     }
+    public void roundrefreshState()
+    {
+        t_Buff conf;
+        foreach (var i in buffpool)
+        {
+            i.gameObject.SetActive(false);
+        }
+        foreach (var i in bufflistP)
+        {
+            conf = Config_t_Buff.getOne(i.Key);
+            if (conf.sustainType == 0 || conf.sustainType == 3)
+                bufflistP.Remove(i.Key);
+        }
+    }
     #endregion
 
 
@@ -244,9 +259,14 @@ public class BattlePanel : PanelBase
                 EventAction.Instance.TriggerAction(eventType.roundEnd_C, takeCardlist);
                 break;
             case rank.roundCalcu:
-                currank = rank.takecard;    //回合结算
-                refreshState();
+                currank = rank.dealcard;    //回合结算
+                roundrefreshState();
                 EventAction.Instance.TriggerAction(eventType.playRoundNext);
+                break;
+            case rank.dealcard: //计算take
+                currank = rank.takecard;
+                addAction(() => { dealCard(1); });
+                dealEnemyCard(1);
                 break;
             case rank.takecard:
                 currank = rank.showcard;
@@ -255,8 +275,6 @@ public class BattlePanel : PanelBase
                 foreach (var i in handEnemylist)
                     str.Append(i._data.sname);
                 PubTool.Log(str.ToString());
-                addAction(() => { dealCard(1); });
-                dealEnemyCard(1);
                 //回合开始
                 PanelManager.Instance.showTips1("回合开始", PanelManager.Instance.panelUnlock);
                 break;

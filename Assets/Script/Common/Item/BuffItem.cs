@@ -26,13 +26,14 @@ public class BuffItem : UIBase, IPointerDownHandler, IPointerUpHandler
     {
         _data = Config_t_Buff.getOne(id);
         buffText.gameObject.SetActive(false);
-        if (num > 0)
+        if (num != 0)
         {
-            buffdes.text = _data.sdes;
+            buffdes.text = string.Format(_data.sdes, num);
+            buffText.text = num.ToString();
             buffText.gameObject.SetActive(true);
         }
         else
-            buffdes.text = string.Format(_data.sdes, num);
+            buffdes.text = _data.sdes;
         messobj.SetActive(false);
         buffimg.sprite = GetSprite(A_AtlasNames.itemsIcon.ToString(), _data.imgname);
         gameObject.SetActive(true);
