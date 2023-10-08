@@ -52,6 +52,8 @@ public enum E_Particle
     particle_move,
     particle_movefire,
 
+    particle_counter,
+
     particle_chooseCardSet,
     particle_chooseCardBar,
 

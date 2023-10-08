@@ -26,7 +26,7 @@ MonoBehaviour:
     sdes: "\u4E0B\u6B21\u4F24\u5BB3\u83B7\u5F97\u589E\u5F3A"
     imgname: test1
     taketype: 0
-    hittype: 0
+    hittype: 21
     takenum: 0
     sustainType: 2
   - id: 3
@@ -34,7 +34,7 @@ MonoBehaviour:
     sdes: "\u4E0B\u6B21\u4F24\u5BB3\u51CF\u5F31"
     imgname: test1
     taketype: 0
-    hittype: 0
+    hittype: 30
     takenum: 0
     sustainType: 2
   - id: 4
@@ -50,6 +50,6 @@ MonoBehaviour:
     sdes: "\u514D\u75AB\u672C\u56DE\u5408\u4E0B\u6B21\u6536\u5230\u7684\u4F24\u5BB3"
     imgname: test1
     taketype: 1
-    hittype: 0
+    hittype: 12
     takenum: 0
     sustainType: 3

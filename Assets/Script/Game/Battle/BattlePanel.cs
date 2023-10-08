@@ -581,7 +581,6 @@ public class BattlePanel : PanelBase
                     dataround.entity.playCounterAnim(playerNextQue);
                 else
                 {
-                    dataround.entity.gameObject.SetActive(false);
                     playerNextQue();
                 }
             });
@@ -594,10 +593,12 @@ public class BattlePanel : PanelBase
                 if (isplayer) addAction(() => { dealCard(dataround.dealnum); });
                 else addAction(() => { dealEnemyCard(dataround.dealnum); });
             }
-            if (dataround._card.type2 == CardType2.n_counter)
+            if (dataround.haveCounter)
             {
                 addAction(() => {
-                    RunSingel.Instance.laterDo(0.5f, playerNextQue);
+                    //诅咒特效
+                    ParticleManager.Instance.playEffect(E_Particle.particle_counter, dataround.entity.transform.position);
+                    RunSingel.Instance.laterDo(2.8f, playerNextQue);
                 });
             }
             if (dataround._card.type2 == CardType2.d_decounter)
@@ -759,7 +760,8 @@ public class BattlePanel : PanelBase
             }
         }
         //下一张
-        addAction(() => { 
+        addAction(() => {
+            dataround.entity.gameObject.SetActive(false);
             cardAlign(dataround);      //对齐
             //刷新状态
             refreshState();

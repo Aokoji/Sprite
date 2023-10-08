@@ -376,6 +376,7 @@ public class BattleControl :Object
             case CardType2.n_counter:
                 if (data.isplayer) iscounterE = true;
                 else iscounterP = true;
+                data.haveCounter = true;
                 break;
             case CardType2.n_broke:
                 data.brokenum += damage;
