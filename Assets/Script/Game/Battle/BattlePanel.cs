@@ -45,8 +45,9 @@ public class BattlePanel : PanelBase
     public GameObject battleSettle;
 
     public GameObject stateclone;    //状态小图标    image
-    public GameObject stateStartPos;    //起始位置
+    public UITool_ScrollView scroll1;
 
+    public GameObject lockPanel;
     //===================   obj    ==========
 
     private Queue<int> playerque;
@@ -79,11 +80,14 @@ public class BattlePanel : PanelBase
         player = player_data;
         enemy = enemy_data;
         battleSettle.SetActive(false);
+        scroll1.initConfig(50, 50, stateclone);
         getPlayerNewCardQue();
         getEnemyNewCardQue();
         refreshPlayerData();
         refreshEnemyData();
         refreshMana();
+        buff_changed = true;
+        refreshState();
     }
     public override void registerEvent()
     {
@@ -113,6 +117,8 @@ public class BattlePanel : PanelBase
         }
         playerque = CardCalculate.getRandomList(list);
         //buff
+        bufflistP.Add(1, 0);
+        bufflistP.Add(4, 0);
         initAddBuff(player.id, false);
         refreshCardGroups();
     }
@@ -156,10 +162,11 @@ public class BattlePanel : PanelBase
     #region buff
     public Dictionary<int, int> bufflistP = new Dictionary<int, int>();
     public Dictionary<int, int> bufflistE = new Dictionary<int, int>();
-    private List<BuffItem> buffpool = new List<BuffItem>();
-    int bufficonLength = 20;
+    bool buff_changed;
+    float bufficonLength;
     public void AddBuff(int id, bool isenemy = false, int num = 0)
     {
+        buff_changed = true;
         if (isenemy)
             if (bufflistE.ContainsKey(id))
                 bufflistE[id] += num;
@@ -175,6 +182,7 @@ public class BattlePanel : PanelBase
     }
     public void removeBuff(int id, bool isenemy = false)
     {
+        buff_changed = true;
         if (isenemy)
         {
             if (bufflistE.ContainsKey(id))
@@ -189,36 +197,17 @@ public class BattlePanel : PanelBase
     //更新一下buff
     public void refreshState()
     {
+        if (!buff_changed) return;
         //回合结束也会刷新一下
-        foreach (var i in buffpool)
-            i.gameObject.SetActive(false);
-        int index = 0;
+        scroll1.recycleAll();
         foreach(var i in bufflistP)
         {
-            if(index>= buffpool.Count)
-            {
-                var obj = Instantiate(stateclone);
-                obj.transform.SetParent(stateStartPos.transform.parent);
-                obj.transform.localScale = Vector3.one;
-                buffpool.Add(obj.GetComponent<BuffItem>());
-            }
-            buffpool[index].transform.position = stateStartPos.transform.position + new Vector3(bufficonLength * index, 0);
-            buffpool[index].setData(i.Key, i.Value);
+            var obj = scroll1.addItemDefault();
+            obj.transform.localScale = Vector3.one;
+            var script = obj.GetComponent<BuffItem>();
+            script.setData(i.Key, i.Value);
         }
-    }
-    public void roundrefreshState()
-    {
-        t_Buff conf;
-        foreach (var i in buffpool)
-        {
-            i.gameObject.SetActive(false);
-        }
-        foreach (var i in bufflistP)
-        {
-            conf = Config_t_Buff.getOne(i.Key);
-            if (conf.sustainType == 0 || conf.sustainType == 3)
-                bufflistP.Remove(i.Key);
-        }
+        buff_changed = false;
     }
     #endregion
 
@@ -249,18 +238,21 @@ public class BattlePanel : PanelBase
         }
         rankAction.Dequeue().Invoke();
     }
+    void panellock(bool islock)
+    {
+        lockPanel.SetActive(islock);
+    }
     private void nextRank()
     {
         switch (currank)
         {
             case rank.showcard: //计算take牌
                 currank = rank.roundCalcu;
-                PanelManager.Instance.panelLock();
+                panellock(true);
                 EventAction.Instance.TriggerAction(eventType.roundEnd_C, takeCardlist);
                 break;
             case rank.roundCalcu:
                 currank = rank.dealcard;    //回合结算
-                roundrefreshState();
                 EventAction.Instance.TriggerAction(eventType.playRoundNext);
                 break;
             case rank.dealcard: //计算take
@@ -299,7 +291,7 @@ public class BattlePanel : PanelBase
     public void dealCard(int num)
     {
         //屏蔽点击
-        PanelManager.Instance.panelLock();
+        panellock(true);
         StartCoroutine(rundeal(num));
         //抽牌结束开放
     }
@@ -330,7 +322,7 @@ public class BattlePanel : PanelBase
         }
         while (finishNum < num)
             yield return null;
-        PanelManager.Instance.panelUnlock();
+        panellock(false);
         playerNextQue();
     }
     IEnumerator runEnemydeal(int num)
@@ -735,6 +727,7 @@ public class BattlePanel : PanelBase
             if (dataround.addition > 0)
             {
 				addAction(() => {
+                    dataround.entity.gameObject.SetActive(false);
                     if (dataround.isplayer)
                     {
                         playerque = CardCalculate.addOneCard(playerque, dataround.addition);
@@ -789,6 +782,7 @@ public class BattlePanel : PanelBase
     }
     public void roundEndAndContinue()
     {
+        refreshState();
         playerNextQue();
     }
     public void gameSettle(bool iswin)

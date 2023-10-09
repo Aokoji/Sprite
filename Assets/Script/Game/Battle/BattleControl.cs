@@ -178,6 +178,8 @@ public class BattleControl :Object
         }
         //获取数据
         round++;
+        buffp_copy = null;
+        buffe_copy = null;
         RoundData data;
         if(willTakeplayerque.Count<=0) isplayerround=false;
         if(willTakeenemyque.Count<=0) isplayerround=true;
@@ -212,7 +214,9 @@ public class BattleControl :Object
             playCardNext(data);
             return;
         }
-        //计算伤害
+        buffp_copy = new Dictionary<int, int>(ui.bufflistP);
+        buffe_copy = new Dictionary<int, int>(ui.bufflistE);
+        //计算伤害和添加buff
         data.hitnum = 0;
         switch (data._card.type2)
         {
@@ -282,7 +286,7 @@ public class BattleControl :Object
                 conditionTypeCalculate(data, data._card.conditionType3, data._card.damage3);
                 break;
         }
-        //****  增减伤计算   双方都要算
+        //buff计算   双方都要算
         buffCalculater(data);
         //反伤 结算
         if (data.hitnum > 0)
@@ -448,16 +452,38 @@ public class BattleControl :Object
                 break;
         }
     }
+
+    #region buff else
+    Dictionary<int, int> buffp_copy;
+    Dictionary<int, int> buffe_copy;
+
+    void buffcalcu_roundSettle()
+    {
+        t_Buff config;
+        var listcopy = new Dictionary<int, int>(ui.bufflistP);
+        foreach (var i in listcopy)
+        {
+            config = Config_t_Buff.getOne(i.Key);
+            if(NormalCalculate.buffcheck_round(config.sustainType))
+                ui.removeBuff(config.id);
+        }
+        listcopy = new Dictionary<int, int>(ui.bufflistE);
+        foreach (var i in listcopy)
+        {
+            config = Config_t_Buff.getOne(i.Key);
+            if (NormalCalculate.buffcheck_round(config.sustainType))
+                ui.removeBuff(config.id, true);
+        }
+    }
     void effectBuff(t_Buff config, RoundData data, int num = 0)
     {
         switch (config.hittype)
         {
-            
             case 1://非元素
-                if(data.hitType==0)
+                if (data.hitType == 0)
                 {
                     data.addition += num;
-                    if (config.sustainType == 2 || config.sustainType == 3)
+                    if (NormalCalculate.buffcheck_consume(config))
                         ui.removeBuff(config.id, !data.isplayer);
                 }
                 break;
@@ -466,77 +492,78 @@ public class BattleControl :Object
                 {
                     data.hitnum = 0;
                     data.morehit.Clear();
-                    if (config.sustainType == 2 || config.sustainType == 3)
+                    if (NormalCalculate.buffcheck_consume(config))
                         ui.removeBuff(config.id, !data.isplayer);
                 }
                 break;
             case 21://增强（全伤害
-                if (data.hitnum > 0 || data.hitselfnum > 0 || data.morehit.Count>0)
+                if (data.hitnum > 0 || data.hitselfnum > 0 || data.morehit.Count > 0)
                 {
-                    data.addition += num;
-                    if (config.sustainType == 2 || config.sustainType == 3)
+                    data.hit_addition += num;
+                    if (NormalCalculate.buffcheck_consume(config))
                         ui.removeBuff(config.id, !data.isplayer);
                 }
                 break;
             case 30:
                 if (data.hitnum > 0 || data.hitselfnum > 0 || data.morehit.Count > 0)
                 {
-                    data.addition -= num;
-                    if (config.sustainType == 2 || config.sustainType == 3)
+                    data.hit_addition -= num;
+                    if (NormalCalculate.buffcheck_consume(config))
                         ui.removeBuff(config.id, !data.isplayer);
                 }
                 break;
             case 31:
                 if (data.hitType == 1)
                 {
-                    data.addition += num;
-                    if (config.sustainType == 2 || config.sustainType == 3)
+                    data.hit_addition += num;
+                    if (NormalCalculate.buffcheck_consume(config))
                         ui.removeBuff(config.id, !data.isplayer);
                 }
                 break;
             case 32:
                 if (data.hitType == 2)
                 {
-                    data.addition += num;
-                    if (config.sustainType == 2 || config.sustainType == 3)
+                    data.hit_addition += num;
+                    if (NormalCalculate.buffcheck_consume(config))
                         ui.removeBuff(config.id, !data.isplayer);
                 }
                 break;
             case 33:
                 if (data.hitType == 3)
                 {
-                    data.addition += num;
-                    if (config.sustainType == 2 || config.sustainType == 3)
+                    data.hit_addition += num;
+                    if (NormalCalculate.buffcheck_consume(config))
                         ui.removeBuff(config.id, !data.isplayer);
                 }
                 break;
             case 34:
                 if (data.hitType == 4)
                 {
-                    data.addition += num;
-                    if (config.sustainType == 2 || config.sustainType == 3)
+                    data.hit_addition += num;
+                    if (NormalCalculate.buffcheck_consume(config))
                         ui.removeBuff(config.id, !data.isplayer);
                 }
                 break;
         }
     }
-    
     void buffCalculater(RoundData data)
     {
         t_Buff config;
-        foreach(var i in ui.bufflistP)
+        foreach (var i in buffp_copy)
         {
             config = Config_t_Buff.getOne(i.Key);
             if ((data.isplayer && config.taketype == 0) || (!data.isplayer && config.taketype == 1))
                 effectBuff(config, data, i.Value);
         }
-        foreach (var i in ui.bufflistE)
+        foreach (var i in buffe_copy)
         {
             config = Config_t_Buff.getOne(i.Key);
             if ((!data.isplayer && config.taketype == 0) || (data.isplayer && config.taketype == 1))
                 effectBuff(config, data, i.Value);
         }
     }
+    #endregion
+
     private void playCardNext(RoundData data)
     {
         //结算这回合的 数据
@@ -646,6 +673,7 @@ public class BattleControl :Object
     {
         player.cost_cur = player.cost_max;
         enemy.cost_cur = enemy.cost_max;
+        buffcalcu_roundSettle();
         ui.roundEndAndContinue();
     }
 

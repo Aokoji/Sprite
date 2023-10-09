@@ -57,4 +57,21 @@ public class NormalCalculate
             list.Add(new ItemData(i.Key, i.Value));
         return list;
     }
+    /// <summary>
+    /// 判断buff是否为消耗型
+    /// </summary>
+    public static bool buffcheck_consume(t_Buff config)
+    {
+        if (config.sustainType == 2 || config.sustainType == 3)
+            return true;
+        else
+            return false;
+    }
+    public static bool buffcheck_round(int taketype)
+    {
+        if (taketype == 0 || taketype == 3)
+            return true;
+        else
+            return false;
+    }
 }
