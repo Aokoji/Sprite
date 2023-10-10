@@ -579,6 +579,8 @@ public class BattlePanel : PanelBase
         });
         if (!dataround.isCounter)
         {
+            Vector3 pos1 = isplayer ? enemyhealth.transform.position : health.transform.position;   //伤害
+            Vector3 pos2 = isplayer ? health.transform.position : enemyhealth.transform.position;   //buff
             //先抽牌
             if (dataround.dealnum > 0)
             {
@@ -593,35 +595,27 @@ public class BattlePanel : PanelBase
                     RunSingel.Instance.laterDo(2.8f, playerNextQue);
                 });
             }
-            if (dataround._card.type2 == CardType2.d_decounter)
+            if (dataround.isdecounter)
             {
                 addAction(() => {
-                    RunSingel.Instance.laterDo(0.5f, playerNextQue);
+                    easybuffAnimPlay(E_Particle.particle_ani_deconter, pos2);
                 });
             }
             if (dataround.recovernum > 0)
             {
                 addAction(() => {
-                    refreshPlayerData();
-                    refreshEnemyData();
-                    RunSingel.Instance.laterDo(0.5f, playerNextQue);
+                    easybuffAnimPlay(E_Particle.particle_ani_recover, pos2, "+" + dataround.recovernum);
                 });
             }
-            if (dataround.brokenum > 0)
+            if (dataround.havePower)
             {
                 addAction(() =>
-                {
-                    var par = ParticleManager.Instance.getPlayEffect(E_Particle.particle_movefire, dataround.entity.transform.position);
-                    RunSingel.Instance.laterDo(0.8f, () =>
+                {   //power升级效果
+                    var par = ParticleManager.Instance.getPlayEffect(E_Particle.particle_power, dataround.entity.transform.position);
+                    RunSingel.Instance.laterDo(1.5f, () =>
                     {
-                        RunSingel.Instance.moveTo(par, isplayer ? enemyhealth.transform.position : health.transform.position, ConfigConst.cardtime_effectMoveSlow, () =>
-                        {
-                            par.SetActive(false);
-                            ParticleManager.Instance.playEffect_special(E_Particle.particle_hit, isplayer ? enemyhealth.transform.position : health.transform.position, "-" + dataround.brokenum);
-                            refreshPlayerData();
-                            refreshEnemyData();
-                            RunSingel.Instance.laterDo(1, playerNextQue);
-                        });
+                        par.SetActive(false);
+                        playerNextQue();
                     });
                 });
             }
@@ -629,42 +623,19 @@ public class BattlePanel : PanelBase
             if (dataround.hitnum > 0)
             {
                 addAction(() => {
-                    if (dataround._card.type2 == CardType2.d_power)
+                    ParticleManager.Instance.playEffect_special(dataround.isbroken ? E_Particle.particle_brokenhit : E_Particle.particle_hit, pos1, "-" + dataround.hitnum, () =>
                     {
-                        var par = ParticleManager.Instance.getPlayEffect(E_Particle.particle_movefire, dataround.entity.transform.position);
-                        RunSingel.Instance.laterDo(0.8f, () =>
-                        {
-                            RunSingel.Instance.moveTo(par, isplayer ? enemyhealth.transform.position : health.transform.position, ConfigConst.cardtime_effectMoveSlow, () =>
-                            {
-                                par.SetActive(false);
-                                ParticleManager.Instance.playEffect_special(E_Particle.particle_hit, isplayer ? enemyhealth.transform.position : health.transform.position, "-" + dataround.hitnum);
-                                refreshPlayerData();
-                                refreshEnemyData();
-                                RunSingel.Instance.laterDo(1, playerNextQue);
-                            });
-                        });
-                    }
-                    else
-                    {
-                        var par = ParticleManager.Instance.getPlayEffect(E_Particle.particle_move, dataround.entity.transform.position);
-                        par.SetActive(true);
-                        RunSingel.Instance.moveTo(par, isplayer ? enemyhealth.transform.position : health.transform.position, ConfigConst.cardtime_effectMove, () =>
-                        {
-                            par.SetActive(false);
-                            ParticleManager.Instance.playEffect_special(E_Particle.particle_hit, isplayer ? enemyhealth.transform.position : health.transform.position, "-" + dataround.hitnum);
-                            refreshPlayerData();
-                            refreshEnemyData();
-                            RunSingel.Instance.laterDo(1, playerNextQue);
-                        });
-                    }
+                        //伤害结束回调
+                        refreshPlayerData();
+                        refreshEnemyData();
+                        playerNextQue();
+                    });
                 });
             }
             if (dataround.defnum > 0)
             {
                 addAction(() => {
-                    refreshPlayerData();
-                    refreshEnemyData();
-                    RunSingel.Instance.laterDo(0.5f, playerNextQue);
+                    easybuffAnimPlay(E_Particle.particle_ani_def, pos2, "+" + dataround.defnum);
                 });
             }
             if (dataround.gift.Count > 0)
@@ -762,7 +733,16 @@ public class BattlePanel : PanelBase
         addAction(() => { EventAction.Instance.TriggerAction(eventType.playRoundNext); });
         playerNextQue();
     }
-
+    void easybuffAnimPlay(E_Particle sname, Vector3 pos, string hit="")
+    {
+        ParticleManager.Instance.playEffect_special(sname, pos, hit, () =>
+        {
+            //伤害结束回调
+            refreshPlayerData();
+            refreshEnemyData();
+            playerNextQue();
+        });
+    }
     //展示卡对齐（回调
     void cardAlign(RoundData data)
     {

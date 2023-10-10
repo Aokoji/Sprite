@@ -256,6 +256,7 @@ public class BattleControl :Object
                 conditionTypeCalculate(data, data._card.conditionType1, data._card.damage1);
                 if ((ispowerP && data.isplayer) || (ispowerE && !data.isplayer))
                 {
+                    data.havePower = true;
                     conditionTypeCalculate(data, data._card.conditionType2, data._card.damage2);
                     conditionTypeCalculate(data, data._card.conditionType3, data._card.damage3);
                 }
@@ -383,7 +384,8 @@ public class BattleControl :Object
                 data.haveCounter = true;
                 break;
             case CardType2.n_broke:
-                data.brokenum += damage;
+                data.isbroken = true;
+                data.hitnum += damage;
                 break;
             case CardType2.s_todefen:
                 //处理一下+++
@@ -606,27 +608,29 @@ public class BattleControl :Object
                 data.hitnum = Mathf.Max(0, data.hitnum);
             }
             hit = data.hitnum;
-            foreach (var i in data.morehit)
-                hit += i + data.hit_addition;
-            if (pass.def_cur > 0)
+            if (data.morehit.Count>0)
+                foreach (var i in data.morehit)
+                    hit += i + data.hit_addition;
+            if (data.isbroken)
             {
-                if (hit > pass.def_cur)
-                {
-                    hit = hit - pass.def_cur;
-                    pass.def_cur = 0;
-                    pass.hp_cur -= hit;
-                }
-                else
-                    pass.def_cur -= hit;
+                pass.hp_cur -= hit;
             }
             else
-                pass.hp_cur -= hit;
-        }
-        else if (data.brokenum > 0)
-        {
-            data.brokenum += data.hit_addition;
-            data.brokenum = Mathf.Max(0, data.brokenum);
-            pass.hp_cur -= data.brokenum;
+            {
+                if (pass.def_cur > 0)
+                {
+                    if (hit > pass.def_cur)
+                    {
+                        hit = hit - pass.def_cur;
+                        pass.def_cur = 0;
+                        pass.hp_cur -= hit;
+                    }
+                    else
+                        pass.def_cur -= hit;
+                }
+                else
+                    pass.hp_cur -= hit;
+            }
         }
         if (data.hitselfnum > 0)
         {

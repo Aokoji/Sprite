@@ -20,11 +20,12 @@ public class RoundData : BaseData
     public int dealnum;     //抽
     public int continuousnum;       //连击数
     public int toDefen;     //对甲
-    public int brokenum;    //穿甲     
+    public bool isbroken;    //穿甲     
     public bool isdefend;       //被防护
     public bool isCounter;  //被反制
     public bool isdecounter;    //反反制成功
 
+    public bool havePower;  //秘术生效
     public bool haveCounter;    //反制效果标记
 
     public bool etch;   //腐蚀特效

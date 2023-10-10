@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -58,10 +59,10 @@ public class ParticleManager : CSingel<ParticleManager>
         }
     }
     //带动画类播放
-    public void playEffect_special(E_Particle particle, Vector3 transfer,string text)
+    public void playEffect_special(E_Particle particle, Vector3 transfer,string text,Action callback=null)
     {
         checkParticle(particle);
         particleResDic[particle].transform.position = transfer;
-        particleResDic[particle].GetComponent<ParticleBase>().play(text);
+        particleResDic[particle].GetComponent<ParticleBase>().play(text, callback);
     }
 }

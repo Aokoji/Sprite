@@ -12,7 +12,7 @@ public class AnimationTool
     /// <param name="aniName">动画名</param>
     /// <param name="loop">循环</param>
     /// <param name="callBack">回调</param>
-    public static void playAnimatior(GameObject obj, string aniName, bool loop, Action callBack)
+    public static void playAnimator(GameObject obj, string aniName, bool loop, Action callBack)
     {
         Animator anim = obj.GetComponent<Animator>();
         float time = getAnimTime(anim, aniName);

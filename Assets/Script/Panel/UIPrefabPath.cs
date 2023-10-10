@@ -48,11 +48,18 @@ public enum E_UIPrefab
 public enum E_Particle
 {
     particle_boom,
-    particle_hit,
     particle_move,
-    particle_movefire,
+    particle_movefire,      //两个move待定
 
+    particle_hit,
+    particle_brokenhit,
     particle_counter,
+    particle_power,
+    particle_acraneTake,
+    particle_arcaneUse,
+    particle_ani_def,
+    particle_ani_recover,
+    particle_ani_deconter,
 
     particle_chooseCardSet,
     particle_chooseCardBar,
