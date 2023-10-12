@@ -25,4 +25,15 @@ public class BagItem : UIBase
         _data = Config_t_items.getOne(id);
         icon.sprite = GetSprite(A_AtlasNames.itemsIcon.ToString(), _data.iconName);
     }
+    public void setData(ItemData item)
+    {
+        //魔法书用这个
+        count.text = item.num.ToString();
+        if (_data != null && _data.id == item.id)
+        {
+            return;
+        }
+        _data = Config_t_items.getOne(item.id);
+        icon.sprite = GetSprite(A_AtlasNames.itemsIcon.ToString(), _data.iconName);
+    }
 }

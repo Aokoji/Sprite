@@ -62,6 +62,9 @@ public class BattlePanel : PanelBase
     private Queue<Action> rankAction = new Queue<Action>();
     SpriteData player;
     SpriteData enemy;
+
+    SpriteData player_a;
+    SpriteData enemy_a;
     bool dealbtnAllow;
     private const float healthconstWidth = 100;
     string CARDPATH = "ui/battle/card/";
@@ -521,9 +524,19 @@ public class BattlePanel : PanelBase
     }
     private void endroundClick()
     {
+        player_a = player.Copy();
+        enemy_a = enemy.Copy();
         playerNextQue();
     }
-
+    void refreshPDataTemp()
+    {
+        health.text = "health:" + player_a.hp_cur + "/" + player_a.hp_max;
+        defence.text = player_a.def_cur.ToString();
+        healthimg.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, (float)player_a.hp_cur / player_a.hp_max * healthconstWidth);
+        enemyhealth.text = "health:" + enemy_a.hp_cur + "/" + enemy_a.hp_max;
+        enemydefence.text = enemy_a.def_cur.ToString();
+        enemyhealthimg.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, (float)enemy_a.hp_cur / enemy_a.hp_max * healthconstWidth);
+    }
     public void refreshPlayerData()
     {
         health.text = "health:"+player.hp_cur+"/"+player.hp_max;
@@ -604,6 +617,8 @@ public class BattlePanel : PanelBase
             if (dataround.recovernum > 0)
             {
                 addAction(() => {
+                    if (isplayer) player_a.hp_cur = Mathf.Min(player_a.hp_max, player_a.hp_cur + dataround.recovernum);
+                    else enemy_a.hp_cur= Mathf.Min(enemy_a.hp_max, enemy_a.hp_cur + dataround.recovernum);
                     easybuffAnimPlay(E_Particle.particle_ani_recover, pos2, "+" + dataround.recovernum);
                 });
             }
@@ -623,11 +638,34 @@ public class BattlePanel : PanelBase
             if (dataround.hitnum > 0)
             {
                 addAction(() => {
-                    ParticleManager.Instance.playEffect_special(dataround.isbroken ? E_Particle.particle_brokenhit : E_Particle.particle_hit, pos1, "-" + dataround.hitnum, () =>
+                    E_Particle willanim;
+                    if (dataround.isbroken)
+                    {
+                        willanim = E_Particle.particle_brokenhit;
+                        if(isplayer)
+                            enemy_a.hp_cur = Mathf.Max(enemy_a.hp_cur - dataround.hitnum, 0);
+                        else
+                            player_a.hp_cur = Mathf.Max(player_a.hp_cur - dataround.hitnum, 0);
+                    }
+                    else
+                    {
+                        willanim = E_Particle.particle_hit;
+                        if (isplayer)
+                        {
+                            enemy_a.def_cur = Mathf.Max(0, enemy_a.def_cur - dataround.hitdef);
+                            enemy_a.hp_cur = Mathf.Max(0, enemy_a.hp_cur - dataround.hitnum + dataround.hitdef);
+                        }
+                        else
+                        {
+                            player_a.def_cur = Mathf.Max(0, player_a.def_cur - dataround.hitdef);
+                            player_a.hp_cur = Mathf.Max(0, player_a.hp_cur - dataround.hitnum + dataround.hitdef);
+                        }
+
+                    }
+                    ParticleManager.Instance.playEffect_special(willanim, pos1, "-" + dataround.hitnum, () =>
                     {
                         //伤害结束回调
-                        refreshPlayerData();
-                        refreshEnemyData();
+                        refreshPDataTemp();
                         playerNextQue();
                     });
                 });
@@ -635,6 +673,8 @@ public class BattlePanel : PanelBase
             if (dataround.defnum > 0)
             {
                 addAction(() => {
+                    if (isplayer) player_a.def_cur += dataround.defnum;
+                    else enemy_a.def_cur += dataround.defnum;
                     easybuffAnimPlay(E_Particle.particle_ani_def, pos2, "+" + dataround.defnum);
                 });
             }
@@ -735,13 +775,8 @@ public class BattlePanel : PanelBase
     }
     void easybuffAnimPlay(E_Particle sname, Vector3 pos, string hit="")
     {
-        ParticleManager.Instance.playEffect_special(sname, pos, hit, () =>
-        {
-            //伤害结束回调
-            refreshPlayerData();
-            refreshEnemyData();
-            playerNextQue();
-        });
+        refreshPDataTemp();
+        ParticleManager.Instance.playEffect_special(sname, pos, hit, playerNextQue);
     }
     //展示卡对齐（回调
     void cardAlign(RoundData data)

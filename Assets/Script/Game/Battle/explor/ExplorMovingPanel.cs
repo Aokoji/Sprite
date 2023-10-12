@@ -76,7 +76,11 @@ public class ExplorMovingPanel : PanelBase
         {
             var script = scroll.addItemDefault().GetComponent<ExplorQuickBagBar>();
             script.onused = onusedBag;
-            script.setData(list.explorBag[i]);
+            ItemData conf = PlayerManager.Instance.getMagicBook(list.explorBag[i]);
+            if (conf == null)
+                script.setData(list.explorBag[i]);
+            else
+                script.setData(conf, true);
         }
         scroll.reCalculateHeigh();
         isrefreshScroll = false;

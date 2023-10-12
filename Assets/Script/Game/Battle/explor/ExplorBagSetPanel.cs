@@ -18,25 +18,32 @@ public class ExplorBagSetPanel : PanelTopBase
     public Button back;
 
     int curChoose;
-    Dictionary<int, int> itemlist;
+    Dictionary<int, ItemData> itemlist;
     List<int> finalBagList;
     bool allow;
     bool changed;
     public override void init()
     {
         base.init();
-        itemlist = new Dictionary<int, int>();
+        itemlist = new Dictionary<int, ItemData>();
         finalBagList = new List<int>();
         messbar.SetActive(false);
         allow = true;
         changed = false;
+
         var bagdata = PlayerManager.Instance.getExplorData().explorBag;
         //转换数据
-        foreach(var i in bagdata)
+        foreach (var i in bagdata)
         {
             if (!itemlist.ContainsKey(i))
-                itemlist[i] = 0;
-            itemlist[i]++;
+            {
+                itemlist[i] = new ItemData(i, 0);
+                itemlist[i].seticonString();
+            }
+            var mag = PlayerManager.Instance.getMagicBook(i);
+            if (mag != null)
+                itemlist[i].specialtype = 1;
+            itemlist[i].num++;
         }
         refreshBagPreview();
         scroll.initConfig(80, 80, clone);
@@ -78,38 +85,51 @@ public class ExplorBagSetPanel : PanelTopBase
                 script.initAction(chooseOne);
             }
         }
+        var magic = PlayerManager.Instance.getMagicBooks();
+        foreach(var item in magic)
+        {
+            var script = scroll.addItemDefault().GetComponent<BagItem>();
+            script.setData(item.Value);
+            script.initAction(chooseOne);
+        }
         scroll.reCalculateHeigh();
         yield return null;
     }
     void refreshBagPreview()
     {
         finalBagList.Clear();
-        foreach(var i in itemlist)
+        int index = 0;
+        foreach(var i in itembags)
+            i.gameObject.SetActive(false);
+        foreach (var i in itemlist)
         {
-            for (int k = 0; k < i.Value; k++)
-                finalBagList.Add(i.Key);
-        }
-        for(int i = 0; i < 5; i++)
-        {
-            if (i < finalBagList.Count)
+            if (i.Value.num > 1)
             {
-                itembags[i].gameObject.SetActive(true);
-                itembags[i].GetComponent<Image>().sprite = GetSprite(A_AtlasNames.itemsIcon.ToString(), Config_t_items.getOne(finalBagList[i]).iconName);
+                for(int k = 0; k < i.Value.num; k++)
+                {
+                    itembags[index].gameObject.SetActive(true);
+                    itembags[index].GetComponent<Image>().sprite = GetSprite(A_AtlasNames.itemsIcon.ToString(), i.Value.iconname);
+                    index++;
+                    finalBagList.Add(i.Key);
+                }
             }
             else
             {
-                itembags[i].gameObject.SetActive(false);
+                itembags[index].gameObject.SetActive(true);
+                itembags[index].GetComponent<Image>().sprite = GetSprite(A_AtlasNames.itemsIcon.ToString(), i.Value.iconname);
+                index++;
+                finalBagList.Add(i.Key);
             }
         }
     }
 
     void chooseOne(int id)
-    {
+    {//选中看看
         var data = Config_t_items.getOne(id);
         curChoose = id;
         _sname.text = data.sname;
         _sdes.text = data.describe;
-        if (itemlist[curChoose] >= PlayerManager.Instance.getItem(curChoose))
+        if (itemlist.ContainsKey(curChoose) && itemlist[curChoose].num >= PlayerManager.Instance.getItem(curChoose))
         {
             takebagBtn.GetComponent<Image>().color = Color.gray;
             allow = false;
@@ -122,7 +142,7 @@ public class ExplorBagSetPanel : PanelTopBase
         messbar.SetActive(true);
     }
     void clickTakeBag()
-    {
+    {//携带选中的
         if (!allow)
         {
             PanelManager.Instance.showTips3("数量不足");
@@ -135,9 +155,9 @@ public class ExplorBagSetPanel : PanelTopBase
         }
         changed = true;
         if (!itemlist.ContainsKey(curChoose))
-            itemlist[curChoose] = 0;
-        itemlist[curChoose]++;
-        if (itemlist[curChoose] >= PlayerManager.Instance.getItem(curChoose))
+            itemlist[curChoose] = new ItemData(curChoose, 0);
+        itemlist[curChoose].num++;
+        if (itemlist[curChoose].num >= PlayerManager.Instance.getItem(curChoose))
         {
             takebagBtn.GetComponent<Image>().color = Color.gray;
             allow = false;
@@ -153,8 +173,8 @@ public class ExplorBagSetPanel : PanelTopBase
             allow = true;
             takebagBtn.GetComponent<Image>().color = Color.white;
         }
-        itemlist[id]--;
-        if (itemlist[id] == 0)
+        itemlist[id].num--;
+        if (itemlist[id].num == 0)
             itemlist.Remove(id);
         refreshBagPreview();
     }

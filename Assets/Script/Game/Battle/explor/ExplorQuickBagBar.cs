@@ -20,9 +20,19 @@ public class ExplorQuickBagBar : UIBase
         var config = Config_t_items.getOne(id);
         _icon.sprite = GetSprite(A_AtlasNames.itemsIcon.ToString(), config.iconName);
         _sname.text = config.sname;
-        if (item.type == ItemsType.magic)
+        //目前else只有 体力/生命 消耗品
+        takeuse.gameObject.SetActive(true);
+        _typenum.text = NormalCalculate.propertyName(item.takeid) + "+" + item.takenum;
+    }
+    public void setData(ItemData dat,bool ismagic=false)
+    {
+        var item = Config_t_Consumable.getOne(dat.id);
+        var config = Config_t_items.getOne(dat.id);
+        _icon.sprite = GetSprite(A_AtlasNames.itemsIcon.ToString(), config.iconName);
+        _sname.text = config.sname;
+        if (item.type == ItemsType.magic || ismagic)
         {
-            //
+            //赋予使用次数+++
             takeuse.gameObject.SetActive(false);
             _typenum.text = "魔法书";
         }

@@ -9,6 +9,7 @@ public class RoundData : BaseData
     public SpriteData sprite;
     public bool isplayer;
     //效果  造成伤害等计算一下
+    public int hitdef;  //对盾伤害  不用来计算伤害，显示用
     public int hitnum;      //伤害mix
     public int hitType;     //01234伤害属性
     public List<int> morehit = new List<int>();

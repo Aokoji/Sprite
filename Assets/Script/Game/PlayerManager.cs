@@ -345,6 +345,13 @@ public class PlayerManager : CSingel<PlayerManager>
     }
     #endregion
     #region explor
+    public Dictionary<int,ItemData> getMagicBooks() { return playerdata.magicBookDic; }
+    public ItemData getMagicBook(int id) {
+        if (playerdata.magicBookDic.ContainsKey(id))
+            return playerdata.magicBookDic[id];
+        else
+            return null;
+    }
     public ExplorData getExplorData() { return playerdata.explor; }
     public void refreshNewDayExplor()
     {

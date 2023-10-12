@@ -593,6 +593,7 @@ public class BattleControl :Object
         {
             data.toDefen += data.hit_addition;
             data.toDefen = Mathf.Max(0, data.toDefen);
+            data.hitdef += data.toDefen;
             if (pass.def_cur > 0)
             {
                 pass.def_cur -= data.toDefen;
@@ -621,12 +622,16 @@ public class BattleControl :Object
                 {
                     if (hit > pass.def_cur)
                     {
+                        data.hitdef += pass.def_cur;
                         hit = hit - pass.def_cur;
                         pass.def_cur = 0;
                         pass.hp_cur -= hit;
                     }
                     else
+                    {
+                        data.hitdef += hit;
                         pass.def_cur -= hit;
+                    }
                 }
                 else
                     pass.hp_cur -= hit;
