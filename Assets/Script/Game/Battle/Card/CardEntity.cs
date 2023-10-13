@@ -22,6 +22,7 @@ public class CardEntity : UIBase
     public bool isStaying;  //准备出
     public bool isback;//卡背
     public bool isdealcreate;   //抽卡创建出来的
+    public bool ismagicCreate;  //魔法书
     public bool clickAllow;
     public bool isextra;    //腐蚀用
 

@@ -25,6 +25,10 @@ public class BattlePanel : PanelBase
     //--------------交互按钮--------------------
     public Button endRoundBtn; //回合结束
     public Button dealCardBtn;      //主动抽牌
+    //--------------    包裹  ---------------------
+    public Button bagBtn;
+    public GameObject bagquickBox;
+    public UITool_ScrollView scrollbag;
     //--------------显示面板--------------------
     public Text residuenum; //剩余卡
     public Image spriteIcon;
@@ -45,7 +49,7 @@ public class BattlePanel : PanelBase
     public GameObject battleSettle;
 
     public GameObject stateclone;    //状态小图标    image
-    public UITool_ScrollView scroll1;
+    public UITool_ScrollView scroll1;   //状态滑动表
 
     public GameObject lockPanel;
     //===================   obj    ==========
@@ -528,6 +532,29 @@ public class BattlePanel : PanelBase
         enemy_a = enemy.Copy();
         playerNextQue();
     }
+
+    #region 魔法书
+    private bool justMagicTake(int id)
+    {
+        var dat = Config_t_Consumable.getOne(id);
+        var card = Config_t_DataCard.getOne(dat.takenum);   //指向卡
+        if (player.cost_cur < card.cost) return false;
+        player.cost_cur -= card.cost;
+        refreshMana();
+        var item = newcard(card);
+        takeCardlist.Add(item);
+        item.clickAllow = false;
+        item.transform.position = takeCardPos[takeCardlist.Count - 1].transform.position;
+        item.transform.eulerAngles = Vector3.zero;
+        item.transform.localScale = Vector3.one;
+        item.ismagicCreate = true;
+        item.isStaying = true;
+        item.gameObject.SetActive(true);
+        item.playJustShowAnim(() => { item.clickAllow = true;});
+        return true;
+    }
+    #endregion
+
     void refreshPDataTemp()
     {
         health.text = "health:" + player_a.hp_cur + "/" + player_a.hp_max;

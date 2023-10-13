@@ -20,7 +20,7 @@ public class PlayerData
     public MillData mill;
     public MarkData mark;
     public ExplorData explor;
-    public Dictionary<int, ItemData> magicBookDic;
+    public List<ItemData> magicBookList;
     public List<int> learndPlan;    //学会的设计图
 
     public int specialMarkNum;  //白给商店钱
@@ -51,7 +51,7 @@ public class PlayerData
         mill = new MillData();
         mark = new MarkData();
         explor = new ExplorData();
-        magicBookDic = new Dictionary<int, ItemData>();
+        magicBookList = new List<ItemData>();
         learndPlan = new List<int>();
         //for(int i=0;i<20;i++)
         //   playerCards.Add(14);

@@ -77,20 +77,12 @@ public class ExplorBagSetPanel : PanelTopBase
         foreach(var item in items)
         {
             config = Config_t_items.getOne(item.Key);
-            if (config.type == ItemsType.magic || (config.type == ItemsType.consum && config.type2 == ItemType2.explor))
-            {
-                //冒险用  消耗品
-                var script = scroll.addItemDefault().GetComponent<BagItem>();
-                script.setData(item.Key,item.Value);
-                script.initAction(chooseOne);
-            }
-        }
-        var magic = PlayerManager.Instance.getMagicBooks();
-        foreach(var item in magic)
-        {
             var script = scroll.addItemDefault().GetComponent<BagItem>();
-            script.setData(item.Value);
             script.initAction(chooseOne);
+            if (config.type == ItemsType.magic)
+                script.setData(PlayerManager.Instance.getMagicBook(item.Key));
+            else if(config.type == ItemsType.consum && config.type2 == ItemType2.explor)
+                script.setData(item.Key, item.Value);
         }
         scroll.reCalculateHeigh();
         yield return null;
@@ -155,7 +147,10 @@ public class ExplorBagSetPanel : PanelTopBase
         }
         changed = true;
         if (!itemlist.ContainsKey(curChoose))
+        {
             itemlist[curChoose] = new ItemData(curChoose, 0);
+            itemlist[curChoose].seticonString();
+        }
         itemlist[curChoose].num++;
         if (itemlist[curChoose].num >= PlayerManager.Instance.getItem(curChoose))
         {

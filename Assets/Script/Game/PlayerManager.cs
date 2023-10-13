@@ -14,6 +14,8 @@ public class PlayerManager : CSingel<PlayerManager>
     public Dictionary<int,int> playerMakenDic { get; private set; }
     public Dictionary<int,int> playerItemDic { get; private set; }
 
+    private Dictionary<int, ItemData> magicBookDic;
+
     public Dictionary<CardSelfType, int> spriteLevelCardDic;        //当前妖精卡片等级
     public bool loadsuccess;
 
@@ -29,12 +31,14 @@ public class PlayerManager : CSingel<PlayerManager>
         playerMakenDic = new Dictionary<int, int>();
         playerItemDic = new Dictionary<int, int>();
         spriteLevelCardDic = new Dictionary<CardSelfType, int>();
+        magicBookDic = new Dictionary<int, ItemData>();
         loadTestCardData();
         //初始化sprite         *******************************************     初始化字典数据     ***************************
         playerdata.mill.paddingLv();
         playerdata.sprites.ForEach(item => { spriteList.Add(item.id, item); });
         playerdata.playerAllCards.ForEach((item) => { playerMakenDic.Add(item.id, item.num); });
         playerdata.items.ForEach(item => { playerItemDic.Add(item.id, item.num); });
+        playerdata.magicBookList.ForEach(item => { magicBookDic.Add(item.id, item); });
         changeSprite(playerdata.curSprite);
         loadsuccess = true;
     }
@@ -67,6 +71,9 @@ public class PlayerManager : CSingel<PlayerManager>
         playerdata.playerAllCards.Clear();
         foreach (var i in playerMakenDic)
             playerdata.playerAllCards.Add(new ItemData(i.Key, i.Value));
+        playerdata.magicBookList.Clear();
+        foreach (var i in magicBookDic)
+            playerdata.magicBookList.Add(i.Value);
         if (playerdata.travel.quest.Count > 0)
             Debug.Log(playerdata.travel.quest[0].endTime);
         AssetManager.saveJson(S_SaverNames.pdata.ToString(), playerdata); 
@@ -179,6 +186,12 @@ public class PlayerManager : CSingel<PlayerManager>
             else
                 PubTool.LogError("添加物品有误");
         }
+    }
+    public void addMagicBookNosave(int id)
+    {
+        ItemData item = new ItemData(id, 1);
+        item.initLimit(Config_t_Consumable.getOne(id).takenum2);
+        magicBookDic.Add(id, item);
     }
     public int getItem(int id)
     {
@@ -345,10 +358,10 @@ public class PlayerManager : CSingel<PlayerManager>
     }
     #endregion
     #region explor
-    public Dictionary<int,ItemData> getMagicBooks() { return playerdata.magicBookDic; }
+    public Dictionary<int,ItemData> getMagicBooks() { return magicBookDic; }
     public ItemData getMagicBook(int id) {
-        if (playerdata.magicBookDic.ContainsKey(id))
-            return playerdata.magicBookDic[id];
+        if (magicBookDic.ContainsKey(id))
+            return magicBookDic[id];
         else
             return null;
     }

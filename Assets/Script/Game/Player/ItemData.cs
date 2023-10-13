@@ -10,6 +10,7 @@ public class ItemData
     public int rare;
     public int specialtype;     //目前0普通物品 1魔法书
     public int limitnum;    //内置数量 区别于num类似使用次数剩余。
+    public int limitMax;
     public string iconname;
     public ItemData(int tid,int tnum)
     {
@@ -22,5 +23,14 @@ public class ItemData
             iconname = Config_t_items.getOne(id).iconName;
         else
             iconname = icon;
+    }
+    public void uselimit(int num)
+    {
+        if (limitnum <= 0) return;
+        limitnum = Mathf.Max(0, limitnum - num);
+    }
+    public void initLimit(int num)
+    {
+        limitMax = limitnum = num;
     }
 }
