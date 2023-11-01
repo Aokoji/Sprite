@@ -16,6 +16,8 @@ public class MainPanel : PanelBase
     public Button spring;
     public Button ware; //仓库
 
+    //休息（废弃磨坊），探索（哨站），制作（工坊），常驻商店，仓库
+
     public override void registerEvent()
     {
         base.registerEvent();
@@ -40,7 +42,7 @@ public class MainPanel : PanelBase
     }
 
     #region  onclick
-    void jumpmill(){ PanelManager.Instance.OpenPanel(E_UIPrefab.MillPanel);}
+    void jumpmill(){ PanelManager.Instance.OpenPanel(E_UIPrefab.SpriteMessagePanel);}
     void jumpworkshop(){ PanelManager.Instance.OpenPanel(E_UIPrefab.WorkshopPanel);}
     void jumpexplor(){
         PanelManager.Instance.OpenPanel(E_UIPrefab.ExplorPanel);

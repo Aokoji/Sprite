@@ -17,6 +17,7 @@ public enum E_UIPrefab
     CardsetPanel,
     MainPanel,
     MillPanel,
+    MillPanel2,
     MillAdditionPanel,  //添加生产物 bool ,int ,int   三参  ismater2,生产id,数量
     MillUpgradePanel,   //升级磨坊
     SpriteWorkPanel,    //int 派遣枚举
@@ -40,6 +41,8 @@ public enum E_UIPrefab
     FarmPanel,
     SpringPanel,        //魔力之泉
     CardMessageBar,     //卡牌详情  int 卡id
+
+    RogueStartPanel,    //新 开始界面
 
     //ui
     cardHand,

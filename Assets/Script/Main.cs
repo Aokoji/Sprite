@@ -26,6 +26,7 @@ public class Main : MonoBehaviour
 #endif
         GameManager.Instance.initManager();
         PanelManager.Instance.OpenPanel(E_UIPrefab.StartPanel);
+        //PanelManager.Instance.OpenPanel(E_UIPrefab.RogueStartPanel);
     }
 
     void Update()
