@@ -30,8 +30,8 @@ MonoBehaviour:
     type: 4
     rewardType: 0
     takeid: 0
-    takenum: 0
-    takenum2: 0
+    takenum: 1
+    takenum2: 10
     rewardGiven: 0
     rewardNum: 0
     rewardPool: 0
@@ -640,3 +640,14 @@ MonoBehaviour:
     rewardGiven: 0
     rewardNum: 1
     rewardPool: 
+  - id: 378
+    sname: "\u706B\u7130\u4E4B\u4E66"
+    remark: 1
+    type: 4
+    rewardType: 0
+    takeid: 0
+    takenum: 191
+    takenum2: 10
+    rewardGiven: 0
+    rewardNum: 0
+    rewardPool: 0

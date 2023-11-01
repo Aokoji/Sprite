@@ -3783,3 +3783,13 @@ MonoBehaviour:
     connect: 0
     remark: 
     open: 0
+  - id: 378
+    sname: "\u706B\u7130\u4E4B\u4E66"
+    describe: 
+    type: 4
+    type2: 10
+    iconName: test1
+    pay: 0
+    connect: 0
+    remark: 
+    open: 1

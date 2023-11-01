@@ -37,8 +37,8 @@ public class Main : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            PlayerManager.Instance.addMagicBookNosave(53);
-            PlayerManager.Instance.addItems(53, 1);
+            PlayerManager.Instance.addMagicBookNosave(378);
+            PlayerManager.Instance.addItems(378, 1);
         }
     }
 }

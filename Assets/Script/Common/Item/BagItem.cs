@@ -13,6 +13,7 @@ public class BagItem : UIBase
     t_items _data;
     public void initAction(Action<int> callback)
     {
+        GetComponent<Button>().onClick.RemoveAllListeners();
         GetComponent<Button>().onClick.AddListener(()=> { callback(_data.id); });
     }
     public void setData(int id,int num)
