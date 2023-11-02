@@ -52,6 +52,8 @@ public class BattlePanel : PanelBase
     public UITool_ScrollView scroll1;   //状态滑动表
 
     public GameObject lockPanel;
+
+    public Button useBagBtn;
     //===================   obj    ==========
 
     private Queue<int> playerque;
@@ -93,6 +95,7 @@ public class BattlePanel : PanelBase
         refreshPlayerData();
         refreshEnemyData();
         refreshMana();
+        useBagState = false;
         buff_changed = true;
         refreshState();
     }
@@ -101,6 +104,7 @@ public class BattlePanel : PanelBase
         base.registerEvent();
         endRoundBtn.onClick.AddListener(endroundClick);
         dealCardBtn.onClick.AddListener(dealcardClick);
+        useBagBtn.onClick.AddListener(clickShowUseBag);
     }
     private void getPlayerNewCardQue()
     {
@@ -507,6 +511,15 @@ public class BattlePanel : PanelBase
                 finishNum++;
             });
         });
+    }
+    bool useBagState;
+    private void clickShowUseBag()
+    {
+        if (useBagState)
+        {
+            //useBagBtn.transform.FindChild("Node")
+        }
+            
     }
     private void dealcardClick()
     {
