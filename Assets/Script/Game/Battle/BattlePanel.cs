@@ -31,20 +31,9 @@ public class BattlePanel : PanelBase
     public UITool_ScrollView scrollbag;
     //--------------显示面板--------------------
     public Text residuenum; //剩余卡
-    public Image spriteIcon;
-    public Text health;
-    public RectTransform healthimg;
-    public Text defence;
-    public Text manatext;
-    public GameObject[] manaList;
-    public GameObject manaExtra;
-    public GameObject manaExtra2;
 
-    public Text enemyhealth;
-    public RectTransform enemyhealthimg;
-    public Text enemydefence;
-    public GameObject enemyExtra;
-    public GameObject enemyExtra2;
+    public PopBattle_SpriteState playerNode;
+    public PopBattle_SpriteState enemyNode;
 
     public GameObject battleSettle;
 
@@ -92,8 +81,7 @@ public class BattlePanel : PanelBase
         scroll1.initConfig(50, 50, stateclone);
         getPlayerNewCardQue();
         getEnemyNewCardQue();
-        refreshPlayerData();
-        refreshEnemyData();
+        refreshPDataTemp();
         refreshMana();
         useBagState = false;
         buff_changed = true;
@@ -570,36 +558,14 @@ public class BattlePanel : PanelBase
 
     void refreshPDataTemp()
     {
-        health.text = "health:" + player_a.hp_cur + "/" + player_a.hp_max;
-        defence.text = player_a.def_cur.ToString();
-        healthimg.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, (float)player_a.hp_cur / player_a.hp_max * healthconstWidth);
-        enemyhealth.text = "health:" + enemy_a.hp_cur + "/" + enemy_a.hp_max;
-        enemydefence.text = enemy_a.def_cur.ToString();
-        enemyhealthimg.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, (float)enemy_a.hp_cur / enemy_a.hp_max * healthconstWidth);
+        playerNode.setSpriteState(player);
+        enemyNode.setSpriteState(enemy);
     }
-    public void refreshPlayerData()
-    {
-        health.text = "health:"+player.hp_cur+"/"+player.hp_max;
-        defence.text = player.def_cur.ToString();
-        healthimg.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, (float)player.hp_cur / player.hp_max * healthconstWidth);
-    }
-    public void refreshEnemyData()
-    {
-        enemyhealth.text = "health:" + enemy.hp_cur + "/" + enemy.hp_max;
-        enemydefence.text = enemy.def_cur.ToString();
-        enemyhealthimg.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, (float)enemy.hp_cur / enemy.hp_max * healthconstWidth);
-        enemyExtra.SetActive(enemy.extraLimit >= 1);
-        enemyExtra2.SetActive(enemy.extraLimit >= 2);
-    }
+
     public void refreshMana()
     {
-        manatext.text = "mana:" + player.cost_cur + "/" + player.cost_max;
-        for(int i = 0; i < manaList.Length; i++)
-        {
-            manaList[i].SetActive(i < player.cost_cur);
-        }
-        manaExtra.SetActive(player.extraLimit >= 1);
-        manaExtra2.SetActive(player.extraLimit >= 2);
+        playerNode.refreshMana();
+        enemyNode.refreshMana();
     }
     //腾一下展示桌面  准备回合生效
     public void playRoundWillShow()
@@ -632,8 +598,6 @@ public class BattlePanel : PanelBase
         });
         if (!dataround.isCounter)
         {
-            Vector3 pos1 = isplayer ? enemyhealth.transform.position : health.transform.position;   //伤害
-            Vector3 pos2 = isplayer ? health.transform.position : enemyhealth.transform.position;   //buff
             //先抽牌
             if (dataround.dealnum > 0)
             {
@@ -651,15 +615,25 @@ public class BattlePanel : PanelBase
             if (dataround.isdecounter)
             {
                 addAction(() => {
-                    easybuffAnimPlay(E_Particle.particle_ani_deconter, pos2);
+                    if (dataround.isplayer)
+                        playerNode.playActorAnim(E_Particle.particle_ani_deconter, "", playerNextQue);
+                    else
+                        enemyNode.playActorAnim(E_Particle.particle_ani_deconter, "", playerNextQue);
                 });
             }
             if (dataround.recovernum > 0)
             {
                 addAction(() => {
-                    if (isplayer) player_a.hp_cur = Mathf.Min(player_a.hp_max, player_a.hp_cur + dataround.recovernum);
-                    else enemy_a.hp_cur= Mathf.Min(enemy_a.hp_max, enemy_a.hp_cur + dataround.recovernum);
-                    easybuffAnimPlay(E_Particle.particle_ani_recover, pos2, "+" + dataround.recovernum);
+                    if (isplayer)
+                    {
+                        player_a.hp_cur = Mathf.Min(player_a.hp_max, player_a.hp_cur + dataround.recovernum);
+                        playerNode.playActorAnim(E_Particle.particle_ani_recover, "+" + dataround.recovernum, playerNextQue);
+                    }
+                    else
+                    {
+                        enemy_a.hp_cur = Mathf.Min(enemy_a.hp_max, enemy_a.hp_cur + dataround.recovernum);
+                        enemyNode.playActorAnim(E_Particle.particle_ani_recover, "+" + dataround.recovernum, playerNextQue);
+                    }
                 });
             }
             if (dataround.havePower)
@@ -702,20 +676,25 @@ public class BattlePanel : PanelBase
                         }
 
                     }
-                    ParticleManager.Instance.playEffect_special(willanim, pos1, "-" + dataround.hitnum, () =>
-                    {
-                        //伤害结束回调
-                        refreshPDataTemp();
-                        playerNextQue();
-                    });
+                    if (dataround.isplayer)
+                        enemyNode.playActorAnim(willanim, "-" + dataround.hitnum, playerNextQue);
+                    else
+                        playerNode.playActorAnim(willanim, "-" + dataround.hitnum, playerNextQue);
                 });
             }
             if (dataround.defnum > 0)
             {
                 addAction(() => {
-                    if (isplayer) player_a.def_cur += dataround.defnum;
-                    else enemy_a.def_cur += dataround.defnum;
-                    easybuffAnimPlay(E_Particle.particle_ani_def, pos2, "+" + dataround.defnum);
+                    if (isplayer)
+                    {
+                        player_a.def_cur += dataround.defnum;
+                        playerNode.playActorAnim(E_Particle.particle_ani_def, "+" + dataround.defnum, playerNextQue);
+                    }
+                    else
+                    {
+                        enemy_a.def_cur += dataround.defnum;
+                        enemyNode.playActorAnim(E_Particle.particle_ani_def, "+" + dataround.defnum, playerNextQue);
+                    } 
                 });
             }
             if (dataround.gift.Count > 0)
@@ -768,10 +747,7 @@ public class BattlePanel : PanelBase
             {
                 //播动画
                 addAction(() => {
-                    if(dataround.isplayer)
-                        refreshMana();
-                    else
-                        refreshEnemyData();
+                    refreshMana();
                     RunSingel.Instance.laterDo(0.5f, playerNextQue);
                 });
             }
@@ -812,11 +788,6 @@ public class BattlePanel : PanelBase
         });
         addAction(() => { EventAction.Instance.TriggerAction(eventType.playRoundNext); });
         playerNextQue();
-    }
-    void easybuffAnimPlay(E_Particle sname, Vector3 pos, string hit="")
-    {
-        refreshPDataTemp();
-        ParticleManager.Instance.playEffect_special(sname, pos, hit, playerNextQue);
     }
     //展示卡对齐（回调
     void cardAlign(RoundData data)

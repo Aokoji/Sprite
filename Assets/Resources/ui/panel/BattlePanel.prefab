@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2524148299125567326}
   - component: {fileID: 6264440629740405320}
+  - component: {fileID: 8236784515973619730}
   m_Layer: 0
   m_Name: mana2
   m_TagString: Untagged
@@ -51,6 +52,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 27004936379391423}
   m_CullTransparentMesh: 0
+--- !u!114 &8236784515973619730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 27004936379391423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e0da84f15adfd4419a0c191b7aa521c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteIcon: {fileID: 0}
+  health: {fileID: 0}
+  healthimg: {fileID: 0}
+  defence: {fileID: 0}
+  manatext: {fileID: 0}
+  manaList: []
+  manaExtra: {fileID: 0}
+  manaExtra2: {fileID: 0}
+  AnimPos: {fileID: 0}
 --- !u!1 &32780250264637210
 GameObject:
   m_ObjectHideFlags: 0
@@ -400,6 +422,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6090804634134132693}
   - component: {fileID: 8676116220453045571}
+  - component: {fileID: 1121296637678570206}
   m_Layer: 0
   m_Name: mana
   m_TagString: Untagged
@@ -437,6 +460,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 348246370916354410}
   m_CullTransparentMesh: 0
+--- !u!114 &1121296637678570206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 348246370916354410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e0da84f15adfd4419a0c191b7aa521c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteIcon: {fileID: 0}
+  health: {fileID: 0}
+  healthimg: {fileID: 0}
+  defence: {fileID: 0}
+  manatext: {fileID: 0}
+  manaList: []
+  manaExtra: {fileID: 0}
+  manaExtra2: {fileID: 0}
+  AnimPos: {fileID: 0}
 --- !u!1 &473355168593214841
 GameObject:
   m_ObjectHideFlags: 0
@@ -6670,28 +6714,13 @@ MonoBehaviour:
   bagquickBox: {fileID: 0}
   scrollbag: {fileID: 0}
   residuenum: {fileID: 6046513632828040790}
-  spriteIcon: {fileID: 0}
-  health: {fileID: 4833342825671371944}
-  healthimg: {fileID: 6374371768365233780}
-  defence: {fileID: 1999233023900517010}
-  manatext: {fileID: 8780280075769615956}
-  manaList:
-  - {fileID: 2079821816540062566}
-  - {fileID: 6741479193299897042}
-  - {fileID: 6914740122382468223}
-  - {fileID: 2513321349450997748}
-  - {fileID: 7753954380832627146}
-  manaExtra: {fileID: 2805725333303083519}
-  manaExtra2: {fileID: 3766076456797017822}
-  enemyhealth: {fileID: 7096566821004885556}
-  enemyhealthimg: {fileID: 4627938928478549850}
-  enemydefence: {fileID: 7913393869931007924}
-  enemyExtra: {fileID: 5855735773166398091}
-  enemyExtra2: {fileID: 7524706067974760992}
+  playerNode: {fileID: 0}
+  enemyNode: {fileID: 0}
   battleSettle: {fileID: 8744210507311014646}
   stateclone: {fileID: 5939273532784646337}
   scroll1: {fileID: 7320328492157771554}
   lockPanel: {fileID: 8839260388007283014}
+  useBagBtn: {fileID: 0}
 --- !u!1 &8347982275625458961
 GameObject:
   m_ObjectHideFlags: 0
