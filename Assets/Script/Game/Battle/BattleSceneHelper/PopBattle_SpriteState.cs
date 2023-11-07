@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class PopBattle_SpriteState : UIBase
 {
-    public Image spriteIcon;
+    //public Image spriteIcon;
     public Text health;
     public RectTransform healthimg;
     public Text defence;
@@ -26,9 +26,9 @@ public class PopBattle_SpriteState : UIBase
         setSpriteState(data);
         refreshMana();
     }
-    void refreshSelf(bool isflow=false)
+    void refreshSelf()
     {
-        setSpriteState(_data, isflow);
+        setSpriteState(_data, false);
     }
     public void setSpriteState(SpriteData data,bool isflow=false)
     {
@@ -54,6 +54,7 @@ public class PopBattle_SpriteState : UIBase
     public void playActorAnim(E_Particle particle, string hit = "", Action callback = null)
     {
         //pos有特定位置  AnimPos
+        RunSingel.Instance.laterDo(0.3f, refreshSelf);
         ParticleManager.Instance.playEffect_special(particle, AnimPos.transform.position, hit, callback);
     }
 }

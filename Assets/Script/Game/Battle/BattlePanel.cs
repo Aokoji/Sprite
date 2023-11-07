@@ -41,8 +41,6 @@ public class BattlePanel : PanelBase
     public UITool_ScrollView scroll1;   //状态滑动表
 
     public GameObject lockPanel;
-
-    public Button useBagBtn;
     //===================   obj    ==========
 
     private Queue<int> playerque;
@@ -81,8 +79,8 @@ public class BattlePanel : PanelBase
         scroll1.initConfig(50, 50, stateclone);
         getPlayerNewCardQue();
         getEnemyNewCardQue();
-        refreshPDataTemp();
-        refreshMana();
+        playerNode.initSprite(player);
+        enemyNode.initSprite(enemy);
         useBagState = false;
         buff_changed = true;
         refreshState();
@@ -92,7 +90,7 @@ public class BattlePanel : PanelBase
         base.registerEvent();
         endRoundBtn.onClick.AddListener(endroundClick);
         dealCardBtn.onClick.AddListener(dealcardClick);
-        useBagBtn.onClick.AddListener(clickShowUseBag);
+        bagBtn.onClick.AddListener(clickShowUseBag);
     }
     private void getPlayerNewCardQue()
     {
@@ -505,9 +503,15 @@ public class BattlePanel : PanelBase
     {
         if (useBagState)
         {
-            //useBagBtn.transform.FindChild("Node")
+            AnimationTool.playAnimation(bagquickBox, "rightScrollHide", false);
+            useBagState = false;
         }
-            
+        else
+        {
+            AnimationTool.playAnimation(bagquickBox, "rightScrollShow", false);
+            useBagState = true;
+        }
+
     }
     private void dealcardClick()
     {
@@ -531,6 +535,8 @@ public class BattlePanel : PanelBase
     {
         player_a = player.Copy();
         enemy_a = enemy.Copy();
+        playerNode.setSpriteState(player_a);
+        enemyNode.setSpriteState(enemy_a);
         playerNextQue();
     }
 
