@@ -29,6 +29,7 @@ public class BattlePanel : PanelBase
     public Button bagBtn;
     public GameObject bagquickBox;
     public UITool_ScrollView scrollbag;
+    public GameObject quickClone;
     //--------------显示面板--------------------
     public Text residuenum; //剩余卡
 
@@ -59,7 +60,7 @@ public class BattlePanel : PanelBase
     SpriteData player_a;
     SpriteData enemy_a;
     bool dealbtnAllow;
-    private const float healthconstWidth = 100;
+
     string CARDPATH = "ui/battle/card/";
     enum rank
     {
@@ -77,10 +78,12 @@ public class BattlePanel : PanelBase
         enemy = enemy_data;
         battleSettle.SetActive(false);
         scroll1.initConfig(50, 50, stateclone);
+        scrollbag.initConfig(120, 160, quickClone);
         getPlayerNewCardQue();
         getEnemyNewCardQue();
         playerNode.initSprite(player);
         enemyNode.initSprite(enemy);
+        initMagicScroll();
         useBagState = false;
         buff_changed = true;
         refreshState();
@@ -92,6 +95,39 @@ public class BattlePanel : PanelBase
         dealCardBtn.onClick.AddListener(dealcardClick);
         bagBtn.onClick.AddListener(clickShowUseBag);
     }
+
+    #region 魔法书
+    void initMagicScroll()
+    {
+        scrollbag.recycleAll();
+        foreach (var i in PlayerManager.Instance.getExplorData().explorBag)
+        {
+            var obj = scrollbag.addItemDefault();
+            obj.transform.localScale = Vector3.one;
+            var script = obj.GetComponent<MagicEntity>();
+            script.setData(i);
+            script.onChoose = justMagicTake;
+        }
+    }
+    private void justMagicTake(t_DataCard card)
+    {
+        if (player.cost_cur < card.cost) return;
+        player.cost_cur -= card.cost;
+        refreshMana();
+        var item = newcard(card);
+        takeCardlist.Add(item);
+        item.clickAllow = false;
+        item.transform.position = takeCardPos[takeCardlist.Count - 1].transform.position;
+        item.transform.eulerAngles = Vector3.zero;
+        item.transform.localScale = Vector3.one;
+        item.ismagicCreate = true;
+        item.isStaying = true;
+        item.gameObject.SetActive(true);
+        item.playJustShowAnim(() => { item.clickAllow = true; });
+    }
+    #endregion
+
+
     private void getPlayerNewCardQue()
     {
         List<int> list;
@@ -215,12 +251,17 @@ public class BattlePanel : PanelBase
     {
         currank = rank.takecard;
         dealbtnAllow = true;
+        PanelManager.Instance.panelLock();
         addAction(() =>
         {
             initCardEnemy(4);
             dealCard(4);
         });
-        PanelManager.Instance.showTips1("对局开始", playerNextQue);
+        PanelManager.Instance.showTips1("对局开始", () =>
+        {
+            playerNextQue();
+            PanelManager.Instance.panelUnlock();
+        });
     }
     private void addAction(Action action)
     {
@@ -436,6 +477,18 @@ public class BattlePanel : PanelBase
             });
             return;
         }
+        if (card.ismagicCreate)
+        {
+            takeCardlist.Remove(card);
+            card.playJustHideAnim(() => {
+                player.cost_cur += card._data.cost;
+                refreshMana();
+                card.gameObject.SetActive(false);
+                discardCard.Enqueue(card);
+                refreshTakeCard();      //+++应该refresh magic
+            });
+            return;
+        }
         if (card.isStaying)
         {
             //回卡槽
@@ -538,34 +591,6 @@ public class BattlePanel : PanelBase
         playerNode.setSpriteState(player_a);
         enemyNode.setSpriteState(enemy_a);
         playerNextQue();
-    }
-
-    #region 魔法书
-    private bool justMagicTake(int id)
-    {
-        var dat = Config_t_Consumable.getOne(id);
-        var card = Config_t_DataCard.getOne(dat.takenum);   //指向卡
-        if (player.cost_cur < card.cost) return false;
-        player.cost_cur -= card.cost;
-        refreshMana();
-        var item = newcard(card);
-        takeCardlist.Add(item);
-        item.clickAllow = false;
-        item.transform.position = takeCardPos[takeCardlist.Count - 1].transform.position;
-        item.transform.eulerAngles = Vector3.zero;
-        item.transform.localScale = Vector3.one;
-        item.ismagicCreate = true;
-        item.isStaying = true;
-        item.gameObject.SetActive(true);
-        item.playJustShowAnim(() => { item.clickAllow = true;});
-        return true;
-    }
-    #endregion
-
-    void refreshPDataTemp()
-    {
-        playerNode.setSpriteState(player);
-        enemyNode.setSpriteState(enemy);
     }
 
     public void refreshMana()

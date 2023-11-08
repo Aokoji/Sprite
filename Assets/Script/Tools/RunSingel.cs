@@ -27,18 +27,54 @@ public class RunSingel : MonoBehaviour
         StartCoroutine(obj);
     }
 
+    Dictionary<int, Coroutine> timerDic = new Dictionary<int, Coroutine>();
+    int methodNum=0;
     /// <summary>
     /// 延时方法  参数 （延时float   回调action）
     /// </summary>
     public void laterDo(float time, Action action)
     {
-        StartCoroutine(lateraction(time, action));
+        int num = getNum();
+        Coroutine aa = StartCoroutine(lateraction(time, action, num));
+        timerDic.Add(num, aa);
     }
-    IEnumerator lateraction(float time, Action action)
+    IEnumerator lateraction(float time, Action action, int num)
     {
         yield return new WaitForSeconds(time);
+        timerDic.Remove(num);
         action();
     }
+    /// <summary>
+    /// 循环计时
+    /// </summary>
+    public int loopDo(float time,Action action)
+    {
+        int num = getNum();
+        action();
+        Coroutine aa = StartCoroutine(LoopAction(time, action, num));
+        timerDic.Add(num, aa);
+        return num;
+    }
+    IEnumerator LoopAction(float looptime,Action action,int num)
+    {
+        yield return new WaitForSeconds(looptime);
+        Coroutine aa = StartCoroutine(LoopAction(looptime, action, num));
+        timerDic[num] = aa;
+    }
+    public void stopLoop(int num)
+    {
+        if (timerDic.ContainsKey(num))
+        {
+            StopCoroutine(timerDic[num]);
+            timerDic.Remove(num);
+        }
+    }
+    public void clearTimer()
+    {
+        StopAllCoroutines();
+        timerDic.Clear();
+    }
+    int getNum() { return methodNum++; }
 
 #region 移动方法
     /// <summary>

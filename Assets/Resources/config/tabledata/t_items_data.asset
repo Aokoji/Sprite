@@ -3790,6 +3790,6 @@ MonoBehaviour:
     type2: 10
     iconName: test1
     pay: 0
-    connect: 0
+    connect: 191
     remark: 
     open: 1
