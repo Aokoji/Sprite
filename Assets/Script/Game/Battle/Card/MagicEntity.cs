@@ -12,9 +12,10 @@ public class MagicEntity : UIBase ,IPointerDownHandler,IPointerUpHandler
     public Text count;
     public Text cost;
     public GameObject unuse;
+    public GameObject onuse;
 
     //单张卡
-    public t_DataCard _data;
+    t_DataCard _data;
     public Action<t_DataCard> onChoose;
     t_items _tdata;
     t_Consumable _tConsum;
@@ -25,6 +26,7 @@ public class MagicEntity : UIBase ,IPointerDownHandler,IPointerUpHandler
         _tdata = Config_t_items.getOne(id);
         _data = null;
         _tConsum = null;
+        onuse.SetActive(false);
         if (_tdata.type == ItemsType.magic)
         {
             _data = Config_t_DataCard.getOne(_tdata.connect);
@@ -46,14 +48,10 @@ public class MagicEntity : UIBase ,IPointerDownHandler,IPointerUpHandler
         GetComponent<Button>().onClick.AddListener(onchoose);
     }
     public void resetAndSendCard()
-    {
-        beused = false;
-        int curcount = PlayerManager.Instance.getMagicBook(_tdata.id).limitnum;
-        if (curcount <= 0)
-            count.color = Color.red;
-        else
-            count.color = Color.black;
-        count.text = curcount + "/" + _tConsum.takenum2;
+    {//send意味着回合结束
+        if (!beused) return;
+        PlayerManager.Instance.useMagicBookOne(_tdata.id);
+        resetCard();
     }
     public void refreshCard()
     {
@@ -66,9 +64,16 @@ public class MagicEntity : UIBase ,IPointerDownHandler,IPointerUpHandler
             curcount--;
         count.text = curcount + "/" + _tConsum.takenum2;
     }
-    void chooseCard()
-    {
-
+    public void resetCard()
+    {//退还
+        beused = false;
+        onuse.SetActive(false);
+        int curcount = PlayerManager.Instance.getMagicBook(_tdata.id).limitnum;
+        if (curcount <= 0)
+            count.color = Color.red;
+        else
+            count.color = Color.black;
+        count.text = curcount + "/" + _tConsum.takenum2;
     }
     private void onchoose()
     {
@@ -78,11 +83,16 @@ public class MagicEntity : UIBase ,IPointerDownHandler,IPointerUpHandler
             return;
         }
         if (beused) return;
+        onuse.SetActive(true);
         beused = true;
         refreshCard();
         onChoose?.Invoke(_data);
     }
 
+    public bool checkSelf(int id)
+    {
+        return _data != null && _data.id == id;
+    }
     public void OnPointerDown(PointerEventData eventData)
     {
 

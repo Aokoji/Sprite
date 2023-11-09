@@ -86,6 +86,7 @@ public class BattlePanel : PanelBase
         initMagicScroll();
         useBagState = false;
         buff_changed = true;
+        bagquickBox.SetActive(false);
         refreshState();
     }
     public override void registerEvent()
@@ -106,6 +107,7 @@ public class BattlePanel : PanelBase
             var obj = scrollbag.addItemDefault();
             obj.transform.localScale = Vector3.one;
             var script = obj.GetComponent<MagicEntity>();
+            magicBookList.Add(script);
             script.setData(i);
             script.onChoose = justMagicTake;
         }
@@ -129,7 +131,19 @@ public class BattlePanel : PanelBase
     }
     void takenMagicCards()
     {
-
+        foreach (var i in magicBookList)
+            i.resetAndSendCard();
+    }
+    void backMagicCard(int id)
+    {
+        foreach(var i in magicBookList)
+        {
+            if (i.checkSelf(id))
+            {
+                i.resetCard();
+                break;
+            }
+        }
     }
     #endregion
 
@@ -491,7 +505,7 @@ public class BattlePanel : PanelBase
                 refreshMana();
                 card.gameObject.SetActive(false);
                 discardCard.Enqueue(card);
-                refreshTakeCard();      //+++应该refresh magic
+                backMagicCard(card._data.id);      //+++应该refresh magic
             });
             return;
         }
