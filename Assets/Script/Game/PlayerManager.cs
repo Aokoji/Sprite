@@ -365,6 +365,16 @@ public class PlayerManager : CSingel<PlayerManager>
         else
             return null;
     }
+    public bool useMagicBookOne(int id)
+    {
+        if (magicBookDic.ContainsKey(id) && magicBookDic[id].limitnum > 0)
+        {
+            magicBookDic[id].limitnum--;
+            return true;
+        }
+        else
+            return false;
+    }
     public ExplorData getExplorData() { return playerdata.explor; }
     public void refreshNewDayExplor()
     {

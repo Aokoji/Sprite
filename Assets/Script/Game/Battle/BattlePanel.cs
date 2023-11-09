@@ -97,6 +97,7 @@ public class BattlePanel : PanelBase
     }
 
     #region 魔法书
+    List<MagicEntity> magicBookList = new List<MagicEntity>();
     void initMagicScroll()
     {
         scrollbag.recycleAll();
@@ -109,6 +110,7 @@ public class BattlePanel : PanelBase
             script.onChoose = justMagicTake;
         }
     }
+    //选择使用魔法书
     private void justMagicTake(t_DataCard card)
     {
         if (player.cost_cur < card.cost) return;
@@ -124,6 +126,10 @@ public class BattlePanel : PanelBase
         item.isStaying = true;
         item.gameObject.SetActive(true);
         item.playJustShowAnim(() => { item.clickAllow = true; });
+    }
+    void takenMagicCards()
+    {
+
     }
     #endregion
 
@@ -564,7 +570,6 @@ public class BattlePanel : PanelBase
             AnimationTool.playAnimation(bagquickBox, "rightScrollShow", false);
             useBagState = true;
         }
-
     }
     private void dealcardClick()
     {
@@ -590,6 +595,14 @@ public class BattlePanel : PanelBase
         enemy_a = enemy.Copy();
         playerNode.setSpriteState(player_a);
         enemyNode.setSpriteState(enemy_a);
+        //计算magic
+        takenMagicCards();
+        //收回bag
+        if (useBagState)
+        {
+            AnimationTool.playAnimation(bagquickBox, "rightScrollHide", false);
+            useBagState = false;
+        }
         playerNextQue();
     }
 
