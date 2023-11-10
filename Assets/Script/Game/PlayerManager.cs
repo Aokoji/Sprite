@@ -190,7 +190,7 @@ public class PlayerManager : CSingel<PlayerManager>
     public void addMagicBookNosave(int id)
     {
         ItemData item = new ItemData(id, 1);
-        item.initLimit(Config_t_Consumable.getOne(id).takenum2);
+        item.initmagic(id);
         magicBookDic.Add(id, item);
     }
     public int getItem(int id)

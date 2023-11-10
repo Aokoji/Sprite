@@ -13,29 +13,32 @@ public class MagicEntity : UIBase ,IPointerDownHandler,IPointerUpHandler
     public Text cost;
     public GameObject unuse;
     public GameObject onuse;
+    public GameObject roundlimit;
 
     //单张卡
     t_DataCard _data;
     public Action<t_DataCard> onChoose;
     t_items _tdata;
-    t_Consumable _tConsum;
+    ItemData magicdata;
     bool beused;
     bool allowClick;
+    bool roundUsed;
     public void setData(int id)
     {
         _tdata = Config_t_items.getOne(id);
         _data = null;
-        _tConsum = null;
         onuse.SetActive(false);
         if (_tdata.type == ItemsType.magic)
         {
             _data = Config_t_DataCard.getOne(_tdata.connect);
-            _tConsum = Config_t_Consumable.getOne(id);
+            magicdata = PlayerManager.Instance.getMagicBook(_tdata.id);
             bg.sprite = GetSprite(A_AtlasNames.itemsIcon.ToString(), _tdata.iconName);
             cost.text = _data.cost.ToString();
             cost.gameObject.SetActive(true);
             allowClick = true;
             unuse.SetActive(false);
+            //刷新显示
+            refreshCard();
         }
         else
         {
@@ -44,42 +47,51 @@ public class MagicEntity : UIBase ,IPointerDownHandler,IPointerUpHandler
             unuse.SetActive(true);
         }
         sname.text = _data.sname.ToString();
-        refreshCard();
         GetComponent<Button>().onClick.AddListener(onchoose);
     }
     public void resetAndSendCard()
     {//send意味着回合结束
         if (!beused) return;
+        roundUsed = true;
         PlayerManager.Instance.useMagicBookOne(_tdata.id);
         resetCard();
     }
     public void refreshCard()
     {
-        int curcount = PlayerManager.Instance.getMagicBook(_tdata.id).limitnum;
+        int curcount = magicdata.limitnum;
         if (curcount <= 0)
             count.color = Color.red;
         else
             count.color = Color.black;
         if (beused)
             curcount--;
-        count.text = curcount + "/" + _tConsum.takenum2;
+        count.text = curcount + "/" + magicdata.limitMax;
+        //一局限制魔法书
+        if(magicdata.limitRound && roundUsed)
+        {
+            roundlimit.SetActive(true);
+            allowClick = false;
+        }
+        else
+        {
+            roundlimit.SetActive(false);
+            allowClick = false;
+        }
     }
     public void resetCard()
     {//退还
         beused = false;
         onuse.SetActive(false);
-        int curcount = PlayerManager.Instance.getMagicBook(_tdata.id).limitnum;
-        if (curcount <= 0)
-            count.color = Color.red;
-        else
-            count.color = Color.black;
-        count.text = curcount + "/" + _tConsum.takenum2;
+        refreshCard();
     }
     private void onchoose()
     {
         if (!allowClick)
         {
-            PanelManager.Instance.showTips3("无法使用");
+            if(roundUsed)
+                PanelManager.Instance.showTips3("本局已使用过，无法多次使用。");
+            else
+                PanelManager.Instance.showTips3("无法使用。");
             return;
         }
         if (beused) return;

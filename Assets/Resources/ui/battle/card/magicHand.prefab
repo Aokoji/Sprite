@@ -152,6 +152,80 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &3794491251614536954
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4413138587594618690}
+  - component: {fileID: 1373900851704524055}
+  - component: {fileID: 6337241039084226045}
+  m_Layer: 5
+  m_Name: roundlimit
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &4413138587594618690
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3794491251614536954}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3114523314686596058}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: -62.190002}
+  m_SizeDelta: {x: 0, y: -124.38965}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &1373900851704524055
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3794491251614536954}
+  m_CullTransparentMesh: 0
+--- !u!114 &6337241039084226045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3794491251614536954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 7b898379f260d5a4f9138b14b1e6969a, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &4042202751256282080
 GameObject:
   m_ObjectHideFlags: 0
@@ -273,23 +347,7 @@ MonoBehaviour:
   cost: {fileID: 7397728260743041593}
   unuse: {fileID: 3603257675832367409}
   onuse: {fileID: 4580893769945729862}
-  _data:
-    id: 0
-    sname: 
-    sDescribe: 
-    type1: 0
-    type2: 0
-    limit: 0
-    conditionType1: 0
-    conditionType2: 0
-    conditionType3: 0
-    damage1: 0
-    damage2: 0
-    damage3: 0
-    cost: 0
-    limitcount: 0
-    level: 0
-    explain: 
+  roundlimit: {fileID: 3794491251614536954}
 --- !u!1 &4363488475698496597
 GameObject:
   m_ObjectHideFlags: 0
@@ -323,6 +381,7 @@ RectTransform:
   - {fileID: 6127162552777871015}
   - {fileID: 7703403143484018480}
   - {fileID: 1188050168580553123}
+  - {fileID: 4413138587594618690}
   m_Father: {fileID: 4360716517708233116}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
