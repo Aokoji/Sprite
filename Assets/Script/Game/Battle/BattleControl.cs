@@ -132,6 +132,7 @@ public class BattleControl :Object
             rounddata.isBasic = !item.isextra;
             rounddata._card = rounddata.entity._data;
             rounddata.isplayer = true;
+            rounddata.hitType = (int)rounddata._card.limit;
             willTakeplayerque.Enqueue(rounddata);
         });
         endata.ForEach(item=>{
@@ -139,6 +140,7 @@ public class BattleControl :Object
             rounddata.entity = item;
             rounddata._card = rounddata.entity._data;
             rounddata.isplayer = false;
+            rounddata.hitType = (int)rounddata._card.limit;
             willTakeenemyque.Enqueue(rounddata);
         });
         round = 0;
@@ -209,6 +211,7 @@ public class BattleControl :Object
         }
         if(isplayerround && isEtch)
         {
+            isEtch = false;
             data.etch = true;
             continuousShut(data.isplayer);
             playCardNext(data);
@@ -451,6 +454,31 @@ public class BattleControl :Object
                 data.morehit.Add(damage);
                 data.morehit.Add(damage);
                 data.morehit.Add(damage);
+                break;
+            case CardType2.n_fire:
+                ui.AddBuff(10, !data.isplayer, damage);
+                break;
+            case CardType2.n_water:
+                if (data.isplayer) ui.AddBuff(2, false, damage);
+                else ui.AddBuff(2, true, damage);
+                break;
+            case CardType2.n_thunder:
+                if (data.isplayer) ui.AddBuff(2, false, damage);
+                else ui.AddBuff(2, true, damage);
+                break;
+            case CardType2.n_forest:
+                if (data.isplayer) ui.AddBuff(2, false, damage);
+                else ui.AddBuff(2, true, damage);
+                break;
+            case CardType2.s_boost_round:
+                if(data._card.limit==CardSelfType.fire)
+                    ui.AddBuff(11, !data.isplayer, damage);
+                //+++
+                break;
+            case CardType2.s_boost_game:
+                if (data._card.limit == CardSelfType.fire)
+                    ui.AddBuff(12, !data.isplayer, damage);
+                //+++
                 break;
         }
     }

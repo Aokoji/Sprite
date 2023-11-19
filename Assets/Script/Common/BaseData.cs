@@ -100,6 +100,9 @@ public enum CardType2
 
     n_hittwo,   //35    连续2
     n_hitthree,     //36 连续3
+    s_boost_round,    //37回合提升
+    s_boost_game,	//38本局提升
+    s_boost_double,	//39定向属性翻倍强化
 
     n_enemydeal,
     //标识最优先     真言  其次--    先制，诅咒，秘术，获得卡

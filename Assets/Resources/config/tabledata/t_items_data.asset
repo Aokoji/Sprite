@@ -3785,11 +3785,11 @@ MonoBehaviour:
     open: 0
   - id: 378
     sname: "\u706B\u7130\u4E4B\u4E66"
-    describe: 
+    describe: "\u91CA\u653E\u706B\u7130\u5145\u80FD\uFF0C\u672C\u56DE\u5408\u706B\u5C5E\u6027\u4F24\u5BB3+4\u3002"
     type: 4
     type2: 10
     iconName: test1
     pay: 0
-    connect: 191
+    connect: 252
     remark: 
     open: 1

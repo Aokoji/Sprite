@@ -71,7 +71,7 @@ MonoBehaviour:
   - {fileID: 2582815188174223177}
   manaExtra: {fileID: 262169785768340534}
   manaExtra2: {fileID: 2582815188174223177}
-  AnimPos: {fileID: 0}
+  AnimPos: {fileID: 7718626818975800051}
 --- !u!1 &32780250264637210
 GameObject:
   m_ObjectHideFlags: 0
@@ -550,11 +550,11 @@ MonoBehaviour:
   defence: {fileID: 1999233023900517010}
   manatext: {fileID: 8780280075769615956}
   manaList:
-  - {fileID: 3766076456797017822}
-  - {fileID: 2805725333303083519}
-  - {fileID: 3164170062681211110}
-  - {fileID: 3611170533841868465}
-  - {fileID: 5882860627692680841}
+  - {fileID: 7753954380832627146}
+  - {fileID: 2513321349450997748}
+  - {fileID: 6914740122382468223}
+  - {fileID: 6741479193299897042}
+  - {fileID: 2079821816540062566}
   manaExtra: {fileID: 3611170533841868465}
   manaExtra2: {fileID: 5882860627692680841}
   AnimPos: {fileID: 8072219062912180998}
@@ -5782,13 +5782,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.78039527, g: 0.8867924, b: 0.68182623, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ddbf76fcadd7e72479ae423c7f768fea, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8424,7 +8424,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8902273040621927884
 RectTransform:
   m_ObjectHideFlags: 0

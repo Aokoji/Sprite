@@ -1030,7 +1030,7 @@ MonoBehaviour:
   isClearData: 0
   dayMapID: 3
   allCardOpen: 1
-  nextEnemy: 32
+  nextEnemy: 27
 --- !u!4 &2029506039
 Transform:
   m_ObjectHideFlags: 0

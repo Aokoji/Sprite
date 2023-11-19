@@ -75,7 +75,7 @@ public class MagicEntity : UIBase ,IPointerDownHandler,IPointerUpHandler
         else
         {
             roundlimit.SetActive(false);
-            allowClick = false;
+            allowClick = true;
         }
     }
     public void resetCard()

@@ -378,7 +378,7 @@ MonoBehaviour:
     damage2: 3
     damage3: 0
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 2
     explain: 16
   - id: 24
@@ -394,7 +394,7 @@ MonoBehaviour:
     damage2: 25
     damage3: 0
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 2
     explain: 0
   - id: 25
@@ -410,7 +410,7 @@ MonoBehaviour:
     damage2: 0
     damage3: 0
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 1
     explain: 0
   - id: 26
@@ -426,7 +426,7 @@ MonoBehaviour:
     damage2: 0
     damage3: 0
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 3
     explain: 3|7
   - id: 27
@@ -442,7 +442,7 @@ MonoBehaviour:
     damage2: 0
     damage3: 0
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 1
     explain: 12
   - id: 28
@@ -458,7 +458,7 @@ MonoBehaviour:
     damage2: 0
     damage3: 0
     cost: 2
-    limitcount: 1
+    limitcount: 99
     level: 3
     explain: 14
   - id: 29
@@ -474,7 +474,7 @@ MonoBehaviour:
     damage2: 2
     damage3: 0
     cost: 2
-    limitcount: 2
+    limitcount: 99
     level: 3
     explain: 0
   - id: 30
@@ -490,7 +490,7 @@ MonoBehaviour:
     damage2: 0
     damage3: 0
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 3
     explain: 0
   - id: 31
@@ -506,7 +506,7 @@ MonoBehaviour:
     damage2: 2
     damage3: 0
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 1
     explain: 0
   - id: 32
@@ -522,7 +522,7 @@ MonoBehaviour:
     damage2: 2
     damage3: 0
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 1
     explain: 0
   - id: 33
@@ -538,7 +538,7 @@ MonoBehaviour:
     damage2: 4
     damage3: 0
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 2
     explain: 3
   - id: 34
@@ -554,7 +554,7 @@ MonoBehaviour:
     damage2: 6
     damage3: 0
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 2
     explain: 4
   - id: 35
@@ -570,7 +570,7 @@ MonoBehaviour:
     damage2: 0
     damage3: 0
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 1
     explain: 12
   - id: 36
@@ -586,7 +586,7 @@ MonoBehaviour:
     damage2: 6
     damage3: 0
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 3
     explain: 13
   - id: 37
@@ -602,7 +602,7 @@ MonoBehaviour:
     damage2: 1
     damage3: 0
     cost: 0
-    limitcount: 2
+    limitcount: 99
     level: 1
     explain: 0
   - id: 38
@@ -618,7 +618,7 @@ MonoBehaviour:
     damage2: 0
     damage3: 0
     cost: 2
-    limitcount: 1
+    limitcount: 99
     level: 3
     explain: 14
   - id: 39
@@ -634,7 +634,7 @@ MonoBehaviour:
     damage2: 1
     damage3: 0
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 1
     explain: 0
   - id: 40
@@ -650,7 +650,7 @@ MonoBehaviour:
     damage2: 4
     damage3: 0
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 2
     explain: 4
   - id: 41
@@ -666,7 +666,7 @@ MonoBehaviour:
     damage2: 5
     damage3: 0
     cost: 2
-    limitcount: 2
+    limitcount: 99
     level: 3
     explain: 4
   - id: 42
@@ -682,7 +682,7 @@ MonoBehaviour:
     damage2: 2
     damage3: 0
     cost: 1
-    limitcount: 1
+    limitcount: 99
     level: 3
     explain: 13
   - id: 43
@@ -698,7 +698,7 @@ MonoBehaviour:
     damage2: 0
     damage3: 0
     cost: 0
-    limitcount: 2
+    limitcount: 99
     level: 1
     explain: 2
   - id: 44
@@ -714,7 +714,7 @@ MonoBehaviour:
     damage2: 1
     damage3: 0
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 1
     explain: 2
   - id: 45
@@ -730,7 +730,7 @@ MonoBehaviour:
     damage2: 43
     damage3: 0
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 2
     explain: 3
   - id: 46
@@ -746,7 +746,7 @@ MonoBehaviour:
     damage2: 0
     damage3: 92
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 3
     explain: 2|7
   - id: 47
@@ -762,7 +762,7 @@ MonoBehaviour:
     damage2: 1
     damage3: 0
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 2
     explain: 3
   - id: 48
@@ -778,7 +778,7 @@ MonoBehaviour:
     damage2: 0
     damage3: 0
     cost: 1
-    limitcount: 1
+    limitcount: 99
     level: 3
     explain: 3|14
   - id: 49
@@ -794,7 +794,7 @@ MonoBehaviour:
     damage2: 5
     damage3: 0
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 2
     explain: 3|12
   - id: 50
@@ -810,7 +810,7 @@ MonoBehaviour:
     damage2: 3
     damage3: 0
     cost: 2
-    limitcount: 2
+    limitcount: 99
     level: 3
     explain: 0
   - id: 51
@@ -826,7 +826,7 @@ MonoBehaviour:
     damage2: 7
     damage3: 0
     cost: 1
-    limitcount: 1
+    limitcount: 99
     level: 3
     explain: 13
   - id: 52
@@ -842,7 +842,7 @@ MonoBehaviour:
     damage2: 0
     damage3: 3
     cost: 4
-    limitcount: 1
+    limitcount: 99
     level: 3
     explain: 28
   - id: 53
@@ -858,7 +858,7 @@ MonoBehaviour:
     damage2: 12
     damage3: 0
     cost: 3
-    limitcount: 1
+    limitcount: 99
     level: 3
     explain: 7|13
   - id: 54
@@ -874,7 +874,7 @@ MonoBehaviour:
     damage2: 0
     damage3: 0
     cost: 1
-    limitcount: 1
+    limitcount: 99
     level: 3
     explain: 2|14
   - id: 55
@@ -890,7 +890,7 @@ MonoBehaviour:
     damage2: 2
     damage3: 0
     cost: 2
-    limitcount: 1
+    limitcount: 99
     level: 3
     explain: 3
   - id: 56
@@ -906,7 +906,7 @@ MonoBehaviour:
     damage2: 0
     damage3: 12
     cost: 1
-    limitcount: 1
+    limitcount: 99
     level: 3
     explain: 12
   - id: 57
@@ -922,7 +922,7 @@ MonoBehaviour:
     damage2: 7
     damage3: 0
     cost: 3
-    limitcount: 1
+    limitcount: 99
     level: 3
     explain: 9
   - id: 58
@@ -1066,7 +1066,7 @@ MonoBehaviour:
     damage2: 3
     damage3: 0
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 0
     explain: 12
   - id: 67
@@ -1082,7 +1082,7 @@ MonoBehaviour:
     damage2: 66
     damage3: 66
     cost: 2
-    limitcount: 2
+    limitcount: 99
     level: 3
     explain: 0
   - id: 68
@@ -1098,7 +1098,7 @@ MonoBehaviour:
     damage2: 0
     damage3: 0
     cost: 0
-    limitcount: 2
+    limitcount: 99
     level: 1
     explain: 0
   - id: 69
@@ -1114,7 +1114,7 @@ MonoBehaviour:
     damage2: 0
     damage3: 0
     cost: 0
-    limitcount: 2
+    limitcount: 99
     level: 1
     explain: 0
   - id: 70
@@ -1130,7 +1130,7 @@ MonoBehaviour:
     damage2: 7
     damage3: 0
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 3
     explain: 13
   - id: 71
@@ -1146,7 +1146,7 @@ MonoBehaviour:
     damage2: 1
     damage3: 0
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 1
     explain: 0
   - id: 72
@@ -1162,7 +1162,7 @@ MonoBehaviour:
     damage2: 3
     damage3: 0
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 2
     explain: 4
   - id: 73
@@ -1178,7 +1178,7 @@ MonoBehaviour:
     damage2: 5
     damage3: 72
     cost: 2
-    limitcount: 2
+    limitcount: 99
     level: 3
     explain: 4
   - id: 74
@@ -1194,7 +1194,7 @@ MonoBehaviour:
     damage2: 2
     damage3: 0
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 1
     explain: 12
   - id: 75
@@ -1210,7 +1210,7 @@ MonoBehaviour:
     damage2: 76
     damage3: 0
     cost: 2
-    limitcount: 1
+    limitcount: 99
     level: 3
     explain: 0
   - id: 76
@@ -1226,7 +1226,7 @@ MonoBehaviour:
     damage2: 77
     damage3: 0
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 0
     explain: 0
   - id: 77
@@ -1242,7 +1242,7 @@ MonoBehaviour:
     damage2: 78
     damage3: 78
     cost: 2
-    limitcount: 2
+    limitcount: 99
     level: 0
     explain: 14
   - id: 78
@@ -1258,7 +1258,7 @@ MonoBehaviour:
     damage2: 0
     damage3: 0
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 0
     explain: 14
   - id: 79
@@ -1274,7 +1274,7 @@ MonoBehaviour:
     damage2: 4
     damage3: 0
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 0
     explain: 0
   - id: 80
@@ -1290,7 +1290,7 @@ MonoBehaviour:
     damage2: 2
     damage3: 0
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 2
     explain: 0
   - id: 81
@@ -1306,7 +1306,7 @@ MonoBehaviour:
     damage2: 79
     damage3: 0
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 3
     explain: 0
   - id: 82
@@ -1322,7 +1322,7 @@ MonoBehaviour:
     damage2: 2
     damage3: 0
     cost: 0
-    limitcount: 2
+    limitcount: 99
     level: 2
     explain: 2
   - id: 83
@@ -1338,7 +1338,7 @@ MonoBehaviour:
     damage2: 0
     damage3: 0
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 3
     explain: 0
   - id: 84
@@ -1354,7 +1354,7 @@ MonoBehaviour:
     damage2: 1
     damage3: 0
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 2
     explain: 7
   - id: 85
@@ -1370,7 +1370,7 @@ MonoBehaviour:
     damage2: 0
     damage3: 0
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 2
     explain: 7|14
   - id: 86
@@ -1386,7 +1386,7 @@ MonoBehaviour:
     damage2: 3
     damage3: 0
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 2
     explain: 7
   - id: 87
@@ -1402,7 +1402,7 @@ MonoBehaviour:
     damage2: 1
     damage3: 0
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 2
     explain: 0
   - id: 88
@@ -1418,7 +1418,7 @@ MonoBehaviour:
     damage2: 4
     damage3: 0
     cost: 2
-    limitcount: 2
+    limitcount: 99
     level: 2
     explain: 0
   - id: 89
@@ -1434,7 +1434,7 @@ MonoBehaviour:
     damage2: 3
     damage3: 0
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 1
     explain: 0
   - id: 90
@@ -1450,7 +1450,7 @@ MonoBehaviour:
     damage2: 68
     damage3: 68
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 2
     explain: 12
   - id: 91
@@ -1466,7 +1466,7 @@ MonoBehaviour:
     damage2: 0
     damage3: 0
     cost: 3
-    limitcount: 1
+    limitcount: 99
     level: 1
     explain: 0
   - id: 92
@@ -1482,7 +1482,7 @@ MonoBehaviour:
     damage2: 2
     damage3: 0
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 3
     explain: 3|16
   - id: 93
@@ -1514,7 +1514,7 @@ MonoBehaviour:
     damage2: 0
     damage3: 0
     cost: 0
-    limitcount: 5
+    limitcount: 99
     level: 0
     explain: 0
   - id: 95
@@ -1530,7 +1530,7 @@ MonoBehaviour:
     damage2: 0
     damage3: 0
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 2
     explain: 16
   - id: 96
@@ -1546,7 +1546,7 @@ MonoBehaviour:
     damage2: 3
     damage3: 0
     cost: 0
-    limitcount: 2
+    limitcount: 99
     level: 2
     explain: 3
   - id: 97
@@ -1562,7 +1562,7 @@ MonoBehaviour:
     damage2: 1
     damage3: 0
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 2
     explain: 0
   - id: 98
@@ -1578,7 +1578,7 @@ MonoBehaviour:
     damage2: 0
     damage3: 0
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 2
     explain: 2
   - id: 99
@@ -1594,7 +1594,7 @@ MonoBehaviour:
     damage2: 144
     damage3: 0
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 2
     explain: 0
   - id: 100
@@ -1610,7 +1610,7 @@ MonoBehaviour:
     damage2: 97
     damage3: 0
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 2
     explain: 4
   - id: 101
@@ -1626,7 +1626,7 @@ MonoBehaviour:
     damage2: 0
     damage3: 0
     cost: 2
-    limitcount: 2
+    limitcount: 99
     level: 2
     explain: 4|14
   - id: 102
@@ -1642,7 +1642,7 @@ MonoBehaviour:
     damage2: 96
     damage3: 96
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 3
     explain: 0
   - id: 103
@@ -1658,7 +1658,7 @@ MonoBehaviour:
     damage2: 3
     damage3: 143
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 3
     explain: 12|13
   - id: 104
@@ -1674,7 +1674,7 @@ MonoBehaviour:
     damage2: 5
     damage3: 1
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 3
     explain: 7
   - id: 105
@@ -1690,7 +1690,7 @@ MonoBehaviour:
     damage2: 2
     damage3: 5
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 3
     explain: 16
   - id: 106
@@ -1706,7 +1706,7 @@ MonoBehaviour:
     damage2: 1
     damage3: 0
     cost: 0
-    limitcount: 2
+    limitcount: 99
     level: 1
     explain: 0
   - id: 107
@@ -1722,7 +1722,7 @@ MonoBehaviour:
     damage2: 3
     damage3: 0
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 1
     explain: 4
   - id: 108
@@ -1738,7 +1738,7 @@ MonoBehaviour:
     damage2: 0
     damage3: 0
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 1
     explain: 14
   - id: 109
@@ -1754,7 +1754,7 @@ MonoBehaviour:
     damage2: 3
     damage3: 3
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 3
     explain: 0
   - id: 110
@@ -1770,7 +1770,7 @@ MonoBehaviour:
     damage2: 5
     damage3: 1
     cost: 2
-    limitcount: 2
+    limitcount: 99
     level: 3
     explain: 0
   - id: 111
@@ -1786,7 +1786,7 @@ MonoBehaviour:
     damage2: 3
     damage3: 111
     cost: 2
-    limitcount: 2
+    limitcount: 99
     level: 2
     explain: 0
   - id: 112
@@ -1802,7 +1802,7 @@ MonoBehaviour:
     damage2: 31
     damage3: 0
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 2
     explain: 12
   - id: 113
@@ -1818,7 +1818,7 @@ MonoBehaviour:
     damage2: 36
     damage3: 0
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 2
     explain: 4
   - id: 114
@@ -1834,7 +1834,7 @@ MonoBehaviour:
     damage2: 7
     damage3: 0
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 2
     explain: 13
   - id: 115
@@ -1850,7 +1850,7 @@ MonoBehaviour:
     damage2: 4
     damage3: 0
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 2
     explain: 14
   - id: 116
@@ -1866,7 +1866,7 @@ MonoBehaviour:
     damage2: 2
     damage3: 3
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 2
     explain: 3
   - id: 117
@@ -1882,7 +1882,7 @@ MonoBehaviour:
     damage2: 0
     damage3: 0
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 1
     explain: 2|12
   - id: 118
@@ -1898,7 +1898,7 @@ MonoBehaviour:
     damage2: 3
     damage3: 0
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 1
     explain: 3
   - id: 119
@@ -1914,7 +1914,7 @@ MonoBehaviour:
     damage2: 2
     damage3: 0
     cost: 0
-    limitcount: 2
+    limitcount: 99
     level: 1
     explain: 3
   - id: 120
@@ -1930,7 +1930,7 @@ MonoBehaviour:
     damage2: 146
     damage3: 0
     cost: 2
-    limitcount: 2
+    limitcount: 99
     level: 3
     explain: 0
   - id: 121
@@ -1946,7 +1946,7 @@ MonoBehaviour:
     damage2: 119
     damage3: 2
     cost: 2
-    limitcount: 2
+    limitcount: 99
     level: 2
     explain: 0
   - id: 122
@@ -1962,7 +1962,7 @@ MonoBehaviour:
     damage2: 44
     damage3: 3
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 3
     explain: 2|3
   - id: 123
@@ -1978,7 +1978,7 @@ MonoBehaviour:
     damage2: 3
     damage3: 3
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 2
     explain: 2|3
   - id: 124
@@ -1994,7 +1994,7 @@ MonoBehaviour:
     damage2: 118
     damage3: 0
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 2
     explain: 3
   - id: 125
@@ -2010,7 +2010,7 @@ MonoBehaviour:
     damage2: 3
     damage3: 0
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 2
     explain: 2|3
   - id: 126
@@ -2026,7 +2026,7 @@ MonoBehaviour:
     damage2: 2
     damage3: 0
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 2
     explain: 13
   - id: 127
@@ -2042,7 +2042,7 @@ MonoBehaviour:
     damage2: 3
     damage3: 147
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 2
     explain: 3|12
   - id: 128
@@ -2058,7 +2058,7 @@ MonoBehaviour:
     damage2: 0
     damage3: 0
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 1
     explain: 0
   - id: 129
@@ -2074,7 +2074,7 @@ MonoBehaviour:
     damage2: 0
     damage3: 0
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 1
     explain: 28
   - id: 130
@@ -2090,7 +2090,7 @@ MonoBehaviour:
     damage2: 0
     damage3: 3
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 1
     explain: 28
   - id: 131
@@ -2106,7 +2106,7 @@ MonoBehaviour:
     damage2: 1
     damage3: 4
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 1
     explain: 12|28
   - id: 132
@@ -2122,7 +2122,7 @@ MonoBehaviour:
     damage2: 129
     damage3: 2
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 3
     explain: 13|28
   - id: 133
@@ -2138,7 +2138,7 @@ MonoBehaviour:
     damage2: 0
     damage3: 4
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 3
     explain: 16|28
   - id: 134
@@ -2154,7 +2154,7 @@ MonoBehaviour:
     damage2: 0
     damage3: 7
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 3
     explain: 7|14|28
   - id: 135
@@ -2170,7 +2170,7 @@ MonoBehaviour:
     damage2: 0
     damage3: 129
     cost: 2
-    limitcount: 2
+    limitcount: 99
     level: 3
     explain: 28
   - id: 136
@@ -2186,7 +2186,7 @@ MonoBehaviour:
     damage2: 2
     damage3: 191
     cost: 2
-    limitcount: 2
+    limitcount: 99
     level: 2
     explain: 28
   - id: 137
@@ -2202,7 +2202,7 @@ MonoBehaviour:
     damage2: 130
     damage3: 0
     cost: 2
-    limitcount: 2
+    limitcount: 99
     level: 2
     explain: 16
   - id: 138
@@ -2218,7 +2218,7 @@ MonoBehaviour:
     damage2: 1
     damage3: 2
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 2
     explain: 28
   - id: 139
@@ -2234,7 +2234,7 @@ MonoBehaviour:
     damage2: 2
     damage3: 5
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 2
     explain: 28
   - id: 140
@@ -2250,7 +2250,7 @@ MonoBehaviour:
     damage2: 0
     damage3: 0
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 2
     explain: 7|28
   - id: 141
@@ -2266,7 +2266,7 @@ MonoBehaviour:
     damage2: 1
     damage3: 129
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 2
     explain: 28
   - id: 142
@@ -2282,7 +2282,7 @@ MonoBehaviour:
     damage2: 4
     damage3: 1
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 2
     explain: 0
   - id: 143
@@ -2298,7 +2298,7 @@ MonoBehaviour:
     damage2: 8
     damage3: 0
     cost: 2
-    limitcount: 2
+    limitcount: 99
     level: 3
     explain: 12|14
   - id: 144
@@ -2314,7 +2314,7 @@ MonoBehaviour:
     damage2: 145
     damage3: 0
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 3
     explain: 0
   - id: 145
@@ -2330,7 +2330,7 @@ MonoBehaviour:
     damage2: 2
     damage3: 0
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 3
     explain: 0
   - id: 146
@@ -2346,7 +2346,7 @@ MonoBehaviour:
     damage2: 0
     damage3: 0
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 3
     explain: 2|3
   - id: 147
@@ -2362,7 +2362,7 @@ MonoBehaviour:
     damage2: 0
     damage3: 0
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 2
     explain: 12
   - id: 148
@@ -2378,7 +2378,7 @@ MonoBehaviour:
     damage2: 150
     damage3: 0
     cost: 1
-    limitcount: 2
+    limitcount: 99
     level: 3
     explain: 13
   - id: 149
@@ -2394,7 +2394,7 @@ MonoBehaviour:
     damage2: 15
     damage3: 0
     cost: 3
-    limitcount: 2
+    limitcount: 99
     level: 3
     explain: 13
   - id: 150
@@ -3695,7 +3695,7 @@ MonoBehaviour:
     explain: 
   - id: 231
     sname: "\u613F\u671B\xB7\u4E0D\u706D\u610F\u5FD7"
-    sDescribe: "\u964D\u4F4E\u5BF9\u624B10\u70B9\u4E0B\u6B21\u653B\u51FB\u7684\u4F24\u5BB3\uFF0C\u5C061\u5F20"
+    sDescribe: "\u964D\u4F4E\u5BF9\u624B10\u70B9\u4E0B\u6B21\u653B\u51FB\u7684\u4F24\u5BB3\uFF0C\u83B7\u5F971\u5F20\u67AF\u7AED\u4E4B\u7AE0\u3002"
     type1: 0
     type2: 0
     limit: 0
@@ -3739,5 +3739,341 @@ MonoBehaviour:
     damage3: 0
     cost: 1
     limitcount: 99
+    level: 0
+    explain: 
+  - id: 234
+    sname: "\u67AF\u7AED\u4E4B\u7AE0"
+    sDescribe: "\u672C\u56DE\u5408\u9020\u6210\u7684\u4F24\u5BB3\u7531\u81EA\u5DF1\u627F\u62C5\u5E76\u4E14\u6700\u4F4E\u4FDD\u6301\u67091\u70B9\u751F\u547D\uFF0C\u56DE\u5408\u7ED3\u675F\u540E\u5C06\u81EA\u8EAB\u9020\u6210\u7684\u7D2F\u8BA1\u4F24\u5BB3\u7FFB\u500D\u8FD4\u8FD8\u7ED9\u5BF9\u65B9\u3002"
+    type1: 0
+    type2: 0
+    limit: 0
+    conditionType1: 0
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 0
+    damage2: 0
+    damage3: 0
+    cost: 0
+    limitcount: 99
+    level: 0
+    explain: 
+  - id: 235
+    sname: "\u706B1"
+    sDescribe: "\u7834\u7532\uFF0C\u9020\u62102\u70B9\u706B\u5C5E\u6027\u4F24\u5BB3\u3002"
+    type1: 1
+    type2: 0
+    limit: 1
+    conditionType1: 16
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 2
+    damage2: 0
+    damage3: 0
+    cost: 1
+    limitcount: 2
+    level: 1
+    explain: 16
+  - id: 236
+    sname: "\u706B1"
+    sDescribe: "\u672C\u56DE\u5408\u706B\u5C5E\u6027\u4F24\u5BB3\u63D0\u53472\u3002"
+    type1: 1
+    type2: 0
+    limit: 1
+    conditionType1: 37
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 2
+    damage2: 0
+    damage3: 0
+    cost: 1
+    limitcount: 2
+    level: 1
+    explain: 
+  - id: 237
+    sname: "\u706B1"
+    sDescribe: "\u9020\u62103\u70B9\u706B\u5C5E\u6027\u4F24\u5BB3\u3002"
+    type1: 1
+    type2: 0
+    limit: 1
+    conditionType1: 1
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 3
+    damage2: 0
+    damage3: 0
+    cost: 1
+    limitcount: 2
+    level: 1
+    explain: 
+  - id: 238
+    sname: "\u5F3A\u5316\u706B\u7403\u672F"
+    sDescribe: "\u7834\u7532\uFF0C\u9020\u62104\u70B9\u706B\u7130\u4F24\u5BB3"
+    type1: 1
+    type2: 0
+    limit: 1
+    conditionType1: 16
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 4
+    damage2: 0
+    damage3: 0
+    cost: 1
+    limitcount: 2
+    level: 2
+    explain: 16
+  - id: 239
+    sname: "\u706B2"
+    sDescribe: "\u672C\u6B21\u5BF9\u6218\u706B\u5C5E\u6027\u4F24\u5BB3\u63D0\u53471\u3002"
+    type1: 1
+    type2: 0
+    limit: 1
+    conditionType1: 38
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 1
+    damage2: 0
+    damage3: 0
+    cost: 1
+    limitcount: 2
+    level: 2
+    explain: 
+  - id: 240
+    sname: "\u706B2"
+    sDescribe: "\u5148\u5236\uFF0C\u9020\u62105\u70B9\u706B\u5C5E\u6027\u4F24\u5BB3\u3002"
+    type1: 1
+    type2: 0
+    limit: 1
+    conditionType1: 2
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 5
+    damage2: 0
+    damage3: 0
+    cost: 1
+    limitcount: 2
+    level: 2
+    explain: 
+  - id: 241
+    sname: "\u706B2"
+    sDescribe: "\u9020\u62104\u70B9\u706B\u5C5E\u6027\u4F24\u5BB3\uFF0C\u83B7\u5F971\u5F20\u706B\u7403\u672F"
+    type1: 1
+    type2: 0
+    limit: 1
+    conditionType1: 1
+    conditionType2: 17
+    conditionType3: 0
+    damage1: 4
+    damage2: 237
+    damage3: 0
+    cost: 1
+    limitcount: 2
+    level: 2
+    explain: 
+  - id: 242
+    sname: "\u706B3"
+    sDescribe: "\u7834\u7532\uFF0C\u9020\u62106\u70B9\u706B\u5C5E\u6027\u4F24\u5BB3\uFF0C\u771F\u8A00"
+    type1: 1
+    type2: 0
+    limit: 1
+    conditionType1: 16
+    conditionType2: 14
+    conditionType3: 0
+    damage1: 6
+    damage2: 0
+    damage3: 0
+    cost: 1
+    limitcount: 2
+    level: 3
+    explain: 14
+  - id: 243
+    sname: "\u706B3"
+    sDescribe: "\u9020\u62103\u70B9\u706B\u5C5E\u6027\u4F24\u5BB3\uFF0C\u8BE5\u724C\u83B7\u5F97\u7684\u706B\u5C5E\u6027\u4F24\u5BB3\u63D0\u5347\u7FFB\u500D\u3002"
+    type1: 1
+    type2: 0
+    limit: 1
+    conditionType1: 1
+    conditionType2: 39
+    conditionType3: 0
+    damage1: 3
+    damage2: 1
+    damage3: 0
+    cost: 1
+    limitcount: 2
+    level: 3
+    explain: 
+  - id: 244
+    sname: "\u706B3"
+    sDescribe: "\u9020\u62102\u70B9\u706B\u5C5E\u6027\u4F24\u5BB3\uFF0C\u79D8\u672F\uFF0C\u989D\u5916\u9020\u62107\u70B9\u4F24\u5BB3"
+    type1: 1
+    type2: 13
+    limit: 1
+    conditionType1: 1
+    conditionType2: 1
+    conditionType3: 0
+    damage1: 2
+    damage2: 7
+    damage3: 0
+    cost: 1
+    limitcount: 2
+    level: 3
+    explain: 13
+  - id: 245
+    sname: buf1
+    sDescribe: "\u79D8\u672F\uFF0C\u4E0B\u6B21\u653B\u51FB\u83B7\u5F978\u70B9\u706B\u5C5E\u6027\u5F3A\u5316\uFF0C\u62BD1\u5F20\u724C\u3002"
+    type1: 5
+    type2: 13
+    limit: 1
+    conditionType1: 0
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 0
+    damage2: 0
+    damage3: 0
+    cost: 1
+    limitcount: 2
+    level: 0
+    explain: 
+  - id: 246
+    sname: buf2
+    sDescribe: "\u5C4F\u969C\uFF0C\u4E0B\u6B21\u653B\u51FB\u83B7\u5F973\u70B9\u706B\u5C5E\u6027\u5F3A\u5316"
+    type1: 5
+    type2: 0
+    limit: 1
+    conditionType1: 0
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 0
+    damage2: 0
+    damage3: 0
+    cost: 1
+    limitcount: 2
+    level: 0
+    explain: 
+  - id: 247
+    sname: buf3
+    sDescribe: "\u4E0B\u4E00\u5F20\u706B\u5C5E\u6027\u653B\u51FB\u7FFB\u500D\u3002"
+    type1: 5
+    type2: 0
+    limit: 1
+    conditionType1: 0
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 0
+    damage2: 0
+    damage3: 0
+    cost: 1
+    limitcount: 2
+    level: 0
+    explain: 
+  - id: 248
+    sname: buf4
+    sDescribe: "\u968F\u673A\u83B7\u5F97\u4E00\u5F20\u706B\u5C5E\u6027\u5361\u724C\u3002"
+    type1: 5
+    type2: 0
+    limit: 1
+    conditionType1: 0
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 0
+    damage2: 0
+    damage3: 0
+    cost: 1
+    limitcount: 2
+    level: 0
+    explain: 
+  - id: 249
+    sname: buf5
+    sDescribe: "\u83B7\u5F972\u5F20\u706B\u9E1F\u672F\u3002"
+    type1: 5
+    type2: 0
+    limit: 1
+    conditionType1: 0
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 0
+    damage2: 0
+    damage3: 0
+    cost: 1
+    limitcount: 2
+    level: 0
+    explain: 
+  - id: 250
+    sname: buf6
+    sDescribe: "\u672C\u56DE\u5408\u6BCF\u4F7F\u75281\u5F20\u706B\u5C5E\u6027\u6CD5\u672F\u83B7\u5F971\u5F20\u706B\u79CD\u3002"
+    type1: 5
+    type2: 0
+    limit: 1
+    conditionType1: 0
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 0
+    damage2: 0
+    damage3: 0
+    cost: 1
+    limitcount: 2
+    level: 0
+    explain: 
+  - id: 251
+    sname: buf7
+    sDescribe: "\u4E0B\u4E00\u5F20\u9020\u6210\u7684\u706B\u5C5E\u6027\u4F24\u5BB3\u83B7\u5F97\u7B49\u91CF\u7684\u62A4\u7532\u3002"
+    type1: 5
+    type2: 0
+    limit: 1
+    conditionType1: 0
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 0
+    damage2: 0
+    damage3: 0
+    cost: 1
+    limitcount: 2
+    level: 0
+    explain: 
+  - id: 252
+    sname: "\u706B\u7130\u5145\u80FD"
+    sDescribe: "\u672C\u56DE\u5408\u706B\u5C5E\u6027\u4F24\u5BB3\u63D0\u53474\u3002"
+    type1: 5
+    type2: 0
+    limit: 1
+    conditionType1: 37
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 4
+    damage2: 0
+    damage3: 0
+    cost: 1
+    limitcount: 2
+    level: 0
+    explain: 
+  - id: 253
+    sname: buf9
+    sDescribe: "\u4E0B\u6B21\u653B\u51FB\u83B7\u5F973\u70B9\u706B\u5C5E\u6027\u5F3A\u5316\uFF0C\u9020\u6210\u5F53\u524D\u706B\u5C5E\u6027\u5F3A\u5316\u7684\u4F24\u5BB3\uFF0C\u4E0D\u6D88\u8017\u5F3A\u5316\u6B21\u6570\u3002"
+    type1: 5
+    type2: 0
+    limit: 1
+    conditionType1: 0
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 0
+    damage2: 0
+    damage3: 0
+    cost: 1
+    limitcount: 2
+    level: 0
+    explain: 
+  - id: 254
+    sname: buf10
+    sDescribe: "\u79FB\u9664\u672C\u56DE\u5408\u573A\u4E0A\u975E\u706B\u5C5E\u6027\u5361\u724C\u3002"
+    type1: 5
+    type2: 0
+    limit: 1
+    conditionType1: 0
+    conditionType2: 0
+    conditionType3: 0
+    damage1: 0
+    damage2: 0
+    damage3: 0
+    cost: 1
+    limitcount: 2
     level: 0
     explain: 
