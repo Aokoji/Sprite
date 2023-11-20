@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 7096566821004885556}
-  healthimg: {fileID: 5405832189215414169}
+  healthimg: {fileID: 4627938928478549850}
   defence: {fileID: 7913393869931007924}
   manatext: {fileID: 3960344033871097510}
   manaList:
@@ -546,7 +546,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 4833342825671371944}
-  healthimg: {fileID: 4841928750293597833}
+  healthimg: {fileID: 6374371768365233780}
   defence: {fileID: 1999233023900517010}
   manatext: {fileID: 8780280075769615956}
   manaList:

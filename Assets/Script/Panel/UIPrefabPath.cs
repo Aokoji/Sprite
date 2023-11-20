@@ -54,14 +54,14 @@ public enum E_Particle
     particle_move,
     particle_movefire,      //两个move待定
 
-    particle_hit,
+    particle_ani_hit,
     particle_brokenhit,
     particle_counter,
-    particle_power,
+    particle_ani_recover,
+    particle_power, //卡特效  power生效
     particle_acraneTake,
     particle_arcaneUse,
     particle_ani_def,
-    particle_ani_recover,
     particle_ani_deconter,
 
     particle_chooseCardSet,

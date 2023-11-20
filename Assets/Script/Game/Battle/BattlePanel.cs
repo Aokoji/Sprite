@@ -506,6 +506,7 @@ public class BattlePanel : PanelBase
                 card.gameObject.SetActive(false);
                 discardCard.Enqueue(card);
                 backMagicCard(card._data.id);      //+++应该refresh magic
+                refreshTakeCard();
             });
             return;
         }
@@ -673,6 +674,12 @@ public class BattlePanel : PanelBase
             if (dataround.isdecounter)
             {
                 addAction(() => {
+                    var par = ParticleManager.Instance.getPlayEffect(E_Particle.particle_power, dataround.entity.transform.position);
+                    RunSingel.Instance.laterDo(1.5f, () =>
+                    {
+                        par.SetActive(false);
+                        playerNextQue();
+                    });
                     if (dataround.isplayer)
                         playerNode.playActorAnim(E_Particle.particle_ani_deconter, "", playerNextQue);
                     else
@@ -721,7 +728,7 @@ public class BattlePanel : PanelBase
                     }
                     else
                     {
-                        willanim = E_Particle.particle_hit;
+                        willanim = E_Particle.particle_ani_hit;
                         if (isplayer)
                         {
                             enemy_a.def_cur = Mathf.Max(0, enemy_a.def_cur - dataround.hitdef);

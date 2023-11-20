@@ -85,9 +85,9 @@ GameObject:
   m_Component:
   - component: {fileID: 199573255106799426}
   - component: {fileID: 6902471593985940240}
-  - component: {fileID: 3975638709139428048}
+  - component: {fileID: 4403630207054115300}
   m_Layer: 0
-  m_Name: particle_hit
+  m_Name: particle_brokenhit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -124,25 +124,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   txbg: {fileID: 544201245499292031}
   tx: {fileID: 6509793582430908557}
---- !u!95 &3975638709139428048
-Animator:
-  serializedVersion: 3
+--- !u!111 &4403630207054115300
+Animation:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4874885641251596162}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 48e6ccc9b6be4e845a7b4e3519a5de62, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &6009007178428680382
 GameObject:
   m_ObjectHideFlags: 0

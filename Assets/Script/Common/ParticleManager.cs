@@ -62,8 +62,8 @@ public class ParticleManager : CSingel<ParticleManager>
     public void playEffect_special(E_Particle particle, Vector3 transfer,string text,Action callback=null)
     {
         callback?.Invoke();
-        //checkParticle(particle);
-        //particleResDic[particle].transform.position = transfer;
-        //particleResDic[particle].GetComponent<ParticleBase>().play(text, callback);
+        checkParticle(particle);
+        particleResDic[particle].transform.position = transfer;
+        particleResDic[particle].GetComponent<ParticleBase>().play(text, particle.ToString(), callback);
     }
 }

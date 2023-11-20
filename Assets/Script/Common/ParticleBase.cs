@@ -6,13 +6,11 @@ using UnityEngine;
 
 public class ParticleBase:MonoBehaviour
 {
-    public Text txbg;
     public Text tx;
 
-    public void play(string context,Action callback)
+    public void play(string context, string aniname, Action callback)
     {
-        txbg.text = context;
         tx.text = context;
-        AnimationTool.playAnimator(gameObject, "hitPar", false, callback);
+        AnimationTool.playAnimation(gameObject, aniname, false, callback);
     }
 }
