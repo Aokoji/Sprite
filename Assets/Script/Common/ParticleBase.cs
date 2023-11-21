@@ -10,7 +10,9 @@ public class ParticleBase:MonoBehaviour
 
     public void play(string context, string aniname, Action callback)
     {
-        tx.text = context;
+        if (string.IsNullOrEmpty(context) || context == "") ;
+        else
+            tx.text = context;
         AnimationTool.playAnimation(gameObject, aniname, false, callback);
     }
 }

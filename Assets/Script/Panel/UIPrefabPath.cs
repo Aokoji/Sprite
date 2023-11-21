@@ -55,11 +55,11 @@ public enum E_Particle
     particle_movefire,      //两个move待定
 
     particle_ani_hit,
-    particle_brokenhit,
+    particle_ani_brokenhit,
     particle_counter,
     particle_ani_recover,
+    particle_ani_defen,
     particle_power, //卡特效  power生效
-    particle_acraneTake,
     particle_arcaneUse,
     particle_ani_def,
     particle_ani_deconter,

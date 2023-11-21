@@ -720,7 +720,7 @@ public class BattlePanel : PanelBase
                     E_Particle willanim;
                     if (dataround.isbroken)
                     {
-                        willanim = E_Particle.particle_brokenhit;
+                        willanim = E_Particle.particle_ani_brokenhit;
                         if(isplayer)
                             enemy_a.hp_cur = Mathf.Max(enemy_a.hp_cur - dataround.hitnum, 0);
                         else
