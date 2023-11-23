@@ -56,11 +56,11 @@ public enum E_Particle
 
     particle_ani_hit,
     particle_ani_brokenhit,
-    particle_counter,
+    particle_ani_counter,
     particle_ani_recover,
     particle_ani_defen,
     particle_power, //卡特效  power生效
-    particle_arcaneUse,
+    particle_ani_arcaneUse,
     particle_ani_def,
     particle_ani_deconter,
 

@@ -64,6 +64,9 @@ public class ParticleManager : CSingel<ParticleManager>
         callback?.Invoke();
         checkParticle(particle);
         particleResDic[particle].transform.position = transfer;
-        particleResDic[particle].GetComponent<ParticleBase>().play(text, particle.ToString(), callback);
+        if(text=="")
+            particleResDic[particle].GetComponent<ParticleBase>().play(particle.ToString(), callback);
+        else
+            particleResDic[particle].GetComponent<ParticleBase>().play(text, particle.ToString(), callback);
     }
 }

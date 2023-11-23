@@ -44,7 +44,7 @@ public class CardEntity : UIBase
         particleCounter.SetActive(false);
 
         bg.color = Color.white;
-        bg.sprite = GetSprite(A_AtlasNames.atlasImg1.ToString(), "card" + (int)_data.limit);
+        bg.sprite = GetSprite(A_AtlasNames.atlasImg1.ToString(), "card");// + (int)_data.limit);
         /*
         if (_data.type1 == 0)
             bg.sprite = GetSprite(A_AtlasNames.atlasImg1.ToString(), "card" + (int)_data.limit);
@@ -84,11 +84,15 @@ public class CardEntity : UIBase
     {
         AnimationTool.playAnimation(gameObject, "cardShow", false, callback);
     }
-    public void playJustHideAnim(Action callback)
+    public void playJustHideAnim(Action callback=null)
     {
         AnimationTool.playAnimation(gameObject, "cardHide", false, callback);
     }
-    public void playCounterAnim(Action callback)
+    public void playUseHideAnim()
+    {
+        AnimationTool.playAnimation(gameObject, "cardUseHide");
+    }
+    public void playCounterAnim(Action callback=null)
     {
         AnimationTool.playAnimation(gameObject, "cardCounter", false, callback);
     }

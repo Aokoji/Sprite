@@ -15,4 +15,10 @@ public class ParticleBase:MonoBehaviour
             tx.text = context;
         AnimationTool.playAnimation(gameObject, aniname, false, callback);
     }
+    public void play(string aniname, Action callback)
+    {
+        if (tx != null)
+            tx.gameObject.SetActive(false);
+        AnimationTool.playAnimation(gameObject, aniname, false, callback);
+    }
 }

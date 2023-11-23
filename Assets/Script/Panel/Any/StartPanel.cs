@@ -7,13 +7,18 @@ public class StartPanel : PanelBase
 {
     public Button startbtn;
     public Button editbtn;
-
+    public Button testbtn;
     public override void registerEvent()
     {
         base.registerEvent();
         startbtn.onClick.AddListener(startgame);
         editbtn.onClick.AddListener(editgame);
         PanelManager.Instance.panelUnlock();
+        testbtn.onClick.AddListener(testClick);
+    }
+    void testClick()
+    {
+        BattleManager.Instance.EnterBattle(Main.NextEnemy, true, explorIcon.battle);
     }
 
     private void startgame()

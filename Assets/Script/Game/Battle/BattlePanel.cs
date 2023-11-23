@@ -634,6 +634,7 @@ public class BattlePanel : PanelBase
         refreshEnemyCard();
         RunSingel.Instance.laterDo(0.5f, playerNextQue);
     }
+    float commonGapTime = 1.4f;   //通用动画时长
     public void playThisCard(RoundData dataround)
     {
         //Debug.Log("playcard====" + dataround._card.sname+dataround.hitnum);
@@ -648,11 +649,16 @@ public class BattlePanel : PanelBase
             RunSingel.Instance.moveToAll(dataround.entity.gameObject, dataround.entity.transform.position + (isplayer ? Vector3.up : Vector3.down), MoveType.moveAll_FTS, ConfigConst.cardtime_effectShow, Vector3.one * 1.5f, Vector3.zero, () => {
                 //消失动画
                 if (dataround.isCounter)
-                    dataround.entity.playCounterAnim(playerNextQue);
+                {
+                    dataround.entity.playCounterAnim();
+                    RunSingel.Instance.laterDo(commonGapTime, playerNextQue);
+                }
                 else
                 {
+                    dataround.entity.playUseHideAnim();
                     playerNextQue();
                 }
+
             });
         });
         if (!dataround.isCounter)
@@ -667,23 +673,19 @@ public class BattlePanel : PanelBase
             {
                 addAction(() => {
                     //诅咒特效
-                    ParticleManager.Instance.playEffect(E_Particle.particle_counter, dataround.entity.transform.position);
+                    ParticleManager.Instance.playEffect_special(E_Particle.particle_ani_counter, dataround.entity.transform.position,"");
                     RunSingel.Instance.laterDo(2.8f, playerNextQue);
                 });
             }
             if (dataround.isdecounter)
             {
                 addAction(() => {
-                    var par = ParticleManager.Instance.getPlayEffect(E_Particle.particle_power, dataround.entity.transform.position);
-                    RunSingel.Instance.laterDo(1.5f, () =>
-                    {
-                        par.SetActive(false);
-                        playerNextQue();
-                    });
+                    var par = ParticleManager.Instance.getPlayEffect(E_Particle.particle_ani_deconter, dataround.entity.transform.position);
                     if (dataround.isplayer)
-                        playerNode.playActorAnim(E_Particle.particle_ani_deconter, "", playerNextQue);
+                        playerNode.playActorAnim(E_Particle.particle_ani_deconter);
                     else
-                        enemyNode.playActorAnim(E_Particle.particle_ani_deconter, "", playerNextQue);
+                        enemyNode.playActorAnim(E_Particle.particle_ani_deconter);
+                    RunSingel.Instance.laterDo(commonGapTime, playerNextQue);
                 });
             }
             if (dataround.recovernum > 0)
@@ -692,13 +694,14 @@ public class BattlePanel : PanelBase
                     if (isplayer)
                     {
                         player_a.hp_cur = Mathf.Min(player_a.hp_max, player_a.hp_cur + dataround.recovernum);
-                        playerNode.playActorAnim(E_Particle.particle_ani_recover, "+" + dataround.recovernum, playerNextQue);
+                        playerNode.playActorAnim(E_Particle.particle_ani_recover, "+" + dataround.recovernum);
                     }
                     else
                     {
                         enemy_a.hp_cur = Mathf.Min(enemy_a.hp_max, enemy_a.hp_cur + dataround.recovernum);
-                        enemyNode.playActorAnim(E_Particle.particle_ani_recover, "+" + dataround.recovernum, playerNextQue);
+                        enemyNode.playActorAnim(E_Particle.particle_ani_recover, "+" + dataround.recovernum);
                     }
+                    RunSingel.Instance.laterDo(commonGapTime, playerNextQue);
                 });
             }
             if (dataround.havePower)
@@ -742,9 +745,10 @@ public class BattlePanel : PanelBase
 
                     }
                     if (dataround.isplayer)
-                        enemyNode.playActorAnim(willanim, "-" + dataround.hitnum, playerNextQue);
+                        enemyNode.playActorAnim(willanim, "-" + dataround.hitnum);
                     else
-                        playerNode.playActorAnim(willanim, "-" + dataround.hitnum, playerNextQue);
+                        playerNode.playActorAnim(willanim, "-" + dataround.hitnum);
+                    RunSingel.Instance.laterDo(commonGapTime, playerNextQue);
                 });
             }
             if (dataround.defnum > 0)
@@ -753,13 +757,14 @@ public class BattlePanel : PanelBase
                     if (isplayer)
                     {
                         player_a.def_cur += dataround.defnum;
-                        playerNode.playActorAnim(E_Particle.particle_ani_def, "+" + dataround.defnum, playerNextQue);
+                        playerNode.playActorAnim(E_Particle.particle_ani_def, "+" + dataround.defnum);
                     }
                     else
                     {
                         enemy_a.def_cur += dataround.defnum;
-                        enemyNode.playActorAnim(E_Particle.particle_ani_def, "+" + dataround.defnum, playerNextQue);
-                    } 
+                        enemyNode.playActorAnim(E_Particle.particle_ani_def, "+" + dataround.defnum);
+                    }
+                    RunSingel.Instance.laterDo(commonGapTime, playerNextQue);
                 });
             }
             if (dataround.gift.Count > 0)
@@ -841,7 +846,8 @@ public class BattlePanel : PanelBase
             }
             if (dataround.etch)
             {
-                dataround.entity.playCounterAnim(playerNextQue);
+                dataround.entity.playCounterAnim();
+                RunSingel.Instance.laterDo(commonGapTime, playerNextQue);
             }
         }
         //下一张

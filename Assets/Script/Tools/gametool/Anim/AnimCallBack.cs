@@ -9,5 +9,6 @@ public class AnimCallBack:MonoBehaviour
     public void Mycallback()
     {
         Callback?.Invoke();
+        Callback = null;
     }
 }
